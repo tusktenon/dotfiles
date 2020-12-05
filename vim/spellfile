@@ -1,0 +1,36 @@
+## ~/.vim/spell/en.utf-8.add.spl
+## Author: Dan Murphy
+
+## Development
+app
+apps
+CLI
+Debian
+dotfile
+dotfiles
+dpkg
+Firefox
+FreeBSD
+Gentoo
+GitHub
+gvimrc
+Homebrew
+iTerm2
+macOS
+MacVim
+minpac
+Neovim
+pacman
+plugin
+plugins
+screenshot
+screenshots
+tmux
+zsh
+
+## Woodworking
+bandsaw
+Roubo
+
+## New (Unsorted)
+vimrc

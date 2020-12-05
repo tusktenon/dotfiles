@@ -1,0 +1,8 @@
+# ~/.gitconfig
+# Author: Dan Murphy
+
+[user]
+	name = Dan Murphy
+	email = dc.murphy@utoronto.ca
+[core]
+	editor = nvim
