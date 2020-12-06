@@ -127,16 +127,17 @@ function! PackInit() abort
     call minpac#add('tpope/vim-surround')
 
     " Color themes
-    call minpac#add('tyrannicaltoucan/vim-deep-space')
-    call minpac#add('kaicataldo/material.vim')
-    call minpac#add('KeitaNakamura/neodark.vim')
-    call minpac#add('arcticicestudio/nord-vim')
-    call minpac#add('rakr/vim-one')
-    call minpac#add('joshdick/onedark.vim')
-    call minpac#add('drewtempelmeyer/palenight.vim')
-    call minpac#add('tyrannicaltoucan/vim-quantum')
-    call minpac#add('lifepillar/vim-solarized8')
-    call minpac#add('jacoborus/tender.vim')
+    call minpac#add('ayu-theme/ayu-vim', {'type': 'opt'})
+    call minpac#add('tyrannicaltoucan/vim-deep-space', {'type': 'opt'})
+    call minpac#add('kaicataldo/material.vim', {'type': 'opt'})
+    call minpac#add('KeitaNakamura/neodark.vim', {'type': 'opt'})
+    call minpac#add('arcticicestudio/nord-vim', {'type': 'opt'})
+    call minpac#add('rakr/vim-one', {'type': 'opt'})
+    call minpac#add('joshdick/onedark.vim', {'type': 'opt'})
+    call minpac#add('drewtempelmeyer/palenight.vim', {'type': 'opt'})
+    call minpac#add('tyrannicaltoucan/vim-quantum', {'type': 'opt'})
+    call minpac#add('lifepillar/vim-solarized8', {'type': 'opt'})
+    call minpac#add('jacoborus/tender.vim', {'type': 'opt'})
 endfunction
 
 " Plugin settings here.
@@ -163,6 +164,12 @@ endif
 " Enable syntax highlighting (colors)
 syntax on
 
+" Ayu theme <ayu-theme/ayu-vim>
+" packadd! ayu-vim
+" let ayucolor="mirage"  " options are light, mirage and dark
+" colorscheme ayu
+" let g:lightline = { 'colorscheme': 'ayu' }
+
 " Deep Space theme <tyrannicaltoucan/vim-deep-space>
 " let g:deepspace_italics=1
 " set background=dark
@@ -185,17 +192,24 @@ syntax on
 " colorscheme nord
 " let g:lightline = { 'colorscheme': 'nord' }
 
-" Vim-one theme <rakr/vim-one>
-let g:one_allow_italics = 1
-set background=dark
-colorscheme one
-let g:lightline = { 'colorscheme': 'deepspace' }
+" Vim-One theme <rakr/vim-one>
+" let g:one_allow_italics = 1
+" set background=dark
+" colorscheme one
+" Vim-one doesn't include any Lightline themes;
+" the one from Deep Space looks nice
+" packadd! vim-deep-space
+" let g:lightline = { 'colorscheme': 'deepspace' }
+" let g:lightline = { 'colorscheme': 'deus' }
 
 " Onedark theme <joshdick/onedark.vim>
-" colorscheme onedark
-" let g:lightline = { 'colorscheme': 'onedark' }
+packadd! onedark.vim
+let g:onedark_terminal_italics = 1
+colorscheme onedark
+let g:lightline = { 'colorscheme': 'onedark' }
 
 " Palenight theme <drewtempelmeyer/palenight.vim>
+" packadd! palenight.vim
 " let g:palenight_terminal_italics=1
 " set background=dark
 " colorscheme palenight
@@ -216,9 +230,6 @@ let g:lightline = { 'colorscheme': 'deepspace' }
 " Tender theme <jacoborus/tender.vim>
 " colorscheme tender
 " let g:lightline = { 'colorscheme': 'tender' }
-
-" When no matching Lightline theme is available, I like Tomorrow_Night 
-" let g:lightline = { 'colorscheme': 'Tomorrow_Night' }
 
 
 "----------------------------------------------------------------------
