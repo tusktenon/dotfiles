@@ -108,6 +108,47 @@ set showcmd
 " on the last line
 set noshowmode
 
+" Showcase comments in italics
+highlight Comment cterm=italic gui=italic
+
+
+"----------------------------------------------------------------------
+" Package management (minpac)
+"----------------------------------------------------------------------
+
+function! PackInit() abort
+    packadd minpac
+    call minpac#init()
+    call minpac#add('k-takata/minpac', {'type': 'opt'})
+
+    " Plugins
+    call minpac#add('jiangmiao/auto-pairs')
+    call minpac#add('itchyny/lightline.vim')
+    call minpac#add('tpope/vim-surround')
+
+    " Color themes
+    call minpac#add('tyrannicaltoucan/vim-deep-space')
+    call minpac#add('kaicataldo/material.vim')
+    call minpac#add('KeitaNakamura/neodark.vim')
+    call minpac#add('arcticicestudio/nord-vim')
+    call minpac#add('rakr/vim-one')
+    call minpac#add('joshdick/onedark.vim')
+    call minpac#add('drewtempelmeyer/palenight.vim')
+    call minpac#add('tyrannicaltoucan/vim-quantum')
+    call minpac#add('lifepillar/vim-solarized8')
+    call minpac#add('jacoborus/tender.vim')
+endfunction
+
+" Plugin settings here.
+" ...
+
+" Commands for updating/cleaning plugins.
+" command! PackUpdate call PackInit() | call minpac#update()
+" command! PackClean  call PackInit() | call minpac#clean()
+command! PackUpdate source $MYVIMRC | call PackInit() | call minpac#update()
+command! PackClean  source $MYVIMRC | call PackInit() | call minpac#clean()
+command! PackStatus packadd minpac | call minpac#status()
+
 
 "----------------------------------------------------------------------
 " Color and syntax highlighting
@@ -122,42 +163,62 @@ endif
 " Enable syntax highlighting (colors)
 syntax on
 
+" Deep Space theme <tyrannicaltoucan/vim-deep-space>
+" let g:deepspace_italics=1
+" set background=dark
+" colorscheme deep-space
+" let g:lightline = { 'colorscheme': 'deepspace' }
 
-" flattened theme <https://github.com/romainl/flattened>
-" packadd! flattened
-" colorscheme flattened_dark
+" Material theme <kaicataldo/material.vim>
+" let g:material_terminal_italics = 1
+" let g:material_theme_style = 'palenight'
+" colorscheme material
+" let g:lightline = { 'colorscheme': 'material_vim' }
 
-" neodark theme <https://github.com/KeitaNakamura/neodark.vim>
-" packadd! neodark.vim
+" Neodark theme <KeitaNakamura/neodark.vim>
 " let g:neodark#background = '#202020'    " Darker background
 " let g:neodark#use_256color = 1    " 256-color
 " colorscheme neodark
+" let g:lightline = { 'colorscheme': 'neodark' }
 
-" onedark theme <https://github.com/joshdick/onedark.vim>
-packadd! onedark.vim
-colorscheme onedark
+" Nord theme <arcticicestudio/nord-vim>
+" colorscheme nord
+" let g:lightline = { 'colorscheme': 'nord' }
 
-" palenight theme <https://github.com/drewtempelmeyer/palenight.vim>
-" packadd! palenight.vim
+" Vim-one theme <rakr/vim-one>
+let g:one_allow_italics = 1
+set background=dark
+colorscheme one
+let g:lightline = { 'colorscheme': 'deepspace' }
+
+" Onedark theme <joshdick/onedark.vim>
+" colorscheme onedark
+" let g:lightline = { 'colorscheme': 'onedark' }
+
+" Palenight theme <drewtempelmeyer/palenight.vim>
+" let g:palenight_terminal_italics=1
 " set background=dark
 " colorscheme palenight
+" let g:lightline = { 'colorscheme': 'palenight' }
 
-" solarized8 theme <https://github.com/lifepillar/vim-solarized8>
+" Quantum theme <tyrannicaltoucan/vim-quantum>
+" let g:quantum_italics=1
 " set background=dark
+" " " let g:quantum_black=1
+" colorscheme quantum
+" let g:lightline = { 'colorscheme': 'quantum' } 
+
+" Solarized8 theme <lifepillar/vim-solarized8>
+" set background=light
 " colorscheme solarized8
+" let g:lightline = { 'colorscheme': 'solarized' }
 
-" vim-one theme <https://github.com/rakr/vim-one>
-" set background=dark
-" let g:one_allow_italics = 1
-" colorscheme one
+" Tender theme <jacoborus/tender.vim>
+" colorscheme tender
+" let g:lightline = { 'colorscheme': 'tender' }
 
-" Set color scheme for the lightline plugin
-" For the themes above, use flattened_dark, neodark, onedark, palenight,
-" solarized; when no matching theme is available, I like Tomorrow_Night 
-let g:lightline = { 'colorscheme': 'onedark' }
-
-" Showcase comments in italics
-highlight Comment cterm=italic gui=italic
+" When no matching Lightline theme is available, I like Tomorrow_Night 
+" let g:lightline = { 'colorscheme': 'Tomorrow_Night' }
 
 
 "----------------------------------------------------------------------
