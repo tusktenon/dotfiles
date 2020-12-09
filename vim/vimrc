@@ -6,6 +6,7 @@
 "----------------------------------------------------------------------
 
 " Turn off Vi compatibility
+" This should be at the top of your vimrc
 " To avoid unintended side effects, `nocompatible` should not be set twice
 if &compatible
     set nocompatible
@@ -15,7 +16,8 @@ endif
 set modelines=0
 set nomodeline
 
-" Use the space key as our leader. Put this near the top of your vimrc
+" Use the space key as our leader
+" Put this near the top of your vimrc
 let mapleader = "\<Space>"
 
 " Attempt to determine the type of a file based on its name and 
@@ -29,11 +31,10 @@ set wildmenu
 " Use case-insensitive search, except when using capital letters
 set ignorecase smartcase
 
-" Highlight searches (use <C-L> to temporarily turn off highlighting;
-" see the mapping of <C-L> below)
+" Highlight searches
 " set hlsearch
 
-" Highlight matches only while searching
+" Highlight search matches only while searching
 augroup vimrc-incsearch-highlight
     autocmd!
     autocmd CmdlineEnter /,\? :set hlsearch
@@ -127,25 +128,12 @@ function! PackInit() abort
     call minpac#add('tpope/vim-surround')
 
     " Color themes
-    call minpac#add('ayu-theme/ayu-vim', {'type': 'opt'})
-    call minpac#add('tyrannicaltoucan/vim-deep-space', {'type': 'opt'})
-    call minpac#add('kaicataldo/material.vim', {'type': 'opt'})
-    call minpac#add('KeitaNakamura/neodark.vim', {'type': 'opt'})
-    call minpac#add('arcticicestudio/nord-vim', {'type': 'opt'})
     call minpac#add('rakr/vim-one', {'type': 'opt'})
     call minpac#add('joshdick/onedark.vim', {'type': 'opt'})
-    call minpac#add('drewtempelmeyer/palenight.vim', {'type': 'opt'})
-    call minpac#add('tyrannicaltoucan/vim-quantum', {'type': 'opt'})
     call minpac#add('lifepillar/vim-solarized8', {'type': 'opt'})
-    call minpac#add('jacoborus/tender.vim', {'type': 'opt'})
 endfunction
 
-" Plugin settings here.
-" ...
-
 " Commands for updating/cleaning plugins.
-" command! PackUpdate call PackInit() | call minpac#update()
-" command! PackClean  call PackInit() | call minpac#clean()
 command! PackUpdate source $MYVIMRC | call PackInit() | call minpac#update()
 command! PackClean  source $MYVIMRC | call PackInit() | call minpac#clean()
 command! PackStatus packadd minpac | call minpac#status()
@@ -155,8 +143,7 @@ command! PackStatus packadd minpac | call minpac#status()
 " Color and syntax highlighting
 "----------------------------------------------------------------------
 
-" These lines should make colors display correctly when running Vim
-" within true-color (24-bit) terminals
+" Enable true-color (24-bit) option when the terminal and Vim support it
 if (has("termguicolors"))
   set termguicolors
 endif
@@ -164,43 +151,12 @@ endif
 " Enable syntax highlighting (colors)
 syntax on
 
-" Ayu theme <ayu-theme/ayu-vim>
-" packadd! ayu-vim
-" let ayucolor="mirage"  " options are light, mirage and dark
-" colorscheme ayu
-" let g:lightline = { 'colorscheme': 'ayu' }
-
-" Deep Space theme <tyrannicaltoucan/vim-deep-space>
-" let g:deepspace_italics=1
-" set background=dark
-" colorscheme deep-space
-" let g:lightline = { 'colorscheme': 'deepspace' }
-
-" Material theme <kaicataldo/material.vim>
-" let g:material_terminal_italics = 1
-" let g:material_theme_style = 'palenight'
-" colorscheme material
-" let g:lightline = { 'colorscheme': 'material_vim' }
-
-" Neodark theme <KeitaNakamura/neodark.vim>
-" let g:neodark#background = '#202020'    " Darker background
-" let g:neodark#use_256color = 1    " 256-color
-" colorscheme neodark
-" let g:lightline = { 'colorscheme': 'neodark' }
-
-" Nord theme <arcticicestudio/nord-vim>
-" colorscheme nord
-" let g:lightline = { 'colorscheme': 'nord' }
 
 " Vim-One theme <rakr/vim-one>
 " let g:one_allow_italics = 1
-" set background=dark
+" set background=light
 " colorscheme one
-" Vim-one doesn't include any Lightline themes;
-" the one from Deep Space looks nice
-" packadd! vim-deep-space
-" let g:lightline = { 'colorscheme': 'deepspace' }
-" let g:lightline = { 'colorscheme': 'deus' }
+" let g:lightline = { 'colorscheme': 'one' }
 
 " Onedark theme <joshdick/onedark.vim>
 packadd! onedark.vim
@@ -208,28 +164,15 @@ let g:onedark_terminal_italics = 1
 colorscheme onedark
 let g:lightline = { 'colorscheme': 'onedark' }
 
-" Palenight theme <drewtempelmeyer/palenight.vim>
-" packadd! palenight.vim
-" let g:palenight_terminal_italics=1
-" set background=dark
-" colorscheme palenight
-" let g:lightline = { 'colorscheme': 'palenight' }
-
-" Quantum theme <tyrannicaltoucan/vim-quantum>
-" let g:quantum_italics=1
-" set background=dark
-" " " let g:quantum_black=1
-" colorscheme quantum
-" let g:lightline = { 'colorscheme': 'quantum' } 
-
 " Solarized8 theme <lifepillar/vim-solarized8>
-" set background=light
-" colorscheme solarized8
+" set background=dark
+" colorscheme solarized8_low
 " let g:lightline = { 'colorscheme': 'solarized' }
 
-" Tender theme <jacoborus/tender.vim>
-" colorscheme tender
-" let g:lightline = { 'colorscheme': 'tender' }
+
+" Use Powerline-style separators in Lightline
+let g:lightline.separator = { 'left': '', 'right': '' }
+let g:lightline.subseparator = { 'left': '', 'right': '' }
 
 
 "----------------------------------------------------------------------

@@ -17,5 +17,5 @@ set guifont=Roboto\ Mono:h14
 " set lines=60
 
 " Set window transparency
-set transparency=5
+" set transparency=5
 
