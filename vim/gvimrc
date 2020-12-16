@@ -1,3 +1,7 @@
+" ~/.vim/gvimrc
+" Author: Dan Murphy
+" TO DO: Move these settings to your vimrc file, and mark gvimrc as deprecated
+
 " Use option (alt) as meta key
 " This option is only available in MacVim GUI
 set macmeta
@@ -5,10 +9,10 @@ set macmeta
 " Font for GUI Vim
 " set guifont=Courier:h14
 " set guifont=DejaVu\ Sans\ Mono:h14
-" set guifont=Fira\ Code:h14
+set guifont=Fira\ Code:h14
 " set guifont=Fira\ Mono:h14
 " set guifont=Menlo:h14
-set guifont=Roboto\ Mono:h14
+" set guifont=Roboto\ Mono:h14
 " set guifont=SF\ Mono:h12
 " set guifont=Source\ Code\ Pro:h14
 

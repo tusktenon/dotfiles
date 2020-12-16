@@ -1,9 +1,9 @@
-" ~/.vim/vimrc
+" File: ~/.vim/vimrc
 " Author: Dan Murphy
 
-"----------------------------------------------------------------------
+"-----------------------------------------------------------------------------
 " Essential features and options
-"----------------------------------------------------------------------
+"-----------------------------------------------------------------------------
 
 " Turn off Vi compatibility
 " This should be at the top of your vimrc
@@ -64,10 +64,19 @@ set nostartofline
 " Remove comment leader when joining commented lines
 set formatoptions+=j
 
+" Use Canadian and US English spellings
+setlocal spelllang=en_ca,en_us
 
-"----------------------------------------------------------------------
+" Use soft tabs (insert spaces instead of tab characters)
+set expandtab smarttab
+
+" Set tab stops and indentation at 4 spaces
+set shiftwidth=4 tabstop=4 softtabstop=4
+
+
+"-----------------------------------------------------------------------------
 " Appearance and interface options
-"----------------------------------------------------------------------
+"-----------------------------------------------------------------------------
 
 " (Visually) wrap long lines, breaking at word boundaries
 " Use `breakat` to specify the characters that can cause a line break
@@ -77,9 +86,9 @@ set wrap linebreak
 " leftwards/rightwards
 " set listchars+=precedes:←,extends:→               
 
-" Display (relative) line numbers
-set number
-" set relativenumber
+" Display (absolute or relative) line numbers
+" set number
+set number relativenumber
 
 " Display the cursor position
 set ruler 
@@ -105,17 +114,20 @@ set confirm
 " Show partial commands in the last line of the screen
 set showcmd
 
-" If using the lightline plugin, you don't need Vim to display the mode
+" If using the Lightline plugin, you don't need Vim to display the mode
 " on the last line
 set noshowmode
 
-" Showcase comments in italics
-highlight Comment cterm=italic gui=italic
+" Show comments in italics
+" highlight Comment cterm=italic gui=italic
+
+" Open files unfolded
+set nofoldenable
 
 
-"----------------------------------------------------------------------
+"-----------------------------------------------------------------------------
 " Package management (minpac)
-"----------------------------------------------------------------------
+"-----------------------------------------------------------------------------
 
 function! PackInit() abort
     packadd minpac
@@ -125,23 +137,30 @@ function! PackInit() abort
     " Plugins
     call minpac#add('jiangmiao/auto-pairs')
     call minpac#add('itchyny/lightline.vim')
+    call minpac#add('plasticboy/vim-markdown')
     call minpac#add('tpope/vim-surround')
 
     " Color themes
+    call minpac#add('cocopon/iceberg.vim', {'type': 'opt'})
+    call minpac#add('arcticicestudio/nord-vim', {'type': 'opt'})
     call minpac#add('rakr/vim-one', {'type': 'opt'})
     call minpac#add('joshdick/onedark.vim', {'type': 'opt'})
     call minpac#add('lifepillar/vim-solarized8', {'type': 'opt'})
 endfunction
 
-" Commands for updating/cleaning plugins.
+" Commands for updating/cleaning packages
 command! PackUpdate source $MYVIMRC | call PackInit() | call minpac#update()
 command! PackClean  source $MYVIMRC | call PackInit() | call minpac#clean()
 command! PackStatus packadd minpac | call minpac#status()
 
 
-"----------------------------------------------------------------------
+" Auto Pairs <jiangmiao/auto-pairs>
+let g:AutoPairsFlyMode = 1      " Enable Fly Mode
+
+
+"-----------------------------------------------------------------------------
 " Color and syntax highlighting
-"----------------------------------------------------------------------
+"-----------------------------------------------------------------------------
 
 " Enable true-color (24-bit) option when the terminal and Vim support it
 if (has("termguicolors"))
@@ -152,6 +171,16 @@ endif
 syntax on
 
 
+" Iceberg <cocopon/iceberg.vim>
+" packadd! iceberg.vim
+" set background=light
+" colorscheme iceberg
+" let g:lightline = { 'colorscheme': 'iceberg' }
+
+" Nord <arcticicestudio/nord-vim>
+colorscheme nord
+let g:lightline = { 'colorscheme': 'nord' }
+
 " Vim-One theme <rakr/vim-one>
 " let g:one_allow_italics = 1
 " set background=light
@@ -159,14 +188,14 @@ syntax on
 " let g:lightline = { 'colorscheme': 'one' }
 
 " Onedark theme <joshdick/onedark.vim>
-packadd! onedark.vim
-let g:onedark_terminal_italics = 1
-colorscheme onedark
-let g:lightline = { 'colorscheme': 'onedark' }
+" packadd! onedark.vim
+" let g:onedark_terminal_italics = 1
+" colorscheme onedark
+" let g:lightline = { 'colorscheme': 'onedark' }
 
 " Solarized8 theme <lifepillar/vim-solarized8>
-" set background=dark
-" colorscheme solarized8_low
+" set background=light
+" colorscheme solarized8_high
 " let g:lightline = { 'colorscheme': 'solarized' }
 
 
@@ -175,54 +204,37 @@ let g:lightline.separator = { 'left': '', 'right': '' }
 let g:lightline.subseparator = { 'left': '', 'right': '' }
 
 
-"----------------------------------------------------------------------
-" Filetype-specific options
-"----------------------------------------------------------------------
-
-" In general, filetype-specific settings should be placed in separate files,
-" e.g. `~/.vim/ftplugin/python.vim` or `~/.vim/after/ftplugin/python.vim`
-"
-" Here, we set some defaults for when no filetype is detected, suitable for
-" plain text, (La)TeX or Markdown
-
-" For plain text and Markdown, turn on spell checking, using Canadian English
-autocmd FileType markdown setlocal spell spelllang=en_ca,en_us
-autocmd FileType text setlocal spell spelllang=en_ca,en_us
-
-" Use soft tabs (insert spaces instead of tab characters)
-set expandtab smarttab
-
-" Set tab stops and indentation at 4 spaces
-set shiftwidth=4 tabstop=4 softtabstop=4
-
-
-"----------------------------------------------------------------------
+"-----------------------------------------------------------------------------
 " Mappings
-"----------------------------------------------------------------------
+"-----------------------------------------------------------------------------
 
-" Exit insert mode by pressing the 'j' and 'k' keys simultaneously,
-" or alternatively, by pressing 'j' twice
-" inoremap jk <Esc>
-" inoremap kj <Esc>
+" Exit insert mode by pressing 'j' twice
 inoremap jj <Esc>
 
+" Alternatively, exit insert mode by pressing the 'j' and 'k' keys
+" simultaneously
+" inoremap jk <Esc>
+" inoremap kj <Esc>
+
 " Set 'j' and 'k' to move by screen lines, not true lines
-noremap j gj
-noremap k gk
+" (If you use relative line numbers, this may be more trouble than it's worth)
+" noremap j gj
+" noremap k gk
 
 " Map Y to act like D and C, i.e. 'y$' rather than the default 'yy' 
 map Y y$
 
 " The following pair of commands is a subset of Tim Pope's Unimpaired 
-" plugin <https://github.com/tpope/vim-unimpaired>
-" Insert a newline before or after the cursor with `[<Space>` and `[<Space>`,
-" respectively
+" plugin <tpope/vim-unimpaired>
+" Insert a newline before or after the cursor with `[<Space>` and
+" `[<Space>`, respectively
 nnoremap <silent> [<space>  :<c-u>put!=repeat([''],v:count)<bar>']+1<cr>
 nnoremap <silent> ]<space>  :<c-u>put =repeat([''],v:count)<bar>'[-1<cr>
 
-"---------------------------------------------------------------------
+
+"-----------------------------------------------------------------------------
 " Scripts
-"---------------------------------------------------------------------
+"-----------------------------------------------------------------------------
 
 " The following script allows you to assign the same value to tabstop,
 " softtabstop and shiftwidth simultaneously.
