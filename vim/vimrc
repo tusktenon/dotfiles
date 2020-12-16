@@ -16,7 +16,7 @@ endif
 set modelines=0
 set nomodeline
 
-" Use the space key as our leader
+" Use the space key as your leader key
 " Put this near the top of your vimrc
 let mapleader = "\<Space>"
 
@@ -48,7 +48,7 @@ nnoremap <C-L> :nohl<CR><C-L>
 " Show search results as you type
 set incsearch
 
-" Backspace deletes like most programs in insert mode
+" Backspace deletes like most programs in Insert mode
 set backspace=indent,eol,start
 
 " When opening a new line and no filetype-specific indenting is enabled,
@@ -78,20 +78,31 @@ set shiftwidth=4 tabstop=4 softtabstop=4
 " Appearance and interface options
 "-----------------------------------------------------------------------------
 
+" Use visual (instead of audible) bell
+set visualbell
+
+" Instead of failing a command (:q, :w, etc.) because of unsaved changes,
+" use a dialogue when an operation has to be confirmed
+set confirm
+
+" Open files unfolded
+set nofoldenable
+
+" Keep some lines and columns visible around the cursor
+set scrolloff=4
+set sidescrolloff=5
+
 " (Visually) wrap long lines, breaking at word boundaries
 " Use `breakat` to specify the characters that can cause a line break
 set wrap linebreak
 
 " When the `wrap` option is off, show arrows if line continues
 " leftwards/rightwards
-" set listchars+=precedes:←,extends:→               
+set listchars+=precedes:←,extends:→               
 
 " Display (absolute or relative) line numbers
 " set number
 set number relativenumber
-
-" Display the cursor position
-set ruler 
 
 " Always display the status line, even if only one window is displayed
 set laststatus=2
@@ -100,29 +111,15 @@ set laststatus=2
 " having to "press <Enter> to continue"
 set cmdheight=2
 
-" Keep some lines and columns visible around the cursor
-set scrolloff=4
-set sidescrolloff=5
-
-" Use visual (instead of audible) bell
-set visualbell
-
-" Instead of failing a command because of unsaved changes, raise a
-" dialogue asking if you wish to save changed files.
-set confirm
-
 " Show partial commands in the last line of the screen
 set showcmd
+
+" Display the cursor position
+set ruler 
 
 " If using the Lightline plugin, you don't need Vim to display the mode
 " on the last line
 set noshowmode
-
-" Show comments in italics
-" highlight Comment cterm=italic gui=italic
-
-" Open files unfolded
-set nofoldenable
 
 
 "-----------------------------------------------------------------------------
@@ -202,6 +199,10 @@ let g:lightline = { 'colorscheme': 'nord' }
 " Use Powerline-style separators in Lightline
 let g:lightline.separator = { 'left': '', 'right': '' }
 let g:lightline.subseparator = { 'left': '', 'right': '' }
+
+
+" Show comments in italics
+" highlight Comment cterm=italic gui=italic
 
 
 "-----------------------------------------------------------------------------
