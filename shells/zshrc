@@ -24,5 +24,9 @@ if [ "$system_type" = "Darwin" ]; then
       autoload -Uz compinit
       compinit
     fi
+
+    # Use Homebrew's gcc
+    alias gcc='gcc-10'
+    alias g++='g++-10'
 fi
 

@@ -86,7 +86,7 @@ set visualbell
 set confirm
 
 " Open files unfolded
-set nofoldenable
+" set nofoldenable
 
 " Keep some lines and columns visible around the cursor
 set scrolloff=4
