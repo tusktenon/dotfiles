@@ -1,6 +1,7 @@
-" ~/.vim/gvimrc
+" File: ~/.vim/gvimrc
 " Author: Dan Murphy
-" TO DO: Move these settings to your vimrc file, and mark gvimrc as deprecated
+" **DEPRECATED** Settings moved to vimrc file
+
 
 " Use option (alt) as meta key
 " This option is only available in MacVim GUI

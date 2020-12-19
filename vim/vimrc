@@ -88,6 +88,9 @@ set confirm
 " Open files unfolded
 " set nofoldenable
 
+" Enable folding for Markdown documents
+let g:markdown_folding = 1
+
 " Keep some lines and columns visible around the cursor
 set scrolloff=4
 set sidescrolloff=5
@@ -121,6 +124,15 @@ set ruler
 " on the last line
 set noshowmode
 
+" Settings for GUI Vim
+if has("gui_running")
+    set guifont=Fira\ Code:h14
+    if has (gui_macvim)
+        " Use option (alt) as meta key
+        " This option is only available in MacVim
+        set macmeta
+    endif
+endif
 
 "-----------------------------------------------------------------------------
 " Package management (minpac)
@@ -134,7 +146,6 @@ function! PackInit() abort
     " Plugins
     call minpac#add('jiangmiao/auto-pairs')
     call minpac#add('itchyny/lightline.vim')
-    call minpac#add('plasticboy/vim-markdown')
     call minpac#add('tpope/vim-surround')
 
     " Color themes

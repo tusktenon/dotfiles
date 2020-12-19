@@ -15,4 +15,6 @@ cask 'db-browser-for-sqlite'
 
 
 # Other
+brew 'ffmpeg'
 brew 'youtube-dl'
+
