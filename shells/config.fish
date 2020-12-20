@@ -1,5 +1,8 @@
-# ~/.config/fish/config.fish
+# File: ~/.config/fish/config.fish
 # Author: Dan Murphy
+
+# Use Starship prompt
+starship init fish | source
 
 # macOS-specific settings
 if test (uname -s) = Darwin

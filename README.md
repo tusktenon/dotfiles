@@ -9,6 +9,7 @@ Eventually, you should probably put these steps in a shell script that would
 ## Shells
 
 ```
+ln -sv ~/Documents/Development/dotfiles/shells/config.fish ~/.config/fish/config.fish
 ln -sv ~/Documents/Development/dotfiles/shells/zshrc ~/.zshrc
 ```
 Use of the file `xterm-256color-italic.terminfo` is specific to macOS. It corrects an issue in which text that should be italicized is highlighted instead.
