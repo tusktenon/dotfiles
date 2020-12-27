@@ -23,10 +23,13 @@ if test (uname -s) = Darwin
     # Use Homebrew's gcc
     abbr -a gcc gcc-10
     abbr -a g++ g++-10
-    
+
+    # Use a single-line Starship prompt
+    set -x STARSHIP_CONFIG ~/.config/starship-single-line.toml
+
     # Force mode-dependent cursor shape changes in Vi mode
     # Not recommended when using a multi-line prompt
-    # fish_vi_cursor --force-iterm
+    fish_vi_cursor --force-iterm
 end
 
 

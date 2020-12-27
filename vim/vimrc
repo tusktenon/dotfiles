@@ -16,6 +16,9 @@ endif
 set modelines=0
 set nomodeline
 
+" Allow hidden buffers with unsaved changes
+set hidden
+
 " Use the space key as your leader key
 " Put this near the top of your vimrc
 let mapleader = "\<Space>"
@@ -86,7 +89,7 @@ set visualbell
 set confirm
 
 " Open files unfolded
-" set nofoldenable
+set nofoldenable
 
 " Enable folding for Markdown documents
 let g:markdown_folding = 1
@@ -107,6 +110,9 @@ set listchars+=precedes:←,extends:→
 " set number
 set number relativenumber
 
+" Show matching braces, brackets and parentheses
+set showmatch
+
 " Always display the status line, even if only one window is displayed
 set laststatus=2
 
@@ -124,16 +130,6 @@ set ruler
 " on the last line
 set noshowmode
 
-" Settings for GUI Vim
-if has("gui_running")
-    set guifont=Fira\ Code:h14
-    if has (gui_macvim)
-        " Use option (alt) as meta key
-        " This option is only available in MacVim
-        set macmeta
-    endif
-endif
-
 "-----------------------------------------------------------------------------
 " Package management (minpac)
 "-----------------------------------------------------------------------------
@@ -146,6 +142,7 @@ function! PackInit() abort
     " Plugins
     call minpac#add('jiangmiao/auto-pairs')
     call minpac#add('itchyny/lightline.vim')
+    call minpac#add('cespare/vim-toml')
     call minpac#add('tpope/vim-surround')
 
     " Color themes
@@ -207,14 +204,29 @@ let g:lightline = { 'colorscheme': 'nord' }
 " let g:lightline = { 'colorscheme': 'solarized' }
 
 
-" Use Powerline-style separators in Lightline
-let g:lightline.separator = { 'left': '', 'right': '' }
-let g:lightline.subseparator = { 'left': '', 'right': '' }
 
 
 " Show comments in italics
 " highlight Comment cterm=italic gui=italic
 
+
+" Settings for GUI Vim
+if has("gui_running")
+    set guifont=Fira\ Code:h14
+
+    " Settings for MacVim
+    if has (gui_macvim)
+        " Use option (alt) as meta key
+        " This option is only available in MacVim
+        set macmeta
+    endif
+
+" Settings for terminal Vim
+else
+    " Use Powerline-style separators in Lightline
+    let g:lightline.separator = { 'left': '', 'right': '' }
+    let g:lightline.subseparator = { 'left': '', 'right': '' }
+endif
 
 "-----------------------------------------------------------------------------
 " Mappings

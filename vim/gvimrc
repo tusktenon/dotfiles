@@ -8,19 +8,5 @@
 set macmeta
 
 " Font for GUI Vim
-" set guifont=Courier:h14
-" set guifont=DejaVu\ Sans\ Mono:h14
 set guifont=Fira\ Code:h14
-" set guifont=Fira\ Mono:h14
-" set guifont=Menlo:h14
-" set guifont=Roboto\ Mono:h14
-" set guifont=SF\ Mono:h12
-" set guifont=Source\ Code\ Pro:h14
-
-" Size of the GUI Vim window
-" set columns=84
-" set lines=60
-
-" Set window transparency
-" set transparency=5
 
