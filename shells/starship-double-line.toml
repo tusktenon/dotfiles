@@ -1,4 +1,4 @@
-# File: ~/.config/starship-single-line.toml
+# File: ~/.config/starship-double-line.toml
 # Author: Dan Murphy
 
 [character]
@@ -8,14 +8,7 @@ vicmd_symbol = "[❮](bold blue)"
 disabled = true
 
 [directory]
-truncation_length = 3
 read_only = " "
-
-[git_branch]
-format = "[$branch]($style) "
-
-[line_break]
-disabled = true
 
 [python]
 symbol = " "

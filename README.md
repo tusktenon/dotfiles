@@ -12,6 +12,7 @@ Eventually, you should probably put these steps in a shell script that would
 ln -sv ~/Documents/Development/dotfiles/shells/config.fish ~/.config/fish/config.fish
 ln -sv ~/Documents/Development/dotfiles/shells/zshrc ~/.zshrc
 ln -sv ~/Documents/Development/dotfiles/shells/starship-single-line.toml ~/.config/starship-single-line.toml
+ln -sv ~/Documents/Development/dotfiles/shells/starship-double-line.toml ~/.config/starship-double-line.toml
 ```
 Use of the file `xterm-256color-italic.terminfo` is specific to macOS. It corrects an issue in which text that should be italicized is highlighted instead.
 

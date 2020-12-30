@@ -4,17 +4,30 @@
 # Remove greeting message
 set fish_greeting
 
+# Set terminal window title
+function fish_title
+    echo (status current-command) ' • '
+    string replace ~ " ~" $PWD
+    $PWD
+end
+
 # Use Starship prompt
 starship init fish | source
 
+# Use Neovim
+set EDITOR nvim
+alias vim 'nvim'
+alias vi 'nvim'
 
 # Vi Mode Settings
-# Exit Insert mode with 'jj'
+# Exit Insert and Replace modes with 'jj'
 bind -s -M insert jj "set fish_bind_mode default; commandline -f backward-char repaint-mode"
+bind -s -M replace jj "set fish_bind_mode default; commandline -f backward-char repaint-mode"
 
 # As in Vim, change cursor shape depending on mode
 set fish_cursor_insert line
 set fish_cursor_replace_one underscore
+set fish_cursor_replace underscore
 set fish_cursor_default block
 
 
@@ -35,6 +48,6 @@ end
 
 # Abbreviations and Aliases
 abbr -a -- - 'cd -'
-alias ... "cd ../.."
-alias .... "cd ../../.."
+alias ... 'cd ../..'
+alias .... 'cd ../../..'
 

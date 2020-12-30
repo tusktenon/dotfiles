@@ -11,13 +11,15 @@ brew 'python3'
 brew 'sqlite'
 brew 'starship'
 brew 'tree'
+brew 'zsh'
+brew 'zsh-syntax-highlighting'
 
 cask 'db-browser-for-sqlite'
 
 
 # Fonts (including NERD Fonts)
-brew tap homebrew/cask-fonts
-brew install font-fira-code-nerd-font
+tap 'homebrew/cask-fonts'
+brew 'font-fira-code-nerd-font'
 
 
 # Other

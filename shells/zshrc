@@ -5,11 +5,23 @@
 export  LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
-system_type=$(uname -s)
+# Command completion
+autoload -U compinit
+compinit
+
+# Directory navigation
+setopt autocd autopushd
+
+# Use Neovim
+export EDITOR="nvim"
+alias vim="nvim"
+alias vi="nvim"
+
 
 # macOS-specific settings
+system_type=$(uname -s)
 if [ "$system_type" = "Darwin" ]; then
-    # Tell ls to be colourful
+    # Enable colored output from ls, etc. on FreeBSD-based systems
     export CLICOLOR=1
     export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 
@@ -29,4 +41,66 @@ if [ "$system_type" = "Darwin" ]; then
     alias gcc='gcc-10'
     alias g++='g++-10'
 fi
+
+
+# Vi mode configuration
+bindkey -v
+
+# Escape from Insert to Normal mode with 'jj'
+bindkey -M viins 'jj' vi-cmd-mode
+
+# Change cursor shape depending on mode
+_set_block_cursor() { echo -ne '\e[2 q' }
+_set_bar_cursor() { echo -ne '\e[6 q' }
+_set_underscore_cursor() { echo -ne '\e[4 q' }
+
+# zle-keymap-select() {
+#     if [[ $ZLE_STATE == *overwrite* ]]; then
+#         _set_underscore_cursor
+# 
+#     elif [[ $KEYMAP == vicmd ]]; then
+#         _set_block_cursor
+# 
+#     elif [[ $KEYMAP == main ]] ||
+#          [[ $KEYMAP == viins ]] ||
+#          [[ $KEYMAP = '' ]]; then
+#         _set_bar_cursor
+#     fi
+# }
+zle-keymap-select() {
+    if [[ $KEYMAP == vicmd ]]; then
+        _set_block_cursor
+
+    elif [[ $ZLE_STATE == *overwrite* ]]; then
+        _set_underscore_cursor
+
+    else; 
+        _set_bar_cursor
+    fi
+}
+zle -N zle-keymap-select
+
+# Start with bar cursor
+zle-line-init() { _set_bar_cursor }
+zle -N zle-line-init
+# precmd_functions+=(_set_bar_cursor)
+
+
+# Use <Alt-e> to edit the current command line in an external editor
+autoload -z edit-command-line
+zle -N edit-command-line
+bindkey "^[e" edit-command-line
+
+# Set terminal window title
+set-window-title() { print -Pn "\e]0;%~\a" }
+precmd_functions+=(set-window-title)
+
+# Use Starship prompt
+export STARSHIP_CONFIG=~/.config/starship-double-line.toml
+eval "$(starship init zsh)"
+
+# Enable syntax highlighting <zsh-users/zsh-syntax-highlighting>
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
+ZSH_HIGHLIGHT_STYLES[path]='fg=cyan'
 
