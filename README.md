@@ -27,6 +27,8 @@ ln -sv ~/Documents/Development/dotfiles/gitconfig ~/.gitconfig
 
 I like to put my vimrc in the more “modern” location `~/.vim/vimrc` instead of `~/.vimrc`; it's just cleaner to have all your Vim configuration files under the `.vim` directory.
 
+Also, inspired by [Chris Toomey's dotfiles](https://github.com/christoomey/dotfiles/tree/master/vim), I like to keep my vimrc a little shorter and cleaner, by placing some settings in separate files in the directory `~/.vim/rcfiles`.
+
 Even though I use Neovim almost exclusively, I still keep all my settings in the usual Vim locations, and have a minimal `init.vim` directing Neovim to share these settings.
 ```
 ln -sv ~/Documents/Development/dotfiles/vim/vimrc ~/.vim/vimrc

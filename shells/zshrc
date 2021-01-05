@@ -10,7 +10,8 @@ autoload -U compinit
 compinit
 
 # Directory navigation
-setopt autocd autopushd
+setopt autocd autopushd correct correctall
+export CDPATH=.:~/Documents/Development
 
 # Use Neovim
 export EDITOR="nvim"
@@ -38,8 +39,8 @@ if [ "$system_type" = "Darwin" ]; then
     fi
 
     # Use Homebrew's gcc
-    alias gcc='gcc-10'
-    alias g++='g++-10'
+    alias -g gcc='gcc-10'
+    alias -g g++='g++-10'
 fi
 
 

@@ -1,5 +1,7 @@
+"-----------------------------------------------------------------------------
 " File: ~/.vim/vimrc
 " Author: Dan Murphy
+"-----------------------------------------------------------------------------
 
 "-----------------------------------------------------------------------------
 " Essential features and options
@@ -16,12 +18,12 @@ endif
 set modelines=0
 set nomodeline
 
-" Allow hidden buffers with unsaved changes
-set hidden
-
 " Use the space key as your leader key
 " Put this near the top of your vimrc
 let mapleader = "\<Space>"
+
+" Allow hidden buffers with unsaved changes
+set hidden
 
 " Attempt to determine the type of a file based on its name and 
 " possibly its contents. Use this to allow intelligent auto-indenting
@@ -141,7 +143,10 @@ function! PackInit() abort
 
     " Plugins
     call minpac#add('jiangmiao/auto-pairs')
+    call minpac#add('itchyny/vim-gitbranch')
+    call minpac#add('rrethy/vim-hexokinase', {'do': 'make hexokinase'})
     call minpac#add('itchyny/lightline.vim')
+    call minpac#add('masukomi/vim-markdown-folding')
     call minpac#add('cespare/vim-toml')
     call minpac#add('tpope/vim-surround')
 
@@ -160,7 +165,11 @@ command! PackStatus packadd minpac | call minpac#status()
 
 
 " Auto Pairs <jiangmiao/auto-pairs>
-let g:AutoPairsFlyMode = 1      " Enable Fly Mode
+let g:AutoPairsFlyMode = 1      "Enable Fly Mode
+
+" Hexokinase <rrethy/vim-hexokinase>
+let g:Hexokinase_highlighters = ['sign_column']
+let g:Hexokinase_optInPatterns = 'full_hex,rgb,rgba,hsl,hsla'   "Don't match colour_names
 
 
 "-----------------------------------------------------------------------------
@@ -175,36 +184,8 @@ endif
 " Enable syntax highlighting (colors)
 syntax on
 
-
-" Iceberg <cocopon/iceberg.vim>
-" packadd! iceberg.vim
-" set background=light
-" colorscheme iceberg
-" let g:lightline = { 'colorscheme': 'iceberg' }
-
-" Nord <arcticicestudio/nord-vim>
-colorscheme nord
-let g:lightline = { 'colorscheme': 'nord' }
-
-" Vim-One theme <rakr/vim-one>
-" let g:one_allow_italics = 1
-" set background=light
-" colorscheme one
-" let g:lightline = { 'colorscheme': 'one' }
-
-" Onedark theme <joshdick/onedark.vim>
-" packadd! onedark.vim
-" let g:onedark_terminal_italics = 1
-" colorscheme onedark
-" let g:lightline = { 'colorscheme': 'onedark' }
-
-" Solarized8 theme <lifepillar/vim-solarized8>
-" set background=light
-" colorscheme solarized8_high
-" let g:lightline = { 'colorscheme': 'solarized' }
-
-
-
+" Set color scheme
+source ~/.vim/rcfiles/onedark_ref.vim
 
 " Show comments in italics
 " highlight Comment cterm=italic gui=italic
@@ -222,10 +203,7 @@ if has("gui_running")
     endif
 
 " Settings for terminal Vim
-else
-    " Use Powerline-style separators in Lightline
-    let g:lightline.separator = { 'left': '', 'right': '' }
-    let g:lightline.subseparator = { 'left': '', 'right': '' }
+" else
 endif
 
 "-----------------------------------------------------------------------------
@@ -233,12 +211,12 @@ endif
 "-----------------------------------------------------------------------------
 
 " Exit insert mode by pressing 'j' twice
-inoremap jj <Esc>
+" inoremap jj <Esc>
 
 " Alternatively, exit insert mode by pressing the 'j' and 'k' keys
 " simultaneously
-" inoremap jk <Esc>
-" inoremap kj <Esc>
+inoremap jk <Esc>
+inoremap kj <Esc>
 
 " Set 'j' and 'k' to move by screen lines, not true lines
 " (If you use relative line numbers, this may be more trouble than it's worth)
