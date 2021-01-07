@@ -179,7 +179,7 @@ endif
 syntax on
 
 " Set color scheme
-source ~/.vim/rcfiles/onedark_ref.vim
+source ~/.vim/rcfiles/onedark_config.vim
 
 " Show comments in italics
 " highlight Comment cterm=italic gui=italic

@@ -47,8 +47,10 @@ fi
 # Vi mode configuration
 bindkey -v
 
-# Escape from Insert to Normal mode with 'jj'
-bindkey -M viins 'jj' vi-cmd-mode
+# Escape from Insert to Normal mode with 'jj', 'jk' and/or 'kj'
+# bindkey -M viins 'jj' vi-cmd-mode
+bindkey -M viins 'jk' vi-cmd-mode
+bindkey -M viins 'kj' vi-cmd-mode
 
 # Change cursor shape depending on mode
 _set_block_cursor() { echo -ne '\e[2 q' }
