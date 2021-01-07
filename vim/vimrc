@@ -1,11 +1,8 @@
-"-----------------------------------------------------------------------------
 " File: ~/.vim/vimrc
 " Author: Dan Murphy
-"-----------------------------------------------------------------------------
 
-"-----------------------------------------------------------------------------
-" Essential features and options
-"-----------------------------------------------------------------------------
+
+" Basic Settings {{{1
 
 " Turn off Vi compatibility
 " This should be at the top of your vimrc
@@ -15,8 +12,8 @@ if &compatible
 endif
 
 " Disable modelines as a security precaution
-set modelines=0
-set nomodeline
+" set modelines=0
+" set nomodeline
 
 " Use the space key as your leader key
 " Put this near the top of your vimrc
@@ -79,9 +76,7 @@ set expandtab smarttab
 set shiftwidth=4 tabstop=4 softtabstop=4
 
 
-"-----------------------------------------------------------------------------
-" Appearance and interface options
-"-----------------------------------------------------------------------------
+" Appearance and Interface Options {{{1
 
 " Use visual (instead of audible) bell
 set visualbell
@@ -132,9 +127,8 @@ set ruler
 " on the last line
 set noshowmode
 
-"-----------------------------------------------------------------------------
-" Package management (minpac)
-"-----------------------------------------------------------------------------
+
+" Package Management (minpac) {{{1
 
 function! PackInit() abort
     packadd minpac
@@ -165,16 +159,16 @@ command! PackStatus packadd minpac | call minpac#status()
 
 
 " Auto Pairs <jiangmiao/auto-pairs>
-let g:AutoPairsFlyMode = 1      "Enable Fly Mode
+    "Enable Fly Mode
+    let g:AutoPairsFlyMode = 1
 
 " Hexokinase <rrethy/vim-hexokinase>
-let g:Hexokinase_highlighters = ['sign_column']
-let g:Hexokinase_optInPatterns = 'full_hex,rgb,rgba,hsl,hsla'   "Don't match colour_names
+    let g:Hexokinase_highlighters = ['sign_column']
+    " Don't match colour_names
+    let g:Hexokinase_optInPatterns = 'full_hex,rgb,rgba,hsl,hsla'
 
 
-"-----------------------------------------------------------------------------
-" Color and syntax highlighting
-"-----------------------------------------------------------------------------
+" Color and syntax highlighting {{{1
 
 " Enable true-color (24-bit) option when the terminal and Vim support it
 if (has("termguicolors"))
@@ -191,12 +185,16 @@ source ~/.vim/rcfiles/onedark_ref.vim
 " highlight Comment cterm=italic gui=italic
 
 
+" Environment-Dependent Settings {{{1
+
 " Settings for GUI Vim
-if has("gui_running")
+if has('gui_running')
+    " Most GUI Vim implementations probably lack fine adjustment of glyph
+    " spacing/offset, so avoid Powerline/NERD fonts
     set guifont=Fira\ Code:h14
 
     " Settings for MacVim
-    if has (gui_macvim)
+    if has('gui_macvim')
         " Use option (alt) as meta key
         " This option is only available in MacVim
         set macmeta
@@ -206,22 +204,19 @@ if has("gui_running")
 " else
 endif
 
-"-----------------------------------------------------------------------------
-" Mappings
-"-----------------------------------------------------------------------------
 
-" Exit insert mode by pressing 'j' twice
-" inoremap jj <Esc>
+" Mappings {{{1
 
-" Alternatively, exit insert mode by pressing the 'j' and 'k' keys
-" simultaneously
+" Exit Insert mode by pressing 'j' and 'k' together, or alternatively,
+" by pressing 'j' twice
 inoremap jk <Esc>
 inoremap kj <Esc>
+" inoremap jj <Esc>
 
 " Set 'j' and 'k' to move by screen lines, not true lines
 " (If you use relative line numbers, this may be more trouble than it's worth)
-" noremap j gj
-" noremap k gk
+noremap j gj
+noremap k gk
 
 " Map Y to act like D and C, i.e. 'y$' rather than the default 'yy' 
 map Y y$
@@ -234,9 +229,7 @@ nnoremap <silent> [<space>  :<c-u>put!=repeat([''],v:count)<bar>']+1<cr>
 nnoremap <silent> ]<space>  :<c-u>put =repeat([''],v:count)<bar>'[-1<cr>
 
 
-"-----------------------------------------------------------------------------
-" Scripts
-"-----------------------------------------------------------------------------
+" Scripts {{{1
 
 " The following script allows you to assign the same value to tabstop,
 " softtabstop and shiftwidth simultaneously.
@@ -269,3 +262,6 @@ function! SummarizeTabs()
     echohl None
   endtry
 endfunction
+
+
+" vim: sw=4 ts=4 sts=4 et fdm=marker
