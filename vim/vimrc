@@ -75,6 +75,10 @@ set expandtab smarttab
 " Set tab stops and indentation at 4 spaces
 set shiftwidth=4 tabstop=4 softtabstop=4
 
+" Use option (alt) as meta key in MacVim
+if has('gui_macvim')
+    set macmeta
+endif
 
 " Appearance and Interface Options {{{1
 
@@ -127,6 +131,13 @@ set ruler
 " on the last line
 set noshowmode
 
+" Set font in GUI Vim
+"   Most GUI Vim implementations probably lack fine adjustment of glyph
+"   spacing/offset, so avoid Powerline/NERD fonts
+if has('gui_running')
+    set guifont=Roboto\ Mono:h14
+endif
+
 
 " Package Management (minpac) {{{1
 
@@ -144,7 +155,10 @@ function! PackInit() abort
     call minpac#add('cespare/vim-toml')
     call minpac#add('tpope/vim-surround')
 
-    " Color themes
+    call minpac#add('Yggdroot/indentLine', {'type': 'opt'})
+    call minpac#add('lukas-reineke/indent-blankline.nvim', {'type': 'opt'})
+
+    " Colorschemes
     call minpac#add('cocopon/iceberg.vim', {'type': 'opt'})
     call minpac#add('arcticicestudio/nord-vim', {'type': 'opt'})
     call minpac#add('rakr/vim-one', {'type': 'opt'})
@@ -158,17 +172,34 @@ command! PackClean  source $MYVIMRC | call PackInit() | call minpac#clean()
 command! PackStatus packadd minpac | call minpac#status()
 
 
-" Auto Pairs <jiangmiao/auto-pairs>
-    "Enable Fly Mode
-    let g:AutoPairsFlyMode = 1
+" Auto Pairs settings
+" Enable Fly Mode
+" let g:AutoPairsFlyMode = 1
 
-" Hexokinase <rrethy/vim-hexokinase>
-    let g:Hexokinase_highlighters = ['sign_column']
-    " Don't match colour_names
-    let g:Hexokinase_optInPatterns = 'full_hex,rgb,rgba,hsl,hsla'
+" Hexokinase settings
+let g:Hexokinase_highlighters = ['sign_column']
+" Don't match colour_names
+let g:Hexokinase_optInPatterns = 'full_hex,rgb,rgba,hsl,hsla'
+
+" indentLine and indent-blankline settings
+" indent-blankline requires Neovim 0.4.0 or higher, and indentLine looks odd
+" without it
+if has('nvim')
+    packadd! indentLine
+    packadd! indent-blankline.nvim
+    " Hightlight group to use for default colors
+    let g:indentLine_defaultGroup = 'SpecialKey'
+    " Show first indentation level
+    let g:indentLine_showFirstIndentLevel = 1
+    " Character(s) to use for indent line, e.g. "│" or "┊"
+    let g:indentLine_first_char = "│"
+    let g:indentLine_char = "│"
+endif
 
 
 " Color and syntax highlighting {{{1
+
+" Basic Color Settings {{{2
 
 " Enable true-color (24-bit) option when the terminal and Vim support it
 if (has("termguicolors"))
@@ -178,31 +209,94 @@ endif
 " Enable syntax highlighting (colors)
 syntax on
 
-" Set color scheme
-source ~/.vim/rcfiles/onedark_config.vim
+
+" Lightline Settings {{{2
+
+" Load custom Lightline schemes
+packadd! vim-projects
+
+let g:lightline = {}
+
+" Use Powerline separators in terminal Vim
+" if !has('gui_running')
+"     " let g:lightline.separator = { 'left': '', 'right': '' }
+"     " let g:lightline.subseparator = { 'left': '', 'right': '' }
+"     let g:lightline.separator = { 'left': '', 'right': '' }
+"     let g:lightline.subseparator = { 'left': '', 'right': '' }
+"     let g:lightline.tabline_separator = { 'left': '', 'right': '' }
+"     let g:lightline.tabline_subseparator = { 'left': '', 'right': '' }
+" endif
+
+let g:lightline.active = {
+    \ 'left': [ [ 'mode', 'paste' ],
+    \           [ 'gitbranch' ],
+    \           [ 'readonly', 'filename', 'modified' ] ],
+    \ 'right': [ [ 'lineinfo' ],
+    \            [ 'percent' ],
+    \            [ 'fileinfo' ] ]
+    \ }
+
+let g:lightline.component = {
+    \   'fileinfo': '%{&ft!=#""?&ft:"no ft"} • %{&ff} • %{&fenc!=#""?&fenc:&enc}',
+    \   'lineinfo': '%3l/%L: %-2c'
+    \ }
+
+let g:lightline.component_function = {
+    \   'gitbranch': 'gitbranch#name'
+    \ }
+
+
+" Color Schemes {{{2
+
+let g:color_scheme_list = {}
+
+let g:color_scheme_list['Nord'] = [
+    \ 'colorscheme nord',
+    \ "let g:lightline.colorscheme = 'nord'"
+    \ ]
+    " Standard Lightline scheme: 'nord'
+
+let g:color_scheme_list['Onedark'] = [
+    \ 'packadd! onedark.vim',
+    \ 'colorscheme onedark',
+    \ "let g:lightline.colorscheme = 'one_subtle_34v1'"
+    \ ]
+    " Other options: 'let g:onedark_terminal_italics = 1'
+    " Standard Lightline scheme: 'onedark'
+
+let g:color_scheme_list['Solarized8'] = [
+    \ 'set background = light',
+    \ 'colorscheme solarized8',
+    \ 'let g:solarized_italics = 0',
+    \ "let g:lightline.colorscheme = 'solarized'"
+    \ ]
+    " Standard Lightline scheme: 'solarized'
+
+
+function! SetColorScheme(name) abort
+    for l:item in g:color_scheme_list[a:name]
+        execute l:item
+    endfor
+endfunction
+
+function! SwitchColorScheme(name) abort
+    call SetColorScheme(a:name)
+    call lightline#init()
+    call lightline#colorscheme()
+    call lightline#update()
+endfunction
+
+function! s:colo(a, l, p)
+    return keys(g:color_scheme_list)
+endfunction
+
+command! -bar -nargs=? -complete=customlist,<sid>colo Colo call SwitchColorScheme(<f-args>)
+
+" Set initial color scheme
+call SetColorScheme('Onedark')
 
 " Show comments in italics
 " highlight Comment cterm=italic gui=italic
-
-
-" Environment-Dependent Settings {{{1
-
-" Settings for GUI Vim
-if has('gui_running')
-    " Most GUI Vim implementations probably lack fine adjustment of glyph
-    " spacing/offset, so avoid Powerline/NERD fonts
-    set guifont=Fira\ Code:h14
-
-    " Settings for MacVim
-    if has('gui_macvim')
-        " Use option (alt) as meta key
-        " This option is only available in MacVim
-        set macmeta
-    endif
-
-" Settings for terminal Vim
-" else
-endif
 
 
 " Mappings {{{1
