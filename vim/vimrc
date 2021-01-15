@@ -2,7 +2,7 @@
 " Author: Dan Murphy
 
 
-" Basic Settings {{{1
+" Basic Settings ························································ {{{1
 
 " Turn off Vi compatibility
 " This should be at the top of your vimrc
@@ -37,11 +37,21 @@ set ignorecase smartcase
 " set hlsearch
 
 " Highlight search matches only while searching
-augroup vimrc-incsearch-highlight
-    autocmd!
-    autocmd CmdlineEnter /,\? :set hlsearch
-    autocmd CmdlineLeave /,\? :set nohlsearch
-augroup END
+" augroup vimrc-incsearch-highlight
+"     autocmd!
+"     autocmd CmdlineEnter /,\? :set hlsearch
+"     autocmd CmdlineLeave /,\? :set nohlsearch
+" augroup END
+
+if v:version >= 810 || has('nvim-0.3.0') 
+    augroup vimrc-incsearch-highlight
+        autocmd!
+        autocmd CmdlineEnter /,\? :set hlsearch
+        autocmd CmdlineLeave /,\? :set nohlsearch
+    augroup END
+else
+    set hlsearch
+endif
 
 " Map <C-L> (redraw screen) to also turn off search highlighting until the
 " next search
@@ -80,7 +90,8 @@ if has('gui_macvim')
     set macmeta
 endif
 
-" Appearance and Interface Options {{{1
+
+" Appearance and Interface Options ······································ {{{1
 
 " Use visual (instead of audible) bell
 set visualbell
@@ -127,10 +138,6 @@ set showcmd
 " Display the cursor position
 set ruler 
 
-" If using the Lightline plugin, you don't need Vim to display the mode
-" on the last line
-set noshowmode
-
 " Set font in GUI Vim
 "   Most GUI Vim implementations probably lack fine adjustment of glyph
 "   spacing/offset, so avoid Powerline/NERD fonts
@@ -139,7 +146,7 @@ if has('gui_running')
 endif
 
 
-" Package Management (minpac) {{{1
+" Package Management (minpac) ··········································· {{{1
 
 function! PackInit() abort
     packadd minpac
@@ -159,9 +166,7 @@ function! PackInit() abort
     call minpac#add('lukas-reineke/indent-blankline.nvim', {'type': 'opt'})
 
     " Colorschemes
-    call minpac#add('cocopon/iceberg.vim', {'type': 'opt'})
     call minpac#add('arcticicestudio/nord-vim', {'type': 'opt'})
-    call minpac#add('rakr/vim-one', {'type': 'opt'})
     call minpac#add('joshdick/onedark.vim', {'type': 'opt'})
     call minpac#add('lifepillar/vim-solarized8', {'type': 'opt'})
 endfunction
@@ -190,16 +195,16 @@ if has('nvim')
     " Hightlight group to use for default colors
     let g:indentLine_defaultGroup = 'SpecialKey'
     " Show first indentation level
-    let g:indentLine_showFirstIndentLevel = 1
+    " let g:indentLine_showFirstIndentLevel = 1
     " Character(s) to use for indent line, e.g. "│" or "┊"
     let g:indentLine_first_char = "│"
     let g:indentLine_char = "│"
 endif
 
 
-" Color and syntax highlighting {{{1
+" Color and syntax highlighting ········································· {{{1
 
-" Basic Color Settings {{{2
+" Basic Color Settings ·················································· {{{2
 
 " Enable true-color (24-bit) option when the terminal and Vim support it
 if (has("termguicolors"))
@@ -210,7 +215,10 @@ endif
 syntax on
 
 
-" Lightline Settings {{{2
+" Lightline Settings ···················································· {{{2
+
+" If using Lightline, you don't need Vim to display the mode on the line below
+set noshowmode
 
 " Load custom Lightline schemes
 packadd! vim-projects
@@ -246,7 +254,7 @@ let g:lightline.component_function = {
     \ }
 
 
-" Color Schemes {{{2
+" Color Schemes ························································· {{{2
 
 let g:color_scheme_list = {}
 
@@ -265,7 +273,7 @@ let g:color_scheme_list['Onedark'] = [
     " Standard Lightline scheme: 'onedark'
 
 let g:color_scheme_list['Solarized8'] = [
-    \ 'set background = light',
+    \ 'set background=light',
     \ 'colorscheme solarized8',
     \ 'let g:solarized_italics = 0',
     \ "let g:lightline.colorscheme = 'solarized'"
@@ -299,7 +307,7 @@ call SetColorScheme('Onedark')
 " highlight Comment cterm=italic gui=italic
 
 
-" Mappings {{{1
+" Mappings ······························································ {{{1
 
 " Exit Insert mode by pressing 'j' and 'k' together, or alternatively,
 " by pressing 'j' twice
@@ -323,7 +331,7 @@ nnoremap <silent> [<space>  :<c-u>put!=repeat([''],v:count)<bar>']+1<cr>
 nnoremap <silent> ]<space>  :<c-u>put =repeat([''],v:count)<bar>'[-1<cr>
 
 
-" Scripts {{{1
+" Scripts ······························································· {{{1
 
 " The following script allows you to assign the same value to tabstop,
 " softtabstop and shiftwidth simultaneously.
