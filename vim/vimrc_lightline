@@ -1,0 +1,369 @@
+" File: ~/.vim/vimrc
+" Author: Dan Murphy
+
+
+" Basic Settings ························································ {{{1
+
+" Turn off Vi compatibility
+" This should be at the top of your vimrc
+" To avoid unintended side effects, `nocompatible` should not be set twice
+if &compatible
+    set nocompatible
+endif
+
+" Disable modelines as a security precaution
+" set modelines=0
+" set nomodeline
+
+" Use the space key as your leader key
+" Put this near the top of your vimrc
+let mapleader = "\<Space>"
+
+" Allow hidden buffers with unsaved changes
+set hidden
+
+" Attempt to determine the type of a file based on its name and 
+" possibly its contents. Use this to allow intelligent auto-indenting
+" for each filetype, and for plugins that are filetype specific.
+filetype indent plugin on
+
+" Tab autocomplete in command mode
+set wildmenu
+
+" Use case-insensitive search, except when using capital letters
+set ignorecase smartcase
+
+" Highlight searches
+" set hlsearch
+
+" Highlight search matches only while searching
+" augroup vimrc-incsearch-highlight
+"     autocmd!
+"     autocmd CmdlineEnter /,\? :set hlsearch
+"     autocmd CmdlineLeave /,\? :set nohlsearch
+" augroup END
+
+if v:version >= 810 || has('nvim-0.3.0') 
+    augroup vimrc-incsearch-highlight
+        autocmd!
+        autocmd CmdlineEnter /,\? :set hlsearch
+        autocmd CmdlineLeave /,\? :set nohlsearch
+    augroup END
+else
+    set hlsearch
+endif
+
+" Map <C-L> (redraw screen) to also turn off search highlighting until the
+" next search
+nnoremap <C-L> :nohl<CR><C-L>
+
+" Show search results as you type
+set incsearch
+
+" Backspace deletes like most programs in Insert mode
+set backspace=indent,eol,start
+
+" When opening a new line and no filetype-specific indenting is enabled,
+" keep the same indent as the line you're currently on.
+" Useful for READMEs, etc.
+set autoindent
+
+" Stop certain movements from always going to the first character of a line.
+" While this behaviour deviates from that of Vi, it does what most users
+" coming from other editors would expect.
+set nostartofline
+
+" Remove comment leader when joining commented lines
+set formatoptions+=j
+
+" Use Canadian and US English spellings
+setlocal spelllang=en_ca,en_us
+
+" Use soft tabs (insert spaces instead of tab characters)
+set expandtab smarttab
+
+" Set tab stops and indentation at 4 spaces
+set shiftwidth=4 tabstop=4 softtabstop=4
+
+" Use option (alt) as meta key in MacVim
+if has('gui_macvim')
+    set macmeta
+endif
+
+
+" Appearance and Interface Options ······································ {{{1
+
+" Use visual (instead of audible) bell
+set visualbell
+
+" Instead of failing a command (:q, :w, etc.) because of unsaved changes,
+" use a dialogue when an operation has to be confirmed
+set confirm
+
+" Open files unfolded
+set nofoldenable
+
+" Enable folding for Markdown documents
+let g:markdown_folding = 1
+
+" Keep some lines and columns visible around the cursor
+set scrolloff=4
+set sidescrolloff=5
+
+" (Visually) wrap long lines, breaking at word boundaries
+" Use `breakat` to specify the characters that can cause a line break
+set wrap linebreak
+
+" When the `wrap` option is off, show arrows if line continues
+" leftwards/rightwards
+set listchars+=precedes:←,extends:→               
+
+" Display (absolute or relative) line numbers
+" set number
+set number relativenumber
+
+" Show matching braces, brackets and parentheses
+set showmatch
+
+" Always display the status line, even if only one window is displayed
+set laststatus=2
+
+" Set the command window height to 2 lines, to avoid many cases of
+" having to "press <Enter> to continue"
+set cmdheight=2
+
+" Show partial commands in the last line of the screen
+set showcmd
+
+" Display the cursor position
+set ruler 
+
+" Set font in GUI Vim
+"   Most GUI Vim implementations probably lack fine adjustment of glyph
+"   spacing/offset, so avoid Powerline/NERD fonts
+if has('gui_running')
+    set guifont=Roboto\ Mono:h14
+endif
+
+
+" Package Management (minpac) ··········································· {{{1
+
+function! PackInit() abort
+    packadd minpac
+    call minpac#init()
+    call minpac#add('k-takata/minpac', {'type': 'opt'})
+
+    " Plugins
+    call minpac#add('jiangmiao/auto-pairs')
+    call minpac#add('itchyny/vim-gitbranch')
+    call minpac#add('rrethy/vim-hexokinase', {'do': 'make hexokinase'})
+    call minpac#add('itchyny/lightline.vim')
+    call minpac#add('masukomi/vim-markdown-folding')
+    call minpac#add('cespare/vim-toml')
+    call minpac#add('tpope/vim-surround')
+
+    call minpac#add('Yggdroot/indentLine', {'type': 'opt'})
+    call minpac#add('lukas-reineke/indent-blankline.nvim', {'type': 'opt'})
+
+    " Colorschemes
+    call minpac#add('arcticicestudio/nord-vim', {'type': 'opt'})
+    call minpac#add('joshdick/onedark.vim', {'type': 'opt'})
+    call minpac#add('lifepillar/vim-solarized8', {'type': 'opt'})
+endfunction
+
+" Commands for updating/cleaning packages
+command! PackUpdate source $MYVIMRC | call PackInit() | call minpac#update()
+command! PackClean  source $MYVIMRC | call PackInit() | call minpac#clean()
+command! PackStatus packadd minpac | call minpac#status()
+
+
+" Auto Pairs settings
+" Enable Fly Mode
+" let g:AutoPairsFlyMode = 1
+
+" Hexokinase settings
+let g:Hexokinase_highlighters = ['sign_column']
+" Don't match colour_names
+let g:Hexokinase_optInPatterns = 'full_hex,rgb,rgba,hsl,hsla'
+
+" indentLine and indent-blankline settings
+" indent-blankline requires Neovim 0.4.0 or higher, and indentLine looks odd
+" without it
+if has('nvim')
+    packadd! indentLine
+    packadd! indent-blankline.nvim
+    " Hightlight group to use for default colors
+    let g:indentLine_defaultGroup = 'SpecialKey'
+    " Show first indentation level
+    " let g:indentLine_showFirstIndentLevel = 1
+    " Character(s) to use for indent line, e.g. "│" or "┊"
+    let g:indentLine_first_char = "│"
+    let g:indentLine_char = "│"
+endif
+
+
+" Color and Syntax Highlighting ········································· {{{1
+
+" Basic Color Settings ·················································· {{{2
+
+" Enable true-color (24-bit) option when the terminal and Vim support it
+if (has("termguicolors"))
+  set termguicolors
+endif
+
+" Enable syntax highlighting (colors)
+syntax on
+
+
+" Lightline Settings ···················································· {{{2
+
+" If using Lightline, you don't need Vim to display the mode on the line below
+set noshowmode
+
+" Load custom Lightline schemes
+packadd! vim-projects
+
+let g:lightline = {}
+
+" Use Powerline separators in terminal Vim
+" if !has('gui_running')
+"     " let g:lightline.separator = { 'left': '', 'right': '' }
+"     " let g:lightline.subseparator = { 'left': '', 'right': '' }
+"     let g:lightline.separator = { 'left': '', 'right': '' }
+"     let g:lightline.subseparator = { 'left': '', 'right': '' }
+"     let g:lightline.tabline_separator = { 'left': '', 'right': '' }
+"     let g:lightline.tabline_subseparator = { 'left': '', 'right': '' }
+" endif
+
+let g:lightline.active = {
+    \ 'left': [ [ 'mode', 'paste' ],
+    \           [ 'gitbranch' ],
+    \           [ 'readonly', 'filename', 'modified' ] ],
+    \ 'right': [ [ 'lineinfo' ],
+    \            [ 'percent' ],
+    \            [ 'fileinfo' ] ]
+    \ }
+
+let g:lightline.component = {
+    \   'fileinfo': '%{&ft!=#""?&ft:"no ft"} • %{&ff} • %{&fenc!=#""?&fenc:&enc}',
+    \   'lineinfo': '%3l/%L: %-2c'
+    \ }
+
+let g:lightline.component_function = {
+    \   'gitbranch': 'gitbranch#name'
+    \ }
+
+
+" Color Schemes ························································· {{{2
+
+let g:color_scheme_list = {}
+
+let g:color_scheme_list['Nord'] = [
+    \ 'colorscheme nord',
+    \ "let g:lightline.colorscheme = 'nord'"
+    \ ]
+    " Standard Lightline scheme: 'nord'
+
+let g:color_scheme_list['Onedark'] = [
+    \ 'packadd! onedark.vim',
+    \ 'colorscheme onedark',
+    \ "let g:lightline.colorscheme = 'one_subtle_34v1'"
+    \ ]
+    " Other options: 'let g:onedark_terminal_italics = 1'
+    " Standard Lightline scheme: 'onedark'
+
+let g:color_scheme_list['Solarized8'] = [
+    \ 'set background=light',
+    \ 'colorscheme solarized8',
+    \ 'let g:solarized_italics = 0',
+    \ "let g:lightline.colorscheme = 'solarized'"
+    \ ]
+    " Standard Lightline scheme: 'solarized'
+
+
+function! SetColorScheme(name) abort
+    for l:item in g:color_scheme_list[a:name]
+        execute l:item
+    endfor
+endfunction
+
+function! SwitchColorScheme(name) abort
+    call SetColorScheme(a:name)
+    call lightline#init()
+    call lightline#colorscheme()
+    call lightline#update()
+endfunction
+
+function! s:colo(a, l, p)
+    return keys(g:color_scheme_list)
+endfunction
+
+command! -bar -nargs=? -complete=customlist,<sid>colo Colo call SwitchColorScheme(<f-args>)
+
+" Set initial color scheme
+call SetColorScheme('Onedark')
+
+" Show comments in italics
+" highlight Comment cterm=italic gui=italic
+
+
+" Mappings ······························································ {{{1
+
+" Exit Insert mode by pressing 'j' and 'k' together, or alternatively,
+" by pressing 'j' twice
+inoremap jk <Esc>
+inoremap kj <Esc>
+" inoremap jj <Esc>
+
+" Set 'j' and 'k' to move by screen lines, not true lines
+" (If you use relative line numbers, this may be more trouble than it's worth)
+noremap j gj
+noremap k gk
+
+" Map Y to act like D and C, i.e. 'y$' rather than the default 'yy' 
+map Y y$
+
+" The following pair of commands is a subset of Tim Pope's Unimpaired 
+" plugin <tpope/vim-unimpaired>
+" Insert a newline before or after the cursor with `[<Space>` and
+" `[<Space>`, respectively
+nnoremap <silent> [<space>  :<c-u>put!=repeat([''],v:count)<bar>']+1<cr>
+nnoremap <silent> ]<space>  :<c-u>put =repeat([''],v:count)<bar>'[-1<cr>
+
+
+" Scripts ······························································· {{{1
+
+" The following script allows you to assign the same value to tabstop,
+" softtabstop and shiftwidth simultaneously.
+" To invoke the command, run " :Stab " in Normal mode.
+" From http://vimcasts.org/episodes/tabs-and-spaces/
+
+command! -nargs=* Stab call Stab()
+function! Stab()
+  let l:tabstop = 1 * input('set tabstop = softtabstop = shiftwidth = ')
+  if l:tabstop > 0
+    let &l:sts = l:tabstop
+    let &l:ts = l:tabstop
+    let &l:sw = l:tabstop
+  endif
+  call SummarizeTabs()
+endfunction
+
+function! SummarizeTabs()
+  try
+    echohl ModeMsg
+    echon 'tabstop='.&l:ts
+    echon ' shiftwidth='.&l:sw
+    echon ' softtabstop='.&l:sts
+    if &l:et
+      echon ' expandtab'
+    else
+      echon ' noexpandtab'
+    endif
+  finally
+    echohl None
+  endtry
+endfunction
+
+
+" vim: sw=4 ts=4 sts=4 et fdm=marker
