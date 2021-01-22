@@ -200,6 +200,9 @@ syntax on
 let g:color_scheme_list = {}
 
 let g:color_scheme_list['Nord'] = [
+    \ 'let g:nord_italic = 1',
+    \ 'let g:nord_italic_comments = 0',
+    \ 'let g:nord_underline = 1',
     \ 'colorscheme nord'
     \ ]
 
@@ -211,8 +214,8 @@ let g:color_scheme_list['Onedark'] = [
 
 let g:color_scheme_list['Solarized8'] = [
     \ 'set background=light',
-    \ 'colorscheme solarized8',
-    \ 'let g:solarized_italics = 0'
+    \ 'let g:solarized_italics = 0',
+    \ 'colorscheme solarized8'
     \ ]
 
 

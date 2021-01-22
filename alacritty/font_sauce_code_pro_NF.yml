@@ -1,23 +1,23 @@
 # Font settings
 font:
   normal:
-    family: "FiraCode Nerd Font"
+    family: "SauceCodePro Nerd Font"
     style: Regular
   bold:
-    family: "FiraCode Nerd Font"
-    style: Bold
+    family: "SauceCodePro Nerd Font"
+    style: Semibold
   italic:
-    family: "RobotoMono Nerd Font"
+    family: "SauceCodePro Nerd Font"
     style: Italic
   bold_italic:
-    family: "RobotoMono Nerd Font"
-    style: Bold Italic
+    family: "SauceCodePro Nerd Font"
+    style: Semibold Italic
 
   size: 14.0
 
   offset:
     x: 0
-    y: 2
+    y: 0
   glyph_offset:
     x: 0
     y: 0

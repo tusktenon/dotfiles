@@ -10,13 +10,22 @@ live_config_reload: true
 
 # Import additional configuration files
 import:
-  # - ~/Documents/Development/dotfiles/alacritty/font_blex_mono_NF.yml
-  # - ~/Documents/Development/dotfiles/alacritty/font_fira_code.yml
-  - ~/Documents/Development/dotfiles/alacritty/font_fira_code_NF.yml
-  # - ~/Documents/Development/dotfiles/alacritty/font_roboto_mono.yml
-  # - ~/Documents/Development/dotfiles/alacritty/font_roboto_mono_NF.yml
-  - ~/Documents/Development/dotfiles/alacritty/nord.yml
+  # Fonts
+  #- ~/Documents/Development/dotfiles/alacritty/font_blex_mono_NF.yml
+  #- ~/Documents/Development/dotfiles/alacritty/font_fira_code.yml
+  #- ~/Documents/Development/dotfiles/alacritty/font_fira_code_NF.yml
+  #- ~/Documents/Development/dotfiles/alacritty/font_hack_NF.yml
+  - ~/Documents/Development/dotfiles/alacritty/font_iosevka_NF.yml
+  #- ~/Documents/Development/dotfiles/alacritty/font_roboto_mono.yml
+  #- ~/Documents/Development/dotfiles/alacritty/font_roboto_mono_NF.yml
+  #- ~/Documents/Development/dotfiles/alacritty/font_sauce_code_pro_NF.yml
+
+  # Color schemes
+  - ~/Documents/Development/dotfiles/alacritty/color_nord.yml
+
+  # OS-specific settings
   - ~/Documents/Development/dotfiles/alacritty/mac_alt_bindings.yml
+
 
 # Window settings
 window:
@@ -29,17 +38,6 @@ window:
     x: 15
     y: 30
   decorations: transparent
-
-# Cursor
-cursor:
-  style:
-    shape: Beam
-    blinking: Off
-
-  vi_mode_style:
-    shape: Block
-
-  # unfocussed_hollow: true
 
 # Shell
 shell:
