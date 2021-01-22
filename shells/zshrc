@@ -95,8 +95,11 @@ zle -N edit-command-line
 bindkey "^[e" edit-command-line
 
 # Set terminal window title
-set-window-title() { print -Pn "\e]0;%~\a" }
-precmd_functions+=(set-window-title)
+# set-window-title() { print -Pn "\e]0;%~\a" }
+# precmd_functions+=(set-window-title)
+
+# Add Homebrew's installation directories to the front of the PATH
+export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 
 # Use Starship prompt
 export STARSHIP_CONFIG=~/.config/starship-double-line.toml
@@ -106,4 +109,3 @@ eval "$(starship init zsh)"
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 ZSH_HIGHLIGHT_STYLES[path]='fg=cyan'
-

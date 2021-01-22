@@ -6,9 +6,10 @@ Eventually, you should probably put these steps in a shell script that would
 * before linking, check to see if a file already exists at the target location and, if it does, move it to a backup directory.
 
 
-## Shells
+## Terminals & Shells
 
 ```
+ln -sv ~/Documents/Development/dotfiles/alacritty/alacritty.yml ~/.config/alacritty/alacritty.yml
 ln -sv ~/Documents/Development/dotfiles/shells/config.fish ~/.config/fish/config.fish
 ln -sv ~/Documents/Development/dotfiles/shells/zshrc ~/.zshrc
 ln -sv ~/Documents/Development/dotfiles/shells/starship-single-line.toml ~/.config/starship-single-line.toml
@@ -23,7 +24,7 @@ ln -sv ~/Documents/Development/dotfiles/gitconfig ~/.gitconfig
 ```
 
 
-## Vim and Neovim
+## Vim & Neovim
 
 I like to put my vimrc in the more “modern” location `~/.vim/vimrc` instead of `~/.vimrc`; it's just cleaner to have all your Vim configuration files under the `.vim` directory.
 

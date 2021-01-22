@@ -33,32 +33,19 @@ set wildmenu
 " Use case-insensitive search, except when using capital letters
 set ignorecase smartcase
 
-" Highlight searches
-" set hlsearch
+" Show search results as you type
+set incsearch
 
 " Highlight search matches only while searching
-" augroup vimrc-incsearch-highlight
-"     autocmd!
-"     autocmd CmdlineEnter /,\? :set hlsearch
-"     autocmd CmdlineLeave /,\? :set nohlsearch
-" augroup END
-
-if v:version >= 810 || has('nvim-0.3.0') 
-    augroup vimrc-incsearch-highlight
-        autocmd!
-        autocmd CmdlineEnter /,\? :set hlsearch
-        autocmd CmdlineLeave /,\? :set nohlsearch
-    augroup END
-else
-    set hlsearch
-endif
+augroup vimrc-incsearch-highlight
+    autocmd!
+    autocmd CmdlineEnter /,\? :set hlsearch
+    autocmd CmdlineLeave /,\? :set nohlsearch
+augroup END
 
 " Map <C-L> (redraw screen) to also turn off search highlighting until the
 " next search
 nnoremap <C-L> :nohl<CR><C-L>
-
-" Show search results as you type
-set incsearch
 
 " Backspace deletes like most programs in Insert mode
 set backspace=indent,eol,start
@@ -125,18 +112,12 @@ set number relativenumber
 " Show matching braces, brackets and parentheses
 set showmatch
 
-" Always display the status line, even if only one window is displayed
-set laststatus=2
-
 " Set the command window height to 2 lines, to avoid many cases of
 " having to "press <Enter> to continue"
 set cmdheight=2
 
 " Show partial commands in the last line of the screen
 set showcmd
-
-" Display the cursor position
-set ruler 
 
 " Set font in GUI Vim
 "   Most GUI Vim implementations probably lack fine adjustment of glyph
@@ -217,8 +198,12 @@ syntax on
 
 " Lightline Settings ···················································· {{{2
 
-" If using Lightline, you don't need Vim to display the mode on the line below
+" Always display the status line, even if only one window is displayed
+set laststatus=2
+
+" When using Lightline, showmode and ruler are redundant
 set noshowmode
+set noruler 
 
 " Load custom Lightline schemes
 packadd! vim-projects

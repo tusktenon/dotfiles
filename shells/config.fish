@@ -12,6 +12,7 @@ function fish_title
 end
 
 # Use Starship prompt
+set -x STARSHIP_CONFIG ~/.config/starship-double-line.toml
 starship init fish | source
 
 # Use Neovim
@@ -38,7 +39,7 @@ if test (uname -s) = Darwin
     abbr -a g++ g++-10
 
     # Use a single-line Starship prompt
-    set -x STARSHIP_CONFIG ~/.config/starship-single-line.toml
+    # set -x STARSHIP_CONFIG ~/.config/starship-single-line.toml
 
     # Force mode-dependent cursor shape changes in Vi mode
     # Not recommended when using a multi-line prompt

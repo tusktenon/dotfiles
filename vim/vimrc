@@ -33,32 +33,19 @@ set wildmenu
 " Use case-insensitive search, except when using capital letters
 set ignorecase smartcase
 
-" Highlight searches
-" set hlsearch
+" Show search results as you type
+set incsearch
 
 " Highlight search matches only while searching
-" augroup vimrc-incsearch-highlight
-"     autocmd!
-"     autocmd CmdlineEnter /,\? :set hlsearch
-"     autocmd CmdlineLeave /,\? :set nohlsearch
-" augroup END
-
-if v:version >= 810 || has('nvim-0.3.0') 
-    augroup vimrc-incsearch-highlight
-        autocmd!
-        autocmd CmdlineEnter /,\? :set hlsearch
-        autocmd CmdlineLeave /,\? :set nohlsearch
-    augroup END
-else
-    set hlsearch
-endif
+augroup vimrc-incsearch-highlight
+    autocmd!
+    autocmd CmdlineEnter /,\? :set hlsearch
+    autocmd CmdlineLeave /,\? :set nohlsearch
+augroup END
 
 " Map <C-L> (redraw screen) to also turn off search highlighting until the
 " next search
 nnoremap <C-L> :nohl<CR><C-L>
-
-" Show search results as you type
-set incsearch
 
 " Backspace deletes like most programs in Insert mode
 set backspace=indent,eol,start
@@ -125,18 +112,12 @@ set number relativenumber
 " Show matching braces, brackets and parentheses
 set showmatch
 
-" Always display the status line, even if only one window is displayed
-set laststatus=2
-
 " Set the command window height to 2 lines, to avoid many cases of
 " having to "press <Enter> to continue"
 set cmdheight=2
 
 " Show partial commands in the last line of the screen
 set showcmd
-
-" Display the cursor position
-set ruler 
 
 " Set font in GUI Vim
 "   Most GUI Vim implementations probably lack fine adjustment of glyph
@@ -155,9 +136,8 @@ function! PackInit() abort
 
     " Plugins
     call minpac#add('jiangmiao/auto-pairs')
-    call minpac#add('itchyny/vim-gitbranch')
+    " call minpac#add('itchyny/vim-gitbranch')
     call minpac#add('rrethy/vim-hexokinase', {'do': 'make hexokinase'})
-    call minpac#add('itchyny/lightline.vim')
     call minpac#add('masukomi/vim-markdown-folding')
     call minpac#add('cespare/vim-toml')
     call minpac#add('tpope/vim-surround')
@@ -215,70 +195,25 @@ endif
 syntax on
 
 
-" Lightline Settings ···················································· {{{2
-
-" If using Lightline, you don't need Vim to display the mode on the line below
-set noshowmode
-
-" Load custom Lightline schemes
-packadd! vim-projects
-
-let g:lightline = {}
-
-" Use Powerline separators in terminal Vim
-" if !has('gui_running')
-"     " let g:lightline.separator = { 'left': '', 'right': '' }
-"     " let g:lightline.subseparator = { 'left': '', 'right': '' }
-"     let g:lightline.separator = { 'left': '', 'right': '' }
-"     let g:lightline.subseparator = { 'left': '', 'right': '' }
-"     let g:lightline.tabline_separator = { 'left': '', 'right': '' }
-"     let g:lightline.tabline_subseparator = { 'left': '', 'right': '' }
-" endif
-
-let g:lightline.active = {
-    \ 'left': [ [ 'mode', 'paste' ],
-    \           [ 'gitbranch' ],
-    \           [ 'readonly', 'filename', 'modified' ] ],
-    \ 'right': [ [ 'lineinfo' ],
-    \            [ 'percent' ],
-    \            [ 'fileinfo' ] ]
-    \ }
-
-let g:lightline.component = {
-    \   'fileinfo': '%{&ft!=#""?&ft:"no ft"} • %{&ff} • %{&fenc!=#""?&fenc:&enc}',
-    \   'lineinfo': '%3l/%L: %-2c'
-    \ }
-
-let g:lightline.component_function = {
-    \   'gitbranch': 'gitbranch#name'
-    \ }
-
-
 " Color Schemes ························································· {{{2
 
 let g:color_scheme_list = {}
 
 let g:color_scheme_list['Nord'] = [
-    \ 'colorscheme nord',
-    \ "let g:lightline.colorscheme = 'nord'"
+    \ 'colorscheme nord'
     \ ]
-    " Standard Lightline scheme: 'nord'
 
 let g:color_scheme_list['Onedark'] = [
     \ 'packadd! onedark.vim',
-    \ 'colorscheme onedark',
-    \ "let g:lightline.colorscheme = 'one_subtle_34v1'"
+    \ 'let g:onedark_terminal_italics = 0',
+    \ 'colorscheme onedark'
     \ ]
-    " Other options: 'let g:onedark_terminal_italics = 1'
-    " Standard Lightline scheme: 'onedark'
 
 let g:color_scheme_list['Solarized8'] = [
     \ 'set background=light',
     \ 'colorscheme solarized8',
-    \ 'let g:solarized_italics = 0',
-    \ "let g:lightline.colorscheme = 'solarized'"
+    \ 'let g:solarized_italics = 0'
     \ ]
-    " Standard Lightline scheme: 'solarized'
 
 
 function! SetColorScheme(name) abort
@@ -287,24 +222,26 @@ function! SetColorScheme(name) abort
     endfor
 endfunction
 
-function! SwitchColorScheme(name) abort
-    call SetColorScheme(a:name)
-    call lightline#init()
-    call lightline#colorscheme()
-    call lightline#update()
-endfunction
-
 function! s:colo(a, l, p)
     return keys(g:color_scheme_list)
 endfunction
 
-command! -bar -nargs=? -complete=customlist,<sid>colo Colo call SwitchColorScheme(<f-args>)
+command! -bar -nargs=? -complete=customlist,<sid>colo Colo call SetColorScheme(<f-args>)
 
 " Set initial color scheme
 call SetColorScheme('Onedark')
 
 " Show comments in italics
 " highlight Comment cterm=italic gui=italic
+
+
+" Status-Line Settings ···················································· {{{2
+
+" Always display the status line, even if only one window is displayed
+set laststatus=2
+
+" A non-empty `statusline` takes precedence over `ruler`
+" set noruler 
 
 
 " Mappings ······························································ {{{1

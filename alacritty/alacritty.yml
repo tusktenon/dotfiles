@@ -1,0 +1,49 @@
+# Filepath: ~/.config/alacritty/alacritty.yml or ~/.alacritty.yml
+# Author: Dan Murphy
+
+# Configuration for the Alacritty terminal emulator.
+# For a template describing all settings, see
+#   https://github.com/alacritty/alacritty/blob/master/alacritty.yml
+
+
+live_config_reload: true
+
+# Import additional configuration files
+import:
+  # - ~/Documents/Development/dotfiles/alacritty/font_blex_mono_NF.yml
+  # - ~/Documents/Development/dotfiles/alacritty/font_fira_code.yml
+  - ~/Documents/Development/dotfiles/alacritty/font_fira_code_NF.yml
+  # - ~/Documents/Development/dotfiles/alacritty/font_roboto_mono.yml
+  # - ~/Documents/Development/dotfiles/alacritty/font_roboto_mono_NF.yml
+  - ~/Documents/Development/dotfiles/alacritty/nord.yml
+  - ~/Documents/Development/dotfiles/alacritty/mac_alt_bindings.yml
+
+# Window settings
+window:
+  dimensions:
+    columns: 88
+    # columns: 175
+    lines: 70
+  
+  padding:
+    x: 15
+    y: 30
+  decorations: transparent
+
+# Cursor
+cursor:
+  style:
+    shape: Beam
+    blinking: Off
+
+  vi_mode_style:
+    shape: Block
+
+  # unfocussed_hollow: true
+
+# Shell
+shell:
+  # program: /usr/local/bin/fish
+  # program: /usr/local/bin/zsh
+
+# vim: sw=2 ts=2 sts=2 et fdm=marker

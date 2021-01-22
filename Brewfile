@@ -15,6 +15,7 @@ brew 'tree'
 brew 'zsh'
 brew 'zsh-syntax-highlighting'
 
+cask 'alacritty'
 cask 'db-browser-for-sqlite'
 
 
