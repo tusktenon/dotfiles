@@ -10,38 +10,492 @@ live_config_reload: true
 
 # Import additional configuration files
 import:
-  # Fonts
-  #- ~/Documents/Development/dotfiles/alacritty/font_blex_mono_NF.yml
-  #- ~/Documents/Development/dotfiles/alacritty/font_fira_code.yml
-  #- ~/Documents/Development/dotfiles/alacritty/font_fira_code_NF.yml
-  #- ~/Documents/Development/dotfiles/alacritty/font_hack_NF.yml
-  - ~/Documents/Development/dotfiles/alacritty/font_iosevka_NF.yml
-  #- ~/Documents/Development/dotfiles/alacritty/font_roboto_mono.yml
-  #- ~/Documents/Development/dotfiles/alacritty/font_roboto_mono_NF.yml
-  #- ~/Documents/Development/dotfiles/alacritty/font_sauce_code_pro_NF.yml
-
-  # Color schemes
-  - ~/Documents/Development/dotfiles/alacritty/color_nord.yml
-
   # OS-specific settings
   - ~/Documents/Development/dotfiles/alacritty/mac_alt_bindings.yml
 
 
+# Fonts ································································· {{{1
+font_schemes:
+
+  # Blex Mono Nerd Font {{{2
+  blex_mono_NF: &blex_mono_NF
+    normal:
+      family: "BlexMono Nerd Font"
+      style: Text
+    bold:
+      family: "BlexMono Nerd Font"
+      style: SemiBold
+    italic:
+      family: "BlexMono Nerd Font"
+      style: Italic
+    bold_italic:
+      family: "BlexMono Nerd Font"
+      style: SemiBold Italic
+    size: 14.0
+    offset:
+      x: 0
+      y: 1
+    glyph_offset:
+      x: 0
+      y: 0
+    # Thin-stroke font rendering (macOS only)
+    use_thin_strokes: true
+
+  # Fira Code {{{2
+  fira_code: &fira_code
+    normal:
+      family: "Fira Code"
+      style: Regular
+    bold:
+      family: "Fira Code"
+      style: SemiBold
+    size: 14.0
+    offset:
+      x: 0
+      y: 0
+    glyph_offset:
+      x: 0
+      y: 0
+    # Thin-stroke font rendering (macOS only)
+    use_thin_strokes: true
+
+  # Fira Code Nerd Font {{{2
+  fira_code_NF: &fira_code_NF
+    normal:
+      family: "FiraCode Nerd Font"
+      style: Regular
+    bold:
+      family: "FiraCode Nerd Font"
+      style: Bold
+    size: 14.0
+    offset:
+      x: 0
+      y: 2
+    glyph_offset:
+      x: 0
+      y: 0
+    # Thin-stroke font rendering (macOS only)
+    use_thin_strokes: true
+
+  # Hack Nerd Font {{{2
+  hack_NF: &hack_NF
+    normal:
+      family: "Hack Nerd Font"
+      style: Regular
+    bold:
+      family: "Hack Nerd Font"
+      style: Bold
+    italic:
+      family: "Hack Nerd Font"
+      style: Italic
+    bold_italic:
+      family: "Hack Nerd Font"
+      style: Bold Italic
+    size: 14.0
+    offset:
+      x: 0
+      y: 2
+    glyph_offset:
+      x: 0
+      y: 0
+    # Thin-stroke font rendering (macOS only)
+    use_thin_strokes: true
+
+  # Iosevka Nerd Font {{{2
+  iosevka_NF: &iosevka_NF
+    normal:
+      family: "Iosevka Nerd Font"
+      style: Regular
+    bold:
+      family: "Iosevka Nerd Font"
+      style: Bold
+    italic:
+      family: "Iosevka Nerd Font"
+      style: Oblique
+    bold_italic:
+      family: "Iosevka Nerd Font"
+      style: Bold Oblique
+    size: 14.5
+    offset:
+      x: 0
+      y: 2
+    glyph_offset:
+      x: 0
+      y: 0
+    # Thin-stroke font rendering (macOS only)
+    use_thin_strokes: true
+
+  # Roboto Mono {{{2
+  roboto_mono: &roboto_mono
+    normal:
+      family: "Roboto Mono"
+      style: Regular
+    bold:
+      family: "Roboto Mono"
+      style: SemiBold
+    italic:
+      family: "Roboto Mono"
+      style: Italic
+    bold_italic:
+      family: "Roboto Mono"
+      style: SemiBold Italic
+    size: 14.0
+    offset:
+      x: 0
+      y: 0
+    glyph_offset:
+      x: 0
+      y: 0
+    # Thin-stroke font rendering (macOS only)
+    use_thin_strokes: true
+
+  # Roboto Mono Nerd Font {{{2
+  roboto_mono_NF: &roboto_mono_NF
+    normal:
+      family: "RobotoMono Nerd Font"
+      style: Regular
+    bold:
+      family: "RobotoMono Nerd Font"
+      style: Bold
+    italic:
+      family: "RobotoMono Nerd Font"
+      style: Italic
+    bold_italic:
+      family: "RobotoMono Nerd Font"
+      style: Bold Italic
+    size: 14.0
+    offset:
+      x: 0
+      y: 2
+    glyph_offset:
+      x: 0
+      y: 0
+    # Thin-stroke font rendering (macOS only)
+    use_thin_strokes: true
+
+  # Sauce Code Pro Nerd Font {{{2
+  sauce_code_pro_NF: &sauce_code_pro_NF
+    normal:
+      family: "SauceCodePro Nerd Font"
+      style: Regular
+    bold:
+      family: "SauceCodePro Nerd Font"
+      style: Semibold
+    italic:
+      family: "SauceCodePro Nerd Font"
+      style: Italic
+    bold_italic:
+      family: "SauceCodePro Nerd Font"
+      style: Semibold Italic
+    size: 14.0
+    offset:
+      x: 0
+      y: 0
+    glyph_offset:
+      x: 0
+      y: 0
+    # Thin-stroke font rendering (macOS only)
+    use_thin_strokes: true
+
+
+# Colors ································································ {{{1
+color_schemes:
+
+  # Edge Dark (default) {{{2
+  edge_dark_def:  &edge_dark_default
+    primary:
+      background: "0x2c2e34"
+      foreground: "0xc5cdd9"
+    normal:
+      black: "0x3e4249"
+      red: "0xec7279"
+      green: "0xa0c980"
+      yellow: "0xdeb974"
+      blue: "0x6cb6eb"
+      magenta: "0xd38aea"
+      cyan: "0x5dbbc1"
+      white: "0xc5cdd9"
+    bright:
+      black: "0x3e4249"
+      red: "0xec7279"
+      green: "0xa0c980"
+      yellow: "0xdeb974"
+      blue: "0x6cb6eb"
+      magenta: "0xd38aea"
+      cyan: "0x5dbbc1"
+      white: "0xc5cdd9"
+
+  # Edge Dark (Aura) {{{2
+  edge_dark_aura:  &edge_dark_aura
+    primary:
+      background: "0x2b2d37"
+      foreground: "0xc5cdd9"
+    normal:
+      black: "0x363a49"
+      red: "0xec7279"
+      green: "0xa0c980"
+      yellow: "0xdeb974"
+      blue: "0x6cb6eb"
+      magenta: "0xd38aea"
+      cyan: "0x5dbbc1"
+      white: "0xc5cdd9"
+    bright:
+      black: "0x363a49"
+      red: "0xec7279"
+      green: "0xa0c980"
+      yellow: "0xdeb974"
+      blue: "0x6cb6eb"
+      magenta: "0xd38aea"
+      cyan: "0x5dbbc1"
+      white: "0xc5cdd9"
+
+  # Edge Dark (Neon) {{{2
+  edge_dark_neon:  &edge_dark_neon
+    primary:
+      background: "0x2b2d3a"
+      foreground: "0xc5cdd9"
+    normal:
+      black: "0x363a4e"
+      red: "0xec7279"
+      green: "0xa0c980"
+      yellow: "0xdeb974"
+      blue: "0x6cb6eb"
+      magenta: "0xd38aea"
+      cyan: "0x5dbbc1"
+      white: "0xc5cdd9"
+    bright:
+      black: "0x363a4e"
+      red: "0xec7279"
+      green: "0xa0c980"
+      yellow: "0xdeb974"
+      blue: "0x6cb6eb"
+      magenta: "0xd38aea"
+      cyan: "0x5dbbc1"
+      white: "0xc5cdd9"
+
+  # Edge Light {{{2
+  edge_light: &edge_light
+    primary:
+      background: "0xfafafa"
+      foreground: "0x4b505b"
+    normal:
+      black: "0x4b505b"
+      red: "0xd05858"
+      green: "0x608e32"
+      yellow: "0xbe7e05"
+      blue: "0x5079be"
+      magenta: "0xb05ccc"
+      cyan: "0x3a8b84"
+      white: "0xfafafa"
+    bright:
+      black: "0x4b505b"
+      red: "0xd05858"
+      green: "0x608e32"
+      yellow: "0xbe7e05"
+      blue: "0x5079be"
+      magenta: "0xb05ccc"
+      cyan: "0x3a8b84"
+      white: "0xfafafa"
+
+  # Nord {{{2
+  nord: &nord
+    primary:
+      background: '#2e3440'
+      foreground: '#d8dee9'
+      dim_foreground: '#a5abb6'
+    cursor:
+      text: '#2e3440'
+      cursor: '#d8dee9'
+    vi_mode_cursor:
+      text: '#2e3440'
+      cursor: '#d8dee9'
+    selection:
+      text: CellForeground
+      background: '#4c566a'
+    search:
+      matches:
+        foreground: CellBackground
+        background: '#88c0d0'
+      bar:
+        background: '#434c5e'
+        foreground: '#d8dee9'
+    normal:
+      black: '#3b4252'
+      red: '#bf616a'
+      green: '#a3be8c'
+      yellow: '#ebcb8b'
+      blue: '#81a1c1'
+      magenta: '#b48ead'
+      cyan: '#88c0d0'
+      white: '#e5e9f0'
+    bright:
+      black: '#4c566a'
+      red: '#bf616a'
+      green: '#a3be8c'
+      yellow: '#ebcb8b'
+      blue: '#81a1c1'
+      magenta: '#b48ead'
+      cyan: '#8fbcbb'
+      white: '#eceff4'
+    dim:
+      black: '#373e4d'
+      red: '#94545d'
+      green: '#809575'
+      yellow: '#b29e75'
+      blue: '#68809a'
+      magenta: '#8c738c'
+      cyan: '#6d96a5'
+      white: '#aeb3bb'
+
+  # One Half Dark {{{2
+  one_half_dark: &one_half_dark
+    primary:
+      background: '0x282c34'
+      foreground: '0xdcdfe4'
+    normal:
+      black: '0x282c34'
+      red: '0xe06c75'
+      green: '0x98c379'
+      yellow: '0xe5c07b'
+      blue: '0x61afef'
+      magenta: '0xc678dd'
+      cyan: '0x56b6c2'
+      white: '0xdcdfe4'
+    bright:
+      black: '0x282c34'
+      red: '0xe06c75'
+      green: '0x98c379'
+      yellow: '0xe5c07b'
+      blue: '0x61afef'
+      magenta: '0xc678dd'
+      cyan: '0x56b6c2'
+      white: '0xdcdfe4'
+
+  # One Half Light {{{2
+  one_half_light: &one_half_light
+    primary:
+      background: '0xfafafa'
+      foreground: '0x383a42'
+    normal:
+      black: '0x383a42'
+      red: '0xe45649'
+      green: '0x50a14f'
+      yellow: '0xc18401'
+      blue: '0x0184bc'
+      magenta: '0xa626a4'
+      cyan: '0x0997b3'
+      white: '0xfafafa'
+    bright:
+      black: '0x383a42'
+      red: '0xe45649'
+      green: '0x50a14f'
+      yellow: '0xc18401'
+      blue: '0x0184bc'
+      magenta: '0xa626a4'
+      cyan: '0x0997b3'
+      white: '0xfafafa'
+
+  # Onedark {{{2
+  onedark: &onedark
+    primary:
+      foreground: '0xabb2bf'
+      background: '0x282c34'
+    cursor:
+      text: '0x5c6370'
+      cursor: '0xabb2bf'
+    normal:
+      black:   '0x5c6370'
+      red:     '0xe06c75'
+      green:   '0x98c379'
+      yellow:  '0xe5c07b'
+      blue:    '0x61afef'
+      magenta: '0xc678dd'
+      cyan:    '0x56b6c2'
+      white:   '0xabb2bf'
+    bright:
+      black:   '0x4b5263'
+      red:     '0xbe5046'
+      green:   '0x98c379'
+      yellow:  '0xd19a66'
+      blue:    '0x61afef'
+      magenta: '0xc678dd'
+      cyan:    '0x56b6c2'
+      white:   '0x3e4452'
+
+  # Solarized Dark {{{2
+  solarized_dark: &solarized_dark
+    primary:
+      background: '0x002b36' # base03
+      foreground: '0x839496' # base0
+    cursor:
+      text:   '0x002b36' # base03
+      cursor: '0x839496' # base0
+    normal:
+      black:   '0x073642' # base02
+      red:     '0xdc322f' # red
+      green:   '0x859900' # green
+      yellow:  '0xb58900' # yellow
+      blue:    '0x268bd2' # blue
+      magenta: '0xd33682' # magenta
+      cyan:    '0x2aa198' # cyan
+      white:   '0xeee8d5' # base2
+    bright:
+      black:   '0x002b36' # base03
+      red:     '0xcb4b16' # orange
+      green:   '0x586e75' # base01
+      yellow:  '0x657b83' # base00
+      blue:    '0x839496' # base0
+      magenta: '0x6c71c4' # violet
+      cyan:    '0x93a1a1' # base1
+      white:   '0xfdf6e3' # base3
+
+  # Solarized Light {{{2
+  solarized_light: &solarized_light
+    primary:
+      background: '0xfdf6e3' # base3
+      foreground: '0x657b83' # base00
+    cursor:
+      text:   '0xfdf6e3' # base3
+      cursor: '0x657b83' # base00
+    normal:
+      black:   '0x073642' # base02
+      red:     '0xdc322f' # red
+      green:   '0x859900' # green
+      yellow:  '0xb58900' # yellow
+      blue:    '0x268bd2' # blue
+      magenta: '0xd33682' # magenta
+      cyan:    '0x2aa198' # cyan
+      white:   '0xeee8d5' # base2
+    bright:
+      black:   '0x002b36' # base03
+      red:     '0xcb4b16' # orange
+      green:   '0x586e75' # base01
+      yellow:  '0x657b83' # base00
+      blue:    '0x839496' # base0
+      magenta: '0x6c71c4' # violet
+      cyan:    '0x93a1a1' # base1
+      white:   '0xfdf6e3' # base3
+
+
+# Final Settings ························································ {{{1
+
 # Window settings
 window:
   dimensions:
-    columns: 88
-    # columns: 175
+    columns: 87
+    #columns: 175
+    #columns: 263
     lines: 70
-  
   padding:
     x: 15
     y: 30
   decorations: transparent
 
-# Shell
-shell:
-  # program: /usr/local/bin/fish
-  # program: /usr/local/bin/zsh
+# Font and colors
+font: *iosevka_NF
+
+draw_bold_text_with_bright_colors: false
+
+colors: *edge_dark_default
 
 # vim: sw=2 ts=2 sts=2 et fdm=marker

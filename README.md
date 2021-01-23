@@ -15,7 +15,10 @@ ln -sv ~/Documents/Development/dotfiles/shells/zshrc ~/.zshrc
 ln -sv ~/Documents/Development/dotfiles/shells/starship-single-line.toml ~/.config/starship-single-line.toml
 ln -sv ~/Documents/Development/dotfiles/shells/starship-double-line.toml ~/.config/starship-double-line.toml
 ```
-Use of the file `xterm-256color-italic.terminfo` is specific to macOS. It corrects an issue in which text that should be italicized is highlighted instead.
+Use of the file `xterm-256color-italic.terminfo` is specific to iTerm 2 on macOS. It corrects an issue in which text that should be italicized is highlighted instead. If you use Alacritty, the included terminfo handles italics correctly, but the Alacritty installer does not move it into place, so you'll need to do this for yourself:
+```
+sudo cp -r /Applications/Alacritty.app/Contents/Resources/61 ~/.terminfo/
+```
 
 
 ## Git

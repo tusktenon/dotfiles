@@ -32,6 +32,7 @@ bind -s -M replace jk "set fish_bind_mode default; commandline -f backward-char 
 bind -s -M replace kj "set fish_bind_mode default; commandline -f backward-char repaint-mode"
 
 # As in Vim, change cursor shape depending on mode
+set fish_vi_force_cursor
 set fish_cursor_insert line
 set fish_cursor_replace_one underscore
 set fish_cursor_replace underscore

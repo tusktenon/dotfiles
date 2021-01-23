@@ -1,4 +1,4 @@
-" File: ~/.vim/vimrc
+" Filepath: ~/.vim/vimrc
 " Author: Dan Murphy
 
 
@@ -109,6 +109,14 @@ set listchars+=precedes:←,extends:→
 " set number
 set number relativenumber
 
+" Switch to absolute line numbers in Insert mode, and when a buffer loses
+" focus
+augroup numbertoggle
+    autocmd!
+    autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+    autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+augroup END
+
 " Show matching braces, brackets and parentheses
 set showmatch
 
@@ -146,7 +154,9 @@ function! PackInit() abort
     call minpac#add('lukas-reineke/indent-blankline.nvim', {'type': 'opt'})
 
     " Colorschemes
+    call minpac#add('sainnhe/edge', {'type': 'opt'})
     call minpac#add('arcticicestudio/nord-vim', {'type': 'opt'})
+    call minpac#add('sonph/onehalf', {'type': 'opt'}, {'subdir': 'vim'})
     call minpac#add('joshdick/onedark.vim', {'type': 'opt'})
     call minpac#add('lifepillar/vim-solarized8', {'type': 'opt'})
 endfunction
@@ -199,11 +209,24 @@ syntax on
 
 let g:color_scheme_list = {}
 
+let g:color_scheme_list['Edge'] = [
+    \ 'packadd! edge',
+    \ 'set background=dark',
+    \ "let g:edge_style = 'aura'",
+    \ 'let g:edge_enable_italic = 0',
+    \ 'let g:edge_disable_italic_comment = 1',
+    \ 'colorscheme edge'
+    \ ]
+
 let g:color_scheme_list['Nord'] = [
     \ 'let g:nord_italic = 1',
     \ 'let g:nord_italic_comments = 0',
     \ 'let g:nord_underline = 1',
     \ 'colorscheme nord'
+    \ ]
+
+let g:color_scheme_list['OneHalf'] = [
+    \ 'colorscheme onehalfdark'
     \ ]
 
 let g:color_scheme_list['Onedark'] = [
