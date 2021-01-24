@@ -11,7 +11,9 @@ compinit
 
 # Directory navigation
 setopt autocd autopushd correct correctall
-export CDPATH=.:~/Documents/Development:~/Documents/Development/Courses/Introduction\ to\ Programming\ in\ C
+CDPATH=.:~:~/Documents:~/Documents/Development
+CDPATH+=:~/Documents/Development/Courses/Introduction\ to\ Programming\ in\ C
+export CDPATH
 
 # Use Neovim
 export EDITOR="nvim"

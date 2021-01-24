@@ -7,9 +7,5 @@ vicmd_symbol = "[❮](bold blue)"
 [cmd_duration]
 disabled = true
 
-[directory]
-read_only = " "
-
-[python]
-symbol = " "
-
+[git_branch]
+format = "on [$branch]($style) "

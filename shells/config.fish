@@ -49,7 +49,7 @@ if test (uname -s) = Darwin
 end
 
 # Directory navigation
-set -x CDPATH ~:~/Documents:~/Documents/Development
+set -x CDPATH .:~:~/Documents:~/Documents/Development
 set -x CDPATH "$CDPATH:~/Documents/Development/Courses/Introduction\ to\ Programming\ in\ C"
 
 # Abbreviations and Aliases

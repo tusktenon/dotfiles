@@ -15,33 +15,76 @@ import:
 
 
 # Fonts ································································· {{{1
+# Standard Fonts ························································ {{{2
 font_schemes:
 
-  # Blex Mono Nerd Font {{{2
-  blex_mono_NF: &blex_mono_NF
+  # Cascadia Code {{{3
+  cascadia_code: &cascadia_code
     normal:
-      family: "BlexMono Nerd Font"
-      style: Text
+      family: "Cascadia Code"
+      style: SemiLight
     bold:
-      family: "BlexMono Nerd Font"
+      family: "Cascadia Code"
       style: SemiBold
-    italic:
-      family: "BlexMono Nerd Font"
-      style: Italic
-    bold_italic:
-      family: "BlexMono Nerd Font"
-      style: SemiBold Italic
     size: 14.0
     offset:
       x: 0
-      y: 1
+      y: 0
     glyph_offset:
       x: 0
       y: 0
     # Thin-stroke font rendering (macOS only)
     use_thin_strokes: true
 
-  # Fira Code {{{2
+  # Courier {{{3
+  courier: &courier
+    normal:
+      family: "Courier"
+      style: Regular
+    bold:
+      family: "Courier"
+      style: Bold
+    italic:
+      family: "Courier"
+      style: Oblique
+    bold_italic:
+      family: "Courier"
+      style: Bold Oblique
+    size: 14.0
+    offset:
+      x: 0
+      y: 0
+    glyph_offset:
+      x: 0
+      y: 0
+    # Thin-stroke font rendering (macOS only)
+    use_thin_strokes: true
+
+  # Fantasque Sans Mono {{{3
+  fantasque_sans_mono: &fantasque_sans_mono
+    normal:
+      family: "Fantasque Sans Mono"
+      style: Regular
+    bold:
+      family: "Fantasque Sans Mono"
+      style: Bold
+    italic:
+      family: "Fantasque Sans Mono"
+      style: Italic
+    bold_italic:
+      family: "Fantasque Sans Mono"
+      style: Bold Italic
+    size: 14.0
+    offset:
+      x: 0
+      y: 0
+    glyph_offset:
+      x: 0
+      y: 0
+    # Thin-stroke font rendering (macOS only)
+    use_thin_strokes: true
+
+  # Fira Code {{{3
   fira_code: &fira_code
     normal:
       family: "Fira Code"
@@ -59,73 +102,103 @@ font_schemes:
     # Thin-stroke font rendering (macOS only)
     use_thin_strokes: true
 
-  # Fira Code Nerd Font {{{2
-  fira_code_NF: &fira_code_NF
+  # Hack {{{3
+  hack: &hack
     normal:
-      family: "FiraCode Nerd Font"
+      family: "Hack"
       style: Regular
     bold:
-      family: "FiraCode Nerd Font"
-      style: Bold
-    size: 14.0
-    offset:
-      x: 0
-      y: 2
-    glyph_offset:
-      x: 0
-      y: 0
-    # Thin-stroke font rendering (macOS only)
-    use_thin_strokes: true
-
-  # Hack Nerd Font {{{2
-  hack_NF: &hack_NF
-    normal:
-      family: "Hack Nerd Font"
-      style: Regular
-    bold:
-      family: "Hack Nerd Font"
+      family: "Hack"
       style: Bold
     italic:
-      family: "Hack Nerd Font"
+      family: "Hack"
       style: Italic
     bold_italic:
-      family: "Hack Nerd Font"
+      family: "Hack"
       style: Bold Italic
     size: 14.0
     offset:
       x: 0
-      y: 2
+      y: 0
     glyph_offset:
       x: 0
       y: 0
     # Thin-stroke font rendering (macOS only)
     use_thin_strokes: true
 
-  # Iosevka Nerd Font {{{2
-  iosevka_NF: &iosevka_NF
+  # IBM Plex Mono {{{3
+  ibm_plex_mono: &ibm_plex_mono
     normal:
-      family: "Iosevka Nerd Font"
+      family: "IBM Plex Mono"
       style: Regular
     bold:
-      family: "Iosevka Nerd Font"
-      style: Bold
+      family: "IBM Plex Mono"
+      style: SemiBold
     italic:
-      family: "Iosevka Nerd Font"
-      style: Oblique
+      family: "IBM Plex Mono"
+      style: Italic
     bold_italic:
-      family: "Iosevka Nerd Font"
-      style: Bold Oblique
+      family: "IBM Plex Mono"
+      style: SemiBold Italic
+    size: 14.0
+    offset:
+      x: 0
+      y: 0
+    glyph_offset:
+      x: 0
+      y: 0
+    # Thin-stroke font rendering (macOS only)
+    use_thin_strokes: true
+
+  # Iosevka {{{3
+  iosevka: &iosevka
+    normal:
+      family: "Iosevka Term"
+      style: Regular
+    bold:
+      family: "Iosevka Term"
+      style: Semibold
+    italic:
+      family: "Iosevka Term"
+      style: Italic
+    bold_italic:
+      family: "Iosevka Term"
+      style: Semibold Italic
     size: 14.5
     offset:
       x: 0
-      y: 2
+      y: 0
     glyph_offset:
       x: 0
       y: 0
     # Thin-stroke font rendering (macOS only)
     use_thin_strokes: true
 
-  # Roboto Mono {{{2
+  # Meslo LG {{{3
+  meslo_lg: &meslo_lg
+    normal:
+      family: "Meslo LG M"
+      style: Regular
+    bold:
+      family: "Meslo LG M"
+      style: Bold
+    italic:
+      family: "Meslo LG M"
+      style: Italic
+    bold_italic:
+      family: "Meslo LG M"
+      style: Bold Italic
+    size: 14.0
+    offset:
+      x: 0
+      y: 0
+    glyph_offset:
+      x: 0
+      y: 0
+    # Thin-stroke font rendering (macOS only)
+    use_thin_strokes: true
+
+  # Roboto Mono {{{3
   roboto_mono: &roboto_mono
     normal:
       family: "Roboto Mono"
@@ -149,7 +222,124 @@ font_schemes:
     # Thin-stroke font rendering (macOS only)
     use_thin_strokes: true
 
-  # Roboto Mono Nerd Font {{{2
+  # Source Code Pro {{{3
+  source_code_pro: &source_code_pro
+    normal:
+      family: "Source Code Pro"
+      style: Regular
+    bold:
+      family: "Source Code Pro"
+      style: Semibold
+    italic:
+      family: "Source Code Pro"
+      style: Italic
+    bold_italic:
+      family: "Source Code Pro"
+      style: Semibold Italic
+    size: 14.0
+    offset:
+      x: 0
+      y: 0
+    glyph_offset:
+      x: 0
+      y: 0
+    # Thin-stroke font rendering (macOS only)
+    use_thin_strokes: true
+
+# NERD Fonts ···························································· {{{2
+font_schemes_NF:
+
+  # Blex Mono Nerd Font {{{3
+  blex_mono_NF: &blex_mono_NF
+    normal:
+      family: "BlexMono Nerd Font"
+      style: Text
+    bold:
+      family: "BlexMono Nerd Font"
+      style: SemiBold
+    italic:
+      family: "BlexMono Nerd Font"
+      style: Italic
+    bold_italic:
+      family: "BlexMono Nerd Font"
+      style: SemiBold Italic
+    size: 14.0
+    offset:
+      x: 0
+      y: 1
+    glyph_offset:
+      x: 0
+      y: 0
+    # Thin-stroke font rendering (macOS only)
+    use_thin_strokes: true
+
+  # Fira Code Nerd Font {{{3
+  fira_code_NF: &fira_code_NF
+    normal:
+      family: "FiraCode Nerd Font"
+      style: Regular
+    bold:
+      family: "FiraCode Nerd Font"
+      style: Bold
+    size: 14.0
+    offset:
+      x: 0
+      y: 2
+    glyph_offset:
+      x: 0
+      y: 0
+    # Thin-stroke font rendering (macOS only)
+    use_thin_strokes: true
+
+  # Hack Nerd Font {{{3
+  hack_NF: &hack_NF
+    normal:
+      family: "Hack Nerd Font"
+      style: Regular
+    bold:
+      family: "Hack Nerd Font"
+      style: Bold
+    italic:
+      family: "Hack Nerd Font"
+      style: Italic
+    bold_italic:
+      family: "Hack Nerd Font"
+      style: Bold Italic
+    size: 14.0
+    offset:
+      x: 0
+      y: 2
+    glyph_offset:
+      x: 0
+      y: 0
+    # Thin-stroke font rendering (macOS only)
+    use_thin_strokes: true
+
+  # Iosevka Nerd Font {{{3
+  iosevka_NF: &iosevka_NF
+    normal:
+      family: "Iosevka Nerd Font"
+      style: Regular
+    bold:
+      family: "Iosevka Nerd Font"
+      style: Bold
+    italic:
+      family: "Iosevka Nerd Font"
+      style: Oblique
+    bold_italic:
+      family: "Iosevka Nerd Font"
+      style: Bold Oblique
+    size: 14.5
+    offset:
+      x: 0
+      y: 2
+    glyph_offset:
+      x: 0
+      y: 0
+    # Thin-stroke font rendering (macOS only)
+    use_thin_strokes: true
+
+  # Roboto Mono Nerd Font {{{3
   roboto_mono_NF: &roboto_mono_NF
     normal:
       family: "RobotoMono Nerd Font"
@@ -173,7 +363,7 @@ font_schemes:
     # Thin-stroke font rendering (macOS only)
     use_thin_strokes: true
 
-  # Sauce Code Pro Nerd Font {{{2
+  # Sauce Code Pro Nerd Font {{{3
   sauce_code_pro_NF: &sauce_code_pro_NF
     normal:
       family: "SauceCodePro Nerd Font"
@@ -492,7 +682,7 @@ window:
   decorations: transparent
 
 # Font and colors
-font: *iosevka_NF
+font: *iosevka
 
 draw_bold_text_with_bright_colors: false
 

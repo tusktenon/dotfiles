@@ -9,7 +9,7 @@ disabled = true
 
 [directory]
 truncation_length = 3
-read_only = " "
+#read_only = " "
 
 [git_branch]
 format = "[$branch]($style) "
@@ -17,6 +17,6 @@ format = "[$branch]($style) "
 [line_break]
 disabled = true
 
-[python]
-symbol = " "
+#[python]
+#symbol = " "
 

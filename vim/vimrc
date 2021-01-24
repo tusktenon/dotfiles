@@ -155,10 +155,12 @@ function! PackInit() abort
 
     " Colorschemes
     call minpac#add('sainnhe/edge', {'type': 'opt'})
+    call minpac#add('kaicataldo/material.vim', {'type': 'opt'})
     call minpac#add('arcticicestudio/nord-vim', {'type': 'opt'})
     call minpac#add('sonph/onehalf', {'type': 'opt'}, {'subdir': 'vim'})
     call minpac#add('joshdick/onedark.vim', {'type': 'opt'})
     call minpac#add('lifepillar/vim-solarized8', {'type': 'opt'})
+    call minpac#add('sainnhe/sonokai', {'type': 'opt'})
 endfunction
 
 " Commands for updating/cleaning packages
@@ -213,9 +215,15 @@ let g:color_scheme_list['Edge'] = [
     \ 'packadd! edge',
     \ 'set background=dark',
     \ "let g:edge_style = 'aura'",
-    \ 'let g:edge_enable_italic = 0',
+    \ 'let g:edge_enable_italic = 1',
     \ 'let g:edge_disable_italic_comment = 1',
     \ 'colorscheme edge'
+    \ ]
+
+let g:color_scheme_list['Material'] = [
+    \ 'let g:material_terminal_italics = 1',
+    \ "let g:material_theme_style = 'palenight'",
+    \ 'colorscheme material'
     \ ]
 
 let g:color_scheme_list['Nord'] = [
@@ -241,6 +249,13 @@ let g:color_scheme_list['Solarized8'] = [
     \ 'colorscheme solarized8'
     \ ]
 
+let g:color_scheme_list['Sonokai'] = [
+    \ 'packadd! sonokai',
+    \ "let g:sonokai_style = 'default'",
+    \ 'let g:sonokai_enable_italic = 1',
+    \ 'let g:sonokai_disable_italic_comment = 1',
+    \ 'colorscheme sonokai'
+    \ ]
 
 function! SetColorScheme(name) abort
     for l:item in g:color_scheme_list[a:name]
@@ -255,7 +270,7 @@ endfunction
 command! -bar -nargs=? -complete=customlist,<sid>colo Colo call SetColorScheme(<f-args>)
 
 " Set initial color scheme
-call SetColorScheme('Onedark')
+call SetColorScheme('Nord')
 
 " Show comments in italics
 " highlight Comment cterm=italic gui=italic
