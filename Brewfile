@@ -4,8 +4,10 @@
 # Development
 brew 'fish'
 brew 'gcc'
+brew 'gdb'
 brew 'go'   # Needed by Vim package Hexokinase
 brew 'git'
+brew 'htop'
 brew 'macos-trash'
 brew 'neovim'
 brew 'python3'

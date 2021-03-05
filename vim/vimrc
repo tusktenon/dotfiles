@@ -47,6 +47,9 @@ augroup END
 " next search
 nnoremap <C-L> :nohl<CR><C-L>
 
+" Preview the effects of substitution commands as you type
+set inccommand=nosplit
+
 " Backspace deletes like most programs in Insert mode
 set backspace=indent,eol,start
 
@@ -131,7 +134,7 @@ set showcmd
 "   Most GUI Vim implementations probably lack fine adjustment of glyph
 "   spacing/offset, so avoid Powerline/NERD fonts
 if has('gui_running')
-    set guifont=Roboto\ Mono:h14
+    set guifont=IBM\ Plex\ Mono:h14
 endif
 
 
@@ -146,6 +149,7 @@ function! PackInit() abort
     call minpac#add('jiangmiao/auto-pairs')
     " call minpac#add('itchyny/vim-gitbranch')
     call minpac#add('rrethy/vim-hexokinase', {'do': 'make hexokinase'})
+    call minpac#add('machakann/vim-highlightedyank')
     call minpac#add('masukomi/vim-markdown-folding')
     call minpac#add('cespare/vim-toml')
     call minpac#add('tpope/vim-surround')
@@ -155,9 +159,7 @@ function! PackInit() abort
 
     " Colorschemes
     call minpac#add('sainnhe/edge', {'type': 'opt'})
-    call minpac#add('kaicataldo/material.vim', {'type': 'opt'})
     call minpac#add('arcticicestudio/nord-vim', {'type': 'opt'})
-    call minpac#add('sonph/onehalf', {'type': 'opt'}, {'subdir': 'vim'})
     call minpac#add('joshdick/onedark.vim', {'type': 'opt'})
     call minpac#add('lifepillar/vim-solarized8', {'type': 'opt'})
     call minpac#add('sainnhe/sonokai', {'type': 'opt'})
@@ -187,10 +189,14 @@ if has('nvim')
     " Hightlight group to use for default colors
     let g:indentLine_defaultGroup = 'SpecialKey'
     " Show first indentation level
-    " let g:indentLine_showFirstIndentLevel = 1
+    let g:indentLine_showFirstIndentLevel = 0
     " Character(s) to use for indent line, e.g. "│" or "┊"
     let g:indentLine_first_char = "│"
     let g:indentLine_char = "│"
+    " Start with both plugins disabled, except for specific file types
+    let g:indentLine_fileType = ['c']
+    " A shorter command to toggle both plugins on or off
+    command! IGT IndentBlanklineToggleAll
 endif
 
 
@@ -214,16 +220,10 @@ let g:color_scheme_list = {}
 let g:color_scheme_list['Edge'] = [
     \ 'packadd! edge',
     \ 'set background=dark',
-    \ "let g:edge_style = 'aura'",
+    \ "let g:edge_style = 'default'",
     \ 'let g:edge_enable_italic = 1',
     \ 'let g:edge_disable_italic_comment = 1',
     \ 'colorscheme edge'
-    \ ]
-
-let g:color_scheme_list['Material'] = [
-    \ 'let g:material_terminal_italics = 1',
-    \ "let g:material_theme_style = 'palenight'",
-    \ 'colorscheme material'
     \ ]
 
 let g:color_scheme_list['Nord'] = [
@@ -231,10 +231,6 @@ let g:color_scheme_list['Nord'] = [
     \ 'let g:nord_italic_comments = 0',
     \ 'let g:nord_underline = 1',
     \ 'colorscheme nord'
-    \ ]
-
-let g:color_scheme_list['OneHalf'] = [
-    \ 'colorscheme onehalfdark'
     \ ]
 
 let g:color_scheme_list['Onedark'] = [
@@ -308,6 +304,15 @@ map Y y$
 nnoremap <silent> [<space>  :<c-u>put!=repeat([''],v:count)<bar>']+1<cr>
 nnoremap <silent> ]<space>  :<c-u>put =repeat([''],v:count)<bar>'[-1<cr>
 
+" Easier window navigation
+noremap <C-h> <C-w>h
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
+tnoremap <C-h> <C-\><C-n><C-w>h
+tnoremap <C-j> <C-\><C-n><C-w>j
+tnoremap <C-k> <C-\><C-n><C-w>k
+tnoremap <C-l> <C-\><C-n><C-w>l
 
 " Scripts ······························································· {{{1
 
@@ -318,29 +323,30 @@ nnoremap <silent> ]<space>  :<c-u>put =repeat([''],v:count)<bar>'[-1<cr>
 
 command! -nargs=* Stab call Stab()
 function! Stab()
-  let l:tabstop = 1 * input('set tabstop = softtabstop = shiftwidth = ')
-  if l:tabstop > 0
-    let &l:sts = l:tabstop
-    let &l:ts = l:tabstop
-    let &l:sw = l:tabstop
-  endif
-  call SummarizeTabs()
+    let l:tabstop = 1 * input('set tabstop = softtabstop = shiftwidth = ')
+    if l:tabstop > 0
+        let &l:sts = l:tabstop
+        let &l:ts = l:tabstop
+        let &l:sw = l:tabstop
+    endif
+    redraw
+    call SummarizeTabs()
 endfunction
 
 function! SummarizeTabs()
-  try
-    echohl ModeMsg
-    echon 'tabstop='.&l:ts
-    echon ' shiftwidth='.&l:sw
-    echon ' softtabstop='.&l:sts
-    if &l:et
-      echon ' expandtab'
-    else
-      echon ' noexpandtab'
-    endif
-  finally
-    echohl None
-  endtry
+    try
+        echohl ModeMsg
+        echon 'tabstop='.&l:ts
+        echon ' shiftwidth='.&l:sw
+        echon ' softtabstop='.&l:sts
+        if &l:et
+            echon ' expandtab'
+        else
+            echon ' noexpandtab'
+        endif
+    finally
+        echohl None
+    endtry
 endfunction
 
 

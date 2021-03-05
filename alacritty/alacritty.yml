@@ -392,7 +392,7 @@ font_schemes_NF:
 color_schemes:
 
   # Edge Dark (default) {{{2
-  edge_dark_def:  &edge_dark_default
+  edge_dark_default: &edge_dark_default
     primary:
       background: "0x2c2e34"
       foreground: "0xc5cdd9"
@@ -416,7 +416,7 @@ color_schemes:
       white: "0xc5cdd9"
 
   # Edge Dark (Aura) {{{2
-  edge_dark_aura:  &edge_dark_aura
+  edge_dark_aura: &edge_dark_aura
     primary:
       background: "0x2b2d37"
       foreground: "0xc5cdd9"
@@ -440,7 +440,7 @@ color_schemes:
       white: "0xc5cdd9"
 
   # Edge Dark (Neon) {{{2
-  edge_dark_neon:  &edge_dark_neon
+  edge_dark_neon: &edge_dark_neon
     primary:
       background: "0x2b2d3a"
       foreground: "0xc5cdd9"
@@ -537,54 +537,6 @@ color_schemes:
       cyan: '#6d96a5'
       white: '#aeb3bb'
 
-  # One Half Dark {{{2
-  one_half_dark: &one_half_dark
-    primary:
-      background: '0x282c34'
-      foreground: '0xdcdfe4'
-    normal:
-      black: '0x282c34'
-      red: '0xe06c75'
-      green: '0x98c379'
-      yellow: '0xe5c07b'
-      blue: '0x61afef'
-      magenta: '0xc678dd'
-      cyan: '0x56b6c2'
-      white: '0xdcdfe4'
-    bright:
-      black: '0x282c34'
-      red: '0xe06c75'
-      green: '0x98c379'
-      yellow: '0xe5c07b'
-      blue: '0x61afef'
-      magenta: '0xc678dd'
-      cyan: '0x56b6c2'
-      white: '0xdcdfe4'
-
-  # One Half Light {{{2
-  one_half_light: &one_half_light
-    primary:
-      background: '0xfafafa'
-      foreground: '0x383a42'
-    normal:
-      black: '0x383a42'
-      red: '0xe45649'
-      green: '0x50a14f'
-      yellow: '0xc18401'
-      blue: '0x0184bc'
-      magenta: '0xa626a4'
-      cyan: '0x0997b3'
-      white: '0xfafafa'
-    bright:
-      black: '0x383a42'
-      red: '0xe45649'
-      green: '0x50a14f'
-      yellow: '0xc18401'
-      blue: '0x0184bc'
-      magenta: '0xa626a4'
-      cyan: '0x0997b3'
-      white: '0xfafafa'
-
   # Onedark {{{2
   onedark: &onedark
     primary:
@@ -666,14 +618,134 @@ color_schemes:
       cyan:    '0x93a1a1' # base1
       white:   '0xfdf6e3' # base3
 
+  # Sonokai (default) {{{2
+  sonokai_default: &sonokai_default
+    primary:
+      background: "0x2c2e34"
+      foreground: "0xe2e2e3"
+    normal:
+      black: "0x181819"
+      red: "0xfc5d7c"
+      green: "0x9ed072"
+      yellow: "0xe7c664"
+      blue: "0x76cce0"
+      magenta: "0xb39df3"
+      cyan: "0xf39660"
+      white: "0xe2e2e3"
+    bright:
+      black: "0x181819"
+      red: "0xfc5d7c"
+      green: "0x9ed072"
+      yellow: "0xe7c664"
+      blue: "0x76cce0"
+      magenta: "0xb39df3"
+      cyan: "0xf39660"
+      white: "0xe2e2e3"
+
+  # Sonokai (Andromeda) {{{2
+  sonokai_andromeda: &sonokai_andromeda
+    primary:
+      background: "0x2b2d3a"
+      foreground: "0xe1e3e4"
+    normal:
+      black: "0x181a1c"
+      red: "0xfb617e"
+      green: "0x9ed06c"
+      yellow: "0xedc763"
+      blue: "0x6dcae8"
+      magenta: "0xbb97ee"
+      cyan: "0xf89860"
+      white: "0xe1e3e4"
+    bright:
+      black: "0x181a1c"
+      red: "0xfb617e"
+      green: "0x9ed06c"
+      yellow: "0xedc763"
+      blue: "0x6dcae8"
+      magenta: "0xbb97ee"
+      cyan: "0xf89860"
+      white: "0xe1e3e4"
+
+  # Sonokai (Atlantis) {{{2
+  sonokia_atlantis: &sonokia_atlantis
+    primary:
+      background: "0x2a2f38"
+      foreground: "0xe1e3e4"
+    normal:
+      black: "0x181a1c"
+      red: "0xff6578"
+      green: "0x9dd274"
+      yellow: "0xeacb64"
+      blue: "0x72cce8"
+      magenta: "0xba9cf3"
+      cyan: "0xf69c5e"
+      white: "0xe1e3e4"
+    bright:
+      black: "0x181a1c"
+      red: "0xff6578"
+      green: "0x9dd274"
+      yellow: "0xeacb64"
+      blue: "0x72cce8"
+      magenta: "0xba9cf3"
+      cyan: "0xf69c5e"
+      white: "0xe1e3e4"
+
+  # Sonokai (Maia) {{{2
+  sonokai_maia: &sonokai_maia
+    primary:
+      background: "0x273136"
+      foreground: "0xe1e2e3"
+    normal:
+      black: "0x1c1e1f"
+      red: "0xf76c7c"
+      green: "0x9cd57b"
+      yellow: "0xe3d367"
+      blue: "0x78cee9"
+      magenta: "0xbaa0f8"
+      cyan: "0xf3a96a"
+      white: "0xe1e2e3"
+    bright:
+      black: "0x1c1e1f"
+      red: "0xf76c7c"
+      green: "0x9cd57b"
+      yellow: "0xe3d367"
+      blue: "0x78cee9"
+      magenta: "0xbaa0f8"
+      cyan: "0xf3a96a"
+      white: "0xe1e2e3"
+
+  # Sonokai (Shusia) {{{2
+  sonokai_shusia: &sonokai_shusia
+    primary:
+      background: "0x2d2a2e"
+      foreground: "0xe3e1e4"
+    normal:
+      black: "0x1a181a"
+      red: "0xf85e84"
+      green: "0x9ecd6f"
+      yellow: "0xe5c463"
+      blue: "0x7accd7"
+      magenta: "0xab9df2"
+      cyan: "0xef9062"
+      white: "0xe3e1e4"
+    bright:
+      black: "0x1a181a"
+      red: "0xf85e84"
+      green: "0x9ecd6f"
+      yellow: "0xe5c463"
+      blue: "0x7accd7"
+      magenta: "0xab9df2"
+      cyan: "0xef9062"
+      white: "0xe3e1e4"
+
 
 # Final Settings ························································ {{{1
 
 # Window settings
 window:
   dimensions:
-    columns: 87
-    #columns: 175
+    #columns: 87
+    columns: 175
     #columns: 263
     lines: 70
   padding:
@@ -686,6 +758,6 @@ font: *iosevka
 
 draw_bold_text_with_bright_colors: false
 
-colors: *edge_dark_default
+colors: *onedark
 
 # vim: sw=2 ts=2 sts=2 et fdm=marker

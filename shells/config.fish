@@ -21,8 +21,9 @@ starship init fish | source
 
 # Use Neovim
 set EDITOR nvim
-alias vim 'nvim'
 alias vi 'nvim'
+alias vim 'nvim'
+alias vimdiff 'nvim -d'
 
 # Vi Mode Settings
 # Exit Insert and Replace modes with 'jk' or 'kj'
