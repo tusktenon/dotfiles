@@ -28,6 +28,7 @@ plugins
 screenshot
 screenshots
 tmux
+Valgrind
 vimrc
 zsh
 

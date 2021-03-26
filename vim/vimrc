@@ -158,7 +158,9 @@ function! PackInit() abort
     call minpac#add('lukas-reineke/indent-blankline.nvim', {'type': 'opt'})
 
     " Colorschemes
+    call minpac#add('dracula/vim', {'type': 'opt', 'name': 'dracula'})
     call minpac#add('sainnhe/edge', {'type': 'opt'})
+    call minpac#add('tomasr/molokai', {'type': 'opt'})
     call minpac#add('arcticicestudio/nord-vim', {'type': 'opt'})
     call minpac#add('joshdick/onedark.vim', {'type': 'opt'})
     call minpac#add('lifepillar/vim-solarized8', {'type': 'opt'})
@@ -217,6 +219,12 @@ syntax on
 
 let g:color_scheme_list = {}
 
+let g:color_scheme_list['Dracula'] = [
+    \ 'packadd! dracula',
+    \ 'let g:dracula_colorterm = 1',
+    \ 'colorscheme dracula'
+    \]
+
 let g:color_scheme_list['Edge'] = [
     \ 'packadd! edge',
     \ 'set background=dark',
@@ -225,6 +233,11 @@ let g:color_scheme_list['Edge'] = [
     \ 'let g:edge_disable_italic_comment = 1',
     \ 'colorscheme edge'
     \ ]
+
+let g:color_scheme_list['Molokai'] = [
+    \ 'let g:molokai_original = 0',
+    \ 'colorscheme molokai'
+    \]
 
 let g:color_scheme_list['Nord'] = [
     \ 'let g:nord_italic = 1',
