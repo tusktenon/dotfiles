@@ -6,3 +6,5 @@
 	email = dc.murphy@utoronto.ca
 [core]
 	editor = nvim
+[init]
+    defaultBranch = main

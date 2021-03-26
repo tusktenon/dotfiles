@@ -33,7 +33,7 @@ bind -s -M replace jk "set fish_bind_mode default; commandline -f backward-char 
 bind -s -M replace kj "set fish_bind_mode default; commandline -f backward-char repaint-mode"
 
 # As in Vim, change cursor shape depending on mode
-set fish_vi_force_cursor
+set fish_vi_force_cursor  # Attempt shape change without checking for compatible terminal
 set fish_cursor_insert line
 set fish_cursor_replace_one underscore
 set fish_cursor_replace underscore
@@ -44,9 +44,6 @@ if test (uname -s) = Darwin
     # Use Homebrew's gcc
     abbr -a gcc gcc-10
     abbr -a g++ g++-10
-
-    # Force vi-mode-dependent cursor-shape changes in iTerm2
-    fish_vi_cursor --force-iterm
 end
 
 # Directory navigation
