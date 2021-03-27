@@ -16,7 +16,7 @@ set fish_greeting
 # end
 
 # Use Starship prompt
-set -x STARSHIP_CONFIG ~/.config/starship-double-line.toml
+set -x STARSHIP_CONFIG ~/.config/starship.toml
 starship init fish | source
 
 # Use Neovim

@@ -105,7 +105,7 @@ bindkey "^[e" edit-command-line
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 
 # Use Starship prompt
-export STARSHIP_CONFIG=~/.config/starship-double-line.toml
+export STARSHIP_CONFIG=~/.config/starship.toml
 eval "$(starship init zsh)"
 
 # Enable syntax highlighting <zsh-users/zsh-syntax-highlighting>

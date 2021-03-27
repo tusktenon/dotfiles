@@ -1,0 +1,4 @@
+# File: ~/.stow-global-ignore
+# Author: Dan Murphy
+
+.DS_Store

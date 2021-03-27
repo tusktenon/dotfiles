@@ -1,47 +1,32 @@
 # Dan Murphy's Dotfiles
 
-Eventually, you should probably put these steps in a shell script that would
+With two exceptions (the `mac` and `resources` directories described below), this repository has been structured for use with [GNU Stow](https://www.gnu.org/software/stow/). For example, to add the symlinks for all Vim and Neovim configuration files, run `stow vim` from within the `dotfiles` directory.
 
-* create target directories as needed;
-* before linking, check to see if a file already exists at the target location and, if it does, move it to a backup directory.
-
-
-## Terminals & Shells
-
+If your dotfiles directory isn't right beneath your home directory, you'll need to run stow with the `-t $HOME` option. In fact, you may want to add some version of the following line to your bashrc/zshrc, and use `dstow` instead of `stow` (as an added convenience, `dstow` can be run from within any directory):
 ```
-ln -sv ~/Documents/Development/dotfiles/alacritty/alacritty.yml ~/.config/alacritty/alacritty.yml
-ln -sv ~/Documents/Development/dotfiles/shells/config.fish ~/.config/fish/config.fish
-ln -sv ~/Documents/Development/dotfiles/shells/zshrc ~/.zshrc
-ln -sv ~/Documents/Development/dotfiles/shells/starship-single-line.toml ~/.config/starship-single-line.toml
-ln -sv ~/Documents/Development/dotfiles/shells/starship-double-line.toml ~/.config/starship-double-line.toml
+alias dstow='stow --dir=$HOME/Documents/Development/dotfiles --target=$HOME'
 ```
-Use of the file `xterm-256color-italic.terminfo` is specific to iTerm 2 on macOS. It corrects an issue in which text that should be italicized is highlighted instead. If you use Alacritty, the included terminfo handles italics correctly, but the Alacritty installer does not move it into place, so you'll need to do this for yourself:
+
+
+## macOS Issues
+
+The Brewfile found in the `mac` directory can be used to install all programs managed by [Homebrew](https://brew.sh/).
+
+The file `xterm-256color-italic.terminfo` is used to correct an issue in iTerm 2, in which text that should be italicized is highlighted instead. If you use Alacritty, the included terminfo handles italics correctly, but the Alacritty installer does not move it into place, so you'll need to do this for yourself:
 ```
 sudo cp -r /Applications/Alacritty.app/Contents/Resources/61 ~/.terminfo/
 ```
 
 
-## Git
-```
-ln -sv ~/Documents/Development/dotfiles/gitconfig ~/.gitconfig
-```
-
-
 ## Vim & Neovim
 
-I like to put my vimrc in the more “modern” location `~/.vim/vimrc` instead of `~/.vimrc`; it's just cleaner to have all your Vim configuration files under the `.vim` directory.
+I like to put my vimrc in the more “modern” location `~/.vim/vimrc` instead of `~/.vimrc`; it's just cleaner to have all your Vim configuration files under the `.vim` directory. Even though I use Neovim almost exclusively, I still keep all my settings in the usual Vim locations, and have a minimal `init.vim` directing Neovim to share these settings.
 
-Also, inspired by [Chris Toomey's dotfiles](https://github.com/christoomey/dotfiles/tree/master/vim), I like to keep my vimrc a little shorter and cleaner, by placing some settings in separate files in the directory `~/.vim/rcfiles`.
-
-Even though I use Neovim almost exclusively, I still keep all my settings in the usual Vim locations, and have a minimal `init.vim` directing Neovim to share these settings.
-```
-ln -sv ~/Documents/Development/dotfiles/vim/vimrc ~/.vim/vimrc
-ln -sv ~/Documents/Development/dotfiles/vim/spellfile ~/.vim/spell/en.utf-8.add
-ln -sv ~/Documents/Development/dotfiles/vim/python.vim ~/.vim/after/ftplugin/python.vim
-ln -sv ~/Documents/Development/dotfiles/vim/init.vim ~/.config/nvim/init.vim
-```
-After creating these links, start Neovim and run `:checkhealth` to see if you have the `pynvim` module, which is necessary to use Python plugins with Neovim. If necessary (and it probably will be), install it by running the following in your shell:
+Once Stow has added the (Neo)Vim symlinks, start Neovim and run `:checkhealth` to see if you have the `pynvim` module, which is necessary to use Python plugins with Neovim. If necessary (and it probably will be), install it by running the following in your shell:
 ```
 python3 -m pip install --user --upgrade pynvim
 ```
 
+## Other Resources
+
+The `resources` folder contains alternate, deprecated and sample/template configuration files.
