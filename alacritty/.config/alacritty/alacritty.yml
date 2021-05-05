@@ -174,6 +174,30 @@ font_schemes:
     # Thin-stroke font rendering (macOS only)
     use_thin_strokes: true
 
+  # JetBrains Mono {{{3
+  jetbrains_mono: &jetbrains_mono
+    normal:
+      family: "JetBrains Mono"
+      style: Light
+    bold:
+      family: "JetBrains Mono"
+      style: Medium
+    italic:
+      family: "JetBrains Mono"
+      style: Light Italic
+    bold_italic:
+      family: "JetBrains Mono"
+      style: Medium Italic
+    size: 13.5
+    offset:
+      x: 0
+      y: 0
+    glyph_offset:
+      x: 0
+      y: 0
+    # Thin-stroke font rendering (macOS only)
+    use_thin_strokes: true
+
   # Meslo LG {{{3
   meslo_lg: &meslo_lg
     normal:
@@ -752,6 +776,10 @@ window:
     x: 15
     y: 30
   decorations: transparent
+  title: Alacritty
+  class:
+    instance: Alacritty
+    general: Alacritty
 
 # Font and colors
 font: *iosevka

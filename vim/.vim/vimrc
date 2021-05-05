@@ -147,7 +147,7 @@ function! PackInit() abort
 
     " Plugins
     call minpac#add('jiangmiao/auto-pairs')
-    " call minpac#add('itchyny/vim-gitbranch')
+    "call minpac#add('itchyny/vim-gitbranch')
     call minpac#add('rrethy/vim-hexokinase', {'do': 'make hexokinase'})
     call minpac#add('machakann/vim-highlightedyank')
     call minpac#add('masukomi/vim-markdown-folding')
@@ -175,7 +175,7 @@ command! PackStatus packadd minpac | call minpac#status()
 
 " Auto Pairs settings
 " Enable Fly Mode
-" let g:AutoPairsFlyMode = 1
+"let g:AutoPairsFlyMode = 1
 
 " Hexokinase settings
 let g:Hexokinase_highlighters = ['sign_column']
@@ -308,7 +308,11 @@ noremap j gj
 noremap k gk
 
 " Map Y to act like D and C, i.e. 'y$' rather than the default 'yy' 
-map Y y$
+noremap Y y$
+
+" Easier switching between buffers
+" Often mapped to <leader>l
+nnoremap gb :ls<CR>:b<Space>
 
 " The following pair of commands is a subset of Tim Pope's Unimpaired 
 " plugin <tpope/vim-unimpaired>

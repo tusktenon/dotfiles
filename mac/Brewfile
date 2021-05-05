@@ -5,8 +5,8 @@
 brew 'fish'
 brew 'gcc'
 brew 'gdb'
-brew 'go'   # Needed by Vim package Hexokinase
 brew 'git'
+brew 'go'   # Needed by Vim package Hexokinase
 brew 'htop'
 brew 'macos-trash'
 brew 'neovim'
@@ -33,6 +33,7 @@ tap 'homebrew/cask-fonts'
   brew 'font-hack'
   brew 'font-ibm-plex-mono'
   brew 'font-iosevka'
+  brew 'font-jetbrains-mono'
   brew 'font-meslo-lg'
   #brew 'font-meslo-lg-dz'  # dotted zero
   brew 'font-roboto-mono'
