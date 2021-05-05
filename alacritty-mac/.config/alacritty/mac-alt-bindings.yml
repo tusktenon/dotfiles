@@ -1,6 +1,10 @@
-# Key bindings
-# At present, Alacritty lacks a 'Use Option as Meta key' setting for macOS,
-# so all bindings using Alt need to be manually assigned
+# Filepath: ~/.config/alacritty/mac-alt-bindings.yml
+# Source: https://github.com/alacritty/alacritty/issues/62#issuecomment-347552058
+
+# Unlike iTerm2 or Terminal.app, Alacritty currently lacks a
+# 'Use Option as Meta key' setting for macOS, so all bindings
+# using Alt need to be manually assigned
+
 key_bindings:
   - { key: A,         mods: Alt,       chars: "\x1ba" }
   - { key: B,         mods: Alt,       chars: "\x1bb" }

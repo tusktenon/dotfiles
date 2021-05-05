@@ -1,0 +1,12 @@
+# Filepath: ~/.config/git/config or ~/.gitconfig
+# Author: Dan Murphy
+
+[user]
+name = Dan Murphy
+email = dc.murphy@utoronto.ca
+
+[core]
+editor = nvim
+
+[init]
+defaultBranch = main

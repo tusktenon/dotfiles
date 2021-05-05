@@ -1,0 +1,7 @@
+# File: dotfiles/.stow-local-ignore
+# Author: Dan Murphy
+
+.DS_Store
+README.*
+deprecated
+resources

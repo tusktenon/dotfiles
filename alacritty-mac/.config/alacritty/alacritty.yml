@@ -8,6 +8,11 @@
 
 live_config_reload: true
 
+# Import additional configuration files
+import:
+  # OS-specific settings
+  - mac-alt-bindings.yml
+
 
 # Fonts ································································· {{{1
 # Standard Fonts ························································ {{{2
@@ -759,6 +764,22 @@ color_schemes:
 
 
 # Final Settings ························································ {{{1
+
+# Window settings
+window:
+  #dimensions:
+    #columns: 87
+    #columns: 175
+    #columns: 263
+    #lines: 70
+  padding:
+    x: 15
+    y: 30
+  decorations: transparent
+  #title: Alacritty
+  #class:
+    #instance: Alacritty
+    #general: Alacritty
 
 # Font and colors
 font: *iosevka

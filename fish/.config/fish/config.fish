@@ -1,4 +1,4 @@
-# File: ~/.config/fish/config.fish
+# Filepath: ~/.config/fish/config.fish
 # Author: Dan Murphy
 
 # Language and localization settings

@@ -1,0 +1,5 @@
+# Filepath: ~/.config/git/ignore
+# Author: Dan Murphy
+
+# ignore all .DS_Store files from macOS
+.DS_Store

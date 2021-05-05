@@ -36,8 +36,8 @@ compinit
 
 # Directory navigation
 setopt autocd autopushd correct correctall
-CDPATH=.:~:~/Documents:~/Documents/Development
-CDPATH+=:~/Documents/Development/Courses/Introduction\ to\ Programming\ in\ C
+CDPATH=.:~:~/Development:~/Documents
+CDPATH+=:~/Development/Courses/Introduction\ to\ Programming\ in\ C
 export CDPATH
 
 # Use Neovim
@@ -45,6 +45,12 @@ export EDITOR="nvim"
 alias vi="nvim"
 alias vim="nvim"
 alias vimdiff="nvim -d"
+
+# Custom GNU Stow command for dotfiles repository
+alias dstow='stow --dir=$HOME/Development/dotfiles --target=$HOME'
+
+# Skip the .git directory in repositories
+alias tree='tree -I .git'
 
 
 # Vi mode configuration

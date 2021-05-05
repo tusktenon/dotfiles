@@ -2,7 +2,6 @@
 # Author: Dan Murphy
 
 # Development
-brew 'fish'
 brew 'gcc'
 brew 'gdb'
 brew 'git'
