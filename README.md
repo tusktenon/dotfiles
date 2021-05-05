@@ -28,7 +28,7 @@ You might also consider adding the `--no-folding` option, although I prefer to l
 
 Using Stow to manage your dotfiles works particularly well if you manage a number of different systems, since it gives you very precise control over which dotfiles get installed on each system. Having to follow the installation paths does make your repository a little awkward to navigate (lots of long paths and hidden files), but that's a minor disadvantage.
 
-Stow will add links for all the contents of a directory, but you can specify exceptions in `.stow-lcoal-ignore`. In this dotfiles repository, I've configured Stow to ignore directories named `resources` or `deprecated`, as well as README files.
+Stow will add links for all the contents of a directory, but you can specify exceptions in `.stow-lcoal-ignore` files. In this dotfiles repository, I've configured Stow to ignore directories named `resources` or `deprecated`, as well as README files.
 
 ### Creating links manually
 

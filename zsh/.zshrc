@@ -52,6 +52,9 @@ alias dstow='stow --dir=$HOME/Development/dotfiles --target=$HOME'
 # Skip the .git directory in repositories
 alias tree='tree -I .git'
 
+# Download videos in 720p
+alias ydl-720="youtube-dl -f '[height=720]'"
+
 
 # Vi mode configuration
 bindkey -v
