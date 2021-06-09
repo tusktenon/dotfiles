@@ -69,3 +69,5 @@ Once your Vim and Neovim symlinks are in place, start Neovim and run `:checkheal
 
     python3 -m pip install --user --upgrade pynvim
 
+Alternatively, in Arch Linux, you can install the `python-neovim` package.
+

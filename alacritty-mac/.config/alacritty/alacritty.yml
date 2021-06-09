@@ -1,7 +1,7 @@
 # Filepath: ~/.config/alacritty/alacritty.yml or ~/.alacritty.yml
 # Author: Dan Murphy
 
-# Configuration for the Alacritty terminal emulator.
+# Configuration for the Alacritty terminal emulator on macOS
 # For a template describing all settings, see
 #   https://github.com/alacritty/alacritty/blob/master/alacritty.yml
 
@@ -767,11 +767,10 @@ color_schemes:
 
 # Window settings
 window:
-  #dimensions:
-    #columns: 87
-    #columns: 175
-    #columns: 263
-    #lines: 70
+  dimensions:
+    #columns: 87    # 87/175/263
+    columns: 100  # 100/120/200/240
+    lines: 70
   padding:
     x: 15
     y: 30
