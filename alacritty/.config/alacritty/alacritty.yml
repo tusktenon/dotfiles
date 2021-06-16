@@ -1,5 +1,7 @@
-# Path: ~/.config/alacritty/alacritty.yml (or ~/.alacritty.yml)
+# ~/.config/alacritty/alacritty.yml (or ~/.alacritty.yml)
 # Author: Dan Murphy
+
+# Reference configuration file: /usr/share/doc/alacritty/example/alacritty.yml
 
 live_config_reload: true
 
@@ -20,7 +22,7 @@ font_schemes:
     bold_italic:
       family: "Fantasque Sans Mono"
       style: Bold Italic
-    size: 14.0
+    size: 11.0
     offset:
       x: 0
       y: 0
@@ -36,7 +38,7 @@ font_schemes:
     bold:
       family: "Fira Code"
       style: SemiBold
-    size: 14.0
+    size: 10.0
     offset:
       x: 0
       y: 0
@@ -58,7 +60,7 @@ font_schemes:
     bold_italic:
       family: "Hack"
       style: Bold Italic
-    size: 14.0
+    size: 11.0
     offset:
       x: 0
       y: 0
@@ -80,7 +82,7 @@ font_schemes:
     bold_italic:
       family: "IBM Plex Mono"
       style: SemiBold Italic
-    size: 14.0
+    size: 11.0
     offset:
       x: 0
       y: 0
@@ -102,7 +104,7 @@ font_schemes:
     bold_italic:
       family: "Iosevka Term"
       style: Semibold Italic
-    size: 14.5
+    size: 11.0
     offset:
       x: 0
       y: 0
@@ -124,7 +126,7 @@ font_schemes:
     bold_italic:
       family: "JetBrains Mono"
       style: Medium Italic
-    size: 13.5
+    size: 10.0
     offset:
       x: 0
       y: 0
@@ -146,7 +148,7 @@ font_schemes:
     bold_italic:
       family: "Meslo LG M"
       style: Bold Italic
-    size: 14.0
+    size: 11.0
     offset:
       x: 0
       y: 0
@@ -168,7 +170,7 @@ font_schemes:
     bold_italic:
       family: "Roboto Mono"
       style: SemiBold Italic
-    size: 14.0
+    size: 10.0
     offset:
       x: 0
       y: 0
@@ -190,7 +192,7 @@ font_schemes:
     bold_italic:
       family: "Source Code Pro"
       style: Semibold Italic
-    size: 14.0
+    size: 10.0
     offset:
       x: 0
       y: 0
@@ -282,8 +284,14 @@ color_schemes:
 
 # Final Settings ························································ {{{1
 
+# Window
+window:
+  padding:
+    x: 4
+    y: 4
+
 # Font and colors
-font: *iosevka
+font: *source_code_pro
 
 draw_bold_text_with_bright_colors: false
 

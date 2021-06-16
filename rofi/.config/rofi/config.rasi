@@ -1,0 +1,4 @@
+configuration {
+	theme: "slate";
+    font: "Iosevka Term 12";
+}

@@ -24,7 +24,7 @@ If your dotfiles directory isn't right beneath your home directory, you'll need 
 alias dstow='stow --dir=$HOME/Development/dotfiles --target=$HOME'
 ```
 
-You might also consider adding the `--no-folding` option, although I prefer to leave tree folding enabled.
+You might also consider adding the `--no-folding` option. Tree folding is a tidy approach, but some applications (e.g., Neovim and Qtile) write temporary files to their configuration directories that you wouldn't want in your dotfiles repository.
 
 Using Stow to manage your dotfiles works particularly well if you manage a number of different systems, since it gives you very precise control over which dotfiles get installed on each system. Having to follow the installation paths does make your repository a little awkward to navigate (lots of long paths and hidden files), but that's a minor disadvantage.
 
