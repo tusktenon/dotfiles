@@ -45,6 +45,11 @@ from within the `~/.config/nvim` directly works as expected, but running
 from `dotfiles/vim` does not create the link you want.
 
 
+## Arch system files
+
+These are root-owned system files, mosting residing in `/etc`. Since these files cannot be managed by Stow, this directory must be maintained manually. I am only keeping files that have seen substantial edits, so this works well enough. If you ever need a more robust system, you might consider something like [etckeeper](https://etckeeper.branchable.com/) ([ArchWiki entry](https://wiki.archlinux.org/title/Etckeeper)).
+
+
 ## Fish
 
 Unmaintained. I was never able to get fish working to my liking, and haven't used it for some time.
@@ -69,5 +74,5 @@ Once your Vim and Neovim symlinks are in place, start Neovim and run `:checkheal
 
     python3 -m pip install --user --upgrade pynvim
 
-Alternatively, in Arch Linux, you can install the `python-neovim` package.
+Alternatively, in Arch Linux, you can install the `python-pynvim` package.
 

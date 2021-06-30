@@ -1,0 +1,10 @@
+# Static information about the filesystems.
+# See fstab(5) for details.
+
+# <file system> <dir>   <type>  <options>           <dump>  <pass>
+
+# /dev/sda1 UUID=F023-5DF7
+LABEL=EFI       /boot   vfat    defaults,noatime    0       2
+
+# /dev/sda2 UUID=26f58335-d716-4409-a58c-da2b9a091844
+LABEL=SYSTEM    /       ext4    defaults,noatime    0       1

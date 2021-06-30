@@ -164,7 +164,7 @@ gaps inner 15
 # Set font size to 0 to hide window title bars even in stacking/tabbed
 # containers.
 #font pango:DejaVu Sans Mono 8
-font pango:Roboto Mono 1
+font pango:Roboto Mono 0
 
 
 ### Colors ······························································ {{{1
@@ -238,6 +238,6 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
 
 # Set wallpaper
-exec_always --no-startup-id feh --bg-fill ~/Documents/Computing/wallpapers/Abstract/Blue-Geometry.jpg
+exec_always --no-startup-id feh --bg-fill ~/Documents/Computing/Wallpapers/Abstract/'Ubuntu 1.jpg'
 
 # vim: sw=4 ts=4 sts=4 et fdm=marker

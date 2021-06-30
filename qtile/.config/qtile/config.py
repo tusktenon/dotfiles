@@ -14,7 +14,7 @@ from libqtile.utils import guess_terminal
 mod = "mod1"
 
 #terminal = guess_terminal()
-terminal = "xterm"
+terminal = "alacritty"
 
 keys = [
     # Switch between windows
@@ -54,7 +54,7 @@ keys = [
     Key([mod, "shift"], "Return", lazy.layout.toggle_split(),
         desc="Toggle between split and unsplit sides of stack"),
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
-    Key([mod], "space", lazy.spawn("rofi -show run"),
+    Key([mod], "space", lazy.spawn("rofi -show drun"),
         desc="Launch run menu"),
 
     # Toggle between different layouts as defined below
