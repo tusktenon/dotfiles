@@ -5,25 +5,35 @@
 
 from typing import List  # noqa: F401
 
-from libqtile import bar, layout, widget
+import os
+import subprocess
+from libqtile import bar, hook, layout, widget
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
-from libqtile.lazy import lazy
-from libqtile.utils import guess_terminal
+from libqtile.command import lazy
+#from libqtile.utils import guess_terminal
 
 # Modifier key. Use Mod1 for Alt, Mod4 for Super
-mod = "mod1"
+mod = "mod4"
 
 #terminal = guess_terminal()
 terminal = "alacritty"
 
 keys = [
     # Switch between windows
-    Key([mod], "h", lazy.layout.left(), desc="Move focus to left"),
-    Key([mod], "l", lazy.layout.right(), desc="Move focus to right"),
-    Key([mod], "j", lazy.layout.down(), desc="Move focus down"),
-    Key([mod], "k", lazy.layout.up(), desc="Move focus up"),
+    Key([mod], "h", lazy.layout.left(),
+        desc="Move focus to left"),
+    Key([mod], "l", lazy.layout.right(),
+        desc="Move focus to right"),
+    Key([mod], "j", lazy.layout.down(),
+        desc="Move focus down"),
+    Key([mod], "k", lazy.layout.up(),
+        desc="Move focus up"),
     Key([mod, "shift"], "space", lazy.layout.next(),
         desc="Move window focus to other window"),
+    Key([mod], "n", lazy.group.next_window(),
+        desc="Move focus to next window"),
+    Key([mod], "p", lazy.group.prev_window(),
+        desc="Move focus to previous window"),
 
     # Move windows between left/right columns or move up/down in current stack.
     # Moving out of range in Columns layout will create new column.
@@ -44,27 +54,43 @@ keys = [
         desc="Grow window to the right"),
     Key([mod, "control"], "j", lazy.layout.grow_down(),
         desc="Grow window down"),
-    Key([mod, "control"], "k", lazy.layout.grow_up(), desc="Grow window up"),
-    Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
+    Key([mod, "control"], "k", lazy.layout.grow_up(),
+        desc="Grow window up"),
+    #Key([mod], "n", lazy.layout.normalize(),
+    #    desc="Reset all window sizes"),
+
+    # Toggle between different layouts as defined below
+    Key([mod], "Tab", lazy.next_layout(),
+        desc="Toggle between layouts"),
 
     # Toggle between split and unsplit sides of stack.
     # Split = all windows displayed
     # Unsplit = 1 window displayed, like Max layout, but still with
     # multiple stack panes
-    Key([mod, "shift"], "Return", lazy.layout.toggle_split(),
+    Key([mod], "s", lazy.layout.toggle_split(),
         desc="Toggle between split and unsplit sides of stack"),
-    Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
-    Key([mod], "space", lazy.spawn("rofi -show drun"),
-        desc="Launch run menu"),
 
-    # Toggle between different layouts as defined below
-    Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
-    Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
+    Key([mod], "f", lazy.window.toggle_floating(),
+        desc='toggle floating'),
+    Key([mod, "shift"], "f", lazy.window.toggle_fullscreen(),
+        desc='toggle fullscreen'),
 
-    Key([mod, "control"], "r", lazy.restart(), desc="Restart Qtile"),
-    Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
+    #Key([mod], "w", lazy.window.kill(),
+    #    desc="Kill focused window"),
+    Key([mod, "shift"], "c", lazy.window.kill(),
+        desc="Kill focused window"),
+    Key([mod, "shift"], "r", lazy.restart(),
+        desc="Restart Qtile"),
+    Key([mod, "shift"], "q", lazy.shutdown(),
+        desc="Shutdown Qtile"),
+
     Key([mod], "r", lazy.spawncmd(),
         desc="Spawn a command using a prompt widget"),
+
+    Key([mod], "Return", lazy.spawn(terminal),
+        desc="Launch terminal"),
+    Key([mod], "space", lazy.spawn("rofi -show drun"),
+        desc="Launch run menu"),
 ]
 
 groups = [Group(i) for i in "123456789"]
@@ -85,8 +111,14 @@ for i in groups:
     ])
 
 layouts = [
-    layout.Columns(border_focus_stack='#d75f5f'),
+    layout.Columns(
+        border_width = 2,
+        border_focus_stack='#d75f5f',
+        margin = 6,
+        margin_on_single = 12
+        ),
     layout.Max(),
+    layout.Floating(),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
     # layout.Bsp(),
@@ -101,15 +133,18 @@ layouts = [
 ]
 
 widget_defaults = dict(
-    font='sans',
-    fontsize=12,
+    font='IBM Plex Sans',
+    fontsize=18,
     padding=3,
 )
 extension_defaults = widget_defaults.copy()
 
+# Base directory for wallpaper files
+wallpaper_dir = os.path.expanduser('~/Documents/Computing/Wallpapers/')
+
 screens = [
     Screen(
-        bottom=bar.Bar(
+        top=bar.Bar(
             [
                 widget.CurrentLayout(),
                 widget.GroupBox(),
@@ -125,10 +160,17 @@ screens = [
                 widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
                 widget.Systray(),
                 widget.Clock(format='%Y-%m-%d %a %I:%M %p'),
+                widget.Battery(battery="CMB0"),
                 widget.QuickExit(),
             ],
-            24,
+            32,
+            margin = [0, 0, 6, 0]
         ),
+        bottom=bar.Gap(6),
+        left=bar.Gap(6),
+        right=bar.Gap(6),
+        wallpaper = wallpaper_dir + "Abstract/Color palette.jpg",
+        wallpaper_mode = "fill"
     ),
 ]
 
@@ -159,6 +201,12 @@ floating_layout = layout.Floating(float_rules=[
 ])
 auto_fullscreen = True
 focus_on_window_activation = "smart"
+
+# Autostart
+#@hook.subscribe.startup_once
+#def autostart():
+#    script = os.path.expanduser('~/.config/qtile/autostart.sh')
+#    subprocess.run([script])
 
 # Workaround for java apps
 wmname = "LG3D"

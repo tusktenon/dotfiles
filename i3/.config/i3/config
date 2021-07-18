@@ -4,11 +4,11 @@
 # i3 config file (v4)
 # See https://i3wm.org/docs/userguide.html for a complete reference
 
-# modern mouse behaviour
-focus_follows_mouse no
-
 
 ### Keyboard & Mouse Bindings ··········································· {{{1
+
+# modern mouse behaviour
+focus_follows_mouse no
 
 # modifier key: use Mod1 for Alt, Mod4 for Super
 set $mod Mod1
@@ -42,7 +42,7 @@ bindsym $mod+c kill
 # toggle split orientation (horizontal/vertical)
 bindsym $mod+s split toggle
 
-# cylce between container layouts
+# cycle between container layouts
 bindsym $mod+x layout toggle stacking splitv splith
 
 # enter fullscreen mode for the focused container

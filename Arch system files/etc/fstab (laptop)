@@ -1,0 +1,19 @@
+# Static information about the filesystems.
+# See fstab(5) for details.
+
+# <file system> <dir>   <type>  <options>           <dump>  <pass>
+# /dev/nvme0n1p1 UUID=0C41-A58D 
+LABEL=EFI       /efi    vfat    defaults            0       2
+
+# /dev/nvme0n1p7 UUID=3cc0c209-3762-4922-a636-b4b9c7723f3a
+LABEL=BOOT      /boot   ext4    defaults,noatime    0       2
+
+# /dev/mapper/VolGroup-root UUID=0f779d3c-ebe5-41c6-9b0f-f07cdb3d366b
+LABEL=SYSTEM    /       ext4    defaults,noatime    0       1
+
+# /dev/mapper/VolGroup-home UUID=73ac7350-60c5-494e-a988-b3eb7454f5e9
+LABEL=HOME      /home   ext4    defaults,noatime    0       2
+
+# /dev/mapper/VolGroup-swap UUID=87b731e6-ad7c-4246-b425-ac7274e1ee70
+LABEL=SWAP      none    swap    defaults            0       0
+

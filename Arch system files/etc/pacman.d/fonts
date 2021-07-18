@@ -1,0 +1,19 @@
+# /etc/pacman.d/fonts
+
+# IBM Plex Sans (`ttf-ibm-plex`)
+NoExtract = usr/share/fonts/TTF/IBMPlexSansArabic-*.ttf
+NoExtract = usr/share/fonts/TTF/IBMPlexSansDevanagari-*.ttf
+NoExtract = usr/share/fonts/TTF/IBMPlexSansHebrew-*.ttf
+NoExtract = usr/share/fonts/TTF/IBMPlexSansKR-*.ttf
+NoExtract = usr/share/fonts/TTF/IBMPlexSansThai-*.ttf
+NoExtract = usr/share/fonts/TTF/IBMPlexSansThaiLooped-*.ttf
+
+# Noto (`noto-fonts`, `noto-fonts-extra`)
+NoExtract = usr/share/fonts/noto/*.ttf
+NoExtract = !usr/share/fonts/noto/NotoSans-*.ttf
+NoExtract = !usr/share/fonts/noto/NotoSansDisplay-*.ttf
+NoExtract = !usr/share/fonts/noto/NotoSansMath-Regular.ttf
+NoExtract = !usr/share/fonts/noto/NotoSansMono-*.ttf
+NoExtract = !usr/share/fonts/noto/NotoSansSymbols*.ttf
+NoExtract = !usr/share/fonts/noto/NotoSerif-*.ttf
+NoExtract = !usr/share/fonts/noto/NotoSerifDisplay-*.ttf

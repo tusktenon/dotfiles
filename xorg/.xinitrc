@@ -39,6 +39,6 @@ fi
 #exec herbstluftwm
 #exec i3
 #exec startlxqt
-#exec qtile
-exec startxfce4
+exec qtile
+#exec startxfce4
 

@@ -104,7 +104,7 @@ font_schemes:
     bold_italic:
       family: "Iosevka Term"
       style: Semibold Italic
-    size: 11.0
+    size: 12.0
     offset:
       x: 0
       y: 0
@@ -126,7 +126,7 @@ font_schemes:
     bold_italic:
       family: "JetBrains Mono"
       style: Medium Italic
-    size: 10.0
+    size: 11.0
     offset:
       x: 0
       y: 0
@@ -170,7 +170,7 @@ font_schemes:
     bold_italic:
       family: "Roboto Mono"
       style: SemiBold Italic
-    size: 10.0
+    size: 11.0
     offset:
       x: 0
       y: 0
@@ -192,7 +192,7 @@ font_schemes:
     bold_italic:
       family: "Source Code Pro"
       style: Semibold Italic
-    size: 10.0
+    size: 11.0
     offset:
       x: 0
       y: 0
@@ -291,7 +291,7 @@ window:
     y: 4
 
 # Font and colors
-font: *source_code_pro
+font: *iosevka
 
 draw_bold_text_with_bright_colors: false
 

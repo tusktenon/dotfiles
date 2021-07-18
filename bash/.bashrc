@@ -26,8 +26,8 @@ bind -m vi-insert "\C-p":previous-history
 bind -m vi-insert "\C-w":backward-kill-word
 
 # Tell GnuPG pinentry to use the correct TTY
-export GPG_TTY=$(tty)
-gpg-connect-agent updatestartuptty /bye > /dev/null
+#export GPG_TTY=$(tty)
+#gpg-connect-agent updatestartuptty /bye > /dev/null
 
 alias ls='ls --color=auto'
 
@@ -36,7 +36,7 @@ export EDITOR="nvim"
 alias vi="nvim"
 alias vimdiff="nvim -d"
 
-export AUR_PAGER=nvim
+#export AUR_PAGER=nvim
 
 # Custom GNU Stow command for dotfiles repository
 alias dstow='stow --dir=$HOME/Development/dotfiles --target=$HOME --no-folding'
