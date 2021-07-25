@@ -5,18 +5,18 @@
 # Read `man 5 sway` for reference.
 
 
-# Uncomment to run a pure Wayland session
+# Run a pure Wayland session
 xwayland disable
 
 ### Workspaces ·························································· {{{1
 
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
-set $ws4 "4"
-set $ws5 "5"
-set $ws6 "6"
-set $ws7 "7"
+set $ws1 "1: mail"
+set $ws2 "2: home"
+set $ws3 "3: music"
+set $ws4 "4: class"
+set $ws5 "5: code"
+set $ws6 "6: sys"
+set $ws7 "7: ref"
 set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
@@ -24,12 +24,37 @@ set $ws10 "10"
 
 ### Appearance ·························································· {{{1
 
-# Wallpaper
-# (more backgrounds are available in /usr/share/backgrounds/sway/)
-output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+font Cantarell Bold 10
+title_align center
 
-default_border pixel 4
-gaps inner 12
+# Borders and Gaps
+border_images.focused $HOME/.config/sway/shadows.png
+border_images.focused_inactive $HOME/.config/sway/shadows.png
+border_images.unfocused $HOME/.config/sway/shadows.png
+default_border pixel 2
+default_floating_border pixel 2
+titlebar_border_thickness 1
+gaps inner 16
+
+# Wallpaper
+output * bg ~/Documents/Computing/Wallpapers/'Photos - Aerial'/'Beach 1.jpg' fill
+
+# Colors
+set $bg1 #383c4a
+set $bg2 #2e333d
+set $fg1 #afb8c5
+set $fg2 #808791
+#set $color1 #5294e2
+set $color1 #217daa
+set $color1a #81c5e7
+#set $color2 #807479
+set $color2 #ac4c65
+
+# class                 border  background  text      indicator   child_border
+client.focused          $bg1    $bg1        $color1   $color1a    $color1
+client.focused_inactive $bg1    $bg1        $color2   $color2     $color2
+client.unfocused        $bg1    $bg2        $fg2      $color2     $color2
+
 
 ### Keyboard and Mouse Bindings ········································· {{{1
 
@@ -91,7 +116,17 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-# Resizing containers:
+# Resize containers
+bindsym $mod+Control+$left resize shrink width 10px
+bindsym $mod+Control+$down resize grow height 10px
+bindsym $mod+Control+$up resize shrink height 10px
+bindsym $mod+Control+$right resize grow width 10px
+# ... or use arrow keys
+bindsym $mod+Control+Left resize shrink width 10px
+bindsym $mod+Control+Down resize grow height 10px
+bindsym $mod+Control+Up resize shrink height 10px
+bindsym $mod+Control+Right resize grow width 10px
+
 mode "resize" {
     # left will shrink the containers width
     # right will grow the containers width
@@ -204,13 +239,25 @@ bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. 
 # You can get the names of your inputs by running: swaymsg -t get_inputs.
 # Read `man 5 sway-input` for more information about this section.
 
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+bindsym XF86MonBrightnessUp exec brightnessctl set +5%
+
 input type:keyboard {
     repeat_delay 300
     repeat_rate 30
+    xkb_numlock enabled
+    #xkb_options caps:swapescape
 }
 
 # Modern mouse behaviour
 focus_follows_mouse no
+
+input type:pointer {
+    natural_scroll enabled
+}
 
 input type:touchpad {
     pointer_accel 0.25
@@ -261,30 +308,35 @@ bindswitch --reload --locked lid:off output eDP-1 enable
 
 ### Status Bar ·························································· {{{1
 
-# Read `man 5 sway-bar` for more information about this section.
+# Read `man 5 sway-bar` reference.
+#bar {
+#    position top
+#    font Cantarell 11
+#    status_command while ~/.config/sway/swaybar.sh; do sleep 1; done
+#
+#    colors {
+#        statusline $fg1
+#        background $bg2
+#        focused_workspace $bg1 $bg1 $color1
+#        active_workspace $bg1 $bg1 $color2
+#        inactive_workspace $bg1 $bg1 $fg2
+#    }
+#}
+
 bar {
-    position top
-
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
-    status_command while date +'%Y-%m-%d %l:%M:%S %p'; do sleep 1; done
-
-    colors {
-        statusline #ffffff
-        background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
-    }
+    swaybar_command waybar
 }
 
-#bar {
-#    swaybar_command waybar
-#}
+
+### Window Rules ························································ {{{1
+
+for_window [app_id="firefox" title="Library"] floating enable
+for_window [app_id="imv"] floating enable
 
 
 ### Autostart ··························································· {{{1
 
-exec_always ./import-settings.sh
-#exec waybar
+exec_always ./import-gtk-settings.sh
 
 include /etc/sway/config.d/*
 
