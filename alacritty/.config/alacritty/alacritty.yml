@@ -38,10 +38,10 @@ font_schemes:
     bold:
       family: "Fira Code"
       style: SemiBold
-    size: 10.0
+    size: 15.0
     offset:
       x: 0
-      y: 0
+      y: 1
     glyph_offset:
       x: 0
       y: 0
@@ -104,7 +104,7 @@ font_schemes:
     bold_italic:
       family: "Iosevka Term"
       style: Semibold Italic
-    size: 12.0
+    size: 15.0
     offset:
       x: 0
       y: 0
@@ -286,10 +286,13 @@ color_schemes:
 
 # Window
 window:
+  dimensions:
+    columns: 100
+    lines: 50
   padding:
-    x: 4
-    y: 4
-  decorations: none
+    x: 2
+    y: 2
+  decorations: full   # full or none
 
 # Font and colors
 font: *iosevka

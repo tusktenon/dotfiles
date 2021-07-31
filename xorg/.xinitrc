@@ -38,7 +38,7 @@ fi
 # Start a desktop environment or window manager
 #exec herbstluftwm
 #exec i3
-#exec startlxqt
-exec qtile
+#exec qtile
+exec cinnamon-session
 #exec startxfce4
 
