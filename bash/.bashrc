@@ -8,11 +8,13 @@
 #PS1='[\u@\h \W]\$ '
 
 # A colourized PS1 prompt
-BOLD="\[$(tput bold)\]"
-BLUE="\[$(tput setaf 4)\]"
-RESET="\[$(tput sgr0)\]"
+#BOLD="\[$(tput bold)\]"
+#BLUE="\[$(tput setaf 4)\]"
+#RESET="\[$(tput sgr0)\]"
 #PS1="\n[\u@\h ${BOLD}${BLUE}\W${RESET}]\$ "
-PS1="\n${BOLD}${BLUE}\W${RESET} \$ "
+#PS1="\n${BOLD}${BLUE}\W${RESET} \$ "
+# Final version:
+PS1="\n\e[1;34m\W\e[0m \$ "
 
 # Use vi mode
 set -o vi
@@ -29,6 +31,8 @@ bind -m vi-insert "\C-w":backward-kill-word
 #export GPG_TTY=$(tty)
 #gpg-connect-agent updatestartuptty /bye > /dev/null
 
+# Enable colored output from ls, tree, etc.
+export CLICOLOR=1
 alias ls='ls --color=auto'
 
 # Use Neovim

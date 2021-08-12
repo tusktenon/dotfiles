@@ -97,13 +97,15 @@ font_schemes:
       style: Regular
     bold:
       family: "Iosevka Term"
-      style: Semibold
+      style: Bold
+      #style: Semibold
     italic:
       family: "Iosevka Term"
       style: Italic
     bold_italic:
       family: "Iosevka Term"
-      style: Semibold Italic
+      style: Bold Italic
+      #style: Semibold Italic
     size: 15.0
     offset:
       x: 0
@@ -283,6 +285,10 @@ color_schemes:
 
 
 # Final Settings ························································ {{{1
+
+env:
+  # seems to be needed for proper font scaling in Xfce
+  WINIT_X11_SCALE_FACTOR: "1"
 
 # Window
 window:

@@ -1,7 +1,0 @@
-# Filepath: dotfiles/starship/.stow-local-ignore
-# Author: Dan Murphy
-
-.DS_Store
-README.*
-deprecated
-resources

@@ -1,11 +1,23 @@
-# ~/.config/starship-double-line.toml
+# ~/.config/starship.toml
 # Author: Dan Murphy
 
-[character]
-vicmd_symbol = "[❮](bold blue)"
+format = """
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_status\
+$line_break\
+$jobs\
+$character"""
 
-[cmd_duration]
-disabled = true
+[character]
+success_symbol = "[\\$](white)"
+error_symbol = "[\\$](bold red)"
+vicmd_symbol = "[\\$](bold blue)"
 
 [git_branch]
 format = "on [$branch]($style) "
+
+[git_status]
+deleted = "x"
