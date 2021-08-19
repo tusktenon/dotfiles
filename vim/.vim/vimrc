@@ -296,11 +296,8 @@ set laststatus=2
 
 " Mappings ······························································ {{{1
 
-" Exit Insert mode by pressing 'j' and 'k' together, or alternatively,
-" by pressing 'j' twice
+" Exit Insert mode by pressing 'jk'
 inoremap jk <Esc>
-inoremap kj <Esc>
-" inoremap jj <Esc>
 
 " Set 'j' and 'k' to move by screen lines, not true lines
 " (If you use relative line numbers, this may be more trouble than it's worth)
