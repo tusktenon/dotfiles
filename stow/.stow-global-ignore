@@ -1,4 +1,18 @@
 # File: ~/.stow-global-ignore
 # Author: Dan Murphy
 
+# macOS Desktop Services files
 .DS_Store
+
+# Emacs backup and autosave files
+.+~
+\#.*\#
+
+# Git
+\.git
+\.gitignore
+
+# Documentation and licenses
+^/README.*
+^/LICENSE.*
+^/COPYING

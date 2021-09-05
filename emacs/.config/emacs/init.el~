@@ -1,7 +1,0 @@
-;; ~/.config/emacs/init.el
-;; Author: Dan Murphy
-
-(setq inhibit-startup-message t)    ; Disable startup screen
-(tool-bar-mode -1)      ; Disable the toolbar
-(tooltip-mode -1)       ; Disable tooltips
-(set-fringe-mode 0)     ; Set left and right margins

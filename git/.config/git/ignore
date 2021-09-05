@@ -1,5 +1,9 @@
 # Filepath: ~/.config/git/ignore
 # Author: Dan Murphy
 
-# ignore all .DS_Store files from macOS
+# macOS Desktop Services files
 .DS_Store
+
+# Emacs backup and autosave files
+*~
+\#*\#
