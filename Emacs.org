@@ -41,7 +41,7 @@ Emacs has a built-in package manager, but [[https://github.com/jwiegley/use-pack
 
 * Keybindings
 
-[[https://github.com/emacs-evil/evil][Evil]] is an extensible vi layer for Emacs. It emulates the main features of Vim, turning Emacs into a modal editor. [[https://github.com/emacs-evil/evil-collection][Evil Collection]] provides additional bindings for the parts of Emacs that Evil does not cover.
+[[https://github.com/emacs-evil/evil][Evil]] is an extensible vi layer for Emacs. It emulates the main features of Vim, turning Emacs into a modal editor. [[https://github.com/emacs-evil/evil-collection][Evil Collection]] provides additional bindings for the parts of Emacs that Evil does not cover. [[https://github.com/emacs-evil/evil-surround][Evil Surround]] emulates Tim Pope's [[https://github.com/tpope/vim-surround][surround.vim]] plugin.
 
 [[https://github.com/noctuid/general.el][General]] provides a convenient method for adding keybindings; in particular, we can use General to return to normal state with 'jk'.
 
@@ -79,6 +79,10 @@ Emacs has a built-in package manager, but [[https://github.com/jwiegley/use-pack
     :config
     (evil-collection-init))
 
+  (use-package evil-surround
+    :config
+    (global-evil-surround-mode 1))
+
 #+end_src
 
 * Appearance and Interface
@@ -97,7 +101,7 @@ Unnecesary visual elements have been disabled, but the menu bar can be helpful w
   (setq inhibit-startup-message t) 
 
   ;; Disable the menu bar, scroll bar, tool bar and tooltips
-  (menu-bar-mode -1)
+  (menu-bar-mode 1)
   (scroll-bar-mode -1)
   (tool-bar-mode -1)
   (tooltip-mode -1)
@@ -112,14 +116,10 @@ Unnecesary visual elements have been disabled, but the menu bar can be helpful w
   (setq display-line-numbers-type 'relative)
   (global-display-line-numbers-mode t)
 
-  (dolist (mode '(org-mode-hook
-                  term-mode-hook
+  (dolist (mode '(eshell-mode-hook
                   shell-mode-hook
-                  eshell-mode-hook))
+                  term-mode-hook))
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
-
-  ;; You might also try something like this:
-  ;; (add-hook 'prog-mode-hook 'display-line-numbers relative)
 
 #+end_src
 
@@ -129,18 +129,25 @@ Unnecesary visual elements have been disabled, but the menu bar can be helpful w
 
   (set-face-attribute 'default nil :font "Iosevka" :height 160)
   (set-face-attribute 'fixed-pitch nil :font "Iosevka" :height 160)
-  (set-face-attribute 'variable-pitch nil :font "Cantarell" :height 160 :weight 'regular)
+  (set-face-attribute 'variable-pitch nil :font "Noto Sans" :height 150)
 
 #+end_src
 
 ** Color Theme
 
-[[https://github.com/hlissner/emacs-doom-themes][doom-themes]] is an excellent collection of high-quality themes with support for many different Emacs modes. Take a look at the [[https://github.com/hlissner/emacs-doom-themes/tree/screenshots][screenshots]] to find one you like. You can switch between themes easily with =M-x counsel-load-theme=.
+[[https://github.com/hlissner/emacs-doom-themes][doom-themes]] is an excellent collection of high-quality themes with support for many different Emacs modes. Take a look at the [[https://github.com/hlissner/emacs-doom-themes/tree/screenshots][screenshots]] to find one you like. I'll also add the excellent [[https://www.nordtheme.com/ports/emacs][Nord theme]]. You can quickly switch between themes with =M-x counsel-load-theme=.
+
+[[https://github.com/hlissner/emacs-solaire-mode][Solaire mode]] helps to visually distinguish "real" buffers (that is, the file-visiting code buffers where you do most of your work) from "unreal" buffers (popups, sidebars, log buffers, terminals, etc.) by giving the latter a slightly different (lighter or darker) background.
 
 #+begin_src emacs-lisp
 
   (use-package doom-themes
     :init (load-theme 'doom-one t))
+
+  (use-package nord-theme)
+
+  (use-package solaire-mode
+    :config (solaire-global-mode +1))
 
 #+end_src
 
@@ -263,6 +270,11 @@ Electric Pair mode is analagous to the Autopair package for Vim.
 
   (electric-pair-mode 1)
 
+  ;; Disable <> auto-pairing
+  (setq electric-pair-inhibit-predicate
+    `(lambda (c)
+      (if (char-equal c ?<) t (,electric-pair-inhibit-predicate c))))
+
 #+end_src
 
 * Org Mode
@@ -280,10 +292,10 @@ The =efs/org-font-setup= function adjusts the sizes of headings and uses variabl
                                (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
 
     ;; Set faces for heading levels
-    (dolist (face '((org-level-1 . 1.2)
-                    (org-level-2 . 1.1)
-                    (org-level-3 . 1.05)
-                    (org-level-4 . 1.0)
+    (dolist (face '((org-level-1 . 1.4)
+                    (org-level-2 . 1.2)
+                    (org-level-3 . 1.1)
+                    (org-level-4 . 1.1)
                     (org-level-5 . 1.1)
                     (org-level-6 . 1.1)
                     (org-level-7 . 1.1)
@@ -291,11 +303,14 @@ The =efs/org-font-setup= function adjusts the sizes of headings and uses variabl
       (set-face-attribute (car face) nil :font "Cantarell" :weight 'regular :height (cdr face)))
 
     ;; Ensure that anything that should be fixed-pitch in Org files appears that way
+    (set-face-attribute 'line-number nil :inherit 'fixed-pitch)
+    (set-face-attribute 'line-number-current-line nil :inherit 'fixed-pitch)
     (set-face-attribute 'org-block nil :foreground nil :inherit 'fixed-pitch)
     (set-face-attribute 'org-code nil   :inherit '(shadow fixed-pitch))
     (set-face-attribute 'org-table nil   :inherit '(shadow fixed-pitch))
     (set-face-attribute 'org-verbatim nil :inherit '(shadow fixed-pitch))
     (set-face-attribute 'org-special-keyword nil :inherit '(font-lock-comment-face fixed-pitch))
+    (set-face-attribute 'org-document-info-keyword nil :inherit '(font-lock-comment-face fixed-pitch))
     (set-face-attribute 'org-meta-line nil :inherit '(font-lock-comment-face fixed-pitch))
     (set-face-attribute 'org-checkbox nil :inherit 'fixed-pitch))
 
@@ -315,7 +330,8 @@ This section contains the basic configuration for Org mode. I'm leaving a lot ou
   (use-package org
     :hook (org-mode . efs/org-mode-setup)
     :config
-    (setq org-ellipsis " ▸")
+    (setq org-ellipsis " ▸"
+          org-hide-emphasis-markers t)
     (efs/org-font-setup))
 
 #+end_src
@@ -349,5 +365,41 @@ See [[https://orgmode.org/manual/Structure-Templates.html][Structure Templates]]
   (add-to-list 'org-structure-template-alist '("go" . "src go"))
   (add-to-list 'org-structure-template-alist '("yaml" . "src yaml"))
   (add-to-list 'org-structure-template-alist '("json" . "src json"))
+
+#+end_src
+
+* Development
+
+** Languages
+
+*** Markdown
+
+You can toogle markup hiding with =C-c C-x C-m=.
+
+#+begin_src emacs-lisp
+
+  (defun efs/markdown-font-setup ()
+    (variable-pitch-mode 1)
+    (dolist (face '((markdown-header-face-1 . 2.0)
+                    (markdown-header-face-2 . 1.7)
+                    (markdown-header-face-3 . 1.4)
+                    (markdown-header-face-4 . 1.1)
+                    (markdown-header-face-5 . 1.0)
+                    (markdown-header-face-6 . 1.0)))
+      (set-face-attribute (car face) nil :font "Cantarell" :weight 'regular :height (cdr face)))
+
+    ;; Ensure that anything that should be fixed-pitch appears that way
+    (set-face-attribute 'line-number nil :inherit 'fixed-pitch)
+    (set-face-attribute 'line-number-current-line nil :inherit 'fixed-pitch)
+    (set-face-attribute 'markdown-inline-code-face nil :inherit 'fixed-pitch))
+
+  (use-package markdown-mode
+    ;; :hook ((markdown-mode . variable-pitch-mode)
+    ;;        (markdown-mode . efs/markdown-font-setup))
+    :config
+    ;; (setq-default markdown-header-scaling t)
+    (setq-default markdown-list-indent-width 2
+                  markdown-footnote-location 'immediately
+                  markdown-hide-markup t))
 
 #+end_src
