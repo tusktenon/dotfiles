@@ -435,7 +435,8 @@ This section contains the basic configuration for Org mode. I'm leaving a lot ou
   (defun efs/org-mode-setup ()
     (org-indent-mode)
     (variable-pitch-mode 1)
-    (visual-line-mode 1))
+    (visual-line-mode 1)
+    (setq evil-auto-indent nil))
 
   (use-package org
     :pin org
@@ -482,6 +483,23 @@ See [[https://orgmode.org/manual/Structure-Templates.html][Structure Templates]]
 * Development
 
 ** Languages
+
+*** C/C++
+
+[[https://www.gnu.org/software/emacs/manual/html_node/ccmode/index.html][CC Mode]] is a built-in Emacs mode for editing C, C++, Java, and several other languages.
+
+#+begin_src emacs-lisp
+
+  (defun tusk/c-mode-common-setup ()
+    (setq c-default-style "java"
+          c-basic-offset 4
+          indent-tabs-mode nil)
+    (setq display-fill-column-indicator-column 79)
+    (display-fill-column-indicator-mode 1))
+
+  (add-hook 'c-mode-common-hook 'tusk/c-mode-common-setup)
+
+#+end_src
 
 *** Markdown
 
