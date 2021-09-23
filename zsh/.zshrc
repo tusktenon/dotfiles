@@ -24,8 +24,8 @@ export CDPATH
 bindkey -v
 
 # Escape from Insert to Normal mode with 'jj', 'jk' and/or 'kj'
-# bindkey -M viins 'jj' vi-cmd-mode
-bindkey -M viins 'jk' vi-cmd-mode
+bindkey -M viins 'jj' vi-cmd-mode
+#bindkey -M viins 'jk' vi-cmd-mode
 
 # Keep some useful Emacs bindings
 bindkey -M viins '\C-a' beginning-of-line
@@ -75,6 +75,18 @@ alias tree='tree -I .git'
 # Download videos in 720p
 #alias ydl-720="youtube-dl -f '[height=720]'"
 
+# Shell-side configuration for Emacs vterm
+vterm_printf() {
+    if [ -n "$TMUX" ] && ([ "${TERM%%-*}" = "tmux" ] || [ "${TERM%%-*}" = "screen" ] ); then
+        # Tell tmux to pass the escape sequences through
+        printf "\ePtmux;\e\e]%s\007\e\\" "$1"
+    elif [ "${TERM%%-*}" = "screen" ]; then
+        # GNU screen (screen, screen-256color, screen-256color-bce)
+        printf "\eP\e]%s\007\e\\" "$1"
+    else
+        printf "\e]%s\e\\" "$1"
+    fi
+}
 
 # Use Starship prompt
 eval "$(starship init zsh)"
@@ -85,3 +97,10 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 ZSH_HIGHLIGHT_STYLES[alias]='fg=green,bold'
 ZSH_HIGHLIGHT_STYLES[builtin]='fg=green,bold'
 ZSH_HIGHLIGHT_STYLES[path]='fg=cyan'
+
+# Required for directory and prompt tracking in Emacs vterm
+vterm_prompt_end() {
+    vterm_printf "51;A$(whoami)@$(hostname):$(pwd)";
+}
+setopt PROMPT_SUBST
+PROMPT=$PROMPT'%{$(vterm_prompt_end)%}'

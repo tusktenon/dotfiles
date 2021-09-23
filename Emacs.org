@@ -346,6 +346,26 @@ Dired is Emacs's excellent file manager. With the [[https://github.com/crocket/d
 
 * Shells & Terminals
 
+** vterm
+
+[[https://github.com/akermu/emacs-libvterm/][vterm]] is a terminal emulator for Emacs based on [[https://github.com/neovim/libvterm][libvterm]], a C library developped by the Neovim project. Compared to term and ansi-term (Emacs's built-in terminal emulators), vterm provides much better performance, as well as superior compatibility with terminal applications.
+
+Before installing vterm, make sure your system has the required packages installed. On an Arch-based system, these are =cmake=, =libtool= and (optionally) =libvterm=. Also, be sure to read the [[https://github.com/akermu/emacs-libvterm/#shell-side-configuration][Shell-side configuration]] and [[https://github.com/akermu/emacs-libvterm/#directory-tracking-and-prompt-tracking][Directory tracking and Prompt tracking]] sections of the vterm README: you need to add the =vterm_printf= and =vterm_prompt_end= functions to your shell's configuration file (=.bashrc= or =.zshrc=).
+
+#+begin_src emacs-lisp
+
+  (use-package vterm
+    :commands vterm
+    :config
+    (setq vterm-shell "zsh")
+    (setq vterm-max-scrollback 1000))
+
+#+end_src
+
+** eshell
+
+/TODO./ eshell is a Bash-like shell written in elisp. Though slower than vterm and lacking some features of bash and zsh, it offers superior Emacs integration and a consistent experience across all OSes.
+
 * Version Control
 
 ** Magit
