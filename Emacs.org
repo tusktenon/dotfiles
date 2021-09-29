@@ -138,7 +138,8 @@ Unnecesary visual elements have been disabled, but the menu bar can be helpful w
 
   (dolist (mode '(eshell-mode-hook
                   shell-mode-hook
-                  term-mode-hook))
+                  term-mode-hook
+                  vterm-mode-hook))
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
 #+end_src
@@ -181,6 +182,19 @@ Show Paren mode highlights matching delimiters. [[https://github.com/Fanael/rain
 
   (use-package rainbow-delimiters
     :hook (prog-mode . rainbow-delimiters-mode))
+
+#+end_src
+
+** Indentation Guides
+
+[[https://github.com/DarthFennec/highlight-indent-guides][highlight-indent-guides]] adds visual guides for indentation levels. Toggle with =M-x highlight-indent-guides-mode= (you may want to set up a binding for this).
+
+#+begin_src emacs-lisp
+
+  (use-package highlight-indent-guides
+    :hook (c-mode-common . highlight-indent-guides-mode)
+    :config (setq highlight-indent-guides-method 'character
+                  highlight-indent-guides-responsive 'top))
 
 #+end_src
 
@@ -317,6 +331,12 @@ Dired is Emacs's excellent file manager. With the [[https://github.com/crocket/d
     :custom ((dired-listing-switches "-agho --group-directories-first"))
     :config
     (setq delete-by-moving-to-trash t)
+    (define-key dired-mode-map [remap dired-find-file]
+      'dired-single-buffer)
+    (define-key dired-mode-map [remap dired-mouse-find-file-other-window]
+      'dired-single-buffer-mouse)
+    (define-key dired-mode-map [remap dired-up-directory]
+      'dired-single-up-directory)
     (evil-collection-define-key 'normal 'dired-mode-map
       "h" 'dired-single-up-directory
       "l" 'dired-single-buffer))
@@ -492,7 +512,7 @@ See [[https://orgmode.org/manual/Structure-Templates.html][Structure Templates]]
 
   (defun tusk/c-mode-common-setup ()
     (setq c-default-style "java"
-          c-basic-offset 4
+          c-basic-offset 2
           indent-tabs-mode nil)
     (setq display-fill-column-indicator-column 79)
     (display-fill-column-indicator-mode 1))
