@@ -65,6 +65,13 @@ You can also update at any time using =M-x auto-package-update-now=.
 
 [[https://github.com/noctuid/general.el][General]] provides a convenient method for adding keybindings; in particular, we can use General to return to normal state with 'jk'.
 
+I want =C-u= to follow Vim's behaviour: scroll up by half a screen in normal state, delete back to indentation in insert state. By default, however, =C-u= is bound in Emacs to the =universal-argument= prefix, which you may want to rebind to something else.
+
+Evil can be use one of three undo systems:
+  - =undo-fu=, in which case the [[https://gitlab.com/ideasman42/emacs-undo-fu][Undo Fu]] package must be installed;
+  - =undo-tree=, in which case the [[https://www.dr-qubit.org/undo-tree.html][Undo Tree]] package must be installed and =undo-tree-mode= must be activated;
+  - =undo-redo=, which uses commands natively available in Emacs 28.
+
 #+begin_src emacs-lisp
 
   ;; Make ESC quit prompts
@@ -78,11 +85,17 @@ You can also update at any time using =M-x auto-package-update-now=.
         :timeout 0.25
         "k" 'evil-normal-state)))
 
+  ;; If you switch to undo-redo in Emacs 28, you can remove the following line
+  (use-package undo-fu)
+
   (use-package evil
     :init
-    (setq evil-want-integration t)  ; required by evil-collection
-    (setq evil-want-keybinding nil) ; required by evil-collection
-    (setq evil-want-Y-yank-to-eol t)
+    (setq evil-want-integration t   ; required by evil-collection
+          evil-want-keybinding nil  ; required by evil-collection
+          evil-want-Y-yank-to-eol t
+          evil-want-C-u-delete t
+          evil-want-C-u-scroll t
+          evil-undo-system 'undo-fu)  ; try undo-redo when Emacs 28 is released
     :config
     (evil-mode 1)
     (define-key evil-insert-state-map (kbd "C-h") 'evil-delete-backward-char-and-join)
@@ -194,7 +207,7 @@ Show Paren mode highlights matching delimiters. [[https://github.com/Fanael/rain
   (use-package highlight-indent-guides
     :hook (c-mode-common . highlight-indent-guides-mode)
     :config (setq highlight-indent-guides-method 'character
-                  highlight-indent-guides-responsive 'top))
+                  highlight-indent-guides-responsive 'nil))
 
 #+end_src
 
