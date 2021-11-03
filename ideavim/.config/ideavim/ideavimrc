@@ -1,0 +1,31 @@
+" Filepath: ~/.ideavimrc or ~/.config/ideavim/ideavimrc
+" Author: Dan Murphy
+
+" Mappings
+
+" Exit Insert mode by pressing 'jk'
+inoremap jk <Esc>
+
+" Map Y to act like D and C, i.e. 'y$' rather than the default 'yy' 
+noremap Y y$
+
+" Mappings from Tim Pope's Unimpaired plugin <tpope/vim-unimpaired>
+nnoremap [<space> O<esc>j
+nnoremap ]<space> o<esc>k
+
+
+" Emulated Vim Plugins
+
+"set commentary
+set highlightedyank
+let g:highlightedyank_highlight_duration = "800"
+set surround
+
+
+# Other Settings
+
+# Use relative line numbers
+set number relativenumber
+
+# Join lines intelligently via IDE
+set ideajoin
