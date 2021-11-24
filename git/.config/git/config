@@ -7,6 +7,7 @@ email = dc.murphy@utoronto.ca
 
 [core]
 editor = nvim
+autocrlf = input  # Convert CRLF line endings to LF on commit
 
 [init]
 defaultBranch = main
