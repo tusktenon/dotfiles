@@ -16,7 +16,7 @@ nnoremap ]<space> o<esc>k
 
 " Emulated Vim Plugins
 
-"set commentary
+set commentary
 set highlightedyank
 let g:highlightedyank_highlight_duration = "800"
 set surround
