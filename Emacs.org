@@ -16,7 +16,7 @@ This Org Mode document generates the Emacs configuration file [[file:init.el][in
 
 * Package System Setup
 
-Emacs has a built-in package manager, but [[https://github.com/jwiegley/use-package][use-package]] makes configuration and loading of packages much easier.
+Emacs has a built-in package manager (=package.el=), but [[https://github.com/jwiegley/use-package][use-package]] makes configuration and loading of packages much easier.
 
 #+begin_src emacs-lisp
 
@@ -42,7 +42,7 @@ Emacs has a built-in package manager, but [[https://github.com/jwiegley/use-pack
 
 ** Automatic Package Updates
 
-The auto-package-update package helps keep your Emacs packages up to date.  It will prompt you after a certain number of days, either at startup or at a specific time of day, to remind you to update your packages.
+The [[https://github.com/rranelli/auto-package-update.el][auto-package-update]] package helps keep your Emacs packages up to date.  It will prompt you after a certain number of days, either at startup or at a specific time of day, to remind you to update your packages.
 
 You can also update at any time using =M-x auto-package-update-now=.
 
@@ -115,6 +115,22 @@ Evil can be use one of three undo systems:
   (use-package evil-surround
     :config
     (global-evil-surround-mode 1))
+
+#+end_src
+
+Evil does not seem to include a direct analog of (Neo)Vim's "highlighted yank" feature. The [[https://github.com/edkolev/evil-goggles][evil-goggles]] package does this and more, adding visual hints for most Evil edit operations. However, if you only want the highlighted yank, you can follow the instructions in [[https://blog.meain.io/2020/emacs-highlight-yanked/][this blog post]] to write your own (surprisingly simple) function, which makes use of the built-in =pulse.el= .
+
+#+begin_src emacs-lisp
+
+  (setq pulse-delay 0.04)
+  (setq pulse-iterations 10)
+
+  (defun efs/evil-highlight-yank (orig-fn beg end &rest args)
+    "Advice to be added to 'evil-yank' to highlight yanked region."
+    (pulse-momentary-highlight-region beg end)
+    (apply orig-fn beg end args))
+
+  (advice-add 'evil-yank :around 'efs/evil-highlight-yank) 
 
 #+end_src
 
