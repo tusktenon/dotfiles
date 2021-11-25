@@ -254,6 +254,54 @@ Show Paren mode highlights matching delimiters. [[https://github.com/Fanael/rain
 
 *** TODO: Add Vertico-based completion system
 
+Emacs includes several built-in completion packages (Ido and Icomplete), but many users prefer [[https://emacs-helm.github.io/helm/][Helm]] or [[https://github.com/abo-abo/swiper][Ivy]]. [[https://github.com/minad/vertico][Vertico]] and its complementary packages are designed around an alternative philosophy that I find very appealing:
+- Vertico provides a  new completion UI but uses Emacs's built-in completion mechanics. This means a small code base, excellent performance, and automatic compatibility with other packages.
+- Unlike the heavyweight, monolithic Helm and Ivy, the Vertico "ecosystem" consists of independent packages, each responsible for a specific element of the completion interface:
+    - [[https://github.com/minad/vertico][Vertico]]: vertical completion UI.
+    - [[https://github.com/minad/corfu][Corfu]]: the =completion-in-region= counterpart to Vertico.
+    - [[https://github.com/minad/consult][Consult]]: useful search and navigation commands; analagous to Counsel and Swiper in Ivy.
+    - [[https://github.com/minad/marginalia][Marginalia]]: annotations for minibuffer completions; analagous to Ivy Rich.
+    - [[https://github.com/oantolin/orderless][Orderless]]: advanced completion style.
+    - [[https://github.com/oantolin/embark][Embark]]: actions and context menu for the minibuffer.
+
+To really understand what each of these components is doing, it's best to introduce them one at a time: see [[https://github.com/minad/vertico#complementary-packages][this approach]] suggested by the author of Vertico.
+
+*** Completions with Vertico
+
+Because Vertico uses Emacs's native completion system, we can use the built-in =savehist-mode= to preserve minibuffer history.
+
+#+begin_src emacs-lisp
+
+  (use-package savehist
+    :config
+    (setq history-length 16)
+    :init
+    (savehist-mode))
+
+  ;; Taken from David Wilson's Emacs configuration
+  (defun efs/minibuffer-backward-kill (arg)
+    "When minibuffer is completing a file name delete up to parent
+    folder, otherwise delete a word"
+    (interactive "p")
+    (if minibuffer-completing-file-name
+        (if (string-match-p "/." (minibuffer-contents))
+            (zap-up-to-char (- arg) ?/)
+          (delete-minibuffer-contents))
+      (delete-word (- arg))))
+
+  (use-package vertico
+    :bind (:map vertico-map
+                ("C-j" . vertico-next)
+                ("C-k" . vertico-previous)
+                :map minibuffer-local-map
+                ("M-h" . efs/minibuffer-backward-kill))
+    :custom
+    (vertico-cycle t)
+    :init
+    (vertico-mode))
+
+#+end_src
+
 ** Help System
 
 [[https://github.com/justbur/emacs-which-key][which-key]] is a useful UI panel that appears when you start pressing any key binding in Emacs to offer you all possible completions for the prefix.  For example, if you press =C-c= (hold control and press the letter =c=), a panel will appear at the bottom of the frame displaying all of the bindings under that prefix and which command they run.  This is very useful for learning the possible key bindings in the mode of your current buffer.
