@@ -185,7 +185,7 @@ Unnecesary visual elements have been disabled, but the menu bar can be helpful w
 
 ** Color Theme
 
-[[https://github.com/hlissner/emacs-doom-themes][doom-themes]] is an excellent collection of high-quality themes with support for many different Emacs modes. Take a look at the [[https://github.com/hlissner/emacs-doom-themes/tree/screenshots][screenshots]] to find one you like. I'll also add the excellent [[https://www.nordtheme.com/ports/emacs][Nord theme]]. You can quickly switch between themes with =M-x counsel-load-theme=.
+[[https://github.com/hlissner/emacs-doom-themes][doom-themes]] is an excellent collection of high-quality themes with support for many different Emacs modes. Take a look at the [[https://github.com/hlissner/emacs-doom-themes/tree/screenshots][screenshots]] to find one you like. I'll also add the excellent [[https://www.nordtheme.com/ports/emacs][Nord theme]]. You can quickly switch between themes with =M-x load-theme=.
 
 [[https://github.com/hlissner/emacs-solaire-mode][Solaire mode]] helps to visually distinguish "real" buffers (that is, the file-visiting code buffers where you do most of your work) from "unreal" buffers (popups, sidebars, log buffers, terminals, etc.) by giving the latter a slightly different (lighter or darker) background.
 
@@ -252,43 +252,7 @@ Show Paren mode highlights matching delimiters. [[https://github.com/Fanael/rain
 
 ** Completion System
 
-[[https://oremacs.com/swiper/][Ivy]] is an excellent completion framework for Emacs.  It provides a minimal yet powerful selection menu that appears when you open files, switch buffers, and for many other tasks in Emacs.  Counsel is a customized set of commands to replace `find-file` with `counsel-find-file`, etc which provide useful commands for each of the default completion commands.
-
-[[https://github.com/Yevgnen/ivy-rich][ivy-rich]] adds extra columns to a few of the Counsel commands to provide more information about each item.
-
-#+begin_src emacs-lisp
-
-  (use-package ivy
-    :diminish
-    :bind (("C-s" . swiper)
-           :map ivy-minibuffer-map
-           ("TAB" . ivy-alt-done)
-           ("C-l" . ivy-alt-done)
-           ("C-j" . ivy-next-line)
-           ("C-k" . ivy-previous-line)
-           :map ivy-switch-buffer-map
-           ("C-k" . ivy-previous-line)
-           ("C-l" . ivy-done)
-           ("C-d" . ivy-switch-buffer-kill)
-           :map ivy-reverse-i-search-map
-           ("C-k" . ivy-previous-line)
-           ("C-d" . ivy-reverse-i-search-kill))
-    :config
-    (ivy-mode 1))
-
-  (use-package ivy-rich
-    :after ivy
-    :init
-    (ivy-rich-mode 1))
-
-  (use-package counsel
-    :bind (("C-M-j" . 'counsel-switch-buffer)
-           :map minibuffer-local-map
-           ("C-r" . 'counsel-minibuffer-history))
-    :config
-    (counsel-mode 1))
-
-#+end_src
+*** TODO: Add Vertico-based completion system
 
 ** Help System
 
@@ -310,14 +274,12 @@ Show Paren mode highlights matching delimiters. [[https://github.com/Fanael/rain
 
   (use-package helpful
     :commands (helpful-callable helpful-variable helpful-command helpful-key)
-    :custom
-    (counsel-describe-function-function #'helpful-callable)
-    (counsel-describe-variable-function #'helpful-variable)
     :bind
-    ([remap describe-function] . counsel-describe-function)
     ([remap describe-command] . helpful-command)
-    ([remap describe-variable] . counsel-describe-variable)
-    ([remap describe-key] . helpful-key))
+    ([remap describe-function] . helpful-function)
+    ([remap describe-key] . helpful-key)
+    ([remap describe-symbol] . helpful-symbol)  ; try helpful-at-point?
+    ([remap describe-variable] . helpful-variable))
 
 #+end_src
 
