@@ -155,7 +155,7 @@ Unnecesary visual elements have been disabled, but the menu bar can be helpful w
   (tool-bar-mode -1)
   (tooltip-mode -1)
 
-  (set-fringe-mode 10)  ; Set left and right margins
+  (set-fringe-mode 4)  ; Set left and right margins
 
   (global-visual-line-mode 1)  ; Visually wrap long lines
 
@@ -450,6 +450,33 @@ Before installing vterm, make sure your system has the required packages install
 
 #+end_src
 
+** Git Gutter
+
+[[https://github.com/emacsorphanage/git-gutter][git-gutter]] highlights uncommited changes in the margin of the window. [[https://github.com/emacsorphanage/git-gutter-fringe][git-gutter-fringe]] is a variation of git-gutter that uses the fringe rather than the margin. Keep in mind that the fringe only appears in graphical Emacs buffers, so you cannot use git-gutter-fringe in the terminal. An alternative package is [[https://github.com/dgutov/diff-hl][diff-hl]].
+
+Note that both git-gutter-fringe and diff-hl will conflict with other modes that put indicators in the fringe, notably [[https://www.flycheck.org/][Flycheck]]. A [[https://github.com/emacsorphanage/git-gutter-fringe/issues/9#issuecomment-611712558][good solution]] (used in [[https://github.com/hlissner/doom-emacs/blob/cdaa55b4dbfebe6c81ab92af6a7c9bc20f68f3a6/modules/ui/vc-gutter/config.el#L119][Doom Emacs]]) is to give the left fringe to your VCS and the right to Flycheck (or vice-versa).
+
+#+begin_src emacs-lisp
+
+  (use-package git-gutter
+    :diminish
+    :hook ((text-mode . git-gutter-mode)
+           (prog-mode . git-gutter-mode))
+    :config
+    (setq git-gutter:update-interval 1)
+    ;;(require 'git-gutter-fringe)
+      ;;;; Taken from Doom Emacs
+    ;;(setq-default fringes-outside-margins t)
+    ;;(define-fringe-bitmap 'git-gutter-fr:added [224]
+    ;;nil nil '(center repeated))
+    ;;(define-fringe-bitmap 'git-gutter-fr:modified [224]
+    ;;nil nil '(center repeated))
+    ;;(define-fringe-bitmap 'git-gutter-fr:deleted [128 192 224 240]
+    ;;nil nil 'bottom)
+    )
+
+#+end_src
+
 * Org Mode
 
 ** Font Settings
@@ -514,7 +541,7 @@ This section contains the basic configuration for Org mode. I'm leaving a lot ou
 
 ** Toggle Markup Visibility
 
-[[https://github.com/awth13/org-appear][org-appear]] is an invaluable package that makes it much easier to edit Org documents when =org-hide-emphasis-markers= is active. It temporarily makes concealed markup elements appear when the cursor enters an element. By default, toggling is instaneous and applies only to emphasis markers, but additional functionality can be enabled.
+[[https://github.com/awth13/org-appear][org-appear]] is an invaluable package that makes it much easier to edit Org documents when =org-hide-emphasis-markers= is active. It temporarily makes concealed markup elements appear when the cursor enters an element. By default, toggling is instaneous and applies only to emphasis markers, but additional functionality can be enabled via custom variables.
 
 #+begin_src emacs-lisp
 
@@ -522,9 +549,8 @@ This section contains the basic configuration for Org mode. I'm leaving a lot ou
     :hook (org-mode . org-appear-mode)
     ;; :custom
     ;; (org-appear-autolinks t)  ;; toggle links
-    ;; (org-appear-delay)        ;; delay before toggling
+    ;; (org-appear-delay 0.5)    ;; delay before toggling
   )
-
 
 #+end_src
 
