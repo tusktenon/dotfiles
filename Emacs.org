@@ -512,6 +512,22 @@ This section contains the basic configuration for Org mode. I'm leaving a lot ou
 
 #+end_src
 
+** Toggle Markup Visibility
+
+[[https://github.com/awth13/org-appear][org-appear]] is an invaluable package that makes it much easier to edit Org documents when =org-hide-emphasis-markers= is active. It temporarily makes concealed markup elements appear when the cursor enters an element. By default, toggling is instaneous and applies only to emphasis markers, but additional functionality can be enabled.
+
+#+begin_src emacs-lisp
+
+  (use-package org-appear
+    :hook (org-mode . org-appear-mode)
+    ;; :custom
+    ;; (org-appear-autolinks t)  ;; toggle links
+    ;; (org-appear-delay)        ;; delay before toggling
+  )
+
+
+#+end_src
+
 ** Heading Bullets
 
 [[https://github.com/sabof/org-bullets][org-bullets]] replaces the heading stars in Org-mode buffers with nicer-looking characters that you can customize.  Another option for this is [[https://github.com/integral-dw/org-superstar-mode][org-superstar-mode]].
