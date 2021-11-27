@@ -16,27 +16,38 @@ This Org Mode document generates the Emacs configuration file [[file:init.el][in
 
 * Package System Setup
 
-Emacs has a built-in package manager (=package.el=), but [[https://github.com/jwiegley/use-package][use-package]] makes configuration and loading of packages much easier.
+Emacs has a built-in package manager (=package.el=), but [[https://github.com/raxod502/straight.el][straight.el]] is a more advanced alternative with a number of useful features. In particular, =straight.el= can install and update packages from their repositories, letting you add packages that aren't in ELPA or MELPA. 
+
+Some  useful commands:
+- =straight-pull-all= will upgrade all of your active packages once you restart Emacs.
+- =straight-check-all= will upgrade all of your active packages while Emacs is running.
+- =straight-remove-unused-repos= will delete unused repository folders. Note that if you just want to uninstall a package, you can simply remove the corresponding line from your configuration.
+
+[[https://github.com/jwiegley/use-package][use-package]] makes configuration and loading of packages much easier. =straight.el= provides full =use-package= integration.
 
 #+begin_src emacs-lisp
 
-  ;; Initialize package sources
-  (require 'package)
+  ;; straight.el bootstrap code
+  (defvar bootstrap-version)
+  (let ((bootstrap-file
+         (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+        (bootstrap-version 5))
+    (unless (file-exists-p bootstrap-file)
+      (with-current-buffer
+          (url-retrieve-synchronously
+           "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
+           'silent 'inhibit-cookies)
+        (goto-char (point-max))
+        (eval-print-last-sexp)))
+    (load bootstrap-file nil 'nomessage))
 
-  (setq package-archives '(("melpa" . "https://melpa.org/packages/")
-                           ("org" . "https://orgmode.org/elpa/")
-                           ("elpa" . "https://elpa.gnu.org/packages/")))
+  ;; Install =use-package= with =straight.el=
+  (straight-use-package 'use-package)
 
-  (package-initialize)
-  (unless package-archive-contents
-    (package-refresh-contents))
-
-  ;; Initialize use-package on non-Linux platforms
-  (unless (package-installed-p 'use-package)
-    (package-install 'use-package))
-
-  (require 'use-package)
-  (setq use-package-always-ensure t)
+  ;; =use-package= forms invoke =straight.el= to install packages,
+  ;; unless specified otherwise.
+  ;; This is analogous to setting =use-package-always-ensure= with =package.el=
+  (setq straight-use-package-by-default t)
 
 #+end_src
 
@@ -368,7 +379,7 @@ Dired is Emacs's excellent file manager. With the [[https://github.com/crocket/d
 #+begin_src emacs-lisp
 
   (use-package dired
-    :ensure nil
+    :straight nil
     :commands (dired dired-jump)
     :bind (("C-x C-j" . dired-jump))
     :custom ((dired-listing-switches "-agho --group-directories-first"))
