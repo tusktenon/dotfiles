@@ -244,8 +244,6 @@ Show Paren mode highlights matching delimiters. [[https://github.com/Fanael/rain
 
 ** Completion System
 
-*** TODO: Add Vertico-based completion system
-
 Emacs includes several built-in completion packages (Ido and Icomplete), but many users prefer [[https://emacs-helm.github.io/helm/][Helm]] or [[https://github.com/abo-abo/swiper][Ivy]]. [[https://github.com/minad/vertico][Vertico]] and its complementary packages are designed around an alternative philosophy that I find very appealing:
 - Vertico provides a  new completion UI but uses Emacs's built-in completion mechanics. This means a small code base, excellent performance, and automatic compatibility with other packages.
 - Unlike the heavyweight, monolithic Helm and Ivy, the Vertico "ecosystem" consists of independent packages, each responsible for a specific element of the completion interface:
@@ -295,6 +293,12 @@ Because Vertico uses Emacs's native completion system, we can use the built-in =
 
 #+end_src
 
+*** TODO Completions in Regions with Corfu
+
+*** TODO Consult Commands
+
+Include =consult-lsp= and (possibly) =consult-dir=. Make a list or table of particularly useful commands and their bindings.
+
 *** Completion Annotations with Marginalia
 
 Cycle through available annotations (including none) with =marginalia-cycle=.
@@ -317,6 +321,8 @@ Cycle through available annotations (including none) with =marginalia-cycle=.
     :custom (completion-styles '(orderless)))
 
 #+end_src
+
+*** TODO Completion Actions with Embark
 
 ** Help System
 
