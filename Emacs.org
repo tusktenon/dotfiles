@@ -295,6 +295,20 @@ Because Vertico uses Emacs's native completion system, we can use the built-in =
 
 #+end_src
 
+*** Completion Annotations with Marginalia
+
+Cycle through available annotations (including none) with =marginalia-cycle=.
+
+#+begin_src emacs-lisp
+
+  (use-package marginalia
+    :bind (:map minibuffer-local-map
+                ("M-A" . marginalia-cycle))
+    :init
+    (marginalia-mode))
+
+#+end_src
+
 *** Advanced Completion Candidate Filtering with Orderless
 
 #+begin_src emacs-lisp
