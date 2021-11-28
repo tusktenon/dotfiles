@@ -286,11 +286,21 @@ Because Vertico uses Emacs's native completion system, we can use the built-in =
                 ("C-j" . vertico-next)
                 ("C-k" . vertico-previous)
                 :map minibuffer-local-map
-                ("M-h" . efs/minibuffer-backward-kill))
+                ;;("M-h" . efs/minibuffer-backward-kill))
+                ("<backspace>" . efs/minibuffer-backward-kill))
     :custom
     (vertico-cycle t)
     :init
     (vertico-mode))
+
+#+end_src
+
+*** Advanced Completion Candidate Filtering with Orderless
+
+#+begin_src emacs-lisp
+
+  (use-package orderless
+    :custom (completion-styles '(orderless)))
 
 #+end_src
 
