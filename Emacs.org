@@ -147,7 +147,7 @@ Unnecesary visual elements have been disabled, but the menu bar can be helpful w
   (tool-bar-mode -1)
   (tooltip-mode -1)
 
-  (set-fringe-mode 4)  ; Set left and right margins
+  (set-fringe-mode 12)  ; Set left and right margins
 
   (global-visual-line-mode 1)  ; Visually wrap long lines
 
@@ -451,22 +451,20 @@ Note that both git-gutter-fringe and diff-hl will conflict with other modes that
 #+begin_src emacs-lisp
 
   (use-package git-gutter
-    ;;:straight git-gutter-fringe
+    :straight git-gutter-fringe
     :diminish
     :hook ((text-mode . git-gutter-mode)
            (prog-mode . git-gutter-mode))
     :config
     (setq git-gutter:update-interval 1)
-    ;;(require 'git-gutter-fringe)
-      ;;;; Taken from Doom Emacs
-    ;;(setq-default fringes-outside-margins t)
-    ;;(define-fringe-bitmap 'git-gutter-fr:added [224]
-    ;;nil nil '(center repeated))
-    ;;(define-fringe-bitmap 'git-gutter-fr:modified [224]
-    ;;nil nil '(center repeated))
-    ;;(define-fringe-bitmap 'git-gutter-fr:deleted [128 192 224 240]
-    ;;nil nil 'bottom)
-    )
+    (require 'git-gutter-fringe)
+    ;; Taken from Doom Emacs
+    (define-fringe-bitmap 'git-gutter-fr:added [224]
+      nil nil '(center repeated))
+    (define-fringe-bitmap 'git-gutter-fr:modified [224]
+      nil nil '(center repeated))
+    (define-fringe-bitmap 'git-gutter-fr:deleted [128 192 224 240]
+      nil nil 'bottom))
 
 #+end_src
 
@@ -523,7 +521,6 @@ This section contains the basic configuration for Org mode. I'm leaving a lot ou
     (setq evil-auto-indent nil))
 
   (use-package org
-    :pin org
     :hook (org-mode . efs/org-mode-setup)
     :config
     (setq org-ellipsis " ▸"
