@@ -1,6 +1,6 @@
 #+TITLE: Emacs Configuration
 #+AUTHOR: Dan Murphy
-#+PROPERTY: header-args :tangle ~/.emacs.d/init.el :mkdirp yes
+#+PROPERTY: header-args :tangle ~/.emacs.efs/init.el :mkdirp yes
 
 * Introduction
 
@@ -284,8 +284,7 @@ Because Vertico uses Emacs's native completion system, we can use the built-in =
                 ("C-j" . vertico-next)
                 ("C-k" . vertico-previous)
                 :map minibuffer-local-map
-                ;;("M-h" . efs/minibuffer-backward-kill))
-                ("<backspace>" . efs/minibuffer-backward-kill))
+                ("M-h" . efs/minibuffer-backward-kill))
     :custom
     (vertico-cycle t)
     :init
@@ -487,6 +486,7 @@ Note that both git-gutter-fringe and diff-hl will conflict with other modes that
            (prog-mode . git-gutter-mode))
     :config
     (setq git-gutter:update-interval 1)
+    (setq git-gutter:visual-line t)
     (require 'git-gutter-fringe)
     ;; Taken from Doom Emacs
     (define-fringe-bitmap 'git-gutter-fr:added [224]
