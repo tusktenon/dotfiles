@@ -53,13 +53,13 @@ Some  useful commands:
 
 * Keybindings
 
-[[https://github.com/emacs-evil/evil][Evil]] is an extensible vi layer for Emacs. It emulates the main features of Vim, turning Emacs into a modal editor. [[https://github.com/emacs-evil/evil-collection][Evil Collection]] provides additional bindings for the parts of Emacs that Evil does not cover. [[https://github.com/emacs-evil/evil-surround][Evil Surround]] emulates Tim Pope's [[https://github.com/tpope/vim-surround][surround.vim]] plugin.
+** Yay Evil!
 
-[[https://github.com/noctuid/general.el][General]] provides a convenient method for adding keybindings; in particular, we can use General to return to normal state with 'jk'.
+[[https://github.com/emacs-evil/evil][Evil]] is an extensible vi layer for Emacs. It emulates the main features of Vim, turning Emacs into a modal editor. [[https://github.com/emacs-evil/evil-collection][Evil Collection]] provides additional bindings for the parts of Emacs that Evil does not cover.
 
 I want =C-u= to follow Vim's behaviour: scroll up by half a screen in normal state, delete back to indentation in insert state. By default, however, =C-u= is bound in Emacs to the =universal-argument= prefix, which you may want to rebind to something else.
 
-Evil can be use one of three undo systems:
+Evil can use one of three undo systems:
   - =undo-fu=, in which case the [[https://gitlab.com/ideasman42/emacs-undo-fu][Undo Fu]] package must be installed;
   - =undo-tree=, in which case the [[https://www.dr-qubit.org/undo-tree.html][Undo Tree]] package must be installed and =undo-tree-mode= must be activated;
   - =undo-redo=, which uses commands natively available in Emacs 28.
@@ -68,15 +68,6 @@ Evil can be use one of three undo systems:
 
   ;; Make ESC quit prompts
   (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
-
-  (use-package general
-    :config
-    ;; From insert or replace states, exit to normal state with 'jk'
-    (general-define-key
-     :states '(insert replace)
-     "j" (general-key-dispatch 'self-insert-command
-           :timeout 0.25
-           "k" 'evil-normal-state)))
 
   ;; If you switch to undo-redo in Emacs 28, you can remove the following line
   (use-package undo-fu)
@@ -105,10 +96,6 @@ Evil can be use one of three undo systems:
     :config
     (evil-collection-init))
 
-  (use-package evil-surround
-    :config
-    (global-evil-surround-mode 1))
-
 #+end_src
 
 Evil does not seem to include a direct analog of (Neo)Vim's "highlighted yank" feature. The [[https://github.com/edkolev/evil-goggles][evil-goggles]] package does this and more, adding visual hints for most Evil edit operations. However, if you only want the highlighted yank, you can follow the instructions in [[https://blog.meain.io/2020/emacs-highlight-yanked/][this blog post]] to write your own (surprisingly simple) function, which makes use of the built-in =pulse.el= .
@@ -125,6 +112,58 @@ Evil does not seem to include a direct analog of (Neo)Vim's "highlighted yank" f
 
   (advice-add 'evil-yank :around 'efs/evil-highlight-yank) 
 
+#+end_src
+
+** Evil Plugins
+
+Any reasonably important/popular Vim plugin has probably been ported to Evil. For ideas, see the [[https://www.emacswiki.org/emacs/Evil#h5o-6][EmacsWiki entry]] on Evil, and the Doom Emacs [[https://github.com/hlissner/doom-emacs/tree/develop/modules/editor/evil#plugins][Evil module]]. You might also have a look at the emulated plugins for the [[https://github.com/VSCodeVim/Vim#-emulated-plugins][VS Code]] and [[https://github.com/JetBrains/ideavim/wiki/Emulated-plugins][IntelliJ]] Vim emulators.
+
+[[https://github.com/emacs-evil/evil-surround][Evil Surround]] emulates Tim Pope's [[https://github.com/tpope/vim-surround][surround.vim]] plugin.
+
+#+begin_src emacs-lisp
+
+  (use-package evil-surround
+    :config
+    (global-evil-surround-mode 1))
+  
+#+end_src
+
+** Display Available Bindings with Which-Key
+
+[[https://github.com/justbur/emacs-which-key][which-key]] displays all available bindings when you enter an incomplete command (prefix keys). It lets you discover and use bindings without having to actively research and memorize them.
+
+#+begin_src emacs-lisp
+
+(use-package which-key
+  :init (which-key-mode)
+  :diminish which-key-mode
+  :config
+  (setq which-key-idle-delay 0.5))
+
+#+end_src
+
+
+** Simplified Custom Bindings with General
+
+[[https://github.com/noctuid/general.el][general]] provides a convenient, unified interface for defining keybindings; you can think of =general= as doing for bindings what =use-package= does for packages.
+
+For instance, we can use =general= to escape to normal state (from insert or replace states) with 'jk'. (Alternatively, you could try the dedicated package [[https://github.com/syl20bnr/evil-escape][evil-escape]], used in Doom Emacs.)
+
+=general= also makes it easy to set up Vim-style leader keys, and integrates beautifully with =which-key=. Used together, these two packages let you create your own Spacemacs-like binding system:
+ - use =general= to define bindings that are intuitively organized under mnemonic prefixes (=b= for buffer, =f= for file, =g= for git, =w= for window, etc.);
+ - =which-key='s real-time display of available bindings makes such multi-step bindings discoverable.
+
+#+begin_src emacs-lisp
+
+  (use-package general
+    :config
+    ;; From insert or replace states, exit to normal state with 'jk'
+    (general-define-key
+     :states '(insert replace)
+     "j" (general-key-dispatch 'self-insert-command
+           :timeout 0.25
+           "k" 'evil-normal-state)))
+  
 #+end_src
 
 * Appearance and Interface
@@ -325,18 +364,6 @@ Cycle through available annotations (including none) with =marginalia-cycle=.
 *** TODO Completion Actions with Embark
 
 ** Help System
-
-[[https://github.com/justbur/emacs-which-key][which-key]] is a useful UI panel that appears when you start pressing any key binding in Emacs to offer you all possible completions for the prefix.  For example, if you press =C-c= (hold control and press the letter =c=), a panel will appear at the bottom of the frame displaying all of the bindings under that prefix and which command they run.  This is very useful for learning the possible key bindings in the mode of your current buffer.
-
-#+begin_src emacs-lisp
-
-(use-package which-key
-  :init (which-key-mode)
-  :diminish which-key-mode
-  :config
-  (setq which-key-idle-delay 0.5))
-
-#+end_src
 
 [[https://github.com/Wilfred/helpful][Helpful]] adds a lot of very helpful (get it?) information to Emacs' =describe-= command buffers.  For example, if you use =describe-function=, you will not only get the documentation about the function, you will also see the source code of the function and where it gets used in other places in the Emacs configuration.  It is very useful for figuring out how things work in Emacs.
 
