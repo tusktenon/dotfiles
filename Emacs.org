@@ -71,11 +71,12 @@ Evil can be use one of three undo systems:
 
   (use-package general
     :config
-    (general-evil-setup t)
-    (general-imap "j"
-      (general-key-dispatch 'self-insert-command
-        :timeout 0.25
-        "k" 'evil-normal-state)))
+    ;; From insert or replace states, exit to normal state with 'jk'
+    (general-define-key
+     :states '(insert replace)
+     "j" (general-key-dispatch 'self-insert-command
+           :timeout 0.25
+           "k" 'evil-normal-state)))
 
   ;; If you switch to undo-redo in Emacs 28, you can remove the following line
   (use-package undo-fu)
@@ -486,7 +487,8 @@ Note that both git-gutter-fringe and diff-hl will conflict with other modes that
            (prog-mode . git-gutter-mode))
     :config
     (setq git-gutter:update-interval 1)
-    (setq git-gutter:visual-line t)
+    ;; Sadly, it seems that the following setting does not apply to git-gutter-fringe
+    ;;(setq git-gutter:visual-line t)
     (require 'git-gutter-fringe)
     ;; Taken from Doom Emacs
     (define-fringe-bitmap 'git-gutter-fr:added [224]
