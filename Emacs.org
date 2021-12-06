@@ -142,7 +142,6 @@ Any reasonably important/popular Vim plugin has probably been ported to Evil. Fo
 
 #+end_src
 
-
 ** Simplified Custom Bindings with General
 
 [[https://github.com/noctuid/general.el][general]] provides a convenient, unified interface for defining keybindings; you can think of =general= as doing for bindings what =use-package= does for packages.
@@ -150,9 +149,13 @@ Any reasonably important/popular Vim plugin has probably been ported to Evil. Fo
 For instance, we can use =general= to escape to normal state (from insert or replace states) with 'jk'. (Alternatively, you could try the dedicated package [[https://github.com/syl20bnr/evil-escape][evil-escape]], used in Doom Emacs.)
 
 =general= also makes it easy to set up Vim-style leader keys, and integrates beautifully with =which-key=. Used together, these two packages let you create your own Spacemacs-like binding system:
- - use =general= to define bindings that are intuitively organized under mnemonic prefixes (=b= for buffer, =f= for file, =g= for git, =w= for window, etc.);
- - =which-key='s real-time display of available bindings makes such multi-step bindings discoverable.
+    - use =general= to define bindings that are intuitively organized under mnemonic prefixes (=b= for buffer, =f= for file, =g= for git, =w= for window, etc.);
+    - =which-key='s real-time display of available bindings makes such multi-step bindings discoverable.
 
+We have a good deal of flexibility as to where we actually define bindings:
+    - We can define them all in once place (presumably in the =use-package= block for =general=, directly below). Note that you can create a binding to a command before loading the package that provides that command.
+    - We can define the bindings to built-in Emacs commands in one place, and keep other bindings with their packages. The advantage of this approach is that, if we decide to remove or disable a package, we don't have to track down its keybindings somewhere else.
+   
 #+begin_src emacs-lisp
 
   (use-package general
@@ -162,8 +165,20 @@ For instance, we can use =general= to escape to normal state (from insert or rep
      :states '(insert replace)
      "j" (general-key-dispatch 'self-insert-command
            :timeout 0.25
-           "k" 'evil-normal-state)))
-  
+           "k" 'evil-normal-state))
+    ;; Set up leader key(s)
+    (general-create-definer efs/leader-def
+      :keymaps '(normal visual insert emacs)
+      :prefix "SPC"
+      :non-normal-prefix "C-SPC"))
+
+  (efs/leader-def
+   "SPC" '(execute-extended-command :which-key "Execute command")
+   ;; Files
+   "f"  '(:ignore t :which-key "Files")
+   "ff" '(find-file :which-key "Find file")
+   "fs" '(save-buffer :which-key "Save file"))
+
 #+end_src
 
 * Appearance and Interface
