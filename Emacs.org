@@ -349,9 +349,21 @@ Because Vertico uses Emacs's native completion system, we can use the built-in =
 
 *** TODO Completions in Regions with Corfu
 
-*** TODO Consult Commands
+*** TODO Enhanced Completion Commands with Consult
 
-Include =consult-lsp= and (possibly) =consult-dir=. Make a list or table of particularly useful commands and their bindings.
+Consult provides a /lot/ of functions. Go through them and make a list or table of particularly useful ones. Set up (Spacemacs-style) bindings as desired.
+
+There are also many [[https://github.com/minad/consult#recommended-packages][complementary packages]] to try. You'll almost certainly want =cape=, =consult-flycheck=, =consult-lsp=, =consult-projectile= and =consult-yasnippet=, and possibly also =consult-dir=, =consult-eglot= and =affe=. 
+
+#+begin_src emacs-lisp
+
+  ;; Required to narrow list to recent files in consult-buffer
+  (recentf-mode 1)
+
+  (use-package consult
+    :demand t)
+
+#+end_src
 
 *** Completion Annotations with Marginalia
 
