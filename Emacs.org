@@ -173,11 +173,18 @@ We have a good deal of flexibility as to where we actually define bindings:
       :non-normal-prefix "C-SPC"))
 
   (efs/leader-def
-   "SPC" '(execute-extended-command :which-key "Execute command")
-   ;; Files
-   "f"  '(:ignore t :which-key "Files")
-   "ff" '(find-file :which-key "Find file")
-   "fs" '(save-buffer :which-key "Save file"))
+    "SPC" '(execute-extended-command :which-key "Execute command")
+    ;; Buffers
+    "b"  '(:ignore t :which-key "Buffers")
+    "bb" '(consult-buffer :which-key "Switch buffer")
+    "bk" '(kill-buffer :which-key "Kill buffer")
+    ;; Files
+    "f"  '(:ignore t :which-key "Files")
+    "ff" '(find-file :which-key "Find file")
+    "fs" '(save-buffer :which-key "Save file")
+    ;; Git
+    "g"  '(:ignore t :which-key "Git")
+    "gs" '(magit-status :which-key "magit status"))
 
 #+end_src
 
@@ -389,6 +396,66 @@ Cycle through available annotations (including none) with =marginalia-cycle=.
 #+end_src
 
 *** TODO Completion Actions with Embark
+
+
+** Window Management
+
+*** Better Window Swapping with windmove
+
+=windmove= is a built-in package that provides useful window-management commands. Evil makes most of these redundant, but Evil's commands for moving the current buffer to another window aren't very intuitive, so we'll use the =windmove= alternatives.
+
+#+begin_src emacs-lisp
+
+  (general-define-key
+   :keymaps 'evil-window-map
+   "H" 'windmove-swap-states-left
+   "J" 'windmove-swap-states-down
+   "K" 'windmove-swap-states-up
+   "L" 'windmove-swap-states-right)
+
+#+end_src
+
+*** Window History with winner
+
+=winner= is a built-in package that provides undo/redo history for windows. Note that this isn't just useful for fixing accidental changes: if you need to concentrate on a particular buffer, use =C-w o= to close all other windows, then use =winner-undo= to restore your previous layout.
+
+#+begin_src emacs-lisp
+
+  (winner-mode 1)
+  (general-define-key
+   :keymaps 'evil-window-map
+   "u" 'winner-undo
+   "U" 'winner-redo)
+
+#+end_src
+
+*** TODO Efficient Window Selection with winum
+
+[[https://github.com/deb0ch/emacs-winum][winum]] numbers your windows in the modeline and lets you select windows by number. By default, =winum= assigns window =0= to the minibuffer; you can also assign specific windows (e.g., Calculator, Flycheck errors, NeoTree) to specific numbers.
+
+/Note:/ In the leader-key assignments below, =:which-key t= hides the bindings in the which-key panel (I don't want them cluttering up my prefix guide).
+
+[[https://github.com/abo-abo/ace-window][ace-window]] is an alternative package that lets you select windows using an Avy/Easymark idiom. This would be a little slower than =winum=, but might offer a more consistent experience if you also use Easymark.
+
+#+begin_src emacs-lisp
+
+  (efs/leader-def
+    "0" '(winum-select-window-0 :which-key t)
+    "1" '(winum-select-window-1 :which-key t)
+    "2" '(winum-select-window-2 :which-key t)
+    "3" '(winum-select-window-3 :which-key t)
+    "4" '(winum-select-window-4 :which-key t)
+    "5" '(winum-select-window-5 :which-key t)
+    "6" '(winum-select-window-6 :which-key t)
+    "7" '(winum-select-window-7 :which-key t)
+    "8" '(winum-select-window-8 :which-key t)
+    "9" '(winum-select-window-9 :which-key t))
+
+  (use-package winum
+    :config
+    (winum-mode))
+
+#+end_src
 
 ** Help System
 
