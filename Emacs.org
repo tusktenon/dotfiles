@@ -152,10 +152,6 @@ For instance, we can use =general= to escape to normal state (from insert or rep
     - use =general= to define bindings that are intuitively organized under mnemonic prefixes (=b= for buffer, =f= for file, =g= for git, =w= for window, etc.);
     - =which-key='s real-time display of available bindings makes such multi-step bindings discoverable.
 
-We have a good deal of flexibility as to where we actually define bindings:
-    - We can define them all in once place (presumably in the =use-package= block for =general=, directly below). Note that you can create a binding to a command before loading the package that provides that command.
-    - We can define the bindings to built-in Emacs commands in one place, and keep other bindings with their packages. The advantage of this approach is that, if we decide to remove or disable a package, we don't have to track down its keybindings somewhere else.
-   
 #+begin_src emacs-lisp
 
   (use-package general
@@ -172,6 +168,16 @@ We have a good deal of flexibility as to where we actually define bindings:
       :prefix "SPC"
       :non-normal-prefix "C-SPC"))
 
+#+end_src
+
+** Spacemacs-Style (Leader-Based) Bindings
+
+We have a good deal of flexibility as to where we actually define bindings:
+    - We can define them all in once place; note that you can create a binding to a command before loading the package that provides that command.
+    - We can define the bindings to built-in Emacs commands in one place, and keep other bindings with their packages. The advantage of this approach is that, if we decide to remove or disable a package, we don't have to track down its keybindings somewhere else.
+   
+#+begin_src emacs-lisp
+
   (efs/leader-def
     "SPC" '(execute-extended-command :which-key "Execute command")
     ;; Buffers
@@ -179,6 +185,8 @@ We have a good deal of flexibility as to where we actually define bindings:
     "bb" '(consult-buffer :which-key "Switch buffer")
     "bd" '(evil-delete-buffer :which-key "Delete buffer")
     "bk" '(kill-buffer :which-key "Kill buffer")
+    "bn" '(evil-next-buffer :which-key "Next buffer")
+    "bp" '(evil-prev-buffer :which-key "Previous buffer")
     ;; Files
     "f"  '(:ignore t :which-key "Files")
     "ff" '(find-file :which-key "Find file")
@@ -188,6 +196,7 @@ We have a good deal of flexibility as to where we actually define bindings:
     "gs" '(magit-status :which-key "magit status")
     ;; Windows
     "w"  '(:ignore t :which-key "Windows")
+    "wc" '(evil-window-delete :which-key "Close window")
     "wh" '(evil-window-left :which-key "Focus left")
     "wj" '(evil-window-down :which-key "Focus down")
     "wk" '(evil-window-up :which-key "Focus up")
@@ -201,7 +210,8 @@ We have a good deal of flexibility as to where we actually define bindings:
     "wu" '(winner-undo :which-key "Undo")
     "wU" '(winner-redo :which-key "Redo")
     "wv" '(evil-window-vsplit :which-key "Split vertical")
-    "ww" '(evil-window-next :which-key "Next window"))
+    "ww" '(evil-window-next :which-key "Next window")
+    "wW" '(evil-window-prev :which-key "Previous window"))
 
 #+end_src
 
