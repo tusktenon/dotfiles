@@ -177,6 +177,7 @@ We have a good deal of flexibility as to where we actually define bindings:
     ;; Buffers
     "b"  '(:ignore t :which-key "Buffers")
     "bb" '(consult-buffer :which-key "Switch buffer")
+    "bd" '(evil-delete-buffer :which-key "Delete buffer")
     "bk" '(kill-buffer :which-key "Kill buffer")
     ;; Files
     "f"  '(:ignore t :which-key "Files")
@@ -184,7 +185,23 @@ We have a good deal of flexibility as to where we actually define bindings:
     "fs" '(save-buffer :which-key "Save file")
     ;; Git
     "g"  '(:ignore t :which-key "Git")
-    "gs" '(magit-status :which-key "magit status"))
+    "gs" '(magit-status :which-key "magit status")
+    ;; Windows
+    "w"  '(:ignore t :which-key "Windows")
+    "wh" '(evil-window-left :which-key "Focus left")
+    "wj" '(evil-window-down :which-key "Focus down")
+    "wk" '(evil-window-up :which-key "Focus up")
+    "wl" '(evil-window-right :which-key "Focus right")
+    "wH" '(windmove-swap-states-left :which-key "Swap left")
+    "wJ" '(windmove-swap-states-down :which-key "Swap down")
+    "wK" '(windmove-swap-states-up :which-key "Swap up")
+    "wL" '(windmove-swap-states-right :which-key "Swap right")
+    "wo" '(delete-other-windows :which-key "Delete other windows")
+    "ws" '(evil-window-split :which-key "Split horizontal")
+    "wu" '(winner-undo :which-key "Undo")
+    "wU" '(winner-redo :which-key "Redo")
+    "wv" '(evil-window-vsplit :which-key "Split vertical")
+    "ww" '(evil-window-next :which-key "Next window"))
 
 #+end_src
 
