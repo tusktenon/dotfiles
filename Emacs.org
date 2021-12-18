@@ -833,6 +833,8 @@ See [[https://orgmode.org/manual/Structure-Templates.html][Structure Templates]]
 
 [[https://projectile.mx/][Projectile]] is a project-interaction library, providing a number of features for easy project management and navigation. To get the most out of it, make sure you have =fd= and =ripgrep= installed on your system. You might also wish to install the [[https://github.com/dajva/rg.el][rg.el]] package.
 
+All Projectile commands are available under the =projectile-command-map= prefix (bound to =C-c p=).
+
 As an alternative to Projectile, =project.el= is a relatively new built-in package that might be worth trying at some point.
 
 #+begin_src emacs-lisp
@@ -847,6 +849,26 @@ As an alternative to Projectile, =project.el= is a relatively new built-in packa
     (when (file-directory-p "~/Development")
       (setq projectile-project-search-path '("~/Development")))
     (setq projectile-switch-project-action #'projectile-dired))
+
+#+end_src
+
+** TODO IDE Features with LSP Mode
+
+[[https://emacs-lsp.github.io/lsp-mode/][lsp-mode]] is a Language Server Protocol client that provides optional integration with a number of popular Emacs packages, including consult, flycheck, projectile, treemacs and which-key. The [[https://emacs-lsp.github.io/lsp-ui/][lsp-ui]] package contains all the higher-level UI modules for =lsp-mode=.
+
+All =lsp-mode= commands are available under the =lsp-keymap-prefix= (set to =C-c l=).
+
+#+begin_src emacs-lisp
+
+  (use-package lsp-mode
+    :commands (lsp lsp-deferred)
+    :init
+    (setq lsp-keymap-prefix "C-c l")
+    :config
+    (lsp-enable-which-key-integration t))
+
+  (use-package lsp-ui
+    :hook (lsp-mode . lsp-ui-mode))
 
 #+end_src
 
