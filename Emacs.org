@@ -877,6 +877,21 @@ As an alternative to =lsp-mode=, you may wish to try [[https://github.com/joaota
 
 #+end_src
 
+** TODO Syntax Checking with Flycheck
+
+[[https://www.flycheck.org/en/latest/index.html][Flycheck]] is an on-the-fly syntax-checking extension, intended as a replacement for the older, built-in Flymake.
+
+Since both Flycheck and =git-gutter-fringe= use the fringe area, we'll set Flycheck to use the right fringe; alternatively, you could try the left margin.
+
+#+begin_src emacs-lisp
+
+  (use-package flycheck
+    :hook (prog-mode . flycheck-mode)
+    :config
+    (setq flycheck-indication-mode 'right-fringe))
+
+#+end_src
+
 ** Snippets with YASnippet
 
 [[https://github.com/joaotavora/yasnippet][YASnippet]] is a template system that lets you type an abbreviation that will then be automatically expanded into a function template. YASnippet does not include any snippets; these are collected in a separate package, [[https://github.com/AndreaCrotti/yasnippet-snippets][yasnippet-snippets]].
