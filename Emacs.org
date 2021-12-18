@@ -852,11 +852,16 @@ As an alternative to Projectile, =project.el= is a relatively new built-in packa
 
 #+end_src
 
-** TODO IDE Features with LSP Mode
+** IDE Features with LSP Mode
 
 [[https://emacs-lsp.github.io/lsp-mode/][lsp-mode]] is a Language Server Protocol client that provides optional integration with a number of popular Emacs packages, including consult, flycheck, projectile, treemacs and which-key. The [[https://emacs-lsp.github.io/lsp-ui/][lsp-ui]] package contains all the higher-level UI modules for =lsp-mode=.
 
 All =lsp-mode= commands are available under the =lsp-keymap-prefix= (set to =C-c l=).
+
+*** TODO Add header breadcrumb
+*** TODO Add LSP information in modeline (if not enabled by default)
+
+As an alternative to =lsp-mode=, you may wish to try [[https://github.com/joaotavora/eglot][Eglot]], a more minimalistic LSP-client. And you may want to supplement any LSP client with [[https://emacs-tree-sitter.github.io/][tree-sitter]] for enhanced syntax highlighting.
 
 #+begin_src emacs-lisp
 
@@ -869,6 +874,21 @@ All =lsp-mode= commands are available under the =lsp-keymap-prefix= (set to =C-c
 
   (use-package lsp-ui
     :hook (lsp-mode . lsp-ui-mode))
+
+#+end_src
+
+** Snippets with YASnippet
+
+[[https://github.com/joaotavora/yasnippet][YASnippet]] is a template system that lets you type an abbreviation that will then be automatically expanded into a function template. YASnippet does not include any snippets; these are collected in a separate package, [[https://github.com/AndreaCrotti/yasnippet-snippets][yasnippet-snippets]].
+
+#+begin_src emacs-lisp
+
+  (use-package yasnippet
+    :hook (prog-mode . yas-minor-mode)
+    :config
+    (yas-reload-all))
+
+  (use-package yasnippet-snippets)
 
 #+end_src
 
