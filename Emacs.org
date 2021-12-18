@@ -904,6 +904,8 @@ Since both Flycheck and =git-gutter-fringe= use the fringe area, we'll set Flych
     (yas-reload-all))
 
   (use-package yasnippet-snippets)
+  ;;(use-package yasnippet-snippets
+  ;;  :after (yasnippet))
 
 #+end_src
 
@@ -925,7 +927,26 @@ Since both Flycheck and =git-gutter-fringe= use the fringe area, we'll set Flych
     (setq display-fill-column-indicator-column 79)
     (display-fill-column-indicator-mode 1))
 
-  (add-hook 'c-mode-common-hook 'tusk/c-mode-common-setup)
+  (add-hook 'c-mode-hook 'tusk/c-mode-common-setup)
+  (add-hook 'c++-mode-hook 'tusk/c-mode-common-setup)
+
+#+end_src
+
+*** Java
+
+/Maximum line length:  100/
+/Indentation: 4 spaces/
+
+#+begin_src emacs-lisp
+
+  (defun tusk/java-mode-setup ()
+    (setq c-default-style "java"
+          c-basic-offset 4
+          indent-tabs-mode nil)
+    (setq display-fill-column-indicator-column 99)
+    (display-fill-column-indicator-mode 1))
+
+  (add-hook 'java-mode-hook 'tusk/java-mode-setup)
 
 #+end_src
 
