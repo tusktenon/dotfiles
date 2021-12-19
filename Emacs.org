@@ -190,6 +190,7 @@ We have a good deal of flexibility as to where we actually define bindings:
     ;; Files
     "f"  '(:ignore t :which-key "Files")
     "ff" '(find-file :which-key "Find file")
+    "fr" '(consult-recent-file :which-key "Recent file")
     "fs" '(save-buffer :which-key "Save file")
     ;; Git
     "g"  '(:ignore t :which-key "Git")
@@ -201,6 +202,10 @@ We have a good deal of flexibility as to where we actually define bindings:
     "pk" '(projectile-kill-buffers :which-key "Kill all project buffers")
     "pp" '(projectile-switch-project :which-key "Switch project")
     "pr" '(projectile-recentf :which-key "Open recent file")
+    ;; Search
+    "s"  '(:ignore t :which-key "Search")
+    "so" '(consult-imenu :which-key "consult-imenu")
+    "ss" '(consult-line :which-key "consult-line")
     ;; Windows
     "w"  '(:ignore t :which-key "Windows")
     "wc" '(evil-window-delete :which-key "Close window")
@@ -388,9 +393,24 @@ Because Vertico uses Emacs's native completion system, we can use the built-in =
 
 #+end_src
 
-*** TODO Completions in Regions with Corfu
+*** Completions in Regions with Corfu
 
-*** TODO Enhanced Completion Commands with Consult
+Corfu is the =completion-in-region= counterpart of the Vertico minibuffer UI and the Vertico-system equivalent of the [[https://company-mode.github.io/][Company]] package.
+
+#+begin_src emacs-lisp
+
+  (use-package corfu
+  :bind (:map corfu-map
+         ("C-j" . corfu-next)
+         ("C-k" . corfu-previous))
+  :custom
+  (corfu-cycle t)
+  :init
+  (corfu-global-mode))
+  
+#+end_src
+
+*** Enhanced Completion Commands with Consult
 
 Consult provides a /lot/ of functions. Go through them and make a list or table of particularly useful ones. Set up (Spacemacs-style) bindings as desired.
 
@@ -402,7 +422,8 @@ There are also many [[https://github.com/minad/consult#recommended-packages][com
   (recentf-mode 1)
 
   (use-package consult
-    :demand t)
+    :demand t
+    :bind ("C-s" . consult-line))
 
 #+end_src
 
