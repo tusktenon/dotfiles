@@ -1,11 +1,18 @@
 #+TITLE: Doom Emacs Configuration
 #+AUTHOR: Dan Murphy
 
+* Resources
+
+- [[https://github.com/hlissner/doom-emacs/blob/develop/docs/index.org][Doom Emacs Documentation]]
+- [[https://github.com/hlissner/doom-emacs/blob/develop/docs/getting_started.org][Getting Started Guide]]
+- [[https://github.com/hlissner/doom-emacs/blob/develop/docs/faq.org#configuration][Configuration FAQ]] (FAQs may soon be moved to the Doom Emacs Discourse)
+- [[https://github.com/hlissner/doom-emacs/blob/develop/docs/modules.org][Module Index]]
+
 * Installation
 
 Begin by installing Emacs and other dependencies. On Arch-based systems, install =emacs=, =git=, =fd= and =ripgrep=, all available from the official repos. Optionally, install =shellcheck= for shell-script linting.
 
-For a "standard" (Doom-only) installation, you would clone the Doom repo into =~/.emacs.d=, but if you want to run multiple Emacs profiles via Chemacs2, you'll need to install Doom somewhere else; I've chosen =~/.doom-emacs=:
+For a "standard" (Doom-only) installation, you would clone the Doom repo into =~/.emacs.d=, but if you want to run multiple Emacs profiles via Chemacs2, you'll need to install Doom somewhere else; I've chosen =~/.emacs.doom=:
 
 #+begin_src sh
 
