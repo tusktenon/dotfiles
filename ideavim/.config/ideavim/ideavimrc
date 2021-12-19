@@ -22,10 +22,39 @@ let g:highlightedyank_highlight_duration = "800"
 set surround
 
 
-# Other Settings
+" Other Settings
 
-# Use relative line numbers
+" Show search results as you type
+set incsearch
+
+" Use relative line numbers
 set number relativenumber
 
-# Join lines intelligently via IDE
+" Join lines intelligently via IDE
 set ideajoin
+
+
+" Whick-Key Settings
+
+" Enable extension
+set which-key
+
+" Disable timeout to show Which-Key popup until you press a key
+set notimeout
+
+" Show the menu also for default Vim actions like `gg` or `zz`
+let g:WhichKey_ShowVimActions = "true"
+
+
+" Intellimacs
+
+" Enable primary module
+source ~/.intellimacs/spacemacs.vim
+
+" Enable optional modules
+source ~/.intellimacs/extra.vim
+source ~/.intellimacs/major.vim
+source ~/.intellimacs/hybrid.vim
+
+" Enable which-key plugin
+source ~/.intellimacs/which-key.vim
