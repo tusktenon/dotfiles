@@ -405,7 +405,7 @@ Corfu is the =completion-in-region= counterpart of the Vertico minibuffer UI and
          ("C-k" . corfu-previous))
   :custom
   (corfu-cycle t)
-  :init
+  :config
   (corfu-global-mode))
   
 #+end_src
@@ -886,12 +886,29 @@ As an alternative to =lsp-mode=, you may wish to try [[https://github.com/joaota
 
 #+begin_src emacs-lisp
 
+  (defun efs/lsp-mode-setup ()
+    (setq lsp-headerline-breadcrumb-segments '(path-up-to-project file symbols))
+    (lsp-headerline-breadcrumb-mode))
+
+  ;; Use Orderless for completion (from the Corfu wiki)
+  (defun efs/lsp-mode-setup-completion ()
+    (setf (alist-get 'styles (alist-get 'lsp-capf completion-category-defaults))
+          '(orderless)))
+
   (use-package lsp-mode
+    :bind (:map lsp-mode-map
+                ("TAB" . completion-at-point))
     :commands (lsp lsp-deferred)
-    :init
-    (setq lsp-keymap-prefix "C-c l")
     :config
-    (lsp-enable-which-key-integration t))
+    (lsp-enable-which-key-integration t)
+    :custom
+    (lsp-completion-provider :none) ;; using Corfu
+    :hook
+    ((c-mode c++-mode java-mode) . lsp-deferred)
+    (lsp-mode . efs/lsp-mode-setup)
+    (lsp-completion-mode . efs/lsp-mode-setup-completion)
+    :init
+    (setq lsp-keymap-prefix "C-c l"))
 
   (use-package lsp-ui
     :hook (lsp-mode . lsp-ui-mode))
