@@ -54,3 +54,8 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
+
+
+  ;; Set default dimensions for new frames
+  (add-to-list 'default-frame-alist '(width . 120))
+  (add-to-list 'default-frame-alist '(height . 55))
