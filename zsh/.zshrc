@@ -17,6 +17,10 @@ CDPATH=.:~:~/Development:~/Documents
 #CDPATH+=:~/Development/Courses/Introduction\ to\ Programming\ in\ C
 export CDPATH
 
+# Add Doom Emacs to PATH
+PATH+=:~/.emacs.doom/bin
+export PATH
+
 # A simple PS1 prompt
 #PS1=$'\n'"%B%F{blue}%1~%f%b \$ "
 

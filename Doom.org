@@ -1,0 +1,45 @@
+#+TITLE: Doom Emacs Configuration
+#+AUTHOR: Dan Murphy
+
+* Installation
+
+Begin by installing Emacs and other dependencies. On Arch-based systems, install =emacs=, =git=, =fd= and =ripgrep=, all available from the official repos. Optionally, install =shellcheck= for shell-script linting.
+
+For a "standard" (Doom-only) installation, you would clone the Doom repo into =~/.emacs.d=, but if you want to run multiple Emacs profiles via Chemacs2, you'll need to install Doom somewhere else; I've chosen =~/.doom-emacs=:
+
+#+begin_src sh
+
+  git clone https://github.com/hlissner/doom-emacs ~/.emacs.doom
+  ~/.emacs.doom/bin/doom install
+
+#+end_src
+
+Then add a corresponding entry to =~/.emacs-profiles.el=.
+
+Wherever you place the Doom repo, =doom install= will set up your =DOOMDIR= at =~/.doom.d=. The installer will ask if you want to generate an envvar file (=~/.emacs.doom/.local/env=); I don't know if I need to, but it apparently does no harm, so I chose yes. It will also ask you if you want to install all-the-icons' fonts; again, I chose yes (installed to =~/.local/share/fonts=).
+
+The installer ends with some important tips:
+
+#+begin_example
+
+1. Don't forget to run 'doom sync', then restart Emacs, after modifying ~/.doom.d/init.el or ~/.doom.d/packages.el.
+
+This command ensures needed packages are installed, orphaned packages are removed, and your autoloads/cache files are up to date. When in doubt, run 'doom sync'!
+
+2. If something goes wrong, run `doom doctor`. It diagnoses common issues with your environment and setup, and may offer clues about what is wrong.
+
+3. Use 'doom upgrade' to update Doom. Doing it any other way will require additional steps. Run 'doom help upgrade' to understand those extra steps.
+
+4. Access Doom's documentation from within Emacs via 'SPC h d h' or 'C-h d h' (or 'M-x doom/help')
+
+#+end_example
+
+It's recommend to add =~/.emacs.doom/bin= to your =PATH=. Add the following line to your =bashrc= or =zshrc=:
+
+#+begin_src sh
+
+  export PATH="~/.emacs.doom/bin:$PATH"
+
+#+end_src
+
+It's also recommended to run =doom doctor= to check for common issues.
