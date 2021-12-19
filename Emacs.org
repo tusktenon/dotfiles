@@ -939,6 +939,8 @@ Since both Flycheck and =git-gutter-fringe= use the fringe area, we'll set Flych
 
 [[https://www.gnu.org/software/emacs/manual/html_node/ccmode/index.html][CC Mode]] is a built-in Emacs mode for editing C, C++, Java, and several other languages.
 
+[[https://github.com/MaskRay/ccls][ccls]] is a language server for C/C++/Objective-C, and is available on Arch-based systems as =ccls=. An alternative server is [[https://clangd.llvm.org/][clangd]], but it only covers C++.
+
 #+begin_src emacs-lisp
 
   (defun tusk/c-mode-common-setup ()
@@ -951,12 +953,18 @@ Since both Flycheck and =git-gutter-fringe= use the fringe area, we'll set Flych
   (add-hook 'c-mode-hook 'tusk/c-mode-common-setup)
   (add-hook 'c++-mode-hook 'tusk/c-mode-common-setup)
 
+  (use-package ccls
+    :hook ((c-mode c++-mode) .
+           (lambda () (require 'ccls) (lsp))))
+
 #+end_src
 
 *** Java
 
 /Maximum line length:  100/
 /Indentation: 4 spaces/
+
+[[https://github.com/emacs-lsp/lsp-java/][lsp-java]] is an Emacs Java IDE using the [[https://projects.eclipse.org/projects/eclipse.jdt.ls][Eclipse JDT Language Server]].
 
 #+begin_src emacs-lisp
 
@@ -968,6 +976,9 @@ Since both Flycheck and =git-gutter-fringe= use the fringe area, we'll set Flych
     (display-fill-column-indicator-mode 1))
 
   (add-hook 'java-mode-hook 'tusk/java-mode-setup)
+
+  (use-package lsp-java
+    :hook (java-mode . lsp))
 
 #+end_src
 
