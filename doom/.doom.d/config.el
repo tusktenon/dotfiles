@@ -68,3 +68,7 @@
 (setq-default tab-width 2
               indent-tabs-mode nil
               evil-shift-width tab-width)
+
+;; max height of which-key window, as a percentage of frame's height
+;; default value is 0.25; increase to minimize need for paging
+(setq which-key-side-window-max-height 0.5)
