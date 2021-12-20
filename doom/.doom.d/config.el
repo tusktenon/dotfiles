@@ -56,6 +56,15 @@
 ;; they are implemented.
 
 
-  ;; Set default dimensions for new frames
-  (add-to-list 'default-frame-alist '(width . 120))
-  (add-to-list 'default-frame-alist '(height . 55))
+;; Set default dimensions for new frames
+(add-to-list 'default-frame-alist '(width . 120))
+(add-to-list 'default-frame-alist '(height . 55))
+
+;; Show indentation info in modeline
+(setq doom-modeline-indent-info t)
+
+;; Default indentation settings:
+;; 2 spaces; use spaces instead of tabs
+(setq-default tab-width 2
+              indent-tabs-mode nil
+              evil-shift-width tab-width)
