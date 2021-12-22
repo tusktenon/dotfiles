@@ -123,6 +123,14 @@ Set reasonable default settings for indentation: indent by 2 spaces, and use spa
   (setq which-key-side-window-max-height 0.5)
 #+end_src
 
+* Keybindings
+
+#+begin_src elisp
+  ;; Use visual line motions even outside of visual-line-mode buffers
+  (evil-global-set-key 'motion "j" 'evil-next-visual-line)
+  (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
+#+end_src
+
 * Org
 
 #+begin_src elisp
