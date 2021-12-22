@@ -60,12 +60,15 @@ Set reasonable default settings for indentation: indent by 2 spaces, and use spa
 
 * Appearance and UI
 
-** Default Frame Size
+** Basic Interface Settings
 
-#+begin_src emacs-lisp :tangle yes
+#+begin_src elisp
   ;; Set default dimensions for new frames
   (add-to-list 'default-frame-alist '(width . 120))
   (add-to-list 'default-frame-alist '(height . 55))
+
+  ;; Don't highlight current line
+  (global-hl-line-mode 0)
 #+end_src
 
 ** Fonts
