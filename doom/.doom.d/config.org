@@ -62,13 +62,17 @@ Set reasonable default settings for indentation: indent by 2 spaces, and use spa
 
 ** Basic Interface Settings
 
+Default dimensions for new frames.
+
 #+begin_src elisp
-  ;; Set default dimensions for new frames
   (add-to-list 'default-frame-alist '(width . 120))
   (add-to-list 'default-frame-alist '(height . 55))
+#+end_src
 
-  ;; Don't highlight current line
-  (global-hl-line-mode 0)
+Doom highlights the current line by default, but I find this annoying. Adding =(global-hl-line-mode 0)= to your config won't work; see [[https://github.com/hlissner/doom-emacs/issues/4206#issuecomment-734414502][this comment]] instead.
+
+#+begin_src elisp
+  (remove-hook 'doom-first-buffer-hook #'global-hl-line-mode)
 #+end_src
 
 ** Fonts
