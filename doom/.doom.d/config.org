@@ -267,11 +267,55 @@ If you decide to stick with =evil-search=, recall that =:noh= will turn the curr
 
 * Keybindings
 
+Set 'j' and 'k' to move by visual lines.
+
 #+begin_src elisp
-  ;; Use visual line motions even outside of visual-line-mode buffers
   (evil-global-set-key 'motion "j" 'evil-next-visual-line)
   (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
 #+end_src
+
+The Doom module =ui/(window-select +numbers)= provides the [[https://github.com/deb0ch/emacs-winum][winum]] package, and binds the =winum-select-window= commands under the =SPC w= and =C-w= prefixes. I also want these commands available directly under the =SPC= prefix and, for all three prefixes, I don't want these commands cluttering up the which-key popup.
+
+#+begin_src elisp
+  ;; Add bindings under "SPC" prefix
+  (map! :leader
+        "0" #'winum-select-window-0
+        "1" #'winum-select-window-1
+        "2" #'winum-select-window-2
+        "3" #'winum-select-window-3
+        "4" #'winum-select-window-4
+        "5" #'winum-select-window-5
+        "6" #'winum-select-window-6
+        "7" #'winum-select-window-7
+        "8" #'winum-select-window-8
+        "9" #'winum-select-window-9)
+
+;; Don't display winum-select-window bindings in which-key popups
+(after! which-key
+(push '((nil . "winum-select-window-[0-9]") . t) which-key-replacement-alist))
+
+  ;; Alternative implementation using general
+  ;;(general-define-key
+  ;;  :prefix "SPC"
+  ;;  :keymaps 'normal
+  ;;  "0" '(winum-select-window-0 :which-key t)
+  ;;  "1" '(winum-select-window-1 :which-key t)
+  ;;  "2" '(winum-select-window-2 :which-key t)
+  ;;  "3" '(winum-select-window-3 :which-key t)
+  ;;  "4" '(winum-select-window-4 :which-key t)
+  ;;  "5" '(winum-select-window-5 :which-key t)
+  ;;  "6" '(winum-select-window-6 :which-key t)
+  ;;  "7" '(winum-select-window-7 :which-key t)
+  ;;  "8" '(winum-select-window-8 :which-key t)
+  ;;  "9" '(winum-select-window-9 :which-key t))
+
+;; Redo bindings under "SPC w" to supress which-key descriptions
+#+end_src
+
+** TODO
+- [ ] Rebind =SPC w o= and =C-w o= to =delete-other-window= or =doom/window-maximize-buffer= instead of =doom/window-enlargen=.
+- [ ] Unbind =SPC w C-h= and possibly =C-w C-h=, so that which-key paging or Embark help are available for these prefixes.
+- [ ] Doom has =execute-extended-command= bound to =SPC :=, which isn't any easier to hit than =M-x=. Consider rebinding it to =SPC SPC=. =SPC SPC= is currently bound to =projectile-find-file=, but this command is also bound to the easy-to-hit =SPC p f=. What do Spacemacs and the Spacemacs plugins do?
 
 * Org
 

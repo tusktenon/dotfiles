@@ -547,7 +547,7 @@ Embark comes with [[https://github.com/oantolin/embark#showing-information-about
 
 #+end_src
 
-*** TODO Efficient Window Selection with winum
+*** Efficient Window Selection with winum
 
 [[https://github.com/deb0ch/emacs-winum][winum]] numbers your windows in the modeline and lets you select windows by number. By default, =winum= assigns window =0= to the minibuffer; you can also assign specific windows (e.g., Calculator, Flycheck errors, NeoTree) to specific numbers.
 
