@@ -254,6 +254,17 @@ I quite like the solution above, but I'll also reduce the need for paging by inc
 
 /Note:/ A related issue is that neither which-key paging nor Embark help will be available if =C-h= is bound to another command under the current prefix, which is the case for =SPC w= and =C-w=. You might consider removing these bindings, as neither is particularly useful.
 
+** Evil Search Highlighting
+
+In Doom, =evil-ex= search results (from =/= and =?= searches) remain highlighted. If you prefer the default Emacs behaviour, in which highlighting turns off after a short delay, change the value of =evil-search-module= from =evil-search= to =isearch=.
+
+If you decide to stick with =evil-search=, recall that =:noh= will turn the current highlighting off, and you may also want to follow Spacemacs and add the binding =SPC s c= (bound to =evil-ex-nohighlight=).
+
+#+begin_src elisp
+  ;;(evil-select-search-module 'evil-search-module 'evil-search)
+  (evil-select-search-module 'evil-search-module 'isearch)
+#+end_src
+
 * Keybindings
 
 #+begin_src elisp
