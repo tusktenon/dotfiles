@@ -11,7 +11,10 @@ The =config/literate= module cannot be used to tangle =init.el=, but that file i
 
 I'm not convinced the =config/literate= module adds anything useful: it would seem to be just as convenient to disable it and tangle the config files in the usual way (particularly if you use the [[https://github.com/yilkalargaw/org-auto-tangle][org-auto-tangle]] package). See zzamboni's [[https://github.com/zzamboni/dot-doom/blob/master/doom.org][excellent example]] of a literate config for Doom that does not use the =literate= module.
 
-If anything goes wrong, you can always find the example versions of [[https://github.com/hlissner/doom-emacs/blob/develop/core/templates/config.example.el][config.el]], [[https://github.com/hlissner/doom-emacs/blob/develop/init.example.el][init.el]], [[https://github.com/hlissner/doom-emacs/blob/develop/core/templates/packages.example.el][packages.el]] on the Doom GitHub repo.
+Some general points:
+- Before installing a package (in =packages.el=), you may want to look in =~/.emacs.doom/.local/straight/repos/= and verify that it hasn't already been added by Doom.
+- If anything goes wrong, you can always find the example versions of [[https://github.com/hlissner/doom-emacs/blob/develop/core/templates/config.example.el][config.el]], [[https://github.com/hlissner/doom-emacs/blob/develop/init.example.el][init.el]], [[https://github.com/hlissner/doom-emacs/blob/develop/core/templates/packages.example.el][packages.el]] on the Doom GitHub repo.
+
 
 * File Headers
 
@@ -133,6 +136,11 @@ Doom highlights the current line by default, but I find this distracting. Adding
 #+begin_src elisp
   (remove-hook 'doom-first-buffer-hook #'global-hl-line-mode)
 #+end_src
+
+*** TODO
+- Highlight matching delimiters
+- Indent guides only for specific (curly-brace) languages. Try =c-mode-common=.
+- Turn off completion (Company) in text modes.
 
 ** Fonts
 
@@ -325,3 +333,9 @@ The Doom module =ui/(window-select +numbers)= provides the [[https://github.com/
   ;;(setq org-directory "~/org/")
   (setq org-directory "~/Org/")
 #+end_src
+
+** TODO
+- [ ] Variable font size for headings: see DT's Doom config and/or Emacs From Scratch.
+- [ ] Nicer org-ellipsis
+- [ ] Add the =org-appear= package. Alternatively, bind a toggle to
+- [ ] Try the =mixed-pitch= package, with hooks for Org and Markdown modes. How does it work with EasyMark?
