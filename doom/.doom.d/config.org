@@ -282,6 +282,13 @@ Set 'j' and 'k' to move by visual lines.
   (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
 #+end_src
 
+Doom has =execute-extended-command= bound to =SPC :=, which isn't any easier to hit than =M-x=. I'll rebind it to =SPC SPC= (which, in turn, is bound to =projectile-find-file=, but this command is also bound to the easy-to-hit =SPC p f=).
+
+#+begin_src elisp
+(map! :leader ":" nil)
+(map! :leader :desc "M-x" "SPC" #'execute-extended-command)
+#+end_src
+
 Doom binds =SPC w C-h= to =evil-window-left= which makes which-key paging and Embark help unavailable for the =SPC w= prefix. I'd never use any of the =SPC w C-[hjkl]= bindings (just hit =SPC w [hjkl]= instead), so remove them. For that matter, there are a number of these redundant =SPC w C-= bindings that can be removed.
 
 Doom also binds =C-w C-h=, etc., but these are more useful and consistent with Vim, so I'll leave them.
@@ -331,9 +338,6 @@ The Doom module =ui/(window-select +numbers)= provides the [[https://github.com/
 (after! which-key
   (push '((nil . "winum-select-window-[0-9]") . t) which-key-replacement-alist))
 #+end_src
-
-** TODO
-- [ ] Doom has =execute-extended-command= bound to =SPC :=, which isn't any easier to hit than =M-x=. Consider rebinding it to =SPC SPC=. =SPC SPC= is currently bound to =projectile-find-file=, but this command is also bound to the easy-to-hit =SPC p f=. What do Spacemacs and the Spacemacs plugins do?
 
 * Org
 
