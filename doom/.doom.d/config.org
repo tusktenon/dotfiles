@@ -295,11 +295,20 @@ Doom also binds =C-w C-h=, etc., but these are more useful and consistent with V
       "w C-k" nil
       "w C-l" nil
       "w C-n" nil
+      "w C-o" nil
       "w C-p" nil
+      "w C-s" nil
       "w C-t" nil
       "w C-u" nil
       "w C-v" nil
       "w C-S-s" nil)
+#+end_src
+
+Doom binds =SPC w o= and =C-w o= to =doom/window-enlargen=, but I prefer the usual =delete-other-windows=.
+
+#+begin_src elisp
+(map! :leader "w o" #'delete-other-windows)
+(map! :n "C-w o" #'delete-other-windows)
 #+end_src
 
 The Doom module =ui/(window-select +numbers)= provides the [[https://github.com/deb0ch/emacs-winum][winum]] package, and binds the =winum-select-window= commands under the =SPC w= and =C-w= prefixes. I also want these commands available directly under the =SPC= prefix and, for all three prefixes, I don't want these commands cluttering up the which-key popup.
@@ -324,7 +333,6 @@ The Doom module =ui/(window-select +numbers)= provides the [[https://github.com/
 #+end_src
 
 ** TODO
-- [ ] Rebind =SPC w o= and =C-w o= to =delete-other-window= or =doom/window-maximize-buffer= instead of =doom/window-enlargen=.
 - [ ] Doom has =execute-extended-command= bound to =SPC :=, which isn't any easier to hit than =M-x=. Consider rebinding it to =SPC SPC=. =SPC SPC= is currently bound to =projectile-find-file=, but this command is also bound to the easy-to-hit =SPC p f=. What do Spacemacs and the Spacemacs plugins do?
 
 * Org
