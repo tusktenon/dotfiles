@@ -342,14 +342,26 @@ The Doom module =ui/(window-select +numbers)= provides the [[https://github.com/
 * Org
 
 #+begin_src elisp
-  ;; If you use `org' and don't want your org files in the default location below,
-  ;; change `org-directory'. It must be set before org loads!
-  ;;(setq org-directory "~/org/")
-  (setq org-directory "~/Org/")
+;; If you use `org' and don't want your org files in the default location below,
+;; change `org-directory'. It must be set before org loads!
+;;(setq org-directory "~/org/")
+(setq org-directory "~/Org/")
+
+(after! org
+  (setq ;org-ellipsis " ▸"
+        org-hide-emphasis-markers t))
 #+end_src
 
-** TODO
-- [ ] Variable font size for headings: see DT's Doom config and/or Emacs From Scratch.
-- [ ] Nicer org-ellipsis
-- [ ] Add the =org-appear= package. Alternatively, bind a toggle to
-- [ ] Try the =mixed-pitch= package, with hooks for Org and Markdown modes. How does it work with EasyMark?
+Set larger font sizes for headings.
+
+#+begin_src elisp
+(custom-set-faces
+  '(org-level-1 ((t (:inherit outline-1 :height 1.4))))
+  '(org-level-2 ((t (:inherit outline-2 :height 1.3))))
+  '(org-level-3 ((t (:inherit outline-3 :height 1.2))))
+  '(org-level-4 ((t (:inherit outline-4 :height 1.2))))
+  '(org-level-5 ((t (:inherit outline-5 :height 1.1))))
+  '(org-level-6 ((t (:inherit outline-5 :height 1.1)))))
+#+end_src
+
+** TODO Add the org-appear package
