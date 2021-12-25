@@ -162,7 +162,7 @@ Doom highlights the current line by default, but I find this distracting. Adding
         doom-variable-pitch-font (font-spec :family "Source Sans Pro" :size 22))
 #+end_src
 
-*** Variable-pitch fonts in text-mode buffers
+*** Variable-pitch fonts in text buffers
 
 [[https://gitlab.com/jabranham/mixed-pitch][mixed-pitch]] lets you mix fixed- and variable-pitch fonts, which really improves the look of text-based modes like Org and Markdown.
 
@@ -177,6 +177,20 @@ Set =mixed-pitch-set-height= to =t= if you want to be able to set the sizes of y
   :hook (org-mode . mixed-pitch-mode)
   :config
   (setq mixed-pitch-set-height t))
+#+end_src
+
+/Note:/ The Company completion popup won't appear correctly in mixed-pitch buffers. One solution is to use [[https://github.com/sebastiencs/company-box][company-box]] to display completion popups in a child frame. In Doom, you can add company-box by enabling the  =completion/(company +childframe)= flag. Alternatively, if you find completion distracting in text buffers, just disable Company for such buffers.
+
+*** Disable completion in text buffers
+
+Completion is great in code buffers, but I find it distracting when writing text.
+
+#+begin_src elisp
+;; In Doom, the `company-global-modes' variable has already
+;; been customized and begins with `not'.
+(after! company
+  (setq company-global-modes
+        (append company-global-modes '(org-mode text-mode))))
 #+end_src
 
 ** Color Theme
