@@ -399,7 +399,20 @@ Set larger font sizes for headings.
   '(org-level-6 ((t (:inherit outline-5 :height 1.1)))))
 #+end_src
 
-** TODO Add the org-appear package
+** Toggle markup visibility with org-appear
+
+[[https://github.com/awth13/org-appear][org-appear]] is an invaluable package that makes it much easier to edit Org documents when =org-hide-emphasis-markers= is active. It temporarily makes concealed markup elements appear when the cursor enters an element. By default, toggling is instaneous and applies only to emphasis markers, but additional functionality can be enabled via custom variables.
+
+=org-appear= is installed as part of Doom's =lang/org= module when the =+pretty= flag is enabled, but isn't active by default.
+
+#+begin_src elisp
+(use-package! org-appear
+  :hook (org-mode . org-appear-mode)
+  ;;:custom
+  ;;(org-appear-autolinks t)  ;; toggle links
+  ;;(org-appear-delay 0.5)    ;; delay before toggling
+  )
+#+end_src
 
 * Languages
 
