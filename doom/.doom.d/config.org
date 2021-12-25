@@ -15,6 +15,15 @@ Some general points:
 - Before installing a package (in =packages.el=), you may want to look in =~/.emacs.doom/.local/straight/repos/= and verify that it hasn't already been added by Doom.
 - If anything goes wrong, you can always find the example versions of [[https://github.com/hlissner/doom-emacs/blob/develop/core/templates/config.example.el][config.el]], [[https://github.com/hlissner/doom-emacs/blob/develop/init.example.el][init.el]], [[https://github.com/hlissner/doom-emacs/blob/develop/core/templates/packages.example.el][packages.el]] on the Doom GitHub repo.
 
+** TODO Complete Setup
+
+- Add a binding for =consult-outline=.
+- Add the =super-save= package.
+- Highlight matching delimiters. This may already be turned on for certain modes.
+- Indent guides only for specific (curly-brace) languages. Try =c-mode-common=.
+- Submit an issue regarding folding in markdown.
+- Try the =completion/company= module with the =+childframe= flag.
+- Go through DT's, David Wilson's, and your own EFS config, and see if there's anything else you want to add.
 
 * File Headers
 
@@ -136,11 +145,6 @@ Doom highlights the current line by default, but I find this distracting. Adding
 #+begin_src elisp
   (remove-hook 'doom-first-buffer-hook #'global-hl-line-mode)
 #+end_src
-
-*** TODO
-- Highlight matching delimiters
-- Indent guides only for specific (curly-brace) languages. Try =c-mode-common=.
-- Turn off completion (Company) in text modes.
 
 ** Fonts
 
