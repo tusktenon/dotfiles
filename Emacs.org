@@ -1001,7 +1001,7 @@ Since both Flycheck and =git-gutter-fringe= use the fringe area, we'll set Flych
 
 *** Markdown
 
-You can toogle markup hiding with =C-c C-x C-m=.
+You can toggle markup hiding with =C-c C-x C-m=.
 
 #+begin_src emacs-lisp
 
