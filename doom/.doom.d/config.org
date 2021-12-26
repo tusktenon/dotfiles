@@ -18,7 +18,6 @@ Some general points:
 ** TODO Complete Setup
 
 - Add a binding for =consult-outline=. =SPC s o= make sense to me; you could move the functions currently bound to =SPC o/O= to =SPC w/W=.
-- Highlight matching delimiters. This may already be turned on for certain modes. Also, mention that Doom has rainbow brackets enabled out of the box.
 - Submit an issue regarding folding in markdown.
 - Try the =completion/company= module with the =+childframe= flag.
 - Consider adding the =super-save= package.
@@ -305,6 +304,18 @@ If you decide to stick with =evil-search=, recall that =:noh= will turn the curr
 #+begin_src elisp
   ;;(evil-select-search-module 'evil-search-module 'evil-search)
   (evil-select-search-module 'evil-search-module 'isearch)
+#+end_src
+
+** Parenthesis Matching
+
+Doom provides the [[https://github.com/Fanael/rainbow-delimiters][rainbow-delimiters]] package out of the box, and enables =show-paren-mode= globally but [[https://github.com/hlissner/doom-emacs/pull/61][disables it]] in Org buffers, since it causes problems for =org-indent-mode=.
+
+Doom also provides the [[https://github.com/Fuco1/smartparens][Smartparens]] package out of the box, so you might consider =show-smartparens-mode= as an alternative to =show-paren-mode=. The former works for all user-defined pairs and has a customizable delay; see the Smartparens [[https://github.com/Fuco1/smartparens/wiki/Show-smartparens-mode][wiki]] for  details.
+
+#+begin_src elisp
+;; Highlight matching paren with a ligher grey background,
+;; instead of a darker one
+(custom-set-faces! '(show-paren-match :background "#363e4a"))
 #+end_src
 
 ** Indentation Guides
