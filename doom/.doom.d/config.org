@@ -17,12 +17,11 @@ Some general points:
 
 ** TODO Complete Setup
 
-- Add a binding for =consult-outline=.
-- Add the =super-save= package.
-- Highlight matching delimiters. This may already be turned on for certain modes.
-- Indent guides only for specific (curly-brace) languages. Try =c-mode-common=.
+- Add a binding for =consult-outline=. =SPC s o= make sense to me; you could move the functions currently bound to =SPC o/O= to =SPC w/W=.
+- Highlight matching delimiters. This may already be turned on for certain modes. Also, mention that Doom has rainbow brackets enabled out of the box.
 - Submit an issue regarding folding in markdown.
 - Try the =completion/company= module with the =+childframe= flag.
+- Consider adding the =super-save= package.
 - Go through DT's, David Wilson's, and your own EFS config, and see if there's anything else you want to add.
 
 * File Headers
@@ -306,6 +305,15 @@ If you decide to stick with =evil-search=, recall that =:noh= will turn the curr
 #+begin_src elisp
   ;;(evil-select-search-module 'evil-search-module 'evil-search)
   (evil-select-search-module 'evil-search-module 'isearch)
+#+end_src
+
+** Indentation Guides
+
+[[https://github.com/DarthFennec/highlight-indent-guides][highlight-indent-guides]] adds visual guides for indentation levels. Doom provides this package as the [[https://github.com/hlissner/doom-emacs/blob/develop/modules/ui/indent-guides/config.el][ui/indent-guides]] module, and enables it in most major modes; however, I only want indentation guides for curly-brace languages.
+
+#+begin_src elisp
+(remove-hook! (conf-mode prog-mode text-mode) #'highlight-indent-guides-mode)
+(add-hook! 'c-mode-common-hook 'highlight-indent-guides-mode)
 #+end_src
 
 * Keybindings
