@@ -437,7 +437,7 @@ Set larger font sizes for headings.
 
 Be sure to enable the =tools/lookup= and =tools/(lsp +peek)= modules in =init.el=.
 
-** TODO C/C++
+** C/C++
 
 /Maximum line length:  80/
 /Indentation: 2 spaces/
@@ -456,7 +456,22 @@ Be sure to enable the =tools/lookup= and =tools/(lsp +peek)= modules in =init.el
   (display-fill-column-indicator-mode 1))
 #+end_src
 
-** TODO Java
+** Java
+
+/Maximum line length:  100/
+/Indentation: 4 spaces/
+/Doom module:/ =lang/(java +lsp)=
+
+The =+lsp= flag adds [[https://github.com/emacs-lsp/lsp-java/][lsp-java]], an Emacs Java IDE using the [[https://projects.eclipse.org/projects/eclipse.jdt.ls][Eclipse JDT Language Server]].
+
+#+begin_src emacs-lisp
+(add-hook! java-mode
+  (setq c-default-style "java"
+        c-basic-offset 4
+        indent-tabs-mode nil
+        display-fill-column-indicator-column 99)
+  (display-fill-column-indicator-mode 1))
+#+end_src
 
 ** Markdown
 
