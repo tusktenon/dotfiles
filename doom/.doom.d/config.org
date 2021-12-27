@@ -17,7 +17,6 @@ Some general points:
 
 ** TODO Complete Setup
 
-- Add a binding for =consult-outline=. =SPC s o= make sense to me; you could move the functions currently bound to =SPC o/O= to =SPC w/W=.
 - Submit an issue regarding folding in markdown.
 - Try the =completion/company= module with the =+childframe= flag.
 - Consider adding the =super-save= package.
@@ -391,6 +390,16 @@ The Doom module =ui/(window-select +numbers)= provides the [[https://github.com/
 ;; Don't display winum-select-window bindings in which-key popups
 (after! which-key
   (push '((nil . "winum-select-window-[0-9]") . t) which-key-replacement-alist))
+#+end_src
+
+=consult-outline= is a useful function that deserves a binding. =SPC s o= make sense to me, but Doom binds =SPC s o/O= to online lookup functions; I'll move them to =SPC w/W=.
+
+#+begin_src elisp
+(map! :leader
+      :desc "Outline" "s o" #'consult-outline
+      "s O" nil
+      :desc "Look up online" "s w" #'+lookup/online
+      :desc "Look up online (w/ prompt)" "s W" #'+lookup/online-select)
 #+end_src
 
 * Org
