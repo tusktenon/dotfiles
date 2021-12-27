@@ -435,7 +435,26 @@ Set larger font sizes for headings.
 
 * Languages
 
+Be sure to enable the =tools/lookup= and =tools/(lsp +peek)= modules in =init.el=.
+
 ** TODO C/C++
+
+/Maximum line length:  80/
+/Indentation: 2 spaces/
+/Doom module:/ =lang/(cc +lsp)=
+
+[[https://www.gnu.org/software/emacs/manual/html_node/ccmode/index.html][CC Mode]] is a built-in Emacs mode for editing C, C++, Java, and several other languages.
+
+[[https://github.com/MaskRay/ccls][ccls]] is a language server for C/C++/Objective-C, and is available on Arch-based systems as =ccls=. An alternative server is [[https://clangd.llvm.org/][clangd]], but it only covers C++. Doom uses =ccls= by default.
+
+#+begin_src emacs-lisp
+(add-hook! (c-mode c++-mode)
+  (setq c-default-style "java"
+        c-basic-offset 2
+        indent-tabs-mode nil
+        display-fill-column-indicator-column 79)
+  (display-fill-column-indicator-mode 1))
+#+end_src
 
 ** TODO Java
 
