@@ -16,19 +16,26 @@ nnoremap ]<space> o<esc>k
 
 " Emulated Vim Plugins
 
+set argtextobj
 set commentary
+set easymotion
+set exchange
 set highlightedyank
-let g:highlightedyank_highlight_duration = "800"
+set sneak
 set surround
+set textobj-indent
 
+nmap gs <Plug>(easymotion-prefix)
+let g:highlightedyank_highlight_duration = "800"
 
 " Other Settings
 
 " Show search results as you type
 set incsearch
 
-" Use relative line numbers
-set number relativenumber
+" Use (relative) line numbers
+set number
+"set number relativenumber
 
 " Join lines intelligently via IDE
 set ideajoin
