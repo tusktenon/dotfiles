@@ -45,6 +45,10 @@ set notimeout
 " Show the menu also for default Vim actions like `gg` or `zz`
 let g:WhichKey_ShowVimActions = "true"
 
+" Appearance
+let g:WhichKey_FontFamily = "Iosevka"
+let g:WhichKey_FontSize = 20
+
 
 " Intellimacs
 
