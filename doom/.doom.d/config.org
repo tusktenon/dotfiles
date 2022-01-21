@@ -11,7 +11,7 @@ The =config/literate= module cannot be used to tangle =init.el=, but that file i
 
 I'm not convinced the =config/literate= module adds anything useful: it would seem to be just as convenient to disable it and tangle the config files in the usual way (particularly if you use the [[https://github.com/yilkalargaw/org-auto-tangle][org-auto-tangle]] package). See zzamboni's [[https://github.com/zzamboni/dot-doom/blob/master/doom.org][excellent example]] of a literate config for Doom that does not use the =literate= module.
 
-Some general points:
+Some points to keep in mind while configuring Doom:
 - Before installing a package (in =packages.el=), you may want to look in =~/.emacs.doom/.local/straight/repos/= and verify that it hasn't already been added by Doom.
 - If anything goes wrong, you can always find the example versions of [[https://github.com/hlissner/doom-emacs/blob/develop/core/templates/config.example.el][config.el]], [[https://github.com/hlissner/doom-emacs/blob/develop/init.example.el][init.el]], [[https://github.com/hlissner/doom-emacs/blob/develop/core/templates/packages.example.el][packages.el]] on the Doom GitHub repo.
 
@@ -19,7 +19,9 @@ Some general points:
 
 - Submit an issue regarding folding in markdown.
 - Try the =completion/company= module with the =+childframe= flag.
+- Try dired-rangeer (dired with the =+ranger= flag).
 - Consider adding the =super-save= package.
+- If you decide you like EasyMark, consider binding its prefix to =SPC SPC= (the default in Vim) and binding =M-x= to =SPC-x=.
 - Go through DT's, David Wilson's, and your own EFS config, and see if there's anything else you want to add.
 
 * File Headers
@@ -191,7 +193,7 @@ Completion is great in code buffers, but I find it distracting when writing text
 ;; been customized and begins with `not'.
 (after! company
   (setq company-global-modes
-        (append company-global-modes '(org-mode text-mode))))
+        (append company-global-modes '(markdown-mode org-mode text-mode))))
 #+end_src
 
 ** Color Theme
@@ -400,6 +402,30 @@ The Doom module =ui/(window-select +numbers)= provides the [[https://github.com/
       "s O" nil
       :desc "Look up online" "s w" #'+lookup/online
       :desc "Look up online (w/ prompt)" "s W" #'+lookup/online-select)
+#+end_src
+
+* Dired
+
+The [[https://github.com/mattiasb/dired-hide-dotfiles][dired-hide-dotfiles]] package lets you toggle whether dotfiles are shown in Dired buffers (and can optionally display how may dotfiles were hidden).
+
+#+begin_src elisp :tangle packages.el
+(package! dired-hide-dotfiles)
+#+end_src
+
+#+begin_src elisp
+(setq delete-by-moving-to-trash t)
+
+;; Navigate the directory structure with "h" and "l"
+(map! :map dired-mode-map
+  :n "h" 'dired-up-directory
+  :n "l" 'dired-find-file)
+
+(use-package! dired-hide-dotfiles
+  ;; :defer t
+  :hook (dired-mode . dired-hide-dotfiles-mode)  ;; Hide dotfiles by default
+  :config
+  (map! :map 'dired-mode-map
+        :n "H" 'dired-hide-dotfiles-mode))
 #+end_src
 
 * Org
