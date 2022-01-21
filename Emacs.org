@@ -622,7 +622,7 @@ Electric Pair mode is analagous to the Autopair package for Vim.
 
 * Dired
 
-Dired is Emacs's excellent file manager. With the [[https://github.com/crocket/dired-single][dired-single]] package, Emacs will reuse existing Dired buffers instead of spawning new ones.
+Dired is Emacs's excellent file manager. With the [[https://github.com/crocket/dired-single][dired-single]] package, Emacs will reuse existing Dired buffers instead of spawning new ones. The [[https://github.com/mattiasb/dired-hide-dotfiles][dired-hide-dotfiles]] package lets you toggle whether dotfiles are shown in Dired buffers (and can optionally display how may dotfiles were hidden).
 
 [[https://github.com/jtbm37/all-the-icons-dired][all-the-icons-dired]] adds Dired support to all-the-icons. If you use Treemacs, an alternative is [[https://github.com/Alexander-Miller/treemacs#treemacs-icons-dired][treemacs-icons-dired]].
 
