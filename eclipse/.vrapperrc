@@ -1,0 +1,14 @@
+" Filepath: ~/.vrapperrc
+" Author: Dan Murphy
+
+" Mappings
+
+" Exit Insert mode by pressing 'jk'
+inoremap jk <Esc>
+
+" Map Y to act like D and C, i.e. 'y$' rather than the default 'yy'
+noremap Y y$
+
+" Mappings from Tim Pope's Unimpaired plugin <tpope/vim-unimpaired>
+nnoremap [<Space> O<Esc>j
+nnoremap ]<Space> o<Esc>k
