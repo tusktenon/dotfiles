@@ -3,7 +3,7 @@
 
 [user]
 name = Dan Murphy
-email = dc.murphy@utoronto.ca
+email = dan.murphy@alumni.utoronto.ca
 
 [core]
 editor = nvim
