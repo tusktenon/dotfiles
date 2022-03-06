@@ -2,6 +2,7 @@
 # Author: Dan Murphy
 
 # Development
+brew 'bat'
 brew 'gcc'
 brew 'gdb'
 brew 'git'
@@ -24,7 +25,7 @@ cask 'db-browser-for-sqlite'
 # Fonts (including NERD Fonts)
 tap 'homebrew/cask-fonts'
 
-  # Standard Fonts
+  # Standard Monospace Fonts
   brew 'font-cascadia-code'
   brew 'font-fantasque-sans-mono'
   #brew 'font-fantasque-sans-mono-noloopk'  # lowercase k without loop
@@ -38,7 +39,7 @@ tap 'homebrew/cask-fonts'
   brew 'font-roboto-mono'
   brew 'font-source-code-pro'
 
-  # NERD Fonts
+  # NERD Monospace Fonts
   brew 'font-blex-mono-nerd-font'
   brew 'font-fantasque-sans-mono-nerd-font'
   brew 'font-fira-code-nerd-font'
@@ -47,6 +48,9 @@ tap 'homebrew/cask-fonts'
   brew 'font-meslo-lg-nerd-font'
   brew 'font-roboto-mono-nerd-font'
   brew 'font-sauce-code-pro-nerd-font'
+
+  # Variable Fonts
+  brew 'font-source-sans-pro'
 
 
 # Other

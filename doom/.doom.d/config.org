@@ -161,8 +161,8 @@ Doom highlights the current line by default, but I find this distracting. Adding
   ;; (setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-light)
   ;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
 
-  (setq doom-font (font-spec :family "Iosevka" :size 20)
-        doom-variable-pitch-font (font-spec :family "Source Sans Pro" :size 22))
+  (setq doom-font (font-spec :family "Iosevka" :size 16)
+        doom-variable-pitch-font (font-spec :family "Source Sans Pro" :size 18))
 #+end_src
 
 *** Variable-pitch fonts in text buffers
