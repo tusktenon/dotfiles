@@ -1,15 +1,28 @@
 # ~/.zshrc
 # Author: Dan Murphy
 
+# Identify OS for environment-specific settings
+system_type=$(uname -s)
+
+# Language and localization settings
+export  LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
+
+# Make Homebrew completions available on macOS.
+#   This must be done before `compinit` is called;
+#   see <https://docs.brew.sh/Shell-Completion>
+if [ "$system_type" = "Darwin" ]; then
+    if type brew &>/dev/null; then
+      FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+    fi
+fi
+
 # Command completion
 autoload -Uz compinit
 compinit
 zstyle ':completion:*' menu select
 
-# Command history
-HISTFILE=~/.zsh_history
-HISTSIZE=100
-SAVEHIST=1000
 
 # Directory navigation
 setopt autocd autopushd correct correctall
@@ -17,17 +30,59 @@ CDPATH=.:~:~/Development:~/Documents
 #CDPATH+=:~/Development/Courses/Introduction\ to\ Programming\ in\ C
 export CDPATH
 
+
+# Add Homebrew's installation directories to the front of the PATH
+if [ "$system_type" = "Darwin" ]; then
+    PATH=/usr/local/bin:/usr/local/sbin:$PATH
+fi
+
 # Add Doom Emacs to PATH
 PATH+=:~/.emacs.doom/bin
 export PATH
 
-# A simple PS1 prompt
-#PS1=$'\n'"%B%F{blue}%1~%f%b \$ "
+
+# Enable colored output from ls, tree, etc.
+#   For LSCOLORS (BSD, macOS) and LS_COLORS (Linux) values, see
+#   <https://geoff.greer.fm/lscolors/> or <https://gist.github.com/thomd/7667642>
+export CLICOLOR=1
+if [ "$system_type" = "Darwin" ]; then
+    export LSCOLORS=ExgxhxDxcxhxhxhxhxcxcx
+    alias lsl='ls -ahl'
+else;
+    alias lsl='ls -ahl --color=auto'
+    alias ls='ls --color=auto'
+fi
+
+# Tell grep to highlight matches
+export GREP_OPTIONS='--color=auto'
+
+
+# Use Neovim
+export EDITOR="nvim"
+alias vi="nvim"
+#alias vim="nvim"
+alias vimdiff="nvim -d"
+
+# On macOS,use Homebrew's gcc instead of Apple's clang
+if [ "$system_type" = "Darwin" ]; then
+    #alias -g gcc='gcc-11'
+    #alias -g g++='g++-11'
+fi
+
+# Custom GNU Stow command for dotfiles repository
+alias dstow='stow --dir=$HOME/Development/dotfiles --target=$HOME --no-folding'
+
+# Skip the .git directory in repositories
+alias tree='tree -I .git'
+
+# Download videos in 720p
+#alias ydl-720="youtube-dl -f '[height=720]'"
+
 
 # Vi mode configuration
 bindkey -v
 
-# Escape from Insert to Normal mode with 'jj', 'jk' and/or 'kj'
+# Escape from Insert to Normal mode with 'jj' or 'jk'
 bindkey -M viins 'jj' vi-cmd-mode
 #bindkey -M viins 'jk' vi-cmd-mode
 
@@ -59,25 +114,25 @@ zle -N zle-keymap-select
 zle-line-init() { _set_bar_cursor }
 zle -N zle-line-init
 
-# Enable colored output from ls, tree, etc.
-export CLICOLOR=1
-alias lsl='ls -ahl --color=auto'
-alias ls='ls --color=auto'
 
-# Use Neovim
-export EDITOR="nvim"
-alias vi="nvim"
-#alias vim="nvim"
-alias vimdiff="nvim -d"
+# A simple PS1 prompt
+#PS1=$'\n'"%B%F{blue}%1~%f%b \$ "
 
-# Custom GNU Stow command for dotfiles repository
-alias dstow='stow --dir=$HOME/Development/dotfiles --target=$HOME --no-folding'
+# Use Starship prompt
+eval "$(starship init zsh)"
 
-# Skip the .git directory in repositories
-alias tree='tree -I .git'
 
-# Download videos in 720p
-#alias ydl-720="youtube-dl -f '[height=720]'"
+# Enable syntax highlighting <zsh-users/zsh-syntax-highlighting>
+if [ "$system_type" = "Darwin" ]; then
+    source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+else;
+    source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
+ZSH_HIGHLIGHT_STYLES[alias]='fg=green,bold'
+ZSH_HIGHLIGHT_STYLES[builtin]='fg=green,bold'
+ZSH_HIGHLIGHT_STYLES[path]='fg=cyan'
+
 
 # Shell-side configuration for Emacs vterm
 vterm_printf() {
@@ -91,16 +146,6 @@ vterm_printf() {
         printf "\e]%s\e\\" "$1"
     fi
 }
-
-# Use Starship prompt
-eval "$(starship init zsh)"
-
-# Enable syntax highlighting
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
-ZSH_HIGHLIGHT_STYLES[alias]='fg=green,bold'
-ZSH_HIGHLIGHT_STYLES[builtin]='fg=green,bold'
-ZSH_HIGHLIGHT_STYLES[path]='fg=cyan'
 
 # Required for directory and prompt tracking in Emacs vterm
 vterm_prompt_end() {
