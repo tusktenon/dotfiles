@@ -1,6 +1,38 @@
 " Filepath: ~/.ideavimrc or ~/.config/ideavim/ideavimrc
 " Author: Dan Murphy
 
+" Basic Settings
+
+" Use case-insensitive search, except when using capital letters
+set ignorecase smartcase
+
+" Show search results as you type
+set incsearch
+
+" Highlight search matches only while searching
+" (Doesn't currently work in IdeaVim)
+augroup vimrc-incsearch-highlight
+    autocmd!
+    autocmd CmdlineEnter /,\? :set hlsearch
+    autocmd CmdlineLeave /,\? :set nohlsearch
+augroup END
+
+" Map <C-L> (redraw screen) to also turn off search highlighting until the
+" next search
+nnoremap <C-L> :nohls<CR>
+
+" Preview the effects of substitution commands as you type
+" (Doesn't currently work in IdeaVim)
+set inccommand=nosplit
+
+" Use (relative) line numbers
+"set number
+set number relativenumber
+
+" Join lines intelligently via IDE
+set ideajoin
+
+
 " Mappings
 
 " Exit Insert mode by pressing 'jk'
@@ -28,20 +60,8 @@ set textobj-indent
 nmap gs <Plug>(easymotion-prefix)
 let g:highlightedyank_highlight_duration = "800"
 
-" Other Settings
 
-" Show search results as you type
-set incsearch
-
-" Use (relative) line numbers
-set number
-"set number relativenumber
-
-" Join lines intelligently via IDE
-set ideajoin
-
-
-" Whick-Key Settings
+" Which-Key Settings
 
 " Enable extension
 set which-key
@@ -57,7 +77,7 @@ let g:WhichKey_FontFamily = "Iosevka"
 let g:WhichKey_FontSize = 20
 
 
-" Intellimacs
+" Intellimacs Settings
 
 " Enable primary module
 source ~/.intellimacs/spacemacs.vim

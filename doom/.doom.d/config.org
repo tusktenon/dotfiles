@@ -217,7 +217,7 @@ Completion is great in code buffers, but I find it distracting when writing text
 #+begin_src elisp
   ;; This determines the style of line numbers in effect. If set to `nil', line
   ;; numbers are disabled. For relative line numbers, set this to `relative'.
-  (setq display-line-numbers-type t)
+  (setq display-line-numbers-type 'relative)
 #+end_src
 
 ** Which-Key
