@@ -130,11 +130,13 @@ set cmdheight=2
 " Show partial commands in the last line of the screen
 set showcmd
 
-" Set font in GUI Vim
+" GUI Vim Settings
 "   Most GUI Vim implementations probably lack fine adjustment of glyph
 "   spacing/offset, so avoid Powerline/NERD fonts
 if has('gui_running')
-    set guifont=IBM\ Plex\ Mono:h14
+    set guicursor+=a:blinkon0   " Disable cursor blinking
+    set guifont=JetBrains\ Mono:h14
+    set linespace=6
 endif
 
 
