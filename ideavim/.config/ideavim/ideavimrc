@@ -50,14 +50,14 @@ nnoremap ]<space> o<esc>k
 
 set argtextobj
 set commentary
-set easymotion
+"set easymotion
 set exchange
 set highlightedyank
-set sneak
+"set sneak
 set surround
 set textobj-indent
 
-nmap gs <Plug>(easymotion-prefix)
+"nmap gs <Plug>(easymotion-prefix)
 let g:highlightedyank_highlight_duration = "800"
 
 
@@ -74,7 +74,7 @@ let g:WhichKey_ShowVimActions = "true"
 
 " Appearance
 let g:WhichKey_FontFamily = "Iosevka"
-let g:WhichKey_FontSize = 20
+let g:WhichKey_FontSize = 16
 
 
 " Intellimacs Settings
