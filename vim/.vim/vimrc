@@ -308,6 +308,20 @@ noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
 " Map Y to act like D and C, i.e. 'y$' rather than the default 'yy' 
 noremap Y y$
 
+" Reselect visual selection after indenting
+vnoremap < <gv
+vnoremap > >gv
+
+" Allow gf to open non-existent files
+map gf :edit <cfile><cr>
+
+" Open the current file in the default program
+" (use 'xdg-open' on Linux and 'open' on Mac)
+nmap <leader>x :!open %<cr><cr>
+
+" Paste-replace visual selection without copying it
+vnoremap <leader>p "_dP
+
 " Easier switching between buffers
 " Often mapped to <leader>l
 nnoremap gb :ls<CR>:b<Space>
