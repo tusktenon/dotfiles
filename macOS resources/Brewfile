@@ -3,6 +3,7 @@
 
 # Development
 brew 'bat'
+brew 'fd'   # Optional Doom Emacs dependency
 brew 'gcc'
 brew 'gdb'
 brew 'git'
@@ -11,6 +12,7 @@ brew 'htop'
 brew 'macos-trash'
 brew 'neovim'
 brew 'python3'
+brew 'ripgrep'  # Doom Emacs dependency
 brew 'sqlite'
 brew 'starship'
 brew 'stow'
@@ -20,6 +22,12 @@ brew 'zsh-syntax-highlighting'
 
 cask 'alacritty'
 cask 'db-browser-for-sqlite'
+
+
+# Emacs formula recommended by Doom:
+# https://github.com/hlissner/doom-emacs/blob/master/docs/getting_started.org#on-macos
+tap 'railwaycat/emacsmacport'
+brew 'emacs-mac --with-modules'
 
 
 # Fonts (including NERD Fonts)
