@@ -11,6 +11,8 @@ brew 'go'   # Needed by Vim package Hexokinase
 brew 'htop'
 brew 'macos-trash'
 brew 'neovim'
+brew 'node'  # Needed by VS Code Live Preview extension
+brew 'php'
 brew 'python3'
 brew 'ripgrep'  # Doom Emacs dependency
 brew 'sqlite'
