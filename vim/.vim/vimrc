@@ -301,10 +301,9 @@ set laststatus=2
 " Exit Insert mode by pressing 'jk'
 inoremap jk <Esc>
 
-" Set 'j' and 'k' to move by screen lines, not true lines
-" (If you use relative line numbers, this may be more trouble than it's worth)
-noremap j gj
-noremap k gk
+" Move by screen lines, not file lines, unless a count is provided
+noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
+noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
 
 " Map Y to act like D and C, i.e. 'y$' rather than the default 'yy' 
 noremap Y y$
