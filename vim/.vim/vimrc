@@ -160,13 +160,13 @@ function! PackInit() abort
     call minpac#add('lukas-reineke/indent-blankline.nvim', {'type': 'opt'})
 
     " Colorschemes
-    call minpac#add('dracula/vim', {'type': 'opt', 'name': 'dracula'})
-    call minpac#add('sainnhe/edge', {'type': 'opt'})
-    call minpac#add('tomasr/molokai', {'type': 'opt'})
+    " call minpac#add('dracula/vim', {'type': 'opt', 'name': 'dracula'})
+    " call minpac#add('sainnhe/edge', {'type': 'opt'})
+    " call minpac#add('tomasr/molokai', {'type': 'opt'})
     call minpac#add('arcticicestudio/nord-vim', {'type': 'opt'})
     call minpac#add('joshdick/onedark.vim', {'type': 'opt'})
-    call minpac#add('lifepillar/vim-solarized8', {'type': 'opt'})
-    call minpac#add('sainnhe/sonokai', {'type': 'opt'})
+    " call minpac#add('lifepillar/vim-solarized8', {'type': 'opt'})
+    " call minpac#add('sainnhe/sonokai', {'type': 'opt'})
 endfunction
 
 " Commands for updating/cleaning packages
@@ -281,7 +281,7 @@ endfunction
 command! -bar -nargs=? -complete=customlist,<sid>colo Colo call SetColorScheme(<f-args>)
 
 " Set initial color scheme
-call SetColorScheme('Nord')
+call SetColorScheme('Onedark')
 
 " Show comments in italics
 " highlight Comment cterm=italic gui=italic
