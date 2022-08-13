@@ -30,14 +30,9 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' \
 # Directory navigation
 setopt autocd autopushd correct correctall
 CDPATH=.:~:~/Development:~/Documents
-#CDPATH+=:~/Development/Courses/Introduction\ to\ Programming\ in\ C
+# CDPATH+=:~/Development/Courses/Introduction\ to\ Programming\ in\ C
 export CDPATH
 
-
-# Add Homebrew's installation directories to the front of the PATH
-if [ "$system_type" = "Darwin" ]; then
-    PATH=/usr/local/bin:/usr/local/sbin:$PATH
-fi
 
 # Add Doom Emacs to PATH
 PATH+=:~/.emacs.doom/bin
@@ -127,7 +122,7 @@ eval "$(starship init zsh)"
 
 # Enable syntax highlighting <zsh-users/zsh-syntax-highlighting>
 if [ "$system_type" = "Darwin" ]; then
-    source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+    source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 else;
     source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
