@@ -163,6 +163,7 @@ function! PackInit() abort
     " call minpac#add('dracula/vim', {'type': 'opt', 'name': 'dracula'})
     " call minpac#add('sainnhe/edge', {'type': 'opt'})
     " call minpac#add('tomasr/molokai', {'type': 'opt'})
+    call minpac#add('arzg/vim-substrata', {'type': 'opt'})
     call minpac#add('arcticicestudio/nord-vim', {'type': 'opt'})
     call minpac#add('joshdick/onedark.vim', {'type': 'opt'})
     " call minpac#add('lifepillar/vim-solarized8', {'type': 'opt'})
@@ -267,6 +268,10 @@ let g:color_scheme_list['Sonokai'] = [
     \ 'let g:sonokai_disable_italic_comment = 1',
     \ 'colorscheme sonokai'
     \ ]
+
+let g:color_scheme_list['Substrata'] = [
+    \ 'colorscheme substrata'
+    \]
 
 function! SetColorScheme(name) abort
     for l:item in g:color_scheme_list[a:name]
