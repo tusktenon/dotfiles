@@ -63,6 +63,9 @@ set autoindent
 " coming from other editors would expect.
 set nostartofline
 
+" Insert only one space after a '.', '?' or '!' when joining lines
+set nojoinspaces
+
 " Remove comment leader when joining commented lines
 set formatoptions+=j
 
@@ -74,6 +77,9 @@ set expandtab smarttab
 
 " Set tab stops and indentation at 4 spaces
 set shiftwidth=4 tabstop=4 softtabstop=4
+
+" Enable mouse support in all modes
+set mouse=a
 
 " Use option (alt) as meta key in MacVim
 if has('gui_macvim')
