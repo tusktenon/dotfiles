@@ -153,6 +153,7 @@ function! PackInit() abort
     " call minpac#add('rrethy/vim-hexokinase', {'do': 'make hexokinase'})
     call minpac#add('machakann/vim-highlightedyank')
     call minpac#add('preservim/vim-markdown')
+    call minpac#add('itspriddle/vim-marked')
     " call minpac#add('masukomi/vim-markdown-folding')
     call minpac#add('tpope/vim-repeat')
     call minpac#add('cespare/vim-toml')
