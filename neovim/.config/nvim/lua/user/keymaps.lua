@@ -1,8 +1,8 @@
 -- A helper function that sets custom defaults for keymaps
 local function keymap(mode, lhs, rhs, opts)
     local defaults = {noremap = true, silent = true}
-    vim.api.nvim_set_keymap(mode, lhs, rhs,
-        vim.tbl_extend('keep', opts or {}, defaults))
+    local merged = vim.tbl_extend('keep', opts or {}, defaults)
+    vim.api.nvim_set_keymap(mode, lhs, rhs, merged)
 end
 
 
