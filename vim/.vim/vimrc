@@ -43,10 +43,6 @@ augroup vimrc-incsearch-highlight
     autocmd CmdlineLeave /,\? :set nohlsearch
 augroup END
 
-" Map <C-L> (redraw screen) to also turn off search highlighting until the
-" next search
-nnoremap <C-L> :nohl<CR><C-L>
-
 " Preview the effects of substitution commands as you type
 set inccommand=nosplit
 
@@ -323,20 +319,30 @@ noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
 noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
 
 " Map Y to act like D and C, i.e. 'y$' rather than the default 'yy' 
+" (This mapping is set up by default in Neovim)
 noremap Y y$
 
-" Reselect visual selection after indenting
+" Per Neovim's default-mappings, map <C-L> (redraw screen) to also turn off
+" search highlighting and update diff highlighting and folds
+nnoremap <C-L> <Cmd>nohlsearch<Bar>diffupdate<Bar>normal! <C-L><CR>
+
+" Per Neovim's default mappings, remap Insert mode's <C-U> and <C-W>
+" to provide detailed undo history
+inoremap <C-U> <C-G>u<C-U>
+inoremap <C-W> <C-G>u<C-W>
+
+" Stay in indent mode (reselect visual selection after indenting)
 vnoremap < <gv
 vnoremap > >gv
 
 " Allow gf to open non-existent files
-map gf :edit <cfile><cr>
+map gf :edit <cfile><CR>
 
 " Open the current file in the default program
 " (use 'xdg-open' on Linux and 'open' on Mac)
-nmap <leader>x :!open %<cr><cr>
+nmap <leader>x :!open %<CR><CR>
 
-" Paste-replace visual selection without copying it
+" Better Visual-mode paste: replace visual selection without copying it
 vnoremap <leader>p "_dP
 
 " Easier switching between buffers
@@ -363,8 +369,8 @@ tnoremap <leader>wl <C-\><C-n><C-w>l
 tnoremap <leader>ww <C-\><C-n><C-w>w
 
 " Edit Vim configuration
-nmap <leader>ve :edit ~/.vim/vimrc<cr>
-nmap <leader>vr :source ~/.vim/vimrc<cr>
+nmap <leader>ve :edit ~/.vim/vimrc<CR>
+nmap <leader>vr :source ~/.vim/vimrc<CR>
 
 
 " Scripts ······························································· {{{1
