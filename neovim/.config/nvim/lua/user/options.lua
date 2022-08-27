@@ -27,17 +27,6 @@ opt.splitright = true  -- Open new windows to the right of the current one
 opt.termguicolors = true   -- 24-bit color support in the TUI
 
 
--- [[ Tabs & Indentation ]]
-
-opt.expandtab = true  -- Insert spaces instead of tab characters
-opt.shiftwidth = 4
-opt.tabstop = 4
-opt.softtabstop = 4
-opt.shiftround = true
-opt.smartindent = true
-opt.smarttab = true
-
-
 -- [[ Searching ]]
 
 opt.ignorecase = true  -- Use case-insensitive search
@@ -51,3 +40,14 @@ vim.cmd([[
         autocmd CmdlineLeave /,\? :set nohlsearch
     augroup END
 ]])
+
+
+-- [[ Tabs & Indentation ]]
+
+opt.expandtab = true  -- Insert spaces instead of tab characters
+opt.shiftwidth = 4
+opt.tabstop = 4
+opt.softtabstop = 4
+opt.shiftround = true
+opt.smartindent = true
+opt.smarttab = true
