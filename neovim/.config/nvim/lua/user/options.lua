@@ -6,8 +6,19 @@ opt.cmdheight = 2      -- Use two screen lines for the command line (helps avoid
 opt.confirm = true     -- Present a dialog instead of failing a command due to unsaved changes
 opt.linebreak = true   -- When `wrap` is on, visually break lines only at specific characters
 opt.mouse = 'a'        -- Enable mouse support in all modes
+
 opt.number = true          -- Display line numbers
 opt.relativenumber = true  -- Display relative line numbers
+
+-- Switch to absolute line numbers when a window loses focus
+vim.cmd([[
+    augroup number-toggle
+        autocmd!
+        autocmd BufEnter,FocusGained * set relativenumber
+        autocmd BufLeave,FocusLost * set norelativenumber
+    augroup END
+]])
+
 opt.scrolloff = 4      -- Keep some lines visible above/below the cursor
 opt.sidescrolloff = 4  -- Keep some columns visible to the left/right of the cursor
 opt.showmatch = true   -- Show matching brace/bracket/parenthesis
@@ -34,7 +45,7 @@ opt.smartcase = true   -- Override 'ignorecase' when search pattern contains upp
 
 -- Highlight search matches only while searching
 vim.cmd([[
-    augroup vimrc-incsearch-highlight
+    augroup incsearch-highlight-toggle
         autocmd!
         autocmd CmdlineEnter /,\? :set hlsearch
         autocmd CmdlineLeave /,\? :set nohlsearch
