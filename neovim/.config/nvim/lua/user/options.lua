@@ -15,8 +15,8 @@ opt.relativenumber = true  -- Display relative line numbers
 cmd([[
     augroup number-toggle
         autocmd!
-        autocmd BufEnter,FocusGained * set relativenumber
-        autocmd BufLeave,FocusLost * set norelativenumber
+        autocmd WinEnter * set relativenumber
+        autocmd WinLeave * set norelativenumber
     augroup END
 ]])
 
