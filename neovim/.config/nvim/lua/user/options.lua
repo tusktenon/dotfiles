@@ -1,3 +1,4 @@
+local cmd = vim.cmd
 local opt = vim.opt
 
 -- [[ Appearance & Interface ]]
@@ -11,7 +12,7 @@ opt.number = true          -- Display line numbers
 opt.relativenumber = true  -- Display relative line numbers
 
 -- Switch to absolute line numbers when a window loses focus
-vim.cmd([[
+cmd([[
     augroup number-toggle
         autocmd!
         autocmd BufEnter,FocusGained * set relativenumber
@@ -26,6 +27,8 @@ opt.splitbelow = true  -- Open new windows below the current one
 opt.splitright = true  -- Open new windows to the right of the current one
 opt.termguicolors = true   -- 24-bit color support in the TUI
 
+cmd('colorscheme nord')    -- Set colorscheme
+
 
 -- [[ Searching ]]
 
@@ -33,7 +36,7 @@ opt.ignorecase = true  -- Use case-insensitive search
 opt.smartcase = true   -- Override 'ignorecase' when search pattern contains uppercase characters
 
 -- Highlight search matches only while searching
-vim.cmd([[
+cmd([[
     augroup incsearch-highlight-toggle
         autocmd!
         autocmd CmdlineEnter /,\? :set hlsearch
