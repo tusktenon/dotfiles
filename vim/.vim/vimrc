@@ -37,10 +37,10 @@ set ignorecase smartcase
 set incsearch
 
 " Highlight search matches only while searching
-augroup vimrc-incsearch-highlight
+augroup incsearch_highlight_toggle
     autocmd!
-    autocmd CmdlineEnter /,\? :set hlsearch
-    autocmd CmdlineLeave /,\? :set nohlsearch
+    autocmd CmdlineEnter /,\? set hlsearch
+    autocmd CmdlineLeave /,\? set nohlsearch
 augroup END
 
 " Preview the effects of substitution commands as you type
@@ -110,16 +110,13 @@ set wrap linebreak
 " leftwards/rightwards
 set listchars+=precedes:←,extends:→               
 
-" Display (absolute or relative) line numbers
-" set number
+" Display relative line numbers,
+" but switch to absolute line numbers when a window loses focus
 set number relativenumber
-
-" Switch to absolute line numbers in Insert mode, and when a buffer loses
-" focus
-augroup numbertoggle
+augroup number_toggle
     autocmd!
-    autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-    autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+    autocmd WinEnter * set relativenumber
+    autocmd WinLeave * set norelativenumber
 augroup END
 
 " Show matching braces, brackets and parentheses
