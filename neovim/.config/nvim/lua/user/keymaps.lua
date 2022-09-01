@@ -10,7 +10,6 @@ end
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
-
 -- Exit Insert mode with 'jk'
 keymap('i', 'jk', '<ESC>')
 
