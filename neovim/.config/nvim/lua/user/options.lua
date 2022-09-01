@@ -1,5 +1,7 @@
 local cmd = vim.cmd
 local opt = vim.opt
+local autocmd = vim.api.nvim_create_autocmd
+local augroup = vim.api.nvim_create_augroup
 
 -- [[ Appearance & Interface ]]
 
@@ -17,8 +19,7 @@ opt.termguicolors = true   -- 24-bit color support in the TUI
 cmd('colorscheme nord')    -- Set colorscheme
 
 -- Hightlight selection on yank
-vim.api.nvim_create_autocmd('TextYankPost', {
-    -- group = vim.api.nvim_create_augroup('highlight_yank'),
+autocmd('TextYankPost', {
     pattern = '*',
     callback = function()
         vim.highlight.on_yank { timeout=250 }
@@ -29,13 +30,13 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 -- but switch to absolute line numbers when a window loses focus
 opt.number = true
 opt.relativenumber = true
-local number_toggle = vim.api.nvim_create_augroup('number_toggle', {})
-vim.api.nvim_create_autocmd('WinEnter', {
+local number_toggle = augroup('number_toggle', {})
+autocmd('WinEnter', {
     group = number_toggle,
     pattern = '*',
     command = 'set relativenumber',
 })
-vim.api.nvim_create_autocmd('WinLeave', {
+autocmd('WinLeave', {
     group = number_toggle,
     pattern = '*',
     command = 'set norelativenumber',
