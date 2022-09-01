@@ -29,13 +29,17 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 -- but switch to absolute line numbers when a window loses focus
 opt.number = true
 opt.relativenumber = true
-cmd([[
-    augroup number-toggle
-        autocmd!
-        autocmd WinEnter * set relativenumber
-        autocmd WinLeave * set norelativenumber
-    augroup END
-]])
+local number_toggle = vim.api.nvim_create_augroup('number_toggle', {})
+vim.api.nvim_create_autocmd('WinEnter', {
+    group = number_toggle,
+    pattern = '*',
+    command = 'set relativenumber',
+})
+vim.api.nvim_create_autocmd('WinLeave', {
+    group = number_toggle,
+    pattern = '*',
+    command = 'set norelativenumber',
+})
 
 
 -- [[ Searching ]]
