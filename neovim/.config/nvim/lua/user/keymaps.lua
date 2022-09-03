@@ -14,20 +14,22 @@ vim.g.maplocalleader = ' '
 keymap('i', 'jk', '<ESC>')
 
 -- Move by screen lines, not file lines, unless a count is provided
-keymap('n', 'k', "v:count == 0 ? 'gk' : 'k'", {expr = true})
 keymap('n', 'j', "v:count == 0 ? 'gj' : 'j'", {expr = true})
+keymap('n', 'k', "v:count == 0 ? 'gk' : 'k'", {expr = true})
 
 -- Borrowed from Tim Pope's Unimpaired plugin (tpope/vim-unimpaired):
 -- Insert newline above/below current line with `[<Space>` and `[<Space>`
 keymap('n', '[<Space>', ":<C-u>put!=repeat([''],v:count)<Bar>']+1<CR>")
 keymap('n', ']<Space>', ":<C-u>put =repeat([''],v:count)<Bar>'[-1<CR>")
 
--- Stay in indent mode (reselect visual selection after indenting)
-keymap('v', '<', '<gv')
-keymap('v', '>', '>gv')
+-- Easier switching between buffers
+keymap('n', 'gb', ':ls<CR>:b<Space>')
 
 -- Allow gf to open non-existent files
 keymap('', 'gf', ':edit <cfile><CR>')
+
+-- Open directory explorer
+keymap('n', '<leader>d', ':Lex 30<CR>')
 
 -- Open the current file in the default program
 -- (use 'xdg-open' on Linux and 'open' on Mac)
@@ -36,8 +38,15 @@ keymap('n', '<leader>x', ':!xdg-open %<CR><CR>')
 -- Better Visual-mode paste: replace visual selection without copying it
 keymap('v', 'p', '"_dP')
 
--- Easier switching between buffers
-keymap('n', 'gb', ':ls<CR>:b<Space>')
+-- Stay in indent mode (reselect Visual selection after indenting)
+keymap('v', '<', '<gv')
+keymap('v', '>', '>gv')
+
+-- Move text up/down in Visual and Visual Block mode
+keymap('v', '<M-j>', ":move .+1<CR>==")
+keymap('v', '<M-k>', ":move .-2<CR>==")
+keymap('x', '<M-j>', ":move '>+1<CR>gv-gv")
+keymap('x', '<M-k>', ":move '<-2<CR>gv-gv")
 
 -- Easier window navigation
 keymap('n', '<leader>wh', '<C-w>h')
@@ -50,6 +59,12 @@ keymap('t', '<leader>wj', '<C-\\><C-n><C-w>j')
 keymap('t', '<leader>wk', '<C-\\><C-n><C-w>k')
 keymap('t', '<leader>wl', '<C-\\><C-n><C-w>l')
 keymap('t', '<leader>ww', '<C-\\><C-n><C-w>w')
+
+-- Resize windows with arrow keys
+keymap('n', '<M-Up>', ':resize -2<CR>')
+keymap('n', '<M-Down>', ':resize +2<CR>')
+keymap('n', '<M-Left>', ':vertical resize -2<CR>')
+keymap('n', '<M-Right>', ':vertical resize +2<CR>')
 
 -- Edit Neovim configuration
 keymap('n', '<leader>ve', ':edit ~/.config/nvim/init.lua<CR>')
