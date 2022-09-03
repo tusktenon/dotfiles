@@ -1,3 +1,5 @@
+-- Packer Setup  {{{1
+
 -- Automatically install Packer
 local install_path = vim.fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
@@ -24,12 +26,26 @@ return require('packer').startup(function(use)
   -- Let Packer manage itself
   use 'wbthomason/packer.nvim'
 
-  -- Editor Enhancements
-  use 'tpope/vim-surround'
 
-  -- Colorschemes
+  -- Plugins  {{{1
+  -- Editor Enhancements  {{{2
+  use {
+    'windwp/nvim-autopairs',
+    config = function() require("nvim-autopairs").setup {} end
+  }
+
+  use {
+    'kylechui/nvim-surround',
+    tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+    config = function() require("nvim-surround").setup {} end
+  }
+
+  -- Apperance and Interface  {{{2
+  -- Colorschemes  {{{3
   use 'arcticicestudio/nord-vim'
 
+
+  -- Packer Setup (Completion)  {{{1
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if packer_bootstrap then
