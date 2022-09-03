@@ -22,7 +22,7 @@ vim.api.nvim_create_autocmd({'BufWritePost'}, {
 })
 
 
-return require('packer').startup(function(use)
+return require('packer').startup({function(use)
   -- Let Packer manage itself
   use 'wbthomason/packer.nvim'
 
@@ -51,7 +51,15 @@ return require('packer').startup(function(use)
   if packer_bootstrap then
     require('packer').sync()
   end
-end)
+end,
+  config = {
+    display = {
+      open_fn = function()
+        return require('packer.util').float({ border = 'single' })
+      end
+    }
+  }
+})
 
 
 -- vim: sw=2 ts=2 sts=2 et fdm=marker
