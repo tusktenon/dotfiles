@@ -17,6 +17,11 @@ keymap('i', 'jk', '<ESC>')
 keymap('n', 'k', "v:count == 0 ? 'gk' : 'k'", {expr = true})
 keymap('n', 'j', "v:count == 0 ? 'gj' : 'j'", {expr = true})
 
+-- Borrowed from Tim Pope's Unimpaired plugin (tpope/vim-unimpaired):
+-- Insert newline above/below current line with `[<Space>` and `[<Space>`
+keymap('n', '[<Space>', ":<C-u>put!=repeat([''],v:count)<Bar>']+1<CR>")
+keymap('n', ']<Space>', ":<C-u>put =repeat([''],v:count)<Bar>'[-1<CR>")
+
 -- Stay in indent mode (reselect visual selection after indenting)
 keymap('v', '<', '<gv')
 keymap('v', '>', '>gv')
