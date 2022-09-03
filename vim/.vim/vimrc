@@ -151,63 +151,23 @@ function! PackInit() abort
 
     " Plugins
     call minpac#add('jiangmiao/auto-pairs')
-    " call minpac#add('itchyny/vim-gitbranch')
-    " call minpac#add('rrethy/vim-hexokinase', {'do': 'make hexokinase'})
     call minpac#add('machakann/vim-highlightedyank')
     call minpac#add('preservim/vim-markdown')
     call minpac#add('itspriddle/vim-marked')
-    " call minpac#add('masukomi/vim-markdown-folding')
     call minpac#add('tpope/vim-repeat')
     call minpac#add('cespare/vim-toml')
     call minpac#add('tpope/vim-surround')
 
-    call minpac#add('Yggdroot/indentLine', {'type': 'opt'})
-    call minpac#add('lukas-reineke/indent-blankline.nvim', {'type': 'opt'})
-
     " Colorschemes
-    " call minpac#add('dracula/vim', {'type': 'opt', 'name': 'dracula'})
-    " call minpac#add('sainnhe/edge', {'type': 'opt'})
-    " call minpac#add('tomasr/molokai', {'type': 'opt'})
     call minpac#add('arzg/vim-substrata', {'type': 'opt'})
     call minpac#add('arcticicestudio/nord-vim', {'type': 'opt'})
     call minpac#add('joshdick/onedark.vim', {'type': 'opt'})
-    " call minpac#add('lifepillar/vim-solarized8', {'type': 'opt'})
-    " call minpac#add('sainnhe/sonokai', {'type': 'opt'})
 endfunction
 
 " Commands for updating/cleaning packages
 command! PackUpdate source $MYVIMRC | call PackInit() | call minpac#update()
 command! PackClean  source $MYVIMRC | call PackInit() | call minpac#clean()
 command! PackStatus packadd minpac | call minpac#status()
-
-
-" Auto Pairs settings
-" Enable Fly Mode
-"let g:AutoPairsFlyMode = 1
-
-" Hexokinase settings
-" let g:Hexokinase_highlighters = ['sign_column']
-" Don't match colour_names
-" let g:Hexokinase_optInPatterns = 'full_hex,rgb,rgba,hsl,hsla'
-
-" indentLine and indent-blankline settings
-" indent-blankline requires Neovim 0.4.0 or higher, and indentLine looks odd
-" without it
-if has('nvim')
-    packadd! indentLine
-    packadd! indent-blankline.nvim
-    " Hightlight group to use for default colors
-    let g:indentLine_defaultGroup = 'SpecialKey'
-    " Show first indentation level
-    let g:indentLine_showFirstIndentLevel = 0
-    " Character(s) to use for indent line, e.g. "│" or "┊"
-    let g:indentLine_first_char = "│"
-    let g:indentLine_char = "│"
-    " Start with both plugins disabled, except for specific file types
-    let g:indentLine_fileType = ['c']
-    " A shorter command to toggle both plugins on or off
-    command! IGT IndentBlanklineToggleAll
-endif
 
 
 " Color and Syntax Highlighting ········································· {{{1
@@ -227,26 +187,6 @@ syntax on
 
 let g:color_scheme_list = {}
 
-let g:color_scheme_list['Dracula'] = [
-    \ 'packadd! dracula',
-    \ 'let g:dracula_colorterm = 1',
-    \ 'colorscheme dracula'
-    \]
-
-let g:color_scheme_list['Edge'] = [
-    \ 'packadd! edge',
-    \ 'set background=dark',
-    \ "let g:edge_style = 'default'",
-    \ 'let g:edge_enable_italic = 1',
-    \ 'let g:edge_disable_italic_comment = 1',
-    \ 'colorscheme edge'
-    \ ]
-
-let g:color_scheme_list['Molokai'] = [
-    \ 'let g:molokai_original = 0',
-    \ 'colorscheme molokai'
-    \]
-
 let g:color_scheme_list['Nord'] = [
     \ 'let g:nord_italic = 1',
     \ 'let g:nord_italic_comments = 0',
@@ -258,20 +198,6 @@ let g:color_scheme_list['Onedark'] = [
     \ 'packadd! onedark.vim',
     \ 'let g:onedark_terminal_italics = 0',
     \ 'colorscheme onedark'
-    \ ]
-
-let g:color_scheme_list['Solarized8'] = [
-    \ 'set background=light',
-    \ 'let g:solarized_italics = 0',
-    \ 'colorscheme solarized8'
-    \ ]
-
-let g:color_scheme_list['Sonokai'] = [
-    \ 'packadd! sonokai',
-    \ "let g:sonokai_style = 'default'",
-    \ 'let g:sonokai_enable_italic = 1',
-    \ 'let g:sonokai_disable_italic_comment = 1',
-    \ 'colorscheme sonokai'
     \ ]
 
 let g:color_scheme_list['Substrata'] = [
