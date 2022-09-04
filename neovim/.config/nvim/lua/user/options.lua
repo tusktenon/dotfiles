@@ -7,6 +7,7 @@ local augroup = vim.api.nvim_create_augroup
 -- [[ Appearance & Interface ]]
 
 opt.cmdheight = 2         -- Use two screen lines for the command line (helps avoid 'hit enter' prompts)
+opt.completeopt = {'longest', 'menuone', 'noselect', 'preview'}  -- For a better completion experience
 opt.confirm = true        -- Present a dialog instead of failing a command due to unsaved changes
 opt.foldenable = false    -- Open buffers unfolded
 opt.linebreak = true      -- When `wrap` is on, visually break lines only at specific characters
@@ -14,6 +15,7 @@ opt.mouse = 'a'           -- Enable mouse support in all modes
 opt.scrolloff = 2         -- Keep some lines visible above/below the cursor
 opt.sidescrolloff = 4     -- Keep some columns visible to the left/right of the cursor
 opt.showmatch = true      -- Show matching brace/bracket/parenthesis
+opt.signcolumn = 'yes'     -- Always show the sign column (to avoid annoying visual shift)
 opt.splitbelow = true     -- Open new windows below the current one
 opt.splitright = true     -- Open new windows to the right of the current one
 opt.termguicolors = true  -- 24-bit color support in the TUI

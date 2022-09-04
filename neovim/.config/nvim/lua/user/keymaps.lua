@@ -17,13 +17,17 @@ keymap('i', 'jk', '<ESC>')
 keymap('n', 'j', "v:count == 0 ? 'gj' : 'j'", {expr = true})
 keymap('n', 'k', "v:count == 0 ? 'gk' : 'k'", {expr = true})
 
+-- Navigate completion menus with <C-j> and <C-k>
+keymap('c', '<C-j>', "pumvisible() ? '<C-n>' : '<C-j>'", {expr = true, silent = false})
+keymap('c', '<C-k>', "pumvisible() ? '<C-p>' : '<C-k>'", {expr = true, silent = false})
+
 -- Borrowed from Tim Pope's Unimpaired plugin (tpope/vim-unimpaired):
 -- Insert newline above/below current line with `[<Space>` and `[<Space>`
 keymap('n', '[<Space>', ":<C-u>put!=repeat([''],v:count)<Bar>']+1<CR>")
 keymap('n', ']<Space>', ":<C-u>put =repeat([''],v:count)<Bar>'[-1<CR>")
 
 -- Easier switching between buffers
-keymap('n', 'gb', ':ls<CR>:b<Space>')
+keymap('n', '<leader>bb', ':ls<CR>:b<Space>')
 
 -- Allow gf to open non-existent files
 keymap('', 'gf', ':edit <cfile><CR>')

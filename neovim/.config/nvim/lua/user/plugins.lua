@@ -69,7 +69,23 @@ return require('packer').startup(function(use)
   use 'arcticicestudio/nord-vim'
 
 
-  -- Git and Diff  {{{2
+  -- IDE Features  {{{2
+  -- Completion and Snippets  {{{3
+  use {
+    'hrsh7th/nvim-cmp',            -- Completion engine
+    requires = {
+      'hrsh7th/cmp-buffer',        -- buffer completions
+      'hrsh7th/cmp-cmdline',       -- cmdline completions
+      'hrsh7th/cmp-path',          -- path completions
+      'saadparwaiz1/cmp_luasnip',  -- LuaSnip completions
+    },
+
+    config = "require 'user.plugins.cmp'"
+  }
+  use 'L3MON4D3/LuaSnip'              --Snippet engine
+  use 'rafamadriz/friendly-snippets'  -- Snippets collection
+
+  -- Git  {{{2
   use {
     'sindrets/diffview.nvim',
     requires = 'nvim-lua/plenary.nvim'
