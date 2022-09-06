@@ -1,13 +1,8 @@
--- A helper function that sets custom defaults for keymaps
-local function keymap(mode, lhs, rhs, opts)
-    local defaults = {silent = true}  -- `vim.keymap.set` sets `noremap` by default
-    local merged = vim.tbl_extend('keep', opts or {}, defaults)
-    vim.keymap.set(mode, lhs, rhs, merged)
-end
-
 -- Use <Space> as <Leader> and <LocalLeader>
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
+
+local keymap = vim.keymap.set  -- Sets `noremap` by default
 
 -- Exit Insert mode with 'jk'
 keymap('i', 'jk', '<ESC>')
@@ -22,8 +17,8 @@ keymap('c', '<C-k>', "pumvisible() ? '<C-p>' : '<C-k>'", {expr = true, silent = 
 
 -- Borrowed from Tim Pope's Unimpaired plugin (tpope/vim-unimpaired):
 -- Insert newline above/below current line with `[<Space>` and `[<Space>`
-keymap('n', '[<Space>', ":<C-u>put!=repeat([''],v:count)<Bar>']+1<CR>")
-keymap('n', ']<Space>', ":<C-u>put =repeat([''],v:count)<Bar>'[-1<CR>")
+keymap('n', '[<Space>', ":<C-u>put!=repeat([''],v:count)<Bar>']+1<CR>", {silent = true})
+keymap('n', ']<Space>', ":<C-u>put =repeat([''],v:count)<Bar>'[-1<CR>", {silent = true})
 
 -- Easier switching between buffers
 keymap('n', '<leader>bb', ':ls<CR>:b<Space>')
@@ -46,10 +41,10 @@ keymap('v', '<', '<gv')
 keymap('v', '>', '>gv')
 
 -- Move text up/down in Visual and Visual Block mode
-keymap('v', '<M-j>', ":move .+1<CR>==")
-keymap('v', '<M-k>', ":move .-2<CR>==")
-keymap('x', '<M-j>', ":move '>+1<CR>gv-gv")
-keymap('x', '<M-k>', ":move '<-2<CR>gv-gv")
+keymap('v', '<M-j>', ":move .+1<CR>==", {silent = true})
+keymap('v', '<M-k>', ":move .-2<CR>==", {silent = true})
+keymap('x', '<M-j>', ":move '>+1<CR>gv-gv", {silent = true})
+keymap('x', '<M-k>', ":move '<-2<CR>gv-gv", {silent = true})
 
 -- Easier window navigation
 keymap('n', '<leader>wh', '<C-w>h')
@@ -64,10 +59,10 @@ keymap('t', '<leader>wl', '<C-\\><C-n><C-w>l')
 keymap('t', '<leader>ww', '<C-\\><C-n><C-w>w')
 
 -- Resize windows with arrow keys
-keymap('n', '<M-Up>', ':resize -2<CR>')
-keymap('n', '<M-Down>', ':resize +2<CR>')
-keymap('n', '<M-Left>', ':vertical resize -2<CR>')
-keymap('n', '<M-Right>', ':vertical resize +2<CR>')
+keymap('n', '<M-Up>', ':resize -2<CR>', {silent = true})
+keymap('n', '<M-Down>', ':resize +2<CR>', {silent = true})
+keymap('n', '<M-Left>', ':vertical resize -2<CR>', {silent = true})
+keymap('n', '<M-Right>', ':vertical resize +2<CR>', {silent = true})
 
 -- Edit Neovim configuration
 keymap('n', '<leader>ve', ':edit ~/.config/nvim/init.lua<CR>')
