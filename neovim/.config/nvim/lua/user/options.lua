@@ -9,6 +9,7 @@ local augroup = vim.api.nvim_create_augroup
 opt.cmdheight = 2         -- Use two screen lines for the command line (helps avoid 'hit enter' prompts)
 opt.completeopt = {'longest', 'menuone', 'noselect', 'preview'}  -- For a better completion experience
 opt.confirm = true        -- Present a dialog instead of failing a command due to unsaved changes
+cmd('set fillchars+=diff:╱')  -- Nicer deleted lines in diff-mode
 opt.foldenable = false    -- Open buffers unfolded
 opt.linebreak = true      -- When `wrap` is on, visually break lines only at specific characters
 opt.mouse = 'a'           -- Enable mouse support in all modes

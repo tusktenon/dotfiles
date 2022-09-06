@@ -19,6 +19,7 @@ brew 'sqlite'
 brew 'starship'
 brew 'stow'
 brew 'tree'
+brew 'wget'  # Required by mason.nvim
 brew 'zsh'
 brew 'zsh-syntax-highlighting'
 
@@ -47,13 +48,14 @@ tap 'homebrew/cask-fonts'
   brew 'font-jetbrains-mono'
   # brew 'font-meslo-lg'
   # brew 'font-meslo-lg-dz'  # dotted zero
+  brew 'font-noto-sans-mono'
   # brew 'font-pt-mono'  # Included with macOS
   brew 'font-roboto-mono'
   brew 'font-source-code-pro'
   brew 'font-victor-mono'
 
   # NERD Monospace Fonts
-  # brew 'font-blex-mono-nerd-font'
+  brew 'font-blex-mono-nerd-font'
   # brew 'font-fantasque-sans-mono-nerd-font'
   # brew 'font-fira-code-nerd-font'
   # brew 'font-hack-nerd-font'

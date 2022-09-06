@@ -83,6 +83,26 @@ use 'arcticicestudio/nord-vim'
 
 
 -- IDE Features  {{{2
+
+-- Package manager for LSP servers, DAP servers, linters and formatters
+use {
+  'williamboman/mason.nvim',
+  config = function() require('mason').setup {} end
+}
+
+-- Bridges mason and lspconfig
+use {
+  'williamboman/mason-lspconfig.nvim',
+  after = 'mason.nvim',
+  config = function() require('mason-lspconfig').setup {} end
+}
+
+-- LSP client
+use {
+  'neovim/nvim-lspconfig',
+  after = 'mason-lspconfig.nvim'
+}
+
 -- Completion and Snippets  {{{3
 use {
   'hrsh7th/nvim-cmp',            -- Completion engine
@@ -90,12 +110,14 @@ use {
     'hrsh7th/cmp-buffer',        -- buffer completions
     'hrsh7th/cmp-cmdline',       -- cmdline completions
     'hrsh7th/cmp-path',          -- path completions
+    'hrsh7th/cmp-nvim-lsp',      -- LSP completions
+    -- 'hrsh7th/cmp-nvim-lsp-signature-help',
+    'hrsh7th/cmp-nvim-lua',      -- Neovim Lua API completions
     'saadparwaiz1/cmp_luasnip',  -- LuaSnip completions
   },
-
   config = "require 'user.plugins.cmp'"
 }
-use 'L3MON4D3/LuaSnip'              --Snippet engine
+use 'L3MON4D3/LuaSnip'              -- Snippet engine
 use 'rafamadriz/friendly-snippets'  -- Snippets collection
 
 -- Git  {{{2
