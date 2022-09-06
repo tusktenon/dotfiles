@@ -1,10 +1,9 @@
 -- A helper function that sets custom defaults for keymaps
 local function keymap(mode, lhs, rhs, opts)
-    local defaults = {noremap = true, silent = true}
+    local defaults = {silent = true}  -- `vim.keymap.set` sets `noremap` by default
     local merged = vim.tbl_extend('keep', opts or {}, defaults)
-    vim.api.nvim_set_keymap(mode, lhs, rhs, merged)
+    vim.keymap.set(mode, lhs, rhs, merged)
 end
-
 
 -- Use <Space> as <Leader> and <LocalLeader>
 vim.g.mapleader = ' '
@@ -33,11 +32,11 @@ keymap('n', '<leader>bb', ':ls<CR>:b<Space>')
 keymap('', 'gf', ':edit <cfile><CR>')
 
 -- Open directory explorer
-keymap('n', '<leader>d', ':Lex 30<CR>')
+keymap('n', '<leader>e', ':Lex 30<CR>')
 
 -- Open the current file in the default program
--- (use 'xdg-open' on Linux and 'open' on Mac)
-keymap('n', '<leader>x', ':!xdg-open %<CR><CR>')
+-- (use `xdg-open` on Linux and `open` on Mac)
+keymap('n', '<leader>x', ':!open %<CR><CR>')
 
 -- Better Visual-mode paste: replace visual selection without copying it
 keymap('v', 'p', '"_dP')
