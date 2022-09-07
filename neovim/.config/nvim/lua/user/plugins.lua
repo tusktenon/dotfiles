@@ -100,7 +100,9 @@ use {
 -- LSP client
 use {
   'neovim/nvim-lspconfig',
-  after = 'mason-lspconfig.nvim'
+  after = 'mason-lspconfig.nvim',
+  -- requires = { 'b0o/schemastore.nvim' },  -- Easy access to JSON schemas from SchemaStore.org
+  config = "require 'user.plugins.lspconfig'"
 }
 
 -- Completion and Snippets  {{{3
@@ -123,7 +125,8 @@ use 'rafamadriz/friendly-snippets'  -- Snippets collection
 -- Git  {{{2
 use {
   'sindrets/diffview.nvim',
-  requires = 'nvim-lua/plenary.nvim'
+  requires = 'nvim-lua/plenary.nvim',
+  config = function() require('diffview').setup { use_icons = false } end
 }
 
 use {
