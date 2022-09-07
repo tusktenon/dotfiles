@@ -1,7 +1,8 @@
+-- See PSR-12 (https://www.php-fig.org/psr/psr-12/)
+
 local opt = vim.opt
 
-opt.colorcolumn = '80'
-opt.textwidth = 80
+opt.colorcolumn = '80,120'
 
 opt.expandtab = true
 opt.shiftwidth = 4

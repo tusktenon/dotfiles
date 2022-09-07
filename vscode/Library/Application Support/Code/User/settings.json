@@ -1,18 +1,25 @@
 {
+    // General Settings
+    "files.autoSave": "afterDelay",
+
     // Editor Appearance
     "editor.cursorBlinking": "solid",
     "editor.fontFamily": "IBM Plex Mono, JetBrains Mono, Menlo, Monaco, 'Courier New', monospace",
     "editor.fontSize": 14,
     "editor.guides.indentation": true,
     "editor.lineHeight": 1.75,
+    "editor.renderLineHighlight": "gutter",
     "editor.lineNumbers": "relative",
     "editor.minimap.enabled": false,
     "workbench.colorTheme": "Nord",
 
     // Formatting Defaults
     "editor.detectIndentation": false,
+    "editor.insertSpaces": true,
     "editor.tabSize": 4,
 
+    // Git and Diff
+    "diffEditor.ignoreTrimWhitespace": false,
 
     // Filetype-Specific Settings
     "[css]": {
@@ -77,6 +84,4 @@
             "after": ["o", "<Esc>", "k"]
         }
     ],
-    "files.autoSave": "afterDelay",
-    "diffEditor.ignoreTrimWhitespace": false,
 }
