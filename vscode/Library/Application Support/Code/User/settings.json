@@ -1,0 +1,82 @@
+{
+    // Editor Appearance
+    "editor.cursorBlinking": "solid",
+    "editor.fontFamily": "IBM Plex Mono, JetBrains Mono, Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontSize": 14,
+    "editor.guides.indentation": true,
+    "editor.lineHeight": 1.75,
+    "editor.lineNumbers": "relative",
+    "editor.minimap.enabled": false,
+    "workbench.colorTheme": "Nord",
+
+    // Formatting Defaults
+    "editor.detectIndentation": false,
+    "editor.tabSize": 4,
+
+
+    // Filetype-Specific Settings
+    "[css]": {
+        "editor.tabSize": 2
+    },
+
+    "[git-commit]": {
+        "editor.rulers": [50, 72],
+        "workbench.editor.restoreViewState": false
+    },
+
+    "[html]": {
+        "editor.tabSize": 2,
+        "editor.guides.indentation": false,
+    },
+    "html.format.wrapLineLength": 0,
+
+    "[javascript]": {
+        "editor.tabSize": 4,
+        "editor.rulers": [80]
+    },
+
+    "[lua]": {
+        "editor.tabSize": 2,
+    },
+    "Lua.runtime.version": "LuaJIT",     // LuaJIT for Neovim
+    "Lua.diagnostics.globals": ["vim"],  // Recognize `vim` as a global variable
+    "Lua.telemetry.enable": true,
+
+    "[php]": {
+        // See PSR-12 (https://www.php-fig.org/psr/psr-12/)
+        "editor.tabSize": 4,
+        "editor.rulers": [80, 120]
+    },
+
+    "[python]": {
+        "editor.tabSize": 4,
+        "editor.rulers": [80]
+    },
+
+
+    // VSCodeVim
+    "vim.highlightedyank.enable": true,
+    "vim.surround": true,
+    "vim.insertModeKeyBindings": [
+        {
+          "before": ["j", "k"],
+          "after": ["<Esc>"]
+        }
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": ["Y"],
+            "after": ["y", "$"]
+        },
+        {
+            "before": ["[", "<Space>"],
+            "after": ["O", "<Esc>", "j"]
+        },
+        {
+            "before": ["]", "<Space>"],
+            "after": ["o", "<Esc>", "k"]
+        }
+    ],
+    "files.autoSave": "afterDelay",
+    "diffEditor.ignoreTrimWhitespace": false,
+}
