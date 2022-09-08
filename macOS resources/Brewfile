@@ -3,27 +3,28 @@
 
 # Development
 brew 'bat'
-brew 'fd'   # Optional Doom Emacs dependency
+brew 'fd'
+brew 'fzf'
 brew 'gcc'
 brew 'gdb'
 brew 'git'
-brew 'go'   # Needed by Vim package Hexokinase
+# brew 'go'   # Hexokinase.vim dependency
 brew 'htop'
 brew 'macos-trash'
 brew 'neovim'
-brew 'node'  # Needed by VS Code Live Preview extension
+brew 'node'
 brew 'php'
 brew 'python3'
-brew 'ripgrep'  # Doom Emacs dependency
+brew 'ripgrep'
 brew 'sqlite'
 brew 'starship'
 brew 'stow'
 brew 'tree'
-brew 'wget'  # Required by mason.nvim
+brew 'wget'  # Mason.nvim dependency
 brew 'zsh'
 brew 'zsh-syntax-highlighting'
 
-cask 'alacritty'
+# cask 'alacritty'
 cask 'db-browser-for-sqlite'
 
 
@@ -55,7 +56,7 @@ tap 'homebrew/cask-fonts'
   brew 'font-victor-mono'
 
   # NERD Monospace Fonts
-  brew 'font-blex-mono-nerd-font'
+  # brew 'font-blex-mono-nerd-font'
   # brew 'font-fantasque-sans-mono-nerd-font'
   # brew 'font-fira-code-nerd-font'
   # brew 'font-hack-nerd-font'

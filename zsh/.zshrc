@@ -133,6 +133,10 @@ ZSH_HIGHLIGHT_STYLES[command]='fg=green,bold'
 ZSH_HIGHLIGHT_STYLES[path]='fg=cyan'
 
 
+# Source fzf settings
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+
 # Shell-side configuration for Emacs vterm
 vterm_printf() {
     if [ -n "$TMUX" ] && ([ "${TERM%%-*}" = "tmux" ] || [ "${TERM%%-*}" = "screen" ] ); then
