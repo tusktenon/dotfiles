@@ -31,6 +31,24 @@ local on_attach = function(client, bufnr)
   end, bufopts)
 end
 
+
+-- UI Customization
+vim.diagnostic.config({
+  virtual_text = true,
+  signs = true,
+  underline = true,
+  update_in_insert = false,
+  severity_sort = true,
+})
+
+-- Set the diagnostic symbols used in the sign column
+-- Consider '●', '◍', '■', '▥'
+local signs = { Error = '●', Warn = '●', Hint = '●', Info = '●' }
+for type, icon in pairs(signs) do
+  local hl = "DiagnosticSign" .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end
+
 -- Add additional capabilities supported by nvim-cmp
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
@@ -59,3 +77,6 @@ lspconfig.sumneko_lua.setup {
     },
   },
 }
+
+-- Python
+lspconfig.pyright.setup {}  -- Provides `PyrightOrganizeImports` command
