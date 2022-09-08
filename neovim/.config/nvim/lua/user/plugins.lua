@@ -1,18 +1,19 @@
 -- Packer Setup  {{{1
 
 -- Automatically install Packer
-local install_path = vim.fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-  packer_bootstrap = vim.fn.system({
-    'git',
-    'clone',
-    '--depth',
-    '1',
-    'https://github.com/wbthomason/packer.nvim',
-    install_path
-  })
-  vim.cmd [[packadd packer.nvim]]
+local ensure_packer = function()
+  local fn = vim.fn
+  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+  if fn.empty(fn.glob(install_path)) > 0 then
+    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+    vim.cmd [[packadd packer.nvim]]
+    return true
+  end
+  return false
 end
+
+local packer_bootstrap = ensure_packer()
+
 
 -- Automatically run `:PackerCompile` whenever `plugins.lua` is updated
 vim.api.nvim_create_autocmd({'BufWritePost'}, {
@@ -76,6 +77,12 @@ use {
       char = '│'  -- Default is '┃'; indent_blankline_char default is '│'
     }
   end
+}
+
+use {
+  'nvim-telescope/telescope.nvim',
+  branch = '0.1.x',
+  requires = 'nvim-lua/plenary.nvim'
 }
 
 -- Colorschemes  {{{3
