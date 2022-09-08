@@ -82,7 +82,14 @@ use {
 use {
   'nvim-telescope/telescope.nvim',
   branch = '0.1.x',
-  requires = 'nvim-lua/plenary.nvim'
+  requires = {
+    {'nvim-lua/plenary.nvim'},
+    -- A native (compiled C) sorter for improved performance:
+    -- {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'},
+    -- Pass arguments to the grep command:
+    -- {'nvim-telescope/telescope-live-grep-args.nvim'},
+  },
+  config = "require 'user.plugins.telescope'"
 }
 
 -- Colorschemes  {{{3
