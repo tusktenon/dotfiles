@@ -11,7 +11,6 @@
     "editor.renderLineHighlight": "gutter",
     "editor.lineNumbers": "relative",
     "editor.minimap.enabled": false,
-    "workbench.colorTheme": "Nord",
 
     // Formatting Defaults
     "editor.detectIndentation": false,
@@ -84,4 +83,8 @@
             "after": ["o", "<Esc>", "k"]
         }
     ],
+    "everforest.italicKeywords": true,
+    "everforest.darkContrast": "hard",
+    "workbench.colorTheme": "Nord",
+    "gruvboxMaterial.darkContrast": "soft",
 }

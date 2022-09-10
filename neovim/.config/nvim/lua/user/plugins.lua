@@ -45,7 +45,14 @@ use 'wbthomason/packer.nvim'
 -- Editor Enhancements  {{{2
 use {
   'windwp/nvim-autopairs',
-  config = function() require("nvim-autopairs").setup {} end
+  config = function()
+    require('nvim-autopairs').setup {
+      fast_wrap = {  -- Enable FastWrap using `<M-e>`
+        keys = 'asdfghjklqwertyuiopzxcvbnm'
+      },
+      check_ts = true  -- Use Treesitter to check for a pair
+    }
+  end
 }
 
 use {
@@ -56,7 +63,7 @@ use {
 use {
   'kylechui/nvim-surround',
   tag = "*", -- Use for stability; omit to use `main` branch for the latest features
-  config = function() require("nvim-surround").setup {} end
+  config = function() require('nvim-surround').setup {} end
 }
 
 
@@ -72,6 +79,10 @@ use {
 
 use {
   'lukas-reineke/virt-column.nvim',
+  -- `virt-column` needs to be loaded after your colorscheme (and lualine?),
+  -- or you can run `highlight clear ColorColumn` after the color scheme has
+  -- loaded (see https://github.com/lukas-reineke/virt-column.nvim/issues/2)
+  after = 'everforest',
   config = function()
     require('virt-column').setup {
       char = '│'  -- Default is '┃'; indent_blankline_char default is '│'
@@ -93,7 +104,27 @@ use {
 }
 
 -- Colorschemes  {{{3
-use 'arcticicestudio/nord-vim'
+use {
+  'arcticicestudio/nord-vim',
+  disable = true,
+  config = function()
+    -- vim.cmd 'colorscheme nord'
+  end
+}
+
+use {
+  'sainnhe/everforest',
+  -- disable = true,
+  config = function()
+    vim.g.everforest_background = 'hard'
+    vim.g.everforest_better_performance = 1
+    vim.g.everforest_cursor = 'green'
+    vim.g.everforest_disable_italic_comment = 1
+    vim.g.everforest_diagnostic_virtual_text = 'colored'
+    vim.opt.background = 'dark'
+    vim.cmd 'colorscheme everforest'
+  end
+}
 
 
 -- IDE Features  {{{2
@@ -119,7 +150,7 @@ use {
   config = "require 'user.plugins.lspconfig'"
 }
 
--- Completion and Snippets  {{{3
+-- Completion and Snippets
 use {
   'hrsh7th/nvim-cmp',            -- Completion engine
   requires = {
@@ -136,6 +167,18 @@ use {
 use 'L3MON4D3/LuaSnip'              -- Snippet engine
 use 'rafamadriz/friendly-snippets'  -- Snippets collection
 
+-- Treesitter
+use {
+  'nvim-treesitter/nvim-treesitter',
+  run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
+  requires = {
+    'windwp/nvim-ts-autotag',
+    'p00f/nvim-ts-rainbow',
+  },
+  config = "require 'user.plugins.treesitter'"
+}
+
+
 -- Git  {{{2
 use {
   'sindrets/diffview.nvim',
@@ -147,6 +190,10 @@ use {
   'lewis6991/gitsigns.nvim',
   config = function() require('gitsigns').setup {} end
 }
+
+
+-- Other {{{2
+use 'itspriddle/vim-marked'
 
 
 -- Packer Setup (Completion)  {{{1

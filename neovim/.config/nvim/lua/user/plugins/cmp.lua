@@ -25,9 +25,8 @@ cmp.setup({
     if vim.api.nvim_get_mode().mode == 'c' then
       return true
     else
-      return not context.in_syntax_group("Comment")
-      -- return not context.in_treesitter_capture("comment") 
-      --   and not context.in_syntax_group("Comment")
+      return not context.in_treesitter_capture("comment")
+        and not context.in_syntax_group("Comment")
     end
   end,
 
@@ -44,9 +43,9 @@ cmp.setup({
     ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
     ["<C-e>"] = cmp.mapping({ i = cmp.mapping.abort(), c = cmp.mapping.close(), }),
 
-    -- Accept currently selected item; if none selected, select first item.
-    -- Set `select` to `false` to only confirm explicitly selected items.
-    ["<CR>"] = cmp.mapping.confirm({ select = true }),
+    -- Set `select = true` to accept currently selected item; if none selected, select first item.
+    -- Set `select = false` to only confirm explicitly selected items.
+    ["<CR>"] = cmp.mapping.confirm({ select = false }),
 
     -- 'Super-Tab' mapping:
     -- https://github.com/hrsh7th/nvim-cmp/wiki/Example-mappings#luasnip

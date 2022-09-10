@@ -16,8 +16,8 @@ success_symbol = "[\\$](white)"
 error_symbol = "[\\$](bold red)"
 vicmd_symbol = "[\\$](bold blue)"
 
-[git_branch]
-format = "on [$branch]($style) "
+[directory]
+style = "bold blue"
 
-[git_status]
-deleted = "x"
+[git_branch]
+format = "on [$branch](bold purple) "
