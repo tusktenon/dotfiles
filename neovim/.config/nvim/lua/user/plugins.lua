@@ -57,7 +57,7 @@ use {
 
 use {
   'numToStr/Comment.nvim',
-  config = function() require('Comment').setup {} end
+  config = "require 'user.plugins.comment'"
 }
 
 use {
@@ -172,8 +172,9 @@ use {
   'nvim-treesitter/nvim-treesitter',
   run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
   requires = {
-    'windwp/nvim-ts-autotag',
-    'p00f/nvim-ts-rainbow',
+    'windwp/nvim-ts-autotag',                       -- Autopair functionality for HTLM/XML tags
+    'JoosepAlviste/nvim-ts-context-commentstring',  -- Set `commentstring` based on cursor location
+    'p00f/nvim-ts-rainbow',                         -- Rainbow brackets
   },
   config = "require 'user.plugins.treesitter'"
 }
