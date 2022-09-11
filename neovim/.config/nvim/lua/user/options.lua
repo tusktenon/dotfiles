@@ -37,12 +37,20 @@ local number_toggle = augroup('number_toggle', {})
 autocmd('WinEnter', {
     group = number_toggle,
     pattern = '*',
-    command = 'set relativenumber',
+    callback = function()
+      if vim.wo.number then
+        opt.relativenumber = true
+      end
+    end
 })
 autocmd('WinLeave', {
     group = number_toggle,
     pattern = '*',
-    command = 'set norelativenumber',
+    callback = function()
+      if vim.wo.number then
+        opt.relativenumber = false
+      end
+    end
 })
 
 
