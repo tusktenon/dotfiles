@@ -21,6 +21,7 @@ brew 'starship'
 brew 'stow'
 brew 'tree'
 brew 'wget'  # Mason.nvim dependency
+brew 'z'
 brew 'zsh'
 brew 'zsh-syntax-highlighting'
 

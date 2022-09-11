@@ -38,6 +38,8 @@ export CDPATH
 PATH+=:~/.emacs.doom/bin
 export PATH
 
+# Add `z` (https://github.com/rupa/z)
+. /opt/homebrew/etc/profile.d/z.sh
 
 # Enable colored output from ls, tree, etc.
 #   For LSCOLORS (BSD, macOS) and LS_COLORS (Linux) values, see
