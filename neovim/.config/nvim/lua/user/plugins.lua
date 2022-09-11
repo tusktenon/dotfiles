@@ -103,6 +103,12 @@ use {
   config = "require 'user.plugins.telescope'"
 }
 
+-- Tree-style file explorer (netrw replacement)
+use {
+  'kyazdani42/nvim-tree.lua',
+  config = "require 'user.plugins.nvim-tree'"
+}
+
 -- Colorschemes  {{{3
 use {
   'arcticicestudio/nord-vim',
@@ -191,6 +197,10 @@ use {
   'lewis6991/gitsigns.nvim',
   config = function() require('gitsigns').setup {} end
 }
+
+
+-- Language-Specific  {{{2
+use 'preservim/vim-markdown'
 
 
 -- Other {{{2

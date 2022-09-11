@@ -62,14 +62,14 @@ opt.smartcase = true   -- Override 'ignorecase' when search pattern contains upp
 -- Highlight search matches only while searching
 local search_highlight_toggle = augroup('search_highlight_toggle', {})
 autocmd('CmdLineEnter', {
-    group = 'search_highlight_toggle',
-    pattern = '/,?',
-    command = 'set hlsearch',
+  group = search_highlight_toggle,
+  pattern = '/,?',
+  command = 'set hlsearch',
 })
 autocmd('CmdLineLeave', {
-    group = 'search_highlight_toggle',
-    pattern = '/,?',
-    command = 'set nohlsearch',
+  group = search_highlight_toggle,
+  pattern = '/,?',
+  command = 'set nohlsearch',
 })
 
 
