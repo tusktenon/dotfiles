@@ -20,8 +20,15 @@ telescope.setup {
       },
     },
     path_display = { 'smart' },
+  },
+  extensions = {
+    heading = { treesitter = true }
   }
 }
+
+-- Load extensions
+-- (Must be called after `telescope.setup`)
+telescope.load_extension('heading')
 
 -- Mappings
 keymap('n', '<leader>bb', builtin.buffers)
@@ -29,6 +36,7 @@ keymap('n', '<leader>ff', builtin.find_files)
 keymap('n', '<leader>fr', builtin.oldfiles)
 keymap('n', '<leader>fg', builtin.live_grep)
 -- keymap('n', '<leader>fg', telescope.extensions.live_grep_args.live_grep_args)
+keymap('n', '<leader>fo', telescope.extensions.heading.heading)
 keymap('n', '<leader>fw', builtin.grep_string)
 
 -- Include hidden files, but not `.git` directories

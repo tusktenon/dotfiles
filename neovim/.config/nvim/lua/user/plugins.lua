@@ -99,6 +99,8 @@ use {
     -- {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'},
     -- Pass arguments to the grep command:
     -- {'nvim-telescope/telescope-live-grep-args.nvim'},
+    -- Navigate headings in Markdown, Org, Vim Help, etc.
+    {'crispgm/telescope-heading.nvim'}
   },
   config = "require 'user.plugins.telescope'"
 }
