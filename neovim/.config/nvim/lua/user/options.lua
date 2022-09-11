@@ -20,6 +20,7 @@ opt.signcolumn = 'yes'     -- Always show the sign column (to avoid annoying vis
 opt.splitbelow = true     -- Open new windows below the current one
 opt.splitright = true     -- Open new windows to the right of the current one
 opt.termguicolors = true  -- 24-bit color support in the TUI
+opt.undofile = true       -- Enable persistent undo
 
 -- Hightlight selection on yank
 autocmd('TextYankPost', {

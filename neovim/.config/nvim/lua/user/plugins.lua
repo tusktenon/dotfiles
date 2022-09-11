@@ -42,41 +42,17 @@ use 'wbthomason/packer.nvim'
 
 
 -- Plugins  {{{1
--- Editor Enhancements  {{{2
+
+-- Appearance and Interface  {{{2
+
+-- Auto-save
+-- (best used with Vim option `undofile` for peristent undo)
 use {
-  'windwp/nvim-autopairs',
-  config = function()
-    require('nvim-autopairs').setup {
-      fast_wrap = {  -- Enable FastWrap using `<M-e>`
-        keys = 'asdfghjklqwertyuiopzxcvbnm'
-      },
-      check_ts = true  -- Use Treesitter to check for a pair
-    }
-  end
+  'Pocco81/auto-save.nvim',
+  config = function() require("auto-save").setup {} end
 }
 
-use {
-  'numToStr/Comment.nvim',
-  config = "require 'user.plugins.comment'"
-}
-
-use {
-  'kylechui/nvim-surround',
-  tag = "*", -- Use for stability; omit to use `main` branch for the latest features
-  config = function() require('nvim-surround').setup {} end
-}
-
-
--- Apperance and Interface  {{{2
-use {
-  'lukas-reineke/indent-blankline.nvim',
-  config = function()
-    require('indent_blankline').setup {
-      show_trailing_blankline_indent = false,
-    }
-  end
-}
-
+-- Column guides: use a character for the colorcolumn
 use {
   'lukas-reineke/virt-column.nvim',
   -- `virt-column` needs to be loaded after your colorscheme (and lualine?),
@@ -90,6 +66,17 @@ use {
   end
 }
 
+-- Indent guides
+use {
+  'lukas-reineke/indent-blankline.nvim',
+  config = function()
+    require('indent_blankline').setup {
+      show_trailing_blankline_indent = false,
+    }
+  end
+}
+
+-- Telescope
 use {
   'nvim-telescope/telescope.nvim',
   branch = '0.1.x',
@@ -110,6 +97,7 @@ use {
   'kyazdani42/nvim-tree.lua',
   config = "require 'user.plugins.nvim-tree'"
 }
+
 
 -- Colorschemes  {{{3
 use {
@@ -132,6 +120,51 @@ use {
     vim.opt.background = 'dark'
     vim.cmd 'colorscheme everforest'
   end
+}
+
+
+-- Editor Enhancements  {{{2
+
+-- Autopairs
+use {
+  'windwp/nvim-autopairs',
+  config = function()
+    require('nvim-autopairs').setup {
+      fast_wrap = {  -- Enable FastWrap using `<M-e>`
+        keys = 'asdfghjklqwertyuiopzxcvbnm'
+      },
+      check_ts = true  -- Use Treesitter to check for a pair
+    }
+  end
+}
+
+-- Commenting (c.f. tpope/vim-commentary)
+use {
+  'numToStr/Comment.nvim',
+  config = "require 'user.plugins.comment'"
+}
+
+-- Add/change/delete delimiter pairs (c.f. tpope/vim-surround)
+use {
+  'kylechui/nvim-surround',
+  tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+  config = function() require('nvim-surround').setup {} end
+}
+
+
+-- Git  {{{2
+
+-- Diff interface
+use {
+  'sindrets/diffview.nvim',
+  requires = 'nvim-lua/plenary.nvim',
+  config = function() require('diffview').setup { use_icons = false } end
+}
+
+-- Show diff in the sign column; stage/unstage/preview hunks; line  blame
+use {
+  'lewis6991/gitsigns.nvim',
+  config = function() require('gitsigns').setup {} end
 }
 
 
@@ -188,25 +221,10 @@ use {
 }
 
 
--- Git  {{{2
-use {
-  'sindrets/diffview.nvim',
-  requires = 'nvim-lua/plenary.nvim',
-  config = function() require('diffview').setup { use_icons = false } end
-}
-
-use {
-  'lewis6991/gitsigns.nvim',
-  config = function() require('gitsigns').setup {} end
-}
-
-
 -- Language-Specific  {{{2
-use 'preservim/vim-markdown'
 
-
--- Other {{{2
-use 'itspriddle/vim-marked'
+use 'preservim/vim-markdown'  -- Enhanced Markdown mode
+use 'itspriddle/vim-marked'   -- Open in Marked
 
 
 -- Packer Setup (Completion)  {{{1
