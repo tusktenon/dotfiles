@@ -17,8 +17,8 @@ keymap('c', '<C-k>', "pumvisible() ? '<C-p>' : '<C-k>'", {expr = true, silent = 
 
 -- Borrowed from Tim Pope's Unimpaired plugin (tpope/vim-unimpaired):
 -- Insert newline above/below current line with `[<Space>` and `[<Space>`
-keymap('n', '[<Space>', ":<C-u>put!=repeat([''],v:count)<Bar>']+1<CR>", {silent = true})
-keymap('n', ']<Space>', ":<C-u>put =repeat([''],v:count)<Bar>'[-1<CR>", {silent = true})
+keymap('n', '[<Space>', ":<C-u>put!=repeat([''],v:count)<Bar>']+1<CR>", {desc = 'Add newline above', silent = true})
+keymap('n', ']<Space>', ":<C-u>put =repeat([''],v:count)<Bar>'[-1<CR>", {desc = 'Add newline below', silent = true})
 
 -- Easier switching between buffers
 keymap('n', '<leader>bb', ':ls<CR>:b<Space>')

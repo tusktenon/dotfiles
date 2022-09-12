@@ -98,6 +98,12 @@ use {
   config = "require 'user.plugins.nvim-tree'"
 }
 
+-- WhichKey
+use {
+  "folke/which-key.nvim",
+  config = "require 'user.plugins.which-key'"
+}
+
 
 -- Colorschemes  {{{3
 use {
@@ -224,6 +230,7 @@ use {
 -- Language-Specific  {{{2
 
 use 'preservim/vim-markdown'  -- Enhanced Markdown mode
+-- use 'ixru/nvim-markdown'      -- A fork of `preservim/vim-markdown` with extra functionality
 use 'itspriddle/vim-marked'   -- Open in Marked
 
 
