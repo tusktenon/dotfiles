@@ -25,7 +25,7 @@ opt.undofile = true       -- Enable persistent undo
 -- Line Wrapping
 --   These settings only affect how text is displayed; they do not change
 --   the actual text in the buffer (see `textwidth` for that)
-opt.wrap = true           -- Wrap long lines
+opt.wrap = false           -- Wrap long lines
 opt.linebreak = true      -- Break lines only at the characters in `breakat`
 opt.breakindent = true    -- Maintain indentation of wrapped lines
 
