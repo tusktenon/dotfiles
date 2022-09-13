@@ -9,7 +9,7 @@ whichkey.setup {
     ['<tab>'] = 'TAB',
   },
   window = {
-    border = 'single'
+    border = 'rounded'
   }
 }
 

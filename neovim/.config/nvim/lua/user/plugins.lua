@@ -109,23 +109,13 @@ use {
 use {
   'arcticicestudio/nord-vim',
   disable = true,
-  config = function()
-    -- vim.cmd 'colorscheme nord'
-  end
+  config = [[vim.cmd 'colorscheme nord']]
 }
 
 use {
   'sainnhe/everforest',
   -- disable = true,
-  config = function()
-    vim.g.everforest_background = 'hard'
-    vim.g.everforest_better_performance = 1
-    vim.g.everforest_cursor = 'green'
-    vim.g.everforest_disable_italic_comment = 1
-    vim.g.everforest_diagnostic_virtual_text = 'colored'
-    vim.opt.background = 'dark'
-    vim.cmd 'colorscheme everforest'
-  end
+  config = "require 'user.plugins.everforest'"
 }
 
 
@@ -188,7 +178,11 @@ use {
 -- Package manager for LSP servers, DAP servers, linters and formatters
 use {
   'williamboman/mason.nvim',
-  config = function() require('mason').setup {} end
+  config = function()
+    require('mason').setup {
+      ui = { border = 'rounded' }
+    }
+  end
 }
 
 -- Bridges mason and lspconfig
