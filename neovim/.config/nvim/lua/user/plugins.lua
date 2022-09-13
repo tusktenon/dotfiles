@@ -173,6 +173,15 @@ use {
   config = function() require('gitsigns').setup {} end
 }
 
+-- Magit clone
+use {
+  'TimUntersberger/neogit',
+  requires = 'nvim-lua/plenary.nvim',
+  config = function() require('neogit').setup {
+    integrations = { diffview = true }  -- View diffs using `sindrets/diffview.nvim`
+  } end
+}
+
 
 -- IDE Features  {{{2
 
