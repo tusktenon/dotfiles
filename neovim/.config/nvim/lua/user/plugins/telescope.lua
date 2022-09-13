@@ -31,13 +31,13 @@ telescope.setup {
 telescope.load_extension('heading')
 
 -- Mappings
-keymap('n', '<leader>bb', builtin.buffers)
-keymap('n', '<leader>ff', builtin.find_files)
-keymap('n', '<leader>fr', builtin.oldfiles)
-keymap('n', '<leader>fg', builtin.live_grep)
+keymap('n', '<leader>bb', builtin.buffers, {desc = 'Switch buffers'})
+keymap('n', '<leader>ff', builtin.find_files, {desc = 'Find files'})
+keymap('n', '<leader>fr', builtin.oldfiles, {desc = 'Recent files'})
+keymap('n', '<leader>ss', builtin.live_grep, {desc = 'Search for string'})
 -- keymap('n', '<leader>fg', telescope.extensions.live_grep_args.live_grep_args)
-keymap('n', '<leader>fo', telescope.extensions.heading.heading)
-keymap('n', '<leader>fw', builtin.grep_string)
+keymap('n', '<leader>so', telescope.extensions.heading.heading, {desc = 'Outline'})
+keymap('n', '<leader>sw', builtin.grep_string, {desc = 'Search for string under cursor'})
 
 -- Include hidden files, but not `.git` directories
 -- (https://github.com/nvim-telescope/telescope.nvim/wiki/Configuration-Recipes#file-and-text-search-in-hidden-files-and-directories)

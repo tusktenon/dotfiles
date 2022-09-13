@@ -251,4 +251,4 @@ if packer_bootstrap then
 end
 
 
--- vim: sw=2 ts=2 sts=2 et fdm=marker
+-- vim: et sw=2 ts=2 sts=2 fdm=marker

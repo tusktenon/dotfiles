@@ -4,6 +4,9 @@ vim.g.maplocalleader = ' '
 
 local keymap = vim.keymap.set  -- Sets `noremap` by default
 
+
+-- General Mappings  {{{1
+
 -- Exit Insert mode with 'jk'
 keymap('i', 'jk', '<ESC>')
 
@@ -20,18 +23,8 @@ keymap('c', '<C-k>', "pumvisible() ? '<C-p>' : '<C-k>'", {expr = true, silent = 
 keymap('n', '[<Space>', ":<C-u>put!=repeat([''],v:count)<Bar>']+1<CR>", {desc = 'Add newline above', silent = true})
 keymap('n', ']<Space>', ":<C-u>put =repeat([''],v:count)<Bar>'[-1<CR>", {desc = 'Add newline below', silent = true})
 
--- Easier switching between buffers
-keymap('n', '<leader>bb', ':ls<CR>:b<Space>')
-
 -- Allow gf to open non-existent files
 keymap('', 'gf', ':edit <cfile><CR>')
-
--- Open directory explorer
-keymap('n', '<leader>e', ':Lex 30<CR>')
-
--- Open the current file in the default program
--- (use `xdg-open` on Linux and `open` on Mac)
-keymap('n', '<leader>x', ':!open %<CR><CR>')
 
 -- Better Visual-mode paste: replace visual selection without copying it
 keymap('v', 'p', '"_dP')
@@ -46,16 +39,43 @@ keymap('v', '<M-k>', ":move .-2<CR>==", {silent = true})
 keymap('x', '<M-j>', ":move '>+1<CR>gv-gv", {silent = true})
 keymap('x', '<M-k>', ":move '<-2<CR>gv-gv", {silent = true})
 
--- Easier window navigation
-keymap('n', '<leader>wc', '<C-w>c')
-keymap('n', '<leader>wh', '<C-w>h')
-keymap('n', '<leader>wj', '<C-w>j')
-keymap('n', '<leader>wk', '<C-w>k')
-keymap('n', '<leader>wl', '<C-w>l')
-keymap('n', '<leader>wo', '<C-w>o')
-keymap('n', '<leader>ws', '<C-w>s')
-keymap('n', '<leader>wv', '<C-w>v')
-keymap('n', '<leader>ww', '<C-w>w')
+
+-- Leader-Prefixed Mappings  {{{1
+
+-- Top-Level  {{{2
+
+-- Open the current file in the default program
+-- (use `xdg-open` on Linux and `open` on Mac)
+keymap('n', '<leader>x', ':!open %<CR><CR>')
+
+
+-- Buffers  {{{2
+keymap('n', '<leader>bb', ':ls<CR>:b<Space>', {desc = 'Switch buffers'})
+keymap('n', '<leader>bd', ':bd<cr>', {desc = 'Close buffer'})
+keymap('n', '<leader>bn', ':bn<cr>', {desc = 'Next buffer'})
+keymap('n', '<leader>bp', ':bp<cr>', {desc = 'Previous buffer'})
+
+
+-- Files/Find  {{{2
+-- keymap('n', '<leader>fe', ':Lex 30<CR>', {desc = 'Toggle explorer'})
+keymap('n', '<leader>fe', ':NvimTreeToggle<cr>', {desc = 'Toggle explorer'})
+
+
+-- Windows   {{{2
+keymap('n', '<leader>wb', '<C-w>b', {desc = 'Go to bottom-right'})
+keymap('n', '<leader>wc', '<C-w>c', {desc = 'Close window'})
+keymap('n', '<leader>wh', '<C-w>h', {desc = 'Go left'})
+keymap('n', '<leader>wj', '<C-w>j', {desc = 'Go down'})
+keymap('n', '<leader>wk', '<C-w>k', {desc = 'Go up'})
+keymap('n', '<leader>wl', '<C-w>l', {desc = 'Go right'})
+keymap('n', '<leader>wo', '<C-w>o', {desc = 'Close others'})
+keymap('n', '<leader>wp', '<C-w>p', {desc = 'Go to previous'})
+keymap('n', '<leader>ws', '<C-w>s', {desc = 'Split below'})
+keymap('n', '<leader>wt', '<C-w>t', {desc = 'Go to top-left'})
+keymap('n', '<leader>wv', '<C-w>v', {desc = 'Split right'})
+keymap('n', '<leader>ww', '<C-w>w', {desc = 'Go down/right'})
+keymap('n', '<leader>wW', '<C-w>W', {desc = 'Go up/left'})
+keymap('n', '<leader>w=', '<C-w>=', {desc = 'Balance windows'})
 keymap('t', '<leader>wc', '<C-\\><C-n><C-w>c')
 keymap('t', '<leader>wh', '<C-\\><C-n><C-w>h')
 keymap('t', '<leader>wj', '<C-\\><C-n><C-w>j')
@@ -67,12 +87,10 @@ keymap('t', '<leader>wv', '<C-\\><C-n><C-w>v')
 keymap('t', '<leader>ww', '<C-\\><C-n><C-w>w')
 
 -- Resize windows with arrow keys
-keymap('n', '<M-Up>', ':resize -2<CR>', {silent = true})
-keymap('n', '<M-Down>', ':resize +2<CR>', {silent = true})
-keymap('n', '<M-Left>', ':vertical resize -2<CR>', {silent = true})
-keymap('n', '<M-Right>', ':vertical resize +2<CR>', {silent = true})
+keymap('n', '<M-Up>', ':resize -2<CR>', {desc = 'Decrease width', silent = true})
+keymap('n', '<M-Down>', ':resize +2<CR>', {desc = 'Increase width', silent = true})
+keymap('n', '<M-Left>', ':vertical resize -2<CR>', {desc = 'Decrease height', silent = true})
+keymap('n', '<M-Right>', ':vertical resize +2<CR>', {desc = 'Increase height', silent = true})
 
--- Edit Neovim configuration
-keymap('n', '<leader>ve', ':edit ~/.config/nvim/init.lua<CR>')
-keymap('n', '<leader>vr', ':source ~/.config/nvim/init.lua<CR>')
 
+-- vim: et sw=2 ts=2 sts=2 fdm=marker
