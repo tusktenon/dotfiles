@@ -1,8 +1,10 @@
+local keymap = vim.keymap.set  -- Sets `noremap` by default
+local telescope = require 'telescope'
+local telescope_builtin = require 'telescope.builtin'
+
 -- Use <Space> as <Leader> and <LocalLeader>
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
-
-local keymap = vim.keymap.set  -- Sets `noremap` by default
 
 
 -- General Mappings  {{{1
@@ -50,8 +52,9 @@ keymap('n', '<leader>x', ':!open %<CR><CR>')
 
 
 -- Buffers  {{{2
-keymap('n', '<leader>bb', ':ls<CR>:b<Space>', {desc = 'Switch buffers'})
-keymap('n', '<leader>bd', ':bd<cr>', {desc = 'Close buffer'})
+-- keymap('n', '<leader>bb', ':ls<CR>:b<Space>', {desc = 'Switch buffers'})
+keymap('n', '<leader>bb', telescope_builtin.buffers, {desc = 'Switch buffers'})
+keymap('n', '<leader>bd', ':bd<cr>', {desc = 'Delete buffer'})
 keymap('n', '<leader>bn', ':bn<cr>', {desc = 'Next buffer'})
 keymap('n', '<leader>bp', ':bp<cr>', {desc = 'Previous buffer'})
 
@@ -59,6 +62,25 @@ keymap('n', '<leader>bp', ':bp<cr>', {desc = 'Previous buffer'})
 -- Files/Find  {{{2
 -- keymap('n', '<leader>fe', ':Lex 30<CR>', {desc = 'Toggle explorer'})
 keymap('n', '<leader>fe', ':NvimTreeToggle<cr>', {desc = 'Toggle explorer'})
+keymap('n', '<leader>ff', telescope_builtin.find_files, {desc = 'Find files'})
+keymap('n', '<leader>fr', telescope_builtin.oldfiles, {desc = 'Recent files'})
+
+-- Include hidden files, but not `.git` directories
+-- (https://github.com/nvim-telescope/telescope.nvim/wiki/Configuration-Recipes#file-and-text-search-in-hidden-files-and-directories)
+local find_all = function()
+  telescope_builtin.find_files {
+    find_command = { "rg", "--files", "--hidden", "--glob", "!.git/*" },
+    prompt_title = 'All Files',
+  }
+end
+keymap('n', '<leader>fa', find_all, {desc = 'Find all'})
+
+
+-- Search  {{{2
+keymap('n', '<leader>ss', telescope_builtin.live_grep, {desc = 'Search for string'})
+-- keymap('n', '<leader>ss', telescope.extensions.live_grep_args.live_grep_args)
+keymap('n', '<leader>so', telescope.extensions.heading.heading, {desc = 'Outline'})
+keymap('n', '<leader>sw', telescope_builtin.grep_string, {desc = 'Search for string under cursor'})
 
 
 -- Windows   {{{2
