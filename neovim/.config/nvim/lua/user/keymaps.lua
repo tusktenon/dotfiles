@@ -1,6 +1,7 @@
 local keymap = vim.keymap.set  -- Sets `noremap` by default
 local telescope = require 'telescope'
 local telescope_builtin = require 'telescope.builtin'
+local telescope_custom = require 'user.plugins.telescope'
 
 -- Use <Space> as <Leader> and <LocalLeader>
 vim.g.mapleader = ' '
@@ -60,20 +61,11 @@ keymap('n', '<leader>bp', ':bp<cr>', {desc = 'Previous buffer'})
 
 
 -- Files/Find  {{{2
+keymap('n', '<leader>fa', telescope_custom.find_all, {desc = 'Find all files'})
 -- keymap('n', '<leader>fe', ':Lex 30<CR>', {desc = 'Toggle explorer'})
 keymap('n', '<leader>fe', ':NvimTreeToggle<cr>', {desc = 'Toggle explorer'})
 keymap('n', '<leader>ff', telescope_builtin.find_files, {desc = 'Find files'})
 keymap('n', '<leader>fr', telescope_builtin.oldfiles, {desc = 'Recent files'})
-
--- Include hidden files, but not `.git` directories
--- (https://github.com/nvim-telescope/telescope.nvim/wiki/Configuration-Recipes#file-and-text-search-in-hidden-files-and-directories)
-local find_all = function()
-  telescope_builtin.find_files {
-    find_command = { "rg", "--files", "--hidden", "--glob", "!.git/*" },
-    prompt_title = 'All Files',
-  }
-end
-keymap('n', '<leader>fa', find_all, {desc = 'Find all'})
 
 
 -- Search  {{{2

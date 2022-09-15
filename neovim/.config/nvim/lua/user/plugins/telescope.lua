@@ -1,5 +1,6 @@
 local telescope = require('telescope')
 local actions = require('telescope.actions')
+local builtin = require 'telescope.builtin'
 
 -- Load Telescope extensions
 -- telescope.load_extension('fzf')
@@ -27,3 +28,16 @@ telescope.setup {
 -- Load extensions
 -- (Must be called after `telescope.setup`)
 telescope.load_extension('heading')
+
+
+-- Custom Actions
+local M = {}
+
+-- Include hidden files, but not `.git` directories
+function M.find_all()
+  builtin.find_files {
+    find_command = { "rg", "--files", "--hidden", "--glob", "!.git/*" },
+    prompt_title = 'All Files',
+  }
+end
+return M
