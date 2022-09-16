@@ -44,6 +44,12 @@ keymap('x', '<M-j>', ":move '>+1<CR>gv-gv", {silent = true})
 keymap('x', '<M-k>', ":move '<-2<CR>gv-gv", {silent = true})
 
 
+-- []-Prefixed Mappings  {{{1
+
+keymap('n', ']b', ':bn<cr>', {desc = 'Next buffer'})
+keymap('n', '[b', ':bp<cr>', {desc = 'Previous buffer'})
+
+
 -- Leader-Prefixed Mappings  {{{1
 
 -- Top-Level  {{{2

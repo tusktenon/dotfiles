@@ -2,8 +2,8 @@
 local keymap = vim.keymap.set  -- Sets `noremap` by default
 -- See `:help vim.diagnostic.*` for documentation on any of the functions below
 keymap('n', 'gl', vim.diagnostic.open_float)
-keymap('n', '[d', vim.diagnostic.goto_prev)
-keymap('n', ']d', vim.diagnostic.goto_next)
+keymap('n', ']d', vim.diagnostic.goto_next, {desc = 'Next diagnostic'})
+keymap('n', '[d', vim.diagnostic.goto_prev, {desc = 'Previous diagnostic'})
 keymap('n', '<leader>lq', vim.diagnostic.setloclist)
 
 -- The `on_attach` callback is run after the language server successfully
