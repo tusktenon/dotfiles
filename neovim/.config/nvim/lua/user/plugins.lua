@@ -52,6 +52,17 @@ use {
   config = function() require("auto-save").setup {} end
 }
 
+-- Close several buffers at once; close buffers while preserving windows
+use {
+  'kazhala/close-buffers.nvim',
+  config = function()
+    require('close_buffers').setup {
+      -- Types of deletion that should preserve window layout:
+      preserve_window_layout = { 'this', 'nameless' }
+    }
+  end
+}
+
 -- Column guides: use a character for the colorcolumn
 use {
   'lukas-reineke/virt-column.nvim',

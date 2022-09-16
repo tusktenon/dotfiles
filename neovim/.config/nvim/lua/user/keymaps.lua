@@ -1,4 +1,5 @@
 local keymap = vim.keymap.set  -- Sets `noremap` by default
+local close_buffers = require 'close_buffers'
 local telescope = require 'telescope'
 local telescope_builtin = require 'telescope.builtin'
 local telescope_custom = require 'user.plugins.telescope'
@@ -55,7 +56,9 @@ keymap('n', '<leader>x', ':!open %<CR><CR>')
 -- Buffers  {{{2
 -- keymap('n', '<leader>bb', ':ls<CR>:b<Space>', {desc = 'Switch buffers'})
 keymap('n', '<leader>bb', telescope_builtin.buffers, {desc = 'Switch buffers'})
-keymap('n', '<leader>bd', ':bd<cr>', {desc = 'Delete buffer'})
+keymap('n', '<leader>bd', function() close_buffers.delete({type = 'this'}) end, {desc = 'Delete buffer'})
+keymap('n', '<leader>bH', function() close_buffers.delete({type = 'hidden'}) end, {desc = 'Delete hidden buffers'})
+keymap('n', '<leader>bO', function() close_buffers.delete({type = 'other'}) end, {desc = 'Delete other buffers'})
 keymap('n', '<leader>bn', ':bn<cr>', {desc = 'Next buffer'})
 keymap('n', '<leader>bp', ':bp<cr>', {desc = 'Previous buffer'})
 
