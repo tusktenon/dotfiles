@@ -14,6 +14,10 @@ whichkey.setup {
 }
 
 whichkey.register {
+  ['g'] = {
+    J = 'Join into single-line form',
+    S = 'Split into multi-line form'
+  },
   ['<leader>'] = {
     b = { name = '+Buffers' },
     c = { name = '+Code' },

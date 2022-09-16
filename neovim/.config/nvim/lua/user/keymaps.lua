@@ -31,7 +31,8 @@ keymap('n', ']<Space>', ":<C-u>put =repeat([''],v:count)<Bar>'[-1<CR>", {desc = 
 keymap('', 'gf', ':edit <cfile><CR>')
 
 -- Better Visual-mode paste: replace visual selection without copying it
-keymap('v', 'p', '"_dP')
+-- (doesn't work with `sickill/vim-pasta` plugin)
+-- keymap('v', 'p', '"_dP')
 
 -- Stay in indent mode (reselect Visual selection after indenting)
 keymap('v', '<', '<gv')

@@ -153,7 +153,16 @@ use {
   config = "require 'user.plugins.comment'"
 }
 
--- Add/change/delete delimiter pairs (c.f. tpope/vim-surround)
+-- Diff visual selections
+use 'AndrewRadev/linediff.vim'
+
+-- Paste with indentation automatically adjusted to context
+use 'sickill/vim-pasta'
+
+-- Switch between single- and multi-line code forms
+use 'AndrewRadev/splitjoin.vim'
+
+-- Surround: add/change/delete delimiter pairs (c.f. tpope/vim-surround)
 use {
   'kylechui/nvim-surround',
   tag = "*", -- Use for stability; omit to use `main` branch for the latest features
