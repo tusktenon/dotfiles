@@ -65,15 +65,17 @@ keymap('n', '<leader>bp', ':bp<cr>', {desc = 'Previous buffer'})
 
 -- Files/Find  {{{2
 keymap('n', '<leader>fa', telescope_custom.find_all, {desc = 'Find all files'})
+keymap('n', '<leader>fb', telescope.extensions.file_browser.file_browser, {desc = 'Browse files'})
 -- keymap('n', '<leader>fe', ':Lex 30<CR>', {desc = 'Toggle explorer'})
 keymap('n', '<leader>fe', ':NvimTreeToggle<cr>', {desc = 'Toggle explorer'})
 keymap('n', '<leader>ff', telescope_builtin.find_files, {desc = 'Find files'})
+keymap('n', '<leader>fg', telescope_builtin.git_files, {desc = 'Git files'})
 keymap('n', '<leader>fr', telescope_builtin.oldfiles, {desc = 'Recent files'})
 
 
 -- Search  {{{2
-keymap('n', '<leader>ss', telescope_builtin.live_grep, {desc = 'Search for string'})
--- keymap('n', '<leader>ss', telescope.extensions.live_grep_args.live_grep_args)
+-- keymap('n', '<leader>ss', telescope_builtin.live_grep, {desc = 'Search for string'})
+keymap('n', '<leader>ss', telescope.extensions.live_grep_args.live_grep_args, {desc = 'Search for string'})
 keymap('n', '<leader>so', telescope.extensions.heading.heading, {desc = 'Outline'})
 keymap('n', '<leader>sw', telescope_builtin.grep_string, {desc = 'Search for string under cursor'})
 

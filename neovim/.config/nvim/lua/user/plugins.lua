@@ -95,8 +95,10 @@ use {
     {'nvim-lua/plenary.nvim'},
     -- A native (compiled C) sorter for improved performance:
     -- {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'},
+    -- A file browser:
+    {'nvim-telescope/telescope-file-browser.nvim'},
     -- Pass arguments to the grep command:
-    -- {'nvim-telescope/telescope-live-grep-args.nvim'},
+    {'nvim-telescope/telescope-live-grep-args.nvim'},
     -- Navigate headings in Markdown, Org, Vim Help, etc.
     {'crispgm/telescope-heading.nvim'}
   },
