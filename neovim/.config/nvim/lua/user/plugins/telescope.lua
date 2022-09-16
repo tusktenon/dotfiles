@@ -49,12 +49,18 @@ telescope.load_extension 'live_grep_args'
 local M = {}
 
 -- Include hidden files, but not `.git` directories
-function M.find_all()
+M.find_all = function()
   builtin.find_files {
     find_command = { "fd", "--type", "file", "--hidden", "--exclude", ".git" },
     -- find_command = { "rg", "--files", "--hidden", "--glob", "!.git/*" },  -- From the Telescope Wiki
     prompt_title = 'All Files',
   }
+end
+
+-- Fall back to `find_files` if `git_files` can't find a `.git` directory
+M.git_files_with_fallback = function()
+  local in_repo = pcall(builtin.git_files)
+  if not in_repo then builtin.find_files() end
 end
 
 return M

@@ -68,8 +68,7 @@ keymap('n', '<leader>fa', telescope_custom.find_all, {desc = 'Find all files'})
 keymap('n', '<leader>fb', telescope.extensions.file_browser.file_browser, {desc = 'Browse files'})
 -- keymap('n', '<leader>fe', ':Lex 30<CR>', {desc = 'Toggle explorer'})
 keymap('n', '<leader>fe', ':NvimTreeToggle<cr>', {desc = 'Toggle explorer'})
-keymap('n', '<leader>ff', telescope_builtin.find_files, {desc = 'Find files'})
-keymap('n', '<leader>fg', telescope_builtin.git_files, {desc = 'Git files'})
+keymap('n', '<leader>ff', telescope_custom.git_files_with_fallback, {desc = 'Find files'})
 keymap('n', '<leader>fr', telescope_builtin.oldfiles, {desc = 'Recent files'})
 
 
