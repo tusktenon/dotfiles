@@ -53,11 +53,8 @@ keymap('n', '[b', ':bp<cr>', {desc = 'Previous buffer'})
 -- Leader-Prefixed Mappings  {{{1
 
 -- Top-Level  {{{2
-
--- Open the current file in the default program
--- (use `xdg-open` on Linux and `open` on Mac)
-keymap('n', '<leader>x', ':!open %<CR><CR>')
-
+keymap('n', '<leader>x', ':!open %<CR><CR>', {desc = 'Open current file in default program'})
+       -- (use `xdg-open` on Linux and `open` on Mac)
 
 -- Buffers  {{{2
 -- keymap('n', '<leader>bb', ':ls<CR>:b<Space>', {desc = 'Switch buffers'})
@@ -68,7 +65,6 @@ keymap('n', '<leader>bO', function() close_buffers.delete({type = 'other'}) end,
 keymap('n', '<leader>bn', ':bn<cr>', {desc = 'Next buffer'})
 keymap('n', '<leader>bp', ':bp<cr>', {desc = 'Previous buffer'})
 
-
 -- Files/Find  {{{2
 keymap('n', '<leader>fa', telescope_custom.find_all, {desc = 'Find all files'})
 keymap('n', '<leader>fb', telescope.extensions.file_browser.file_browser, {desc = 'Browse files'})
@@ -77,13 +73,14 @@ keymap('n', '<leader>fe', ':NvimTreeToggle<cr>', {desc = 'Toggle explorer'})
 keymap('n', '<leader>ff', telescope_custom.git_files_with_fallback, {desc = 'Find files'})
 keymap('n', '<leader>fr', telescope_builtin.oldfiles, {desc = 'Recent files'})
 
+-- Git {{{2
+keymap('n', '<leader>gg', require('neogit').open, {desc = 'Git status'})
 
 -- Search  {{{2
 -- keymap('n', '<leader>ss', telescope_builtin.live_grep, {desc = 'Search for string'})
 keymap('n', '<leader>ss', telescope.extensions.live_grep_args.live_grep_args, {desc = 'Search for string'})
 keymap('n', '<leader>so', telescope.extensions.heading.heading, {desc = 'Outline'})
 keymap('n', '<leader>sw', telescope_builtin.grep_string, {desc = 'Search for string under cursor'})
-
 
 -- Windows   {{{2
 keymap('n', '<leader>wb', '<C-w>b', {desc = 'Go to bottom-right'})
@@ -110,7 +107,7 @@ keymap('t', '<leader>ws', '<C-\\><C-n><C-w>s')
 keymap('t', '<leader>wv', '<C-\\><C-n><C-w>v')
 keymap('t', '<leader>ww', '<C-\\><C-n><C-w>w')
 
--- Resize windows with arrow keys
+-- Resize windows with arrow keys:
 keymap('n', '<M-Up>', ':resize -2<CR>', {desc = 'Decrease width', silent = true})
 keymap('n', '<M-Down>', ':resize +2<CR>', {desc = 'Increase width', silent = true})
 keymap('n', '<M-Left>', ':vertical resize -2<CR>', {desc = 'Decrease height', silent = true})

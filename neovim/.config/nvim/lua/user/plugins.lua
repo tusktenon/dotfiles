@@ -173,7 +173,7 @@ use {
 -- Show diff in the sign column; stage/unstage/preview hunks; line  blame
 use {
   'lewis6991/gitsigns.nvim',
-  config = function() require('gitsigns').setup {} end
+  config = "require 'user.plugins.gitsigns'"
 }
 
 -- Magit clone
@@ -181,6 +181,7 @@ use {
   'TimUntersberger/neogit',
   requires = 'nvim-lua/plenary.nvim',
   config = function() require('neogit').setup {
+    disable_commit_confirmation = true,
     integrations = { diffview = true }  -- View diffs using `sindrets/diffview.nvim`
   } end
 }
