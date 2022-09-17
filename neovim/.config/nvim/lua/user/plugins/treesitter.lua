@@ -17,6 +17,10 @@ require'nvim-treesitter.configs'.setup {
     enable = true,
     enable_autocmd = false  -- For integration with `Comment.nvim`
   },
+  matchup = {
+    enable = true,
+    include_match_words = true,
+  },
   rainbow = {
     enable = true,
     -- disable = {},

@@ -153,8 +153,8 @@ use {
   config = "require 'user.plugins.comment'"
 }
 
--- Diff Visual selections
-use 'AndrewRadev/linediff.vim'
+-- Enhanced `matchit` and `matchparen`
+use 'andymass/vim-matchup'
 
 -- Paste with indentation automatically adjusted to context
 use 'sickill/vim-pasta'
@@ -274,7 +274,14 @@ use 'preservim/vim-markdown'  -- Enhanced Markdown mode
 use 'itspriddle/vim-marked'   -- Open in Marked
 
 
+-- Other  {{{2
+
+-- Diff Visual selections
+use 'AndrewRadev/linediff.vim'
+
+
 -- Packer Setup (Completion)  {{{1
+
 -- Automatically set up your configuration after cloning packer.nvim
 -- Put this at the end after all plugins
 if packer_bootstrap then
