@@ -28,4 +28,4 @@ augroup END
 ]]
 
 -- Must be called last:
-cmd 'colorscheme everforest'
+-- cmd 'colorscheme everforest'

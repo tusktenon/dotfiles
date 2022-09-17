@@ -22,7 +22,7 @@ require'nvim-treesitter.configs'.setup {
     include_match_words = true,
   },
   rainbow = {
-    enable = true,
+    enable = false,
     -- disable = {},
     extended_mode = false,
     -- colors = {},
