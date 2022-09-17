@@ -26,6 +26,3 @@ autocmd!
 autocmd ColorScheme everforest call s:everforest_custom()
 augroup END
 ]]
-
--- Must be called last:
--- cmd 'colorscheme everforest'

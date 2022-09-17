@@ -71,7 +71,7 @@ use {
       user_default_options = {
         RGB = true,     -- #RGB hex codes
         RRGGBB = true,  -- #RRGGBB hex codes
-        names = true,   -- Named colors
+        names = false,   -- Named colors
         rgb_fn = true,  -- rgb() and rgba()
         hsl_fn = true,   -- hsl() and hsla()
       }
@@ -134,14 +134,13 @@ use {
 }
 
 
--- Colorschemes  {{{3
+-- Color Schemes  {{{3
 
 use {
   'catppuccin/nvim',
   as = "catppuccin",
-  -- disable = true,
   config = function()
-    vim.g.catppuccin_flavour = 'frappe'
+    vim.g.catppuccin_flavour = 'frappe'  -- frappe, macchiato or mocha
     require('catppuccin').setup {
       styles = {
         comments = {}
@@ -154,53 +153,22 @@ use {
 -- A really nice One Dark theme ported from Doom Emacs
 use {
   'NTBBloodbath/doom-one.nvim',
-  -- disable = true,
-  setup = function()
-    -- Add color to cursor
-    vim.g.doom_one_cursor_coloring = false
-    -- Set :terminal colors
-    vim.g.doom_one_terminal_colors = true
-    -- Enable italic comments
-    vim.g.doom_one_italic_comments = false
-    -- Enable TS support
-    vim.g.doom_one_enable_treesitter = true
-    -- Color whole diagnostic text or only underline
-    vim.g.doom_one_diagnostics_text_color = false
-    -- Enable transparent background
-    vim.g.doom_one_transparent_background = false
-
-    -- Pumblend transparency
-    vim.g.doom_one_pumblend_enable = false
-    vim.g.doom_one_pumblend_transparency = 20
-
-    -- Plugins integration
-    vim.g.doom_one_plugin_neorg = true
-    vim.g.doom_one_plugin_barbar = false
-    vim.g.doom_one_plugin_telescope = false
-    vim.g.doom_one_plugin_neogit = true
-    vim.g.doom_one_plugin_nvim_tree = true
-    vim.g.doom_one_plugin_dashboard = true
-    vim.g.doom_one_plugin_startify = true
-    vim.g.doom_one_plugin_whichkey = true
-    vim.g.doom_one_plugin_indent_blankline = true
-    vim.g.doom_one_plugin_vim_illuminate = true
-    vim.g.doom_one_plugin_lspsaga = false
-  end,
-  config = function()
-    -- vim.cmd("colorscheme doom-one")
-  end
+  setup = "require 'user.plugins.doom-one'",
+  -- config = "vim.cmd 'colorscheme doom-one'"
 }
 
 use {
   'sainnhe/everforest',
-  -- disable = true,
-  config = "require 'user.plugins.everforest'"
+  config = function()
+    require 'user.plugins.everforest'
+    -- vim.cmd 'colorscheme everforest'
+  end
 }
 
 use {
   'projekt0n/github-nvim-theme',
   config = function()
-    require('github-theme').setup {}
+    -- require('github-theme').setup {}
   end
 }
 
@@ -208,59 +176,13 @@ use {
   'sainnhe/gruvbox-material',
   config = function()
     vim.g.gruvbox_material_background = 'hard'
-    vim.cmd 'colorscheme gruvbox-material'
+    -- vim.cmd 'colorscheme gruvbox-material'
   end
 }
 
 use {
   'arcticicestudio/nord-vim',
-  -- disable = true,
   -- config = [[vim.cmd 'colorscheme nord']]
-}
-
-use {
-  'shaunsingh/nord.nvim',
-  -- disable = true,
-  config = function()
-    vim.g.nord_contrast = true
-    vim.g.nord_borders = false
-    vim.g.nord_disable_background = false
-    vim.g.nord_italic = false
-    vim.g.nord_uniform_diff_background = true
-    -- require('nord').set()
-  end
-}
-
-use {
-  'andersevenrud/nordic.nvim',
-  -- disable = true,
-  config = function()
-    require('nordic').colorscheme({
-      -- Underline style used for spelling
-      -- Options: 'none', 'underline', 'undercurl'
-      underline_option = 'none',
-
-      -- Italics for certain keywords such as constructors, functions, labels and namespaces
-      italic = false,
-
-      -- Italic styled comments
-      italic_comments = false,
-
-      -- Minimal mode: different choice of colors for Tabs and StatusLine
-      minimal_mode = false,
-
-      -- Darker backgrounds for certain sidebars, popups, etc.
-      -- Options: true, false, or a table of explicit names
-      -- Supported: terminal, qf, vista_kind, packer, nvim-tree, telescope, whichkey
-      alternate_backgrounds = false,
-
-      -- Callback function to define custom color groups
-      -- See 'lua/nordic/colors/example.lua' for example defitions
-      custom_colors = function(c, s, cs)
-        return {}
-      end
-    })
-  end
 }
 
 -- My favourite One Dark theme so far
@@ -275,24 +197,9 @@ use {
 -- Almost as nice as `navarasu/onedark.nvim`, but uses a lot more red
 use {
   'olimorris/onedarkpro.nvim',
-  -- disable = true,
-  config = function()
-    -- vim.cmd 'colorscheme onedarkpro'
-  end
+  -- config = "vim.cmd 'colorscheme onedarkpro'"
 }
 
--- A collection of themes.
--- `nordbones` is one of the nicest takes on Nord
--- `tokyobones` is a significant improvement on the original Tokyo Night theme
-use {
-    'mcchrish/zenbones.nvim',
-    requires = 'rktjmp/lush.nvim',
-    -- disable = true,
-    config = function()
-      vim.g.nordbones = {italic_comments = false}
-      -- vim.cmd 'colorscheme nordbones'
-    end
-}
 
 -- Editor Enhancements  {{{2
 
@@ -419,7 +326,7 @@ use {
   config = function()
     require('project_nvim').setup {
       -- Don't calculate root for specific directories
-      exclude_dirs = {'~/Development/dotfiles/neovim/.config/nvim/*'}
+      exclude_dirs = {'~/Development/dotfiles/neovim/.config/*'}
     }
   end
 }
