@@ -63,6 +63,22 @@ use {
   end
 }
 
+-- Colorizer
+use {
+  'NvChad/nvim-colorizer.lua',
+  config = function()
+    require('colorizer').setup {
+      user_default_options = {
+        RGB = true,     -- #RGB hex codes
+        RRGGBB = true,  -- #RRGGBB hex codes
+        names = true,   -- Named colors
+        rgb_fn = true,  -- rgb() and rgba()
+        hsl_fn = true,   -- hsl() and hsla()
+      }
+    }
+  end
+}
+
 -- Column guides: use a character for the colorcolumn
 use {
   'lukas-reineke/virt-column.nvim',
