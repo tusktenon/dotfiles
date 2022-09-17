@@ -270,6 +270,17 @@ use {
 use 'L3MON4D3/LuaSnip'              -- Snippet engine
 use 'rafamadriz/friendly-snippets'  -- Snippets collection
 
+-- Project Management
+use {
+  'ahmedkhalf/project.nvim',
+  config = function()
+    require('project_nvim').setup {
+      -- Don't calculate root for specific directories
+      exclude_dirs = {'~/Development/dotfiles/neovim/.config/nvim/*'}
+    }
+  end
+}
+
 -- Treesitter
 use {
   'nvim-treesitter/nvim-treesitter',

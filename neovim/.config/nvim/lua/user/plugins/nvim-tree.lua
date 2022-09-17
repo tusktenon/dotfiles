@@ -3,6 +3,7 @@ require('nvim-tree').setup {
     enable = true,
     icons = { error = '●', warning = '●', hint = '●', info = '●' }
   },
+
   renderer = {
     highlight_opened_files = 'all',
     indent_markers = { enable = true },
@@ -11,6 +12,7 @@ require('nvim-tree').setup {
       show = { file = false, folder = false }
     }
   },
+
   view = {
     mappings = {
       list = {
@@ -19,5 +21,13 @@ require('nvim-tree').setup {
         { key = 'v', action = 'vsplit' },
       }
     }
+  },
+
+  -- Settings for integration with `ahmedkhalf/project.nvim`:
+  sync_root_with_cwd = true,
+  respect_buf_cwd = true,
+  update_focused_file = {
+    enable = true,
+    update_root = true
   }
 }
