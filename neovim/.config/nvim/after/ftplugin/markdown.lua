@@ -9,5 +9,8 @@ opt.softtabstop = 2
 -- Visually wrap long lines
 opt.wrap = true
 
+-- Disable automatic formatting
+opt.formatoptions = ''
+
 -- Disable completion
 require('cmp').setup.buffer { enabled = false }

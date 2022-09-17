@@ -285,7 +285,8 @@ use {
 
 -- Language-Specific  {{{2
 
-use 'preservim/vim-markdown'  -- Enhanced Markdown mode
+-- Markdown
+-- use 'preservim/vim-markdown'  -- Enhanced Markdown mode
 -- use 'ixru/nvim-markdown'      -- A fork of `preservim/vim-markdown` with extra functionality
 use 'itspriddle/vim-marked'   -- Open in Marked
 
