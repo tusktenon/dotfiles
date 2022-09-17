@@ -169,6 +169,17 @@ use {
   config = function() require('nvim-surround').setup {} end
 }
 
+-- Text Objects
+use {
+  'kana/vim-textobj-entire',           -- Entire buffer
+  requires = {'kana/vim-textobj-user'}
+}
+use 'michaeljsmith/vim-indent-object'  -- Indentation level
+use {
+  'whatyouhide/vim-textobj-xmlattr',   -- HTML/XML attribute
+  requires = {'kana/vim-textobj-user'}
+}
+
 -- Visual Star: Run `*` and `#` searches on Visual selection
 use 'bronson/vim-visual-star-search'
 
