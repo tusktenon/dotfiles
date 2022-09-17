@@ -153,7 +153,7 @@ use {
   config = "require 'user.plugins.comment'"
 }
 
--- Diff visual selections
+-- Diff Visual selections
 use 'AndrewRadev/linediff.vim'
 
 -- Paste with indentation automatically adjusted to context
@@ -168,6 +168,9 @@ use {
   tag = "*", -- Use for stability; omit to use `main` branch for the latest features
   config = function() require('nvim-surround').setup {} end
 }
+
+-- Visual Star: Run `*` and `#` searches on Visual selection
+use 'bronson/vim-visual-star-search'
 
 
 -- Git  {{{2
