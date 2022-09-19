@@ -163,22 +163,30 @@ use {
 -- A really nice One Dark theme ported from Doom Emacs
 use {
   'NTBBloodbath/doom-one.nvim',
+  disable = true,
   setup = "require 'user.plugins.doom-one'",
   -- config = "vim.cmd 'colorscheme doom-one'"
 }
+
+-- Very similar look to OneDarkPro, which is written in Lua and is easier to customize
+-- use 'sainnhe/edge'
 
 use {
   'sainnhe/everforest',
   config = function()
     require 'user.plugins.everforest'
-    -- vim.cmd 'colorscheme everforest'
+    vim.cmd 'colorscheme everforest'
   end
 }
 
 use {
   'projekt0n/github-nvim-theme',
+  disable = true,
   config = function()
-    -- require('github-theme').setup {}
+    -- To play well with other schemes, `github-nvim-theme` is best configured in VimScript,
+    -- because a call to `require('github-theme').setup` automatically sets the `colorscheme`
+    vim.g.github_comment_style = 'none'
+    vim.cmd 'colorscheme github_dark'
   end
 }
 
@@ -195,19 +203,24 @@ use {
   -- config = [[vim.cmd 'colorscheme nord']]
 }
 
--- My favourite One Dark theme so far
+-- A great Onedark theme that tends to use cooler colors, which I prefer
 use {
   'navarasu/onedark.nvim',
   config = function()
     require 'user.plugins.onedark'
-    require('onedark').load()
+    -- require('onedark').load()
   end
 }
 
--- Almost as nice as `navarasu/onedark.nvim`, but uses a lot more red
+-- Another great Onedark theme.
+-- Compared to `navarasu/onedark.nvim`, this one uses a lot more red by default,
+-- but also offers more sophisticated customization options.
 use {
   'olimorris/onedarkpro.nvim',
-  -- config = "vim.cmd 'colorscheme onedarkpro'"
+  config = function()
+    require 'user.plugins.onedarkpro'
+    -- vim.cmd 'colorscheme onedarkpro'
+  end
 }
 
 

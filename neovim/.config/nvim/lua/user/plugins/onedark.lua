@@ -1,5 +1,8 @@
 require('onedark').setup {
   style = 'dark',
+  code_style = {
+    comments = 'none'
+  },
   colors = {
     comment_grey = '#7a818e'
   },
@@ -11,7 +14,7 @@ require('onedark').setup {
 
     -- TreeSitter recognizes `{}` in Lua as constructors,
     -- which Onedark renders in bold yellow by default
-    TSConstructor = {fg = '$light_grey', fmt='none'},
+    TSConstructor = {fg = '$light_grey', fmt = 'none'},
 
     -- Colors for `nvim-ts-rainbow`
     -- (you could also use `$light_grey` in here somewhere)
