@@ -245,9 +245,6 @@ use {
 -- Enhanced `matchit` and `matchparen`
 use 'andymass/vim-matchup'
 
--- Paste with indentation automatically adjusted to context
-use 'sickill/vim-pasta'
-
 -- Switch between single- and multi-line code forms
 use 'AndrewRadev/splitjoin.vim'
 
