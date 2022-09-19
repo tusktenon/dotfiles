@@ -12,7 +12,7 @@ $jobs\
 $character"""
 
 [character]
-success_symbol = "[\\$](white)"
+success_symbol = "[\\$](bold green)"
 error_symbol = "[\\$](bold red)"
 vicmd_symbol = "[\\$](bold blue)"
 
@@ -20,4 +20,7 @@ vicmd_symbol = "[\\$](bold blue)"
 style = "bold blue"
 
 [git_branch]
-format = "on [$branch](bold purple) "
+format = "on [$branch](bold purple)"
+
+[git_status]
+format = '([:](bold purple)[$all_status$ahead_behind](bold red))'
