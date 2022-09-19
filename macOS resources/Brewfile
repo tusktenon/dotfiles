@@ -1,15 +1,15 @@
-# Brewfile
-# Author: Dan Murphy
-
 # Development
+# cask 'alacritty'
 brew 'bat'
+cask 'db-browser-for-sqlite'
 brew 'fd'
 brew 'fzf'
 brew 'gcc'
 brew 'gdb'
 brew 'git'
-# brew 'go'   # Hexokinase.vim dependency
+# brew 'go'
 brew 'htop'
+brew 'kitty'
 brew 'macos-trash'
 brew 'neovim'
 brew 'node'
@@ -25,14 +25,17 @@ brew 'z'
 brew 'zsh'
 brew 'zsh-syntax-highlighting'
 
-# cask 'alacritty'
-cask 'db-browser-for-sqlite'
+
+# Emacs
+# Formula recommended by Doom
+# (https://github.com/hlissner/doom-emacs/blob/master/docs/getting_started.org#on-macos):
+# tap 'railwaycat/emacsmacport'
+# brew 'emacs-mac --with-modules'
 
 
-# Emacs formula recommended by Doom:
-# https://github.com/hlissner/doom-emacs/blob/master/docs/getting_started.org#on-macos
-tap 'railwaycat/emacsmacport'
-brew 'emacs-mac --with-modules'
+# General Applications and Utilities
+# brew 'ffmpeg'
+# brew 'youtube-dl'
 
 
 # Fonts (including NERD Fonts)
@@ -69,9 +72,3 @@ tap 'homebrew/cask-fonts'
   # Variable Fonts
   brew 'svn'  # Needed to install font-source-sans-pro
   brew 'font-source-sans-pro'
-
-
-# Other
-brew 'ffmpeg'
-brew 'youtube-dl'
-
