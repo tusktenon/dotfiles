@@ -1,12 +1,17 @@
 require'nvim-treesitter.configs'.setup {
   ensure_installed = 'all',
   auto_install = true,
-  -- PHPDoc installation current fails on Apple Silicon
-  -- (https://github.com/claytonrcarter/tree-sitter-phpdoc/issues/15)
-  ignore_install = {'phpdoc'},
+  ignore_install = {
+    -- PHPDoc installation current fails on Apple Silicon
+    -- (https://github.com/claytonrcarter/tree-sitter-phpdoc/issues/15)
+    'phpdoc',
+  },
   highlight = {
     enable = true,
-    disable = {}
+    disable = {
+      -- TreeSitter often gets confused by multiple inline code blocks on the same line
+      'markdown',
+    }
   },
 
   -- Extra Modules
