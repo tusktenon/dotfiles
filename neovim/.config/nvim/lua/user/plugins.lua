@@ -93,6 +93,16 @@ use {
   end
 }
 
+-- Illuminate: Highlight other occurrences of word under cursor
+use {
+  'RRethy/vim-illuminate',
+  config = function()
+    require('illuminate').configure {
+      under_cursor = false  -- Don't illuminate under cursor 
+    }
+  end
+}
+
 -- Indent guides
 use {
   'lukas-reineke/indent-blankline.nvim',
