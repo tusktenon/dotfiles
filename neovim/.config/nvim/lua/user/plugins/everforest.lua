@@ -13,19 +13,42 @@ opt.background = 'dark'
 --[[
 Color adjustments:
 
-* I don't care for the default highlighting of floating windows.
-  I prefer the look of Telescope's window, which links `TelescopeNormal`
-  to `Normal` and `TelescopeBorder` to `Grey`.
+* I don't care for the default highlighting of floating windows. Instead, I'll borrow the look of
+  Telescope's window, which links `TelescopeBorder` to `Grey` and `TelescopeNormal` to `Normal`.
 
-* I also like to avoid red for rainbow brackets (`nvim-ts-rainbow`).
+* In Markdown documents, I like a subtle color for list markers, blue for link text and grey for
+  URLs.
 
-The following is taken from the 'How to use custom colors?' section of
-`:h everforest-faq`.
+* The default coloring for TreeSitter Note, Warning and Danger elements uses bold black text
+  against a colored background, which is very effective at getting your attention, but also quite
+  ugly.
+
+* I prefer to avoid red for rainbow brackets (`nvim-ts-rainbow`).
+
+The following is taken from the 'How to use custom colors?' section of `:h everforest-faq`.
 --]]
 cmd [[
 function! s:everforest_custom() abort
+  let l:palette = everforest#get_palette(g:everforest_background, {})
+
+  " The predefined group `Grey` uses `palette.grey1`
+  call everforest#highlight('DarkerGrey', l:palette.grey0, l:palette.none)
+  " There are predefined groups for italic (e.g., `BlueItalic`), but not for bold
+  " call everforest#highlight('BlueBold', l:palette.blue, l:palette.none, 'bold')
+  " call everforest#highlight('PurpleBold', l:palette.purple, l:palette.none, 'bold')
+  " call everforest#highlight('RedBold', l:palette.red, l:palette.none, 'bold')
+
   highlight! link FloatBorder Grey
   highlight! link NormalFloat Normal
+
+  highlight! link markdownListMarker Aqua
+  highlight! link markdownOrderedListMarker Aqua
+  highlight! link markdownLinkText Blue
+  highlight! link markdownUrl DarkerGrey
+
+  highlight! link TSNote BlueItalic
+  highlight! link TSWarning YellowItalic
+  highlight! link TSDanger RedItalic
 
   highlight! link rainbowcol1 Fg
   highlight! link rainbowcol2 Aqua
