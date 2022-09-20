@@ -42,7 +42,7 @@ format = "[](fg:#2b3339 bg:purple)[ $branch(:$remote_branch)]($style)"
 [git_status]
 # up_to_date = ""
 style = "fg:black bg:purple bold"
-format = "[:$all_status$ahead_behind ]($style)[](fg:purple)"
+format = "[  ]($style)[$all_status$ahead_behind ]($style)[](fg:purple)"
 
 [character]
 success_symbol = "[ ](fg:#2b3339 bg:cyan)[](fg:cyan)"
