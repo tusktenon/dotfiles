@@ -1,26 +1,51 @@
 # ~/.config/starship.toml
 # Author: Dan Murphy
 
-format = """
-$username\
-$hostname\
-$directory\
-$git_branch\
-$git_status\
-$line_break\
-$jobs\
-$character"""
+# Custom color for Everforest dark hard:
+# Transparent (terminal background): #2b3339 
 
-[character]
-success_symbol = "[\\$](bold green)"
-error_symbol = "[\\$](bold red)"
-vicmd_symbol = "[\\$](bold blue)"
+format = """
+[](fg:yellow)\
+$username\
+[](fg:yellow bg:green)\
+$hostname\
+[](fg:green bg:blue)\
+$directory\
+[](fg:blue)[](fg:#2b3339 bg:purple)\
+$git_branch\
+[](fg:purple bg:red)\
+$git_status\
+[](fg:red)\
+$character\
+$jobs"""
+
+[username]
+show_always = false
+style_user = "fg:black bg:yellow bold"
+style_root = "fg:black bg:red bold"
+format = "[$user ]($style)"
+
+[hostname]
+ssh_only = true
+ssh_symbol = "爵"
+style = "fg:black bg:green bold"
+format = "[ $ssh_symbol$hostname ]($style)"
 
 [directory]
-style = "bold blue"
+read_only = ""
+style = "fg:black bg:blue bold"
+read_only_style = "fg:black bg:blue bold"
+format="[ $path]($style)[$read_only ]($read_only_style)"
 
 [git_branch]
-format = "on [$branch(:$remote_branch)](bold purple)"
+style = "fg:black bg:purple bold"
+format = "[ $branch(:$remote_branch)]($style)"
 
 [git_status]
-format = "([:](bold purple)[$all_status$ahead_behind](bold red))"
+style = "fg:black bg:red bold"
+format = "[$all_status$ahead_behind]($style)"
+
+[character]
+success_symbol = "[ ](fg:#2b3339 bg:green)[](fg:green)"
+error_symbol = "[ !](fg:#2b3339 bg:red bold)[](fg:red)"
+vicmd_symbol = "[ N](fg:#2b3339 bg:blue bold)[](fg:blue)"
