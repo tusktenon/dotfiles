@@ -19,9 +19,16 @@ Color adjustments:
 * In Markdown documents, I like a subtle color for list markers, blue for link text and grey for
   URLs.
 
+* Many of the TreeSitter highlight groups are linked in such a way that aren't italicized,
+  even if you've set `everforest_enable_italic`.
+
 * The default coloring for TreeSitter Note, Warning and Danger elements uses bold black text
   against a colored background, which is very effective at getting your attention, but also quite
   ugly.
+
+* Everforest customizes the match-up (`andymass/vim-matchup`) highlight groups, setting them to
+  underline matches. However, I think I prefer just linking them to the `MatchParen` group (which
+  is match-up's default behaviour).
 
 * I prefer to avoid red for rainbow brackets (`nvim-ts-rainbow`).
 
@@ -46,9 +53,18 @@ function! s:everforest_custom() abort
   highlight! link markdownLinkText Blue
   highlight! link markdownUrl DarkerGrey
 
+  highlight! link TSConditional Conditional
+  highlight! link TSException Exception
+  highlight! link TSFuncBuiltin GreenItalic
+  highlight! link TSKeyword Keyword
+  highlight! link TSRepeat Repeat
+
   highlight! link TSNote BlueItalic
   highlight! link TSWarning YellowItalic
   highlight! link TSDanger RedItalic
+
+  highlight! link MatchWord MatchParen
+  highlight! link MatchWordCur MatchParen
 
   highlight! link rainbowcol1 Fg
   highlight! link rainbowcol2 Aqua
