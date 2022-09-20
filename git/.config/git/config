@@ -11,3 +11,9 @@ autocrlf = input  # Convert CRLF line endings to LF on commit
 
 [init]
 defaultBranch = main
+
+[diff]
+tool = nvimdiff
+
+[merge]
+tool = nvimdiff
