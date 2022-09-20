@@ -120,6 +120,7 @@ zle -N zle-line-init
 
 # Use Starship prompt
 eval "$(starship init zsh)"
+export STARSHIP_CONFIG=~/.config/starship/powerline.toml
 
 
 # Enable syntax highlighting <zsh-users/zsh-syntax-highlighting>
