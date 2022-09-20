@@ -11,18 +11,16 @@ $username\
 $hostname\
 [](fg:green bg:blue)\
 $directory\
-[](fg:blue)[](fg:#2b3339 bg:purple)\
+[](fg:blue)\
 $git_branch\
-[](fg:purple bg:red)\
 $git_status\
-[](fg:red)\
 $character\
 $jobs"""
 
 [username]
 show_always = false
 style_user = "fg:black bg:yellow bold"
-style_root = "fg:black bg:red bold"
+style_root = "fg:black bg:yellow bold"
 format = "[$user ]($style)"
 
 [hostname]
@@ -39,13 +37,13 @@ format="[ $path]($style)[$read_only ]($read_only_style)"
 
 [git_branch]
 style = "fg:black bg:purple bold"
-format = "[ $branch(:$remote_branch)]($style)"
+format = "[](fg:#2b3339 bg:purple)[ $branch(:$remote_branch)]($style)"
 
 [git_status]
 style = "fg:black bg:red bold"
-format = "[$all_status$ahead_behind]($style)"
+format = "[](fg:purple bg:red)[$all_status$ahead_behind]($style)[](fg:red)"
 
 [character]
-success_symbol = "[ ](fg:#2b3339 bg:green)[](fg:green)"
+success_symbol = "[ ](fg:#2b3339 bg:cyan)[](fg:cyan)"
 error_symbol = "[ !](fg:#2b3339 bg:red bold)[](fg:red)"
 vicmd_symbol = "[ N](fg:#2b3339 bg:blue bold)[](fg:blue)"
