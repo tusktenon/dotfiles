@@ -25,7 +25,7 @@ format = "[$user ]($style)"
 
 [hostname]
 ssh_only = true
-ssh_symbol = "爵"
+ssh_symbol = ""
 style = "fg:black bg:green bold"
 format = "[ $ssh_symbol$hostname ]($style)"
 
@@ -40,8 +40,9 @@ style = "fg:black bg:purple bold"
 format = "[](fg:#2b3339 bg:purple)[ $branch(:$remote_branch)]($style)"
 
 [git_status]
+up_to_date = ""
 style = "fg:black bg:red bold"
-format = "[](fg:purple bg:red)[$all_status$ahead_behind]($style)[](fg:red)"
+format = "[▌](fg:purple bg:red)[$all_status$ahead_behind]($style)[](fg:red)"
 
 [character]
 success_symbol = "[ ](fg:#2b3339 bg:cyan)[](fg:cyan)"
