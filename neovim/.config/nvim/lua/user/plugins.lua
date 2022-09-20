@@ -149,9 +149,11 @@ use {
 
 -- Color Schemes  {{{3
 
+-- The `frappe` flavour is a pleasant, pastel take on Palenight.
 use {
   'catppuccin/nvim',
   as = "catppuccin",
+  opt = true,
   config = function()
     vim.g.catppuccin_flavour = 'frappe'  -- frappe, macchiato or mocha
     require('catppuccin').setup {
@@ -163,63 +165,54 @@ use {
   end
 }
 
--- A really nice One Dark theme ported from Doom Emacs
+-- A really nice One Dark scheme ported from Doom Emacs.
+-- Avoids much use of red by instead having two shades of purple.
 use {
   'NTBBloodbath/doom-one.nvim',
-  disable = true,
+  opt = true,
   setup = "require 'user.plugins.doom-one'",
   -- config = "vim.cmd 'colorscheme doom-one'"
 }
 
--- Very similar look to OneDarkPro, which is written in Lua and is easier to customize
--- use 'sainnhe/edge'
-
+-- My favourite scheme. Beautiful and practical.
 use {
   'sainnhe/everforest',
+  -- opt = true,
   config = function()
     require 'user.plugins.everforest'
     vim.cmd 'colorscheme everforest'
   end
 }
 
+-- A nice implementation of the GitHub theme.
 use {
   'projekt0n/github-nvim-theme',
   disable = true,
   config = function()
-    -- To play well with other schemes, `github-nvim-theme` is best configured in VimScript,
-    -- because a call to `require('github-theme').setup` automatically sets the `colorscheme`
+    -- To play well with other schemes, `github-nvim-theme` is best configured
+    -- in VimScript, because a call to `require('github-theme').setup`
+    -- automatically sets the `colorscheme`
     vim.g.github_comment_style = 'none'
-    vim.cmd 'colorscheme github_dark'
+    -- vim.cmd 'colorscheme github_dark'
   end
 }
 
-use {
-  'sainnhe/gruvbox-material',
-  config = function()
-    vim.g.gruvbox_material_background = 'hard'
-    -- vim.cmd 'colorscheme gruvbox-material'
-  end
-}
-
-use {
-  'arcticicestudio/nord-vim',
-  -- config = [[vim.cmd 'colorscheme nord']]
-}
-
--- A great Onedark theme that tends to use cooler colors, which I prefer
+-- A great Onedark scheme that uses red sparingly.
 use {
   'navarasu/onedark.nvim',
+  opt = true,
   config = function()
     require 'user.plugins.onedark'
     -- require('onedark').load()
   end
 }
 
--- Another great Onedark theme.
--- Compared to `navarasu/onedark.nvim`, this one uses a lot more red by default,
--- but also offers more sophisticated customization options.
+-- Another great Onedark implementation. Compared to `navarasu/onedark.nvim`,
+-- this scheme uses a lot more red by default, but also offers more
+-- sophisticated customization options.
 use {
   'olimorris/onedarkpro.nvim',
+  opt = true,
   config = function()
     require 'user.plugins.onedarkpro'
     -- vim.cmd 'colorscheme onedarkpro'
