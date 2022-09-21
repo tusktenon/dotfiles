@@ -8,17 +8,15 @@ system_type=$(uname -s)
 export  LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
-
+# Command completion:
 # Make Homebrew completions available on macOS.
-#   This must be done before `compinit` is called;
-#   see <https://docs.brew.sh/Shell-Completion>
+# This must be done before `compinit` is called;
+# see https://docs.brew.sh/Shell-Completion
 if [ "$system_type" = "Darwin" ]; then
     if type brew &>/dev/null; then
       FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
     fi
 fi
-
-# Command completion
 autoload -Uz compinit
 compinit
 
@@ -26,17 +24,11 @@ compinit
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' \
     'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
-
 # Directory navigation
 setopt autocd autopushd correct correctall
 CDPATH=.:~:~/Development:~/Documents
 # CDPATH+=:~/Development/Courses/Introduction\ to\ Programming\ in\ C
 export CDPATH
-
-
-# Add Doom Emacs to PATH
-PATH+=:~/.emacs.doom/bin
-export PATH
 
 # Add `z` (https://github.com/rupa/z)
 . /opt/homebrew/etc/profile.d/z.sh
@@ -56,7 +48,6 @@ fi
 # Tell grep to highlight matches
 export GREP_OPTIONS='--color=auto'
 
-
 # Use Neovim
 export EDITOR="nvim"
 alias vi="nvim"
@@ -64,10 +55,10 @@ alias vi="nvim"
 alias vimdiff="nvim -d"
 
 # On macOS,use Homebrew's gcc instead of Apple's clang
-if [ "$system_type" = "Darwin" ]; then
-    #alias -g gcc='gcc-11'
-    #alias -g g++='g++-11'
-fi
+# if [ "$system_type" = "Darwin" ]; then
+#     alias -g gcc='gcc-11'
+#     alias -g g++='g++-11'
+# fi
 
 # Custom GNU Stow command for dotfiles repository
 alias dstow='stow --dir=$HOME/Development/dotfiles --target=$HOME --no-folding'
@@ -135,10 +126,12 @@ ZSH_HIGHLIGHT_STYLES[builtin]='fg=green,bold'
 ZSH_HIGHLIGHT_STYLES[command]='fg=green,bold'
 ZSH_HIGHLIGHT_STYLES[path]='fg=cyan'
 
-
 # Source fzf settings
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+# Add Doom Emacs to PATH
+PATH+=:~/.emacs.doom/bin
+export PATH
 
 # Shell-side configuration for Emacs vterm
 vterm_printf() {
