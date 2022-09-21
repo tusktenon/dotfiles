@@ -1,0 +1,55 @@
+# ~/.config/starship.toml
+# Author: Dan Murphy
+
+# Other colors from Everforest dark hard:
+#   #2b3339: transparent (terminal background)
+#   #e69875: orange 
+#
+# For the `username` and `hostname` modules, consider additional colors:
+#   #59a79c: darker blue
+#   #33658a: Darkest blue
+
+format = """
+[](fg:yellow)\
+$username\
+[](fg:yellow bg:green)\
+$hostname\
+[](fg:green bg:blue)\
+$directory\
+[](fg:blue)\
+$git_branch\
+$git_status\
+$character\
+$jobs"""
+
+[username]
+show_always = false
+style_user = "fg:black bg:yellow bold"
+style_root = "fg:black bg:yellow bold"
+format = "[$user ]($style)"
+
+[hostname]
+ssh_only = true
+ssh_symbol = ""
+style = "fg:black bg:green bold"
+format = "[ $ssh_symbol$hostname ]($style)"
+
+[directory]
+read_only = ""
+style = "fg:black bg:blue bold"
+read_only_style = "fg:black bg:blue bold"
+format="[ $path]($style)[$read_only ]($read_only_style)"
+
+[git_branch]
+style = "fg:black bg:purple bold"
+format = "[](fg:#2b3339 bg:purple)[ $branch(:$remote_branch)]($style)"
+
+[git_status]
+# up_to_date = ""
+style = "fg:black bg:purple bold"
+format = "[ ]($style)[$all_status$ahead_behind ]($style)[](fg:purple)"
+
+[character]
+success_symbol = "[ ](fg:#2b3339 bg:cyan)[](fg:cyan)"
+error_symbol = "[ !](fg:#2b3339 bg:red bold)[](fg:red)"
+vicmd_symbol = "[ N](fg:#2b3339 bg:blue bold)[](fg:blue)"
