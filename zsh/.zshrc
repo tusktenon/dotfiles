@@ -8,7 +8,12 @@ system_type=$(uname -s)
 export  LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
-# Command completion:
+# Use Neovim for editing
+export EDITOR="nvim"
+
+
+# Command Completion  {{{1
+
 # Make Homebrew completions available on macOS.
 # This must be done before `compinit` is called;
 # see https://docs.brew.sh/Shell-Completion
@@ -24,7 +29,9 @@ compinit
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' \
     'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
-# Directory navigation
+
+# Directory Navigation  {{{1
+
 setopt autocd autopushd correct correctall
 CDPATH=.:~:~/Development:~/Documents
 # CDPATH+=:~/Development/Courses/Introduction\ to\ Programming\ in\ C
@@ -33,9 +40,12 @@ export CDPATH
 # Add `z` (https://github.com/rupa/z)
 . /opt/homebrew/etc/profile.d/z.sh
 
+
+# Colors  {{{1
+
 # Enable colored output from ls, tree, etc.
-#   For LSCOLORS (BSD, macOS) and LS_COLORS (Linux) values, see
-#   https://geoff.greer.fm/lscolors/ or https://gist.github.com/thomd/7667642
+# For LSCOLORS (BSD, macOS) and LS_COLORS (Linux) values, see
+# https://geoff.greer.fm/lscolors/ or https://gist.github.com/thomd/7667642
 export CLICOLOR=1
 if [ "$system_type" = "Darwin" ]; then
     export LSCOLORS=ExgxhxDxcxhxhxhxhxcxcx
@@ -48,8 +58,18 @@ fi
 # Tell grep to highlight matches
 export GREP_OPTIONS='--color=auto'
 
-# Use Neovim
-export EDITOR="nvim"
+
+# Keybindings and Aliases  {{{1
+
+# Make the behaviour of `C-u` consistent with Vim Insert/Command mode
+bindkey '^u' backward-kill-line
+
+# Edit the current command in $EDITOR with `M-e`
+autoload -z edit-command-line
+zle -N edit-command-line
+bindkey '^[e' edit-command-line
+
+# Prefer Neovim to Vim
 alias vi="nvim"
 #alias vim="nvim"
 alias vimdiff="nvim -d"
@@ -60,14 +80,15 @@ alias vimdiff="nvim -d"
 #     alias -g g++='g++-11'
 # fi
 
-# Custom GNU Stow command for dotfiles repository
-alias dstow='stow --dir=$HOME/Development/dotfiles --target=$HOME --no-folding'
-
 # Skip the .git directory in repositories
 alias tree='tree -I .git'
 
-# A simple PS1 prompt
-#PS1=$'\n'"%B%F{blue}%1~%f%b \$ "
+# Custom GNU Stow command for dotfiles repository
+alias dstow='stow --dir=$HOME/Development/dotfiles --target=$HOME --no-folding'
+
+
+# End-of-File Settings  {{{1
+# The following should be sourced at the end of the `.zshrc` file.
 
 # Use Starship prompt
 eval "$(starship init zsh)"
