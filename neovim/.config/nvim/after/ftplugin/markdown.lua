@@ -1,10 +1,10 @@
 local opt = vim.opt
 
--- Set indentation at 2 spaces
+-- Markdown requires indentation of 4 spaces for nested elements
 opt.expandtab = true
-opt.shiftwidth = 2
-opt.tabstop = 2
-opt.softtabstop = 2
+opt.shiftwidth = 4
+opt.tabstop = 4
+opt.softtabstop = 4
 
 -- Visually wrap long lines
 opt.wrap = true
