@@ -66,43 +66,6 @@ alias dstow='stow --dir=$HOME/Development/dotfiles --target=$HOME --no-folding'
 # Skip the .git directory in repositories
 alias tree='tree -I .git'
 
-
-# Vi mode configuration
-bindkey -v
-
-# Escape from Insert to Normal mode with 'jj' or 'jk'
-bindkey -M viins 'jj' vi-cmd-mode
-#bindkey -M viins 'jk' vi-cmd-mode
-
-# Keep some useful Emacs bindings
-bindkey -M viins '\C-a' beginning-of-line
-bindkey -M viins '\C-e' end-of-line
-bindkey -M viins '\C-n' down-history
-bindkey -M viins '\C-p' up-history
-
-# Change cursor shape depending on mode
-_set_block_cursor() { echo -ne '\e[2 q' }
-_set_bar_cursor() { echo -ne '\e[6 q' }
-_set_underscore_cursor() { echo -ne '\e[4 q' }
-
-zle-keymap-select() {
-    if [[ $KEYMAP == vicmd ]]; then
-        _set_block_cursor
-
-    elif [[ $ZLE_STATE == *overwrite* ]]; then
-        _set_underscore_cursor
-
-    else; 
-        _set_bar_cursor
-    fi
-}
-zle -N zle-keymap-select
-
-# Start with bar cursor
-zle-line-init() { _set_bar_cursor }
-zle -N zle-line-init
-
-
 # A simple PS1 prompt
 #PS1=$'\n'"%B%F{blue}%1~%f%b \$ "
 
