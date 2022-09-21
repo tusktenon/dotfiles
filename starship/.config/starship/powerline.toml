@@ -1,8 +1,13 @@
 # ~/.config/starship.toml
 # Author: Dan Murphy
 
-# Custom color for Everforest dark hard:
-# Transparent (terminal background): #2b3339 
+# Other colors from Everforest dark hard:
+#   #2b3339: transparent (terminal background)
+#   #e69875: orange 
+#
+# For the `username` and `hostname` modules, consider additional colors:
+#   #59a79c: darker blue
+#   #33658a: Darkest blue
 
 format = """
 [](fg:yellow)\
