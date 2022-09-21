@@ -35,7 +35,7 @@ export CDPATH
 
 # Enable colored output from ls, tree, etc.
 #   For LSCOLORS (BSD, macOS) and LS_COLORS (Linux) values, see
-#   <https://geoff.greer.fm/lscolors/> or <https://gist.github.com/thomd/7667642>
+#   https://geoff.greer.fm/lscolors/ or https://gist.github.com/thomd/7667642
 export CLICOLOR=1
 if [ "$system_type" = "Darwin" ]; then
     export LSCOLORS=ExgxhxDxcxhxhxhxhxcxcx
@@ -65,9 +65,6 @@ alias dstow='stow --dir=$HOME/Development/dotfiles --target=$HOME --no-folding'
 
 # Skip the .git directory in repositories
 alias tree='tree -I .git'
-
-# Download videos in 720p
-#alias ydl-720="youtube-dl -f '[height=720]'"
 
 
 # Vi mode configuration
@@ -113,8 +110,7 @@ zle -N zle-line-init
 eval "$(starship init zsh)"
 export STARSHIP_CONFIG=~/.config/starship/powerline.toml
 
-
-# Enable syntax highlighting <zsh-users/zsh-syntax-highlighting>
+# Enable syntax highlighting (zsh-users/zsh-syntax-highlighting)
 if [ "$system_type" = "Darwin" ]; then
     source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 else;
