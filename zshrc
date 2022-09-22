@@ -83,8 +83,9 @@ alias vimdiff="nvim -d"
 # Skip the .git directory in repositories
 alias tree='tree -I .git'
 
-# Custom GNU Stow command for dotfiles repository
-alias dstow='stow --dir=$HOME/Development/dotfiles --target=$HOME --no-folding'
+# Update dotfile symlinks with Dotbot
+dotfiles_dir="~/Development/dotfiles"
+alias dfsync="dotbot -d $dotfiles_dir -c $dotfiles_dir/install.conf.yaml"
 
 
 # End-of-File Settings  {{{1
