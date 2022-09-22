@@ -9,7 +9,22 @@
       force: true
     ~/.config:
       recursive: true
+    ~/.vim:
+      recursive: true
 
 - link:
     ~/.config/bat: bat
-    ~/.config/starship: starship
+    ~/.config/git: Git
+    ~/.config/ideavim/ideavimrc: ideavimrc
+    ~/.config/kitty: kitty
+    ~/.config/nvim: Neovim
+    ~/.config/starship: Starship
+    ~/.vim/after: Vim/after
+    ~/.vim/spell: Vim/spell
+    ~/.vim/vimrc: Vim/vimrc
+    ~/Library/Application Support/Code/User/settings.json: VSCode/settings.json
+    ~/.zshrc: zshrc
+
+- create:
+    - ~/.config/ideavim
+
