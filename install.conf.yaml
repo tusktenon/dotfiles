@@ -14,15 +14,15 @@
 
 - link:
     ~/.config/bat: bat
-    ~/.config/git: Git
+    ~/.config/git: git
     ~/.config/ideavim/ideavimrc: ideavimrc
     ~/.config/kitty: kitty
-    ~/.config/nvim: Neovim
-    ~/.config/starship: Starship
-    ~/.vim/after: Vim/after
-    ~/.vim/spell: Vim/spell
-    ~/.vim/vimrc: Vim/vimrc
-    ~/Library/Application Support/Code/User/settings.json: VSCode/settings.json
+    ~/.config/nvim: neovim
+    ~/.config/starship: starship
+    ~/.vim/after: vim/after
+    ~/.vim/spell: vim/spell
+    ~/.vim/vimrc: vim/vimrc
+    ~/Library/Application Support/Code/User/settings.json: vscode/settings.json
     ~/.zshrc: zshrc
 
 - create:
