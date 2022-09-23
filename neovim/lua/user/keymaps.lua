@@ -11,8 +11,11 @@ vim.g.maplocalleader = ' '
 
 -- General Mappings  {{{1
 
--- Exit Insert mode with 'jk'
-keymap('i', 'jk', '<ESC>')
+-- Exit Insert mode with `jk`
+keymap({'i', 't'}, 'jk', '<ESC>')
+
+-- In Terminal buffers, exit to Normal mode with `jj`
+keymap('t', 'jj', '<C-\\><C-n>')
 
 -- Move by screen lines, not file lines, unless a count is provided
 keymap('n', 'j', "v:count == 0 ? 'gj' : 'j'", {expr = true})
