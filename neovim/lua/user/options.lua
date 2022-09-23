@@ -61,6 +61,12 @@ autocmd('WinLeave', {
     end
 })
 
+-- Don't display line numbers in terminal buffers
+autocmd('TermOpen', {
+  pattern = '*',
+  command = 'setlocal nonumber norelativenumber'
+})
+
 
 -- [[ Searching ]]
 
