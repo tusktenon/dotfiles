@@ -61,10 +61,15 @@ autocmd('WinLeave', {
     end
 })
 
--- Don't display line numbers in terminal buffers
+-- In terminal buffers, don't display line numbers
+-- and pause the Illuminate plugin
 autocmd('TermOpen', {
   pattern = '*',
-  command = 'setlocal nonumber norelativenumber'
+  callback = function()
+    opt.number = false
+    opt.relativenumber = false
+    require('illuminate').pause_buf()
+  end
 })
 
 
