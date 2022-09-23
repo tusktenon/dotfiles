@@ -44,6 +44,16 @@ keymap('v', '<M-k>', ":move .-2<CR>==", {silent = true})
 keymap('x', '<M-j>', ":move '>+1<CR>gv-gv", {silent = true})
 keymap('x', '<M-k>', ":move '<-2<CR>gv-gv", {silent = true})
 
+-- Navigate windows from any mode with ALT+{h,j,k,l}
+keymap({'i', 'n'}, '<A-h>', '<C-w>h')
+keymap({'i', 'n'}, '<A-j>', '<C-w>j')
+keymap({'i', 'n'}, '<A-k>', '<C-w>k')
+keymap({'i', 'n'}, '<A-l>', '<C-w>l')
+keymap('t', '<A-h>', '<C-\\><C-n><C-w>h')
+keymap('t', '<A-j>', '<C-\\><C-n><C-w>j')
+keymap('t', '<A-k>', '<C-\\><C-n><C-w>k')
+keymap('t', '<A-l>', '<C-\\><C-n><C-w>l')
+
 
 -- []-Prefixed Mappings  {{{1
 
@@ -98,15 +108,6 @@ keymap('n', '<leader>wv', '<C-w>v', {desc = 'Split right'})
 keymap('n', '<leader>ww', '<C-w>w', {desc = 'Go down/right'})
 keymap('n', '<leader>wW', '<C-w>W', {desc = 'Go up/left'})
 keymap('n', '<leader>w=', '<C-w>=', {desc = 'Balance windows'})
-keymap('t', '<leader>wc', '<C-\\><C-n><C-w>c')
-keymap('t', '<leader>wh', '<C-\\><C-n><C-w>h')
-keymap('t', '<leader>wj', '<C-\\><C-n><C-w>j')
-keymap('t', '<leader>wk', '<C-\\><C-n><C-w>k')
-keymap('t', '<leader>wl', '<C-\\><C-n><C-w>l')
-keymap('t', '<leader>wo', '<C-\\><C-n><C-w>o')
-keymap('t', '<leader>ws', '<C-\\><C-n><C-w>s')
-keymap('t', '<leader>wv', '<C-\\><C-n><C-w>v')
-keymap('t', '<leader>ww', '<C-\\><C-n><C-w>w')
 
 -- Resize windows with arrow keys:
 keymap('n', '<M-Up>', ':resize -2<CR>', {desc = 'Decrease width', silent = true})
