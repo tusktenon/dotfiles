@@ -11,7 +11,25 @@
     "editor.renderLineHighlight": "gutter",
     "editor.lineNumbers": "relative",
     "editor.minimap.enabled": false,
+    "editor.bracketPairColorization.enabled": false,
 
+    // Color Themes
+    "workbench.colorTheme": "Catppuccin Frappé",
+    "everforest.italicKeywords": true,
+    "everforest.darkContrast": "hard",
+    "gruvboxMaterial.darkContrast": "soft",
+    "workbench.colorCustomizations": {
+    "[Catppuccin Frappé]": {
+        // TODO: For Bracket Pair Colorization, use red only for unexpected (e.g., extra) brackets
+        "editorBracketHighlight.foreground1": "#3700ff",
+        "editorBracketHighlight.foreground2": "#66ff00",
+        "editorBracketHighlight.foreground3": "#66ff00",
+        "editorBracketHighlight.foreground4": "#66ff00",
+        "editorBracketHighlight.foreground5": "#66ff00",
+        "editorBracketHighlight.foreground6": "#66ff00",
+        "editorBracketHighlight.unexpectedBracket.foreground": "#ff0000",
+    }
+    },
     // Formatting Defaults
     "editor.detectIndentation": false,
     "editor.insertSpaces": true,
@@ -83,8 +101,4 @@
             "after": ["o", "<Esc>", "k"]
         }
     ],
-    "everforest.italicKeywords": true,
-    "everforest.darkContrast": "hard",
-    "workbench.colorTheme": "Nord",
-    "gruvboxMaterial.darkContrast": "soft",
 }
