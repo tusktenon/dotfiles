@@ -61,6 +61,17 @@ export GREP_OPTIONS='--color=auto'
 
 # Keybindings and Aliases  {{{1
 
+# Make useful Emacs-mode bindings available in Vi mode
+bindkey "^a" beginning-of-line
+bindkey "^e" end-of-line
+bindkey "^f" forward-char
+bindkey "^b" backward-char
+bindkey "^d" delete-char
+bindkey "^k" kill-line
+bindkey "^w" backward-kill-word
+bindkey "^p" history-search-backward
+bindkey "^n" history-search-forward
+
 # Make the behaviour of `C-u` consistent with Vim Insert/Command mode
 bindkey '^u' backward-kill-line
 
@@ -109,3 +120,6 @@ ZSH_HIGHLIGHT_STYLES[path]='fg=cyan'
 
 # Source fzf settings
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+
+#vim: et sw=4 ts=4 sts=4 fdm=marker
