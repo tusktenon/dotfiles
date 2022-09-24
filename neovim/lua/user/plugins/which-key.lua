@@ -24,6 +24,7 @@ whichkey.register {
     f = { name = '+Files/Find' },
     g = { name = '+Git' },
     l = { name = '+Language' },
+    lw = { name = '+Workspace' },
     s = { name = '+Search' },
     w = { name = '+Windows' },
   }
