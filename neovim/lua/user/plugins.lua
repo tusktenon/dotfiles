@@ -219,6 +219,12 @@ use {
   end
 }
 
+-- An attractive, relatively high-contrast theme
+use {
+  'folke/tokyonight.nvim',
+  opt = true,
+}
+
 
 -- Editor Enhancements  {{{2
 
