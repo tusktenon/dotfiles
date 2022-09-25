@@ -1,8 +1,13 @@
+-- I find the default gray (used, in particular, for comments) a bit too dark
+local LightGray =  '#707784'
+
 require('onedarkpro').setup {
   dark_theme = 'onedark',  -- `onedark`, `onedark_vivid` or `onedark_dark`
   highlights = {
-    -- I find the default comment color a bit dark
-    Comment = { fg = '#707784'},
+    Comment = { fg = LightGray },
+
+    TSTag = { fg = '${purple}' },
+    TSTagDelimiter = { fg = LightGray },
 
     -- Colors for `nvim-ts-rainbow`
     rainbowcol1 = {fg = '${fg}'},

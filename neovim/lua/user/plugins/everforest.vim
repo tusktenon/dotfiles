@@ -28,7 +28,7 @@ function! s:everforest_custom() abort
 
   " HTML:
   highlight! link TSTag Aqua
-  highlight! link TSTagDelimiter Grey
+  highlight! link TSTagDelimiter Green
   highlight! link TSText Fg
   highlight! link TSURI Blue
 

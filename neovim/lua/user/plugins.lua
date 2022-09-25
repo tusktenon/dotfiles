@@ -153,14 +153,9 @@ use {
 use {
   'catppuccin/nvim',
   as = "catppuccin",
-  opt = true,
+  -- opt = true,
   config = function()
-    vim.g.catppuccin_flavour = 'frappe'  -- frappe, macchiato or mocha
-    require('catppuccin').setup {
-      styles = {
-        comments = {}
-      }
-    }
+    require 'user.plugins.catppuccin'
     -- vim.cmd 'colorscheme catppuccin'
   end
 }
