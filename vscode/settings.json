@@ -12,9 +12,6 @@
     "editor.lineNumbers": "relative",
     "editor.minimap.enabled": false,
     "editor.bracketPairColorization.enabled": false,
-
-    // Color Themes
-    "workbench.colorTheme": "Catppuccin Frappé",
     "everforest.italicKeywords": true,
     "everforest.darkContrast": "hard",
     "gruvboxMaterial.darkContrast": "soft",
@@ -101,4 +98,5 @@
             "after": ["o", "<Esc>", "k"]
         }
     ],
+    "workbench.colorTheme": "Catppuccin Frappé",
 }

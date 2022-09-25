@@ -26,8 +26,14 @@ function! s:everforest_custom() abort
   highlight! link FloatBorder Grey
   highlight! link NormalFloat Normal
 
-  " In Markdown documents, I like a subtle color for list markers,
-  " blue for link text and grey for URLs.
+  " HTML:
+  highlight! link TSTag Aqua
+  highlight! link TSTagDelimiter Grey
+  highlight! link TSText Fg
+  highlight! link TSURI Blue
+
+  " Markdown:
+  " I like a subtle color for list markers, blue for link text and grey for URLs.
   highlight! link markdownListMarker Aqua
   highlight! link markdownOrderedListMarker Aqua
   highlight! link markdownLinkText Blue
