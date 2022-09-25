@@ -82,16 +82,18 @@ use {
 -- Column guides: use a character for the colorcolumn
 use {
   'lukas-reineke/virt-column.nvim',
-  -- `virt-column` needs to be loaded after your colorscheme (and lualine?),
-  -- or you can run `highlight clear ColorColumn` after the color scheme has
-  -- loaded (see https://github.com/lukas-reineke/virt-column.nvim/issues/2)
-  -- after = 'everforest',
   config = function()
     require('virt-column').setup {
       char = '│'  -- Default is '┃'; indent_blankline_char default is '│'
     }
   end
 }
+-- `virt-column` either needs to be loaded after your colorscheme (and possibly lualine?),
+-- or you can run `highlight clear ColorColumn` after the color scheme has loaded
+-- (see https://github.com/lukas-reineke/virt-column.nvim/issues/2)
+vim.api.nvim_create_autocmd('ColorScheme', {
+  command = 'highlight clear ColorColumn'
+})
 
 -- Illuminate: Highlight other occurrences of word under cursor
 use {
