@@ -179,7 +179,8 @@ use {
   'sainnhe/everforest',
   -- opt = true,
   config = function()
-    require 'user.plugins.everforest'
+    -- require 'user.plugins.everforest'
+    vim.cmd 'source ~/.config/nvim/lua/user/plugins/everforest.vim'
     vim.cmd 'colorscheme everforest'
   end
 }
