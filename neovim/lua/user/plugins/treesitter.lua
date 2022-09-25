@@ -28,7 +28,7 @@ require'nvim-treesitter.configs'.setup {
   },
   rainbow = {
     enable = true,
-    -- disable = {},
+    disable = {'html'},
     extended_mode = false,
     -- colors = {},
   },

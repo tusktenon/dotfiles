@@ -52,17 +52,26 @@ vim.diagnostic.config({
 
 -- Set the diagnostic symbols used in the sign column
 -- Consider '●', '◍', '■', '▥'
-local signs = { Error = '●', Warn = '●', Hint = '●', Info = '●' }
+local signs = { Error = '■', Warn = '■', Hint = '■', Info = '■' }
+-- local signs = { Error = '●', Warn = '●', Hint = '●', Info = '●' }
 for type, icon in pairs(signs) do
   local hl = "DiagnosticSign" .. type
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 
--- Add additional capabilities supported by nvim-cmp
 local capabilities = vim.lsp.protocol.make_client_capabilities()
+-- --Enable (broadcasting) snippet capability for completion:
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+-- Add additional capabilities supported by nvim-cmp:
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
 local lspconfig = require 'lspconfig'
+
+-- HTML
+lspconfig.html.setup {
+  capabilities = capabilities,
+  on_attach = on_attach,
+}
 
 -- Lua
 lspconfig.sumneko_lua.setup {
