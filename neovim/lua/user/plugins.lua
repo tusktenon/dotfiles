@@ -266,9 +266,6 @@ use {
   requires = {'kana/vim-textobj-user'}
 }
 
--- Visual Star: Run `*` and `#` searches on Visual selection
-use 'bronson/vim-visual-star-search'
-
 
 -- Git  {{{2
 
