@@ -10,7 +10,8 @@ opt.clipboard = 'unnamedplus'  -- Share the system clipboard
 opt.cmdheight = 2         -- Use two screen lines for the command line (helps avoid 'hit enter' prompts)
 opt.completeopt = {'longest', 'menuone', 'noselect', 'preview'}  -- For a better completion experience
 opt.confirm = true        -- Present a dialog instead of failing a command due to unsaved changes
-cmd('set fillchars+=diff:╱')  -- Nicer deleted lines in diff-mode
+opt.fillchars:append "eob: "   -- Don't show `~` characters at end of buffer
+opt.fillchars:append "diff:╱"  -- Nicer deleted lines in diff-mode
 opt.foldenable = false    -- Open buffers unfolded
 opt.mouse = 'a'           -- Enable mouse support in all modes
 opt.scrolloff = 2         -- Keep some lines visible above/below the cursor

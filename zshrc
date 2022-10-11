@@ -85,11 +85,13 @@ alias vi="nvim"
 #alias vim="nvim"
 alias vimdiff="nvim -d"
 
-# On macOS,use Homebrew's gcc instead of Apple's clang
-# if [ "$system_type" = "Darwin" ]; then
-#     alias -g gcc='gcc-11'
-#     alias -g g++='g++-11'
-# fi
+# On macOS,use Homebrew options over Apple built-ins
+if [ "$system_type" = "Darwin" ]; then
+    # alias -g gcc='gcc-11'
+    # alias -g g++='g++-11'
+    # The following will take precedence even in Python virtual environments:
+    # alias -g python='/opt/homebrew/bin/python3'
+fi
 
 # Skip the .git directory in repositories
 alias tree='tree -I .git'
@@ -122,4 +124,4 @@ ZSH_HIGHLIGHT_STYLES[path]='fg=cyan'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 
-#vim: et sw=4 ts=4 sts=4 fdm=marker
+# vim: et sw=4 ts=4 sts=4 fdm=marker
