@@ -118,6 +118,12 @@ use {
   end
 }
 
+-- Status Line
+use {
+  'nvim-lualine/lualine.nvim',
+  config = "require 'user.plugins.lualine'"
+  }
+
 -- Telescope
 use {
   'nvim-telescope/telescope.nvim',
