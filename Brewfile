@@ -1,5 +1,4 @@
-# Development
-# cask 'alacritty'
+# Development: Tools
 brew 'bat'
 cask 'db-browser-for-sqlite'
 brew 'dotbot'
@@ -8,14 +7,10 @@ brew 'fzf'
 brew 'gcc'
 brew 'gdb'
 brew 'git'
-# brew 'go'
 brew 'htop'
 brew 'kitty'
 brew 'macos-trash'
 brew 'neovim'
-brew 'node'
-brew 'php'
-brew 'python3'
 brew 'renameutils'
 brew 'ripgrep'
 brew 'sqlite'
@@ -25,6 +20,14 @@ brew 'wget'  # Mason.nvim dependency
 brew 'z'
 brew 'zsh'
 brew 'zsh-syntax-highlighting'
+
+
+# Development: Languages
+# brew 'go'
+cask smlnj
+brew 'node'
+brew 'php'
+brew 'python3'
 
 
 # Emacs

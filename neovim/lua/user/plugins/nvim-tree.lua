@@ -1,7 +1,7 @@
 require('nvim-tree').setup {
   diagnostics = {
     enable = true,
-    icons = { error = '●', warning = '●', hint = '●', info = '●' }
+    icons = { error = 'E', warning = 'W', hint = 'H', info = 'I' }
   },
 
   renderer = {
