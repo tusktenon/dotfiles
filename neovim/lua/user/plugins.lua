@@ -272,6 +272,9 @@ use {
   requires = {'kana/vim-textobj-user'}
 }
 
+-- Recognize CamelCase and snake_case words
+use 'chaoren/vim-wordmotion'
+
 
 -- Git  {{{2
 
