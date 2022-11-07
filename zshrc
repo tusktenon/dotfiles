@@ -40,6 +40,10 @@ export CDPATH
 # Add `z` (https://github.com/rupa/z)
 . /opt/homebrew/etc/profile.d/z.sh
 
+# Standard ML of New Jersey
+PATH+=':/usr/local/smlnj/bin'
+export PATH
+
 
 # Colors  {{{1
 
