@@ -14,6 +14,10 @@ vim.g.maplocalleader = ' '
 -- Exit Insert mode with `jk`
 keymap({'i', 't'}, 'jk', '<ESC>')
 
+-- Make some useful Emacs bindings available in Insert mode
+keymap('i', '<C-a>', '<Home>')
+keymap('i', '<C-e>', '<End>')
+
 -- In Terminal buffers, exit to Normal mode with `jj`
 keymap('t', 'jj', '<C-\\><C-n>')
 
