@@ -366,7 +366,6 @@ use {
   requires = {
     'windwp/nvim-ts-autotag',                       -- Autopair functionality for HTLM/XML tags
     'JoosepAlviste/nvim-ts-context-commentstring',  -- Set `commentstring` based on cursor location
-    'nvim-treesitter/playground',                   -- View Treesitter output
     'p00f/nvim-ts-rainbow',                         -- Rainbow brackets
   },
   config = "require 'user.plugins.treesitter'"
