@@ -24,9 +24,9 @@ brew 'zsh-syntax-highlighting'
 
 # Development: Languages
 # brew 'go'
-cask smlnj
-brew 'node'
-brew 'php'
+# cask smlnj
+# brew 'node'
+# brew 'php'
 brew 'python3'
 
 

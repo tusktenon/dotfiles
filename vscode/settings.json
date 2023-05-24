@@ -99,4 +99,5 @@
         }
     ],
     "workbench.colorTheme": "Catppuccin Frappé",
+    "python.analysis.typeCheckingMode": "basic",
 }

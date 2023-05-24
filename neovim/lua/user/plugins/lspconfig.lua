@@ -55,7 +55,7 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 -- --Enable (broadcasting) snippet capability for completion:
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 -- Add additional capabilities supported by nvim-cmp:
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 local lspconfig = require 'lspconfig'
 
@@ -66,7 +66,7 @@ lspconfig.html.setup {
 }
 
 -- Lua
-lspconfig.sumneko_lua.setup {
+lspconfig.lua_ls.setup {
   capabilities = capabilities,
   on_attach = on_attach,
   settings = {
