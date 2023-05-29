@@ -40,6 +40,19 @@ export CDPATH
 # Add `z` (https://github.com/rupa/z)
 . /opt/homebrew/etc/profile.d/z.sh
 
+
+# Language Support  {{{1
+
+# Use Homebrew's LLVM
+PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+
+# For compilers to find LLVM you may need to set the following
+export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
+
+# To use LLVM's bundled libc++, add the following LDFLAGS
+# LDFLAGS="-L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++"
+
 # Standard ML of New Jersey
 PATH+=':/usr/local/smlnj/bin'
 
