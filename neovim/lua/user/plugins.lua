@@ -144,6 +144,22 @@ use {
   config = "require 'user.plugins.telescope'"
 }
 
+-- Terminal management
+-- TODO: Consider adding dedicated terminals for Calc, Python, etc.
+use {
+  "akinsho/toggleterm.nvim",
+  tag = '*',
+  config = function()
+    require("toggleterm").setup {
+      size = 20,
+      open_mapping = [[<C-\>]],
+      direction = 'horizontal',
+      shade_terminals = true,
+      shading_factor = '-10',
+    }
+  end
+}
+
 -- Tree-style file explorer (netrw replacement)
 use {
   'kyazdani42/nvim-tree.lua',

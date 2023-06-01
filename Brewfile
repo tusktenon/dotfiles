@@ -39,6 +39,7 @@ brew 'python3'
 
 
 # General Applications and Utilities
+brew calc 
 # brew 'ffmpeg'
 # brew 'youtube-dl'
 
