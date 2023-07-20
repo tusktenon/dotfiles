@@ -12,7 +12,7 @@ vim.g.maplocalleader = ' '
 -- General Mappings  {{{1
 
 -- Exit Insert mode with `jk`
-keymap({'i', 't'}, 'jk', '<ESC>')
+-- keymap({'i', 't'}, 'jk', '<ESC>')
 
 -- Make some useful Emacs bindings available in Insert mode
 keymap('i', '<C-a>', '<Home>')
