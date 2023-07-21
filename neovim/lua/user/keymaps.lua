@@ -39,7 +39,7 @@ keymap('', 'gf', ':edit <cfile><CR>')
 
 -- Better Visual-mode paste: replace visual selection without copying it
 -- (doesn't work with `sickill/vim-pasta` plugin)
--- keymap('v', 'p', '"_dP')
+keymap('v', 'p', '"_dP')
 
 -- Stay in indent mode (reselect Visual selection after indenting)
 keymap('v', '<', '<gv')
@@ -50,6 +50,10 @@ keymap('v', '<M-j>', ":move .+1<CR>==", {silent = true})
 keymap('v', '<M-k>', ":move .-2<CR>==", {silent = true})
 keymap('x', '<M-j>', ":move '>+1<CR>gv-gv", {silent = true})
 keymap('x', '<M-k>', ":move '<-2<CR>gv-gv", {silent = true})
+
+-- Fast cycling through buffers
+keymap('n', '<C-.>', ':bn<cr>', {desc = 'Next buffer'})
+keymap('n', '<C-,>', ':bp<cr>', {desc = 'Previous buffer'})
 
 -- Navigate windows from any mode with ALT+{h,j,k,l}
 keymap({'i', 'n'}, '<A-h>', '<C-w>h')
@@ -64,8 +68,8 @@ keymap('t', '<A-l>', '<C-\\><C-n><C-w>l')
 
 -- []-Prefixed Mappings  {{{1
 
-keymap('n', ']b', ':bn<cr>', {desc = 'Next buffer'})
-keymap('n', '[b', ':bp<cr>', {desc = 'Previous buffer'})
+-- keymap('n', ']b', ':bn<cr>', {desc = 'Next buffer'})
+-- keymap('n', '[b', ':bp<cr>', {desc = 'Previous buffer'})
 
 
 -- Leader-Prefixed Mappings  {{{1
