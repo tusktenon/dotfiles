@@ -14,6 +14,13 @@ vim.g.maplocalleader = ' '
 -- Exit Insert mode with `jk`
 -- keymap({'i', 't'}, 'jk', '<ESC>')
 
+-- Forward delete with CTRL-D in Insert mode
+-- Move existing CTRL-D mapping (delete indent) to CTRL-<
+-- For consistency, also remap CTRL-T (insert indent) to CTRL->
+keymap('i', '<C-d>', '<Delete>')
+keymap('i', '<C-,>', '<C-d>')
+keymap('i', '<C-.>', '<C-t>')
+
 -- Make some useful Emacs bindings available in Insert mode
 keymap('i', '<C-a>', '<Home>')
 keymap('i', '<C-e>', '<End>')
