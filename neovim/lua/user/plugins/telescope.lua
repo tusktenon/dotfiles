@@ -14,11 +14,11 @@ telescope.setup {
     layout_strategy = 'flex',
     mappings = {
       i = {
-        ['<esc>'] = actions.close,  -- <Esc> closes Telescope instead of entering normal mode
-        ['<C-j>'] = actions.move_selection_next,
-        ['<C-k>'] = actions.move_selection_previous,
-        ['<C-n>'] = actions.cycle_history_next,
-        ['<C-p>'] = actions.cycle_history_prev,
+        -- ['<esc>'] = actions.close,  -- <Esc> closes Telescope instead of entering normal mode
+        -- ['<C-j>'] = actions.move_selection_next,
+        -- ['<C-k>'] = actions.move_selection_previous,
+        -- ['<C-n>'] = actions.cycle_history_next,
+        -- ['<C-p>'] = actions.cycle_history_prev,
         ['<C-u>'] = false  -- <C-u> clears prompt instead of scrolling preview
       },
     },

@@ -33,8 +33,8 @@ keymap('n', 'j', "v:count == 0 ? 'gj' : 'j'", {expr = true})
 keymap('n', 'k', "v:count == 0 ? 'gk' : 'k'", {expr = true})
 
 -- Navigate completion menus with <C-j> and <C-k>
-keymap('c', '<C-j>', "pumvisible() ? '<C-n>' : '<C-j>'", {expr = true, silent = false})
-keymap('c', '<C-k>', "pumvisible() ? '<C-p>' : '<C-k>'", {expr = true, silent = false})
+-- keymap('c', '<C-j>', "pumvisible() ? '<C-n>' : '<C-j>'", {expr = true, silent = false})
+-- keymap('c', '<C-k>', "pumvisible() ? '<C-p>' : '<C-k>'", {expr = true, silent = false})
 
 -- Borrowed from Tim Pope's Unimpaired plugin (tpope/vim-unimpaired):
 -- Insert newline above/below current line with `[<Space>` and `[<Space>`
