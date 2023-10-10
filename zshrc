@@ -46,12 +46,13 @@ export CDPATH
 # Use Homebrew's LLVM
 PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 
-# For compilers to find LLVM you may need to set the following
-export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
-export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
-
 # To use LLVM's bundled libc++, add the following LDFLAGS
-# LDFLAGS="-L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++"
+LDFLAGS="-L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++"
+
+# For compilers to find LLVM you may need to set the following
+LDFLAGS+="-L/opt/homebrew/opt/llvm/lib"
+export LDFLAGS
+export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
 
 # Standard ML of New Jersey
 PATH+=':/usr/local/smlnj/bin'

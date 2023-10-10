@@ -25,10 +25,10 @@ brew 'zsh-syntax-highlighting'
 # Development: Languages
 # brew 'go'
 brew llvm  # Provides clang compiler and clangd language server
-# cask smlnj
 # brew 'node'
 # brew 'php'
 brew 'python3'
+# cask smlnj
 
 
 # Emacs
