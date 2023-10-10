@@ -113,7 +113,7 @@ use {
   'lukas-reineke/indent-blankline.nvim',
   config = function()
     require('indent_blankline').setup {
-      filetype_exclude = {'sml'},
+      filetype_exclude = {'sml', 'toggleterm'},
       show_trailing_blankline_indent = false,
       use_treesitter = true
     }
