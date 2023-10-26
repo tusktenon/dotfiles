@@ -84,7 +84,8 @@ use {
   'lukas-reineke/virt-column.nvim',
   config = function()
     require('virt-column').setup {
-      char = '│'  -- Default is '┃'; indent_blankline_char default is '│'
+      char = '│',  -- Default is '┃'; indent_blankline_char default is '│'
+      exclude = { filetypes = {'toggleterm'} }
     }
   end
 }
@@ -112,9 +113,7 @@ use {
 use {
   'lukas-reineke/indent-blankline.nvim',
   config = function()
-    require('ibl').setup {
-      exclude = { filetypes = {'toggleterm'} }
-    }
+    require('ibl').setup { }
   end
 }
 
@@ -143,7 +142,7 @@ use {
 }
 
 -- Terminal management
--- TODO: Consider adding dedicated terminals for Calc, Python, etc.
+-- TODO: Consider adding dedicated terminals for Calc, Haskell, Python, etc.
 use {
   "akinsho/toggleterm.nvim",
   tag = '*',
