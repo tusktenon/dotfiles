@@ -2,7 +2,25 @@ local keymap = vim.keymap.set  -- Sets `noremap` by default
 local close_buffers = require 'close_buffers'
 local telescope = require 'telescope'
 local telescope_builtin = require 'telescope.builtin'
-local telescope_custom = require 'user.plugins.telescope'
+
+
+-- Custom Actions
+
+-- Include hidden files, but not `.git` directories
+local telescope_find_all = function()
+  telescope_builtin.find_files {
+    find_command = { "fd", "--type", "file", "--hidden", "--exclude", ".git" },
+    -- find_command = { "rg", "--files", "--hidden", "--glob", "!.git/*" },  -- From the Telescope Wiki
+    prompt_title = 'All Files',
+  }
+end
+
+-- Fall back to `find_files` if `git_files` can't find a `.git` directory
+local telescope_git_files_with_fallback = function()
+  local in_repo = pcall(telescope_builtin.git_files)
+  if not in_repo then telescope_builtin.find_files() end
+end
+
 
 -- Use <Space> as <Leader> and <LocalLeader>
 vim.g.mapleader = ' '
@@ -95,11 +113,11 @@ keymap('n', '<leader>bn', ':bn<cr>', {desc = 'Next buffer'})
 keymap('n', '<leader>bp', ':bp<cr>', {desc = 'Previous buffer'})
 
 -- Files/Find  {{{2
-keymap('n', '<leader>fa', telescope_custom.find_all, {desc = 'Find all files'})
+keymap('n', '<leader>fa', telescope_find_all, {desc = 'Find all files'})
 keymap('n', '<leader>fb', telescope.extensions.file_browser.file_browser, {desc = 'Browse files'})
 -- keymap('n', '<leader>fe', ':Lex 30<CR>', {desc = 'Toggle explorer'})
 keymap('n', '<leader>fe', ':NvimTreeToggle<cr>', {desc = 'Toggle explorer'})
-keymap('n', '<leader>ff', telescope_custom.git_files_with_fallback, {desc = 'Find files'})
+keymap('n', '<leader>ff', telescope_git_files_with_fallback, {desc = 'Find files'})
 keymap('n', '<leader>fp', telescope.extensions.projects.projects, {desc = 'Recent projects'})
 keymap('n', '<leader>fr', telescope_builtin.oldfiles, {desc = 'Recent files'})
 

@@ -27,6 +27,10 @@ return {
         icons = { error = 'E', warning = 'W', hint = 'H', info = 'I' }
       },
 
+      filters = {
+        custom = { "^.git$" }  -- Hide the .git directory
+      },
+
       renderer = {
         highlight_opened_files = 'all',
         indent_markers = { enable = true },
