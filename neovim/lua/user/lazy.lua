@@ -12,7 +12,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-local plugins = { {import = "user.plugins_lazy"}, {import = "user.plugins_lazy.colorschemes"} }
+local plugins = { {import = "user.plugins"}, {import = "user.plugins.colorschemes"} }
 
 local opts = {}
 
