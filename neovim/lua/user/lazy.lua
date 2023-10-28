@@ -14,7 +14,13 @@ vim.opt.rtp:prepend(lazypath)
 
 local plugins = { {import = "user.plugins"}, {import = "user.plugins.colorschemes"} }
 
-local opts = {}
+local opts = {
+  diff = { cmd = 'diffview.nvim' },
+  change_detection = {
+    enabled = true,
+    notify = false
+  }
+}
 
 -- `virt-column` either needs to be loaded after your colorscheme (and possibly lualine?),
 -- or you can run `highlight clear ColorColumn` after the color scheme has loaded
