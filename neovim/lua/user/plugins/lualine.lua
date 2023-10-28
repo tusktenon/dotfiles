@@ -13,5 +13,5 @@ require('lualine').setup {
   -- inactive_winbar = {
   --   lualine_z = {'filename'}
   -- },
-  extensions = {'nvim-tree'}
+  extensions = {'man', 'mason', 'nvim-tree', 'toggleterm'}
 }
