@@ -1,6 +1,7 @@
 -- Completion and Snippets
 return {
   'hrsh7th/nvim-cmp',            -- Completion engine
+  event = 'InsertEnter',
   dependencies = {
     'hrsh7th/cmp-buffer',        -- buffer completions
     'hrsh7th/cmp-cmdline',       -- cmdline completions
