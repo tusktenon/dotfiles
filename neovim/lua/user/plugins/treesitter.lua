@@ -49,6 +49,15 @@ return {
           'markdown',
         }
       },
+      incremental_selection = {
+        enable = true,
+        keymaps = {
+          init_selection = '<C-Space>',
+          node_incremental = '<C-Space>',
+          scope_incremental = false,
+          node_decremental = '<BS>',
+        }
+      },
       indent = { enable = true },
 
       -- Extra Modules
@@ -69,8 +78,6 @@ return {
         extended_mode = false,
         -- colors = {},
       },
-      -- TODO: Try incremental selection
-      -- TODO: Try indentation
       -- TODO: Set up text objects
     }
   end
