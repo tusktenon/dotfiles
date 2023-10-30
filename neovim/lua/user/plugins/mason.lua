@@ -4,7 +4,19 @@ return {
   dependencies = {
     'williamboman/mason-lspconfig.nvim',  -- Bridges mason and lspconfig
   },
-  opts = {
-    ui = { border = 'rounded' }
-  }
+  config = function()
+    require('mason').setup {
+      ui = { border = 'rounded' }
+    }
+
+    require('mason-lspconfig').setup {
+      ensure_installed = {
+        -- clangd is provided by the Homebrew package `llvm`
+        'html',
+        'lua_ls',
+        'pyright'
+      },
+      automatic_installation = true,
+    }
+  end
 }
