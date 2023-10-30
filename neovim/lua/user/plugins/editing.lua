@@ -1,6 +1,9 @@
 -- Assorted plugins to enhance text editing
 
 return {
+  -- A text-exhange operator
+  'tommcdo/vim-exchange',
+
   -- Enhanced `matchit` and `matchparen`
   'andymass/vim-matchup',
 
