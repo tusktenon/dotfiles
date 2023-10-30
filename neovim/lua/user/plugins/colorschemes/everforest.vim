@@ -39,6 +39,20 @@ function! s:everforest_custom() abort
   highlight! link markdownLinkText Blue
   highlight! link markdownUrl DarkerGrey
 
+  " NvimTree:
+  " I find the default background color used in the NvimTree window (bg_dim) too
+  " dark. Everforest does not define another color between bg_dim and bg0 (the
+  " regular window background), so we'll use an intermediate color from
+  "   https://www.colorhexa.com/1e2326-to-272e33
+  " Also, Everforest colours folders in green. This looks nice enough, but blue
+  " feels more traditional.
+  let my_bg_dim = ['#22282c', '234']
+  call everforest#highlight('NvimTreeNormal', l:palette.fg, my_bg_dim)
+  call everforest#highlight('NvimTreeEndOfBuffer', my_bg_dim, my_bg_dim)
+  highlight! link NvimTreeFolderName Blue
+  highlight! link NvimTreeEmptyFolderName Blue
+  highlight! link NvimTreeOpenedFolderName Blue
+
   " Many of the TreeSitter highlight groups are linked in such a way that
   " they aren't italicized, even if you've set `everforest_enable_italic`.
   highlight! link TSConditional Conditional
@@ -73,6 +87,7 @@ endfunction
 augroup EverforestCustom
   autocmd!
   autocmd ColorScheme everforest call s:everforest_custom()
+  autocmd User NvimTreeSetup call s:everforest_custom()
 augroup END
 
 

@@ -7,6 +7,12 @@ return {
     vim.g.loaded_netrw = 1
     vim.g.loaded_netrwPlugin = 1
 
+    -- Hide the window-separator character.
+    -- This looks very nice (see NvChad), but you need to also need to adjust
+    -- the window-separator character (see fillchars) to avoid nasty-looking
+    -- glitches with split windows and toggleterm.
+    -- vim.api.nvim_set_hl(0, 'NvimTreeWinSeparator', { fg = 'bg' })
+
     local function on_attach(bufnr)
       local api = require 'nvim-tree.api'
 
