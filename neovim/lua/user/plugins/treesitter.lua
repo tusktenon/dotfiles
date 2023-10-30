@@ -26,6 +26,8 @@ return {
         'latex',
         'lua',
         'make',
+        'markdown',
+        'markdown_inline',
         'php',
         'python',
         'racket',
@@ -47,6 +49,7 @@ return {
           'markdown',
         }
       },
+      indent = { enable = true },
 
       -- Extra Modules
       autotag = {
