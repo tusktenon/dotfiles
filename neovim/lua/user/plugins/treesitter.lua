@@ -40,11 +40,6 @@ return {
         'query',
       },
       auto_install = true,
-      ignore_install = {
-        -- PHPDoc installation current fails on Apple Silicon
-        -- (https://github.com/claytonrcarter/tree-sitter-phpdoc/issues/15)
-        'phpdoc',
-      },
       highlight = {
         enable = true,
         disable = {
