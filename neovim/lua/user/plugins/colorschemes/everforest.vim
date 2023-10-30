@@ -44,14 +44,17 @@ function! s:everforest_custom() abort
   " dark. Everforest does not define another color between bg_dim and bg0 (the
   " regular window background), so we'll use an intermediate color from
   "   https://www.colorhexa.com/1e2326-to-272e33
-  " Also, Everforest colours folders in green. This looks nice enough, but blue
-  " feels more traditional.
   let my_bg_dim = ['#22282c', '234']
   call everforest#highlight('NvimTreeNormal', l:palette.fg, my_bg_dim)
   call everforest#highlight('NvimTreeEndOfBuffer', my_bg_dim, my_bg_dim)
+  " Also, Everforest colours folders in green. This looks nice enough, but blue
+  " feels more traditional.
   highlight! link NvimTreeFolderName Blue
   highlight! link NvimTreeEmptyFolderName Blue
   highlight! link NvimTreeOpenedFolderName Blue
+  " Everforest also does nothing to highlight opened file;
+  " I prefer Catppuccin's behaviour of using bold green.
+  call everforest#highlight('NvimTreeOpenedFile', l:palette.green, l:palette.none, 'bold')
 
   " Many of the TreeSitter highlight groups are linked in such a way that
   " they aren't italicized, even if you've set `everforest_enable_italic`.
