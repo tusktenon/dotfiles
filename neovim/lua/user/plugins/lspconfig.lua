@@ -2,6 +2,7 @@
 return {
   'neovim/nvim-lspconfig',
   dependencies = {
+    'folke/neodev.nvim',
     'hrsh7th/cmp-nvim-lsp'
   },
   config = function()
@@ -56,6 +57,8 @@ return {
       severity_sort = true,
     })
 
+    -- Set up neodev BEFORE lspconfig
+    require('neodev').setup { }
 
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     -- --Enable (broadcasting) snippet capability for completion:
@@ -80,6 +83,9 @@ return {
       capabilities = capabilities,
       settings = {
         Lua = {
+          completion = {
+            callSnippet = 'Replace'
+          },
           diagnostics = {
             globals = {'vim'},  -- Recognize `vim` as a global variable
           },
