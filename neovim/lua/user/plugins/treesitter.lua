@@ -78,7 +78,6 @@ return {
         extended_mode = false,
         -- colors = {},
       },
-      -- TODO: Set up text objects
     }
   end
 }

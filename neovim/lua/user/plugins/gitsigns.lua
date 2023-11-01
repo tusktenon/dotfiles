@@ -12,17 +12,8 @@ return {
       end
 
       -- Navigation Mappings
-      bufmap('n', ']c', function()
-        if vim.wo.diff then return ']c' end
-        vim.schedule(function() gs.next_hunk() end)
-        return '<Ignore>'
-      end, {desc = 'Next hunk', expr = true})
-
-      bufmap('n', '[c', function()
-        if vim.wo.diff then return '[c' end
-        vim.schedule(function() gs.prev_hunk() end)
-        return '<Ignore>'
-      end, {desc = 'Previous hunk', expr = true})
+      -- Define ']h' and '[h' (next/previous hunk) with treesitter-textobjects,
+      -- so they can be repeated with ';' and ','
 
       bufmap('n', 'gj', gs.next_hunk, {desc = 'Next hunk'})
       bufmap('n', 'gk', gs.prev_hunk, {desc = 'Previous hunk'})
