@@ -1,7 +1,7 @@
 -- Assorted plugins to enhance text editing
 
 return {
-  -- A text-exhange operator
+  -- A text-exchange operator
   'tommcdo/vim-exchange',
 
   -- Enhanced `matchit` and `matchparen`
@@ -20,6 +20,16 @@ return {
 
   -- Recognize CamelCase and snake_case words
   'chaoren/vim-wordmotion',
+
+  -- Adds various text objects
+  {
+    'wellle/targets.vim',
+    config = function()
+      -- Prefer multiline targets around cursor over distant targets within cursor line
+      -- (this is more consistent with default Vim behaviour)
+      vim.g.targets_seekRanges = 'cc cr cb cB lc ac Ac lr lb ar ab lB Ar aB Ab AB rr ll rb al rB Al bb aa bB Aa BB AA'
+    end
+  },
 
   -- Text Objects
   {

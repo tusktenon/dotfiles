@@ -49,7 +49,7 @@ return {
           'markdown',
         }
       },
-      incremental_selection = {
+      incremental_selection = {  -- Compare the vim-expand-region plugin
         enable = true,
         keymaps = {
           init_selection = '<C-Space>',
