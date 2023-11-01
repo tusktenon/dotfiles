@@ -16,6 +16,10 @@ local plugins = { {import = "user.plugins"}, {import = "user.plugins.colorscheme
 
 local opts = {
   diff = { cmd = 'diffview.nvim' },
+  checker = {
+    enabled = true,  -- automatically check for plugin updates
+    notify = true,   -- show notification when new updates are found
+  },
   change_detection = {
     enabled = true,
     notify = false
