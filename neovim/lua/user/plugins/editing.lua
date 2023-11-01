@@ -21,7 +21,12 @@ return {
   -- Recognize CamelCase and snake_case words
   'chaoren/vim-wordmotion',
 
+
+  -- Text Objects
+
   -- Adds various text objects
+  -- Quite powerful, but in Neovim, it probably makes more sense to use a combination of
+  -- treesitter-textobjects, vim-textobj-anyblock and vim-textobj-quotes.
   -- {
   --   'wellle/targets.vim',
   --   config = function()
@@ -34,7 +39,6 @@ return {
   --   end
   -- },
 
-  -- Text Objects
   {
     -- A plugin that lets you create your own text objects
     'kana/vim-textobj-user',
