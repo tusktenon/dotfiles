@@ -6,7 +6,7 @@ return {
     'nvim-treesitter/nvim-treesitter-textobjects',  -- Syntax-aware text objects with select/move/swap/peek support
     'windwp/nvim-ts-autotag',                       -- Autopair functionality for HTLM/XML tags
     'JoosepAlviste/nvim-ts-context-commentstring',  -- Set `commentstring` based on cursor location
-    'p00f/nvim-ts-rainbow',                         -- Rainbow brackets
+    -- 'p00f/nvim-ts-rainbow',                         -- Rainbow brackets
   },
   config = function()
     require'nvim-treesitter.configs'.setup {
@@ -72,12 +72,12 @@ return {
         enable = true,
         include_match_words = true,
       },
-      rainbow = {
-        enable = true,
-        disable = {'html'},
-        extended_mode = false,
-        -- colors = {},
-      },
+      -- rainbow = {
+      --   enable = true,
+      --   disable = {'html'},
+      --   extended_mode = false,
+      --   -- colors = {},
+      -- },
     }
   end
 }
