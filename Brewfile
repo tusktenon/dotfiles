@@ -24,6 +24,7 @@ brew 'zsh-syntax-highlighting'
 
 # Development: Languages
 # brew 'go'
+brew haskell-stack
 brew llvm  # Provides clang compiler and clangd language server
 # brew 'node'
 # brew 'php'
