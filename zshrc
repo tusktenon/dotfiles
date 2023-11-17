@@ -19,7 +19,7 @@ export EDITOR="nvim"
 # see https://docs.brew.sh/Shell-Completion
 if [ "$system_type" = "Darwin" ]; then
     if type brew &>/dev/null; then
-      FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+      FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
     fi
 fi
 autoload -Uz compinit
@@ -47,20 +47,25 @@ export CDPATH
 PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 
 # To use LLVM's bundled libc++, add the following LDFLAGS
-LDFLAGS="-L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++"
+# LDFLAGS="-L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++"
 
 # For compilers to find LLVM you may need to set the following
 LDFLAGS+="-L/opt/homebrew/opt/llvm/lib"
-export LDFLAGS
-export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
+CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
+
+# Use GHCup
+PATH+=":$HOME/.ghcup/bin"
 
 # Standard ML of New Jersey
-PATH+=':/usr/local/smlnj/bin'
+PATH+=":/usr/local/smlnj/bin"
 
 # Add Ruby Version Manager (RVM) to PATH for scripting.
 # Make sure this is the last PATH variable change.
 PATH+=":$HOME/.rvm/bin"
+
 export PATH
+export LDFLAGS
+export CPPFLAGS
 
 
 # Colors  {{{1
