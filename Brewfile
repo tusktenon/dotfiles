@@ -23,8 +23,7 @@ brew 'zsh-syntax-highlighting'
 
 
 # Development: Languages
-# brew 'go'
-brew haskell-stack
+brew ghcup  # The GHCup Haskell installer (use to install GHC, Cabal, Stack and the Haskell Language Server)
 brew llvm  # Provides clang compiler and clangd language server
 # brew 'node'
 # brew 'php'
