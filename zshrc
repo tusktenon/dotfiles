@@ -44,17 +44,23 @@ export CDPATH
 # Language Support  {{{1
 
 # Use Homebrew's LLVM
-PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+# (Disable when using Haskell Stack; see
+#   https://docs.haskellstack.org/en/stable/faq/#how-do-i-resolve-linker-errors-when-running-stack-setup-or-stack-build-on-macos)
+# PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 
 # To use LLVM's bundled libc++, add the following LDFLAGS
 # LDFLAGS="-L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++"
 
 # For compilers to find LLVM you may need to set the following
-LDFLAGS+="-L/opt/homebrew/opt/llvm/lib"
-CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
+# LDFLAGS+="-L/opt/homebrew/opt/llvm/lib"
+# CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
+
+# Use Homebrew's GHC 9.6
+PATH="/opt/homebrew/opt/ghc@9.6/bin:$PATH"
+LDFLAGS="-L/opt/homebrew/opt/ghc@9.6/lib"
 
 # Use GHCup
-PATH+=":$HOME/.ghcup/bin"
+# PATH+=":$HOME/.ghcup/bin"
 
 # Standard ML of New Jersey
 PATH+=":/usr/local/smlnj/bin"
