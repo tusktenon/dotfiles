@@ -23,12 +23,17 @@ brew 'zsh-syntax-highlighting'
 
 
 # Development: Languages
-brew ghcup  # The GHCup Haskell installer (use to install GHC, Cabal, Stack and the Haskell Language Server)
 brew llvm  # Provides clang compiler and clangd language server
 # brew 'node'
 # brew 'php'
 brew 'python3'
 # cask smlnj
+
+# Haskell
+brew ghc@9.6  # GHC 9.6.3 is the latest supported by HLS
+brew cabal-install
+brew haskell-stack
+brew haskell-language-server
 
 
 # Emacs
