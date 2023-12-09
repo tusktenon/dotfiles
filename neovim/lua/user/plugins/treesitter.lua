@@ -5,7 +5,6 @@ return {
   dependencies = {
     'nvim-treesitter/nvim-treesitter-textobjects',  -- Syntax-aware text objects with select/move/swap/peek support
     'windwp/nvim-ts-autotag',                       -- Autopair functionality for HTLM/XML tags
-    'JoosepAlviste/nvim-ts-context-commentstring',  -- Set `commentstring` based on cursor location
     -- 'p00f/nvim-ts-rainbow',                         -- Rainbow brackets
   },
   config = function()
@@ -17,6 +16,7 @@ return {
         'comment',
         'cpp',
         'css',
+        'gitcommit',
         'gitignore',
         'haskell',
         'html',
@@ -63,10 +63,6 @@ return {
       -- Extra Modules
       autotag = {
         enable = true,
-      },
-      context_commentstring = {
-        enable = true,
-        enable_autocmd = false  -- For integration with `Comment.nvim`
       },
       matchup = {
         enable = true,
