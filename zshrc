@@ -111,6 +111,29 @@ bindkey "^n" history-search-forward
 # Make the behaviour of `C-u` consistent with Vim Insert/Command mode
 bindkey '^u' backward-kill-line
 
+# Change cursor shape depending on mode
+_set_block_cursor() { echo -ne '\e[2 q' }
+_set_bar_cursor() { echo -ne '\e[6 q' }
+_set_underscore_cursor() { echo -ne '\e[4 q' }
+
+zle-keymap-select() {
+    if [[ $KEYMAP == vicmd ]]; then
+        _set_block_cursor
+
+    elif [[ $ZLE_STATE == *overwrite* ]]; then
+        _set_underscore_cursor
+
+    else; 
+        _set_bar_cursor
+    fi
+}
+zle -N zle-keymap-select
+
+# Start with bar cursor
+zle-line-init() { _set_bar_cursor }
+zle -N zle-line-init
+
+
 # Edit the current command in $EDITOR with `M-e`
 autoload -z edit-command-line
 zle -N edit-command-line
