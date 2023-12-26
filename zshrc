@@ -94,6 +94,9 @@ export GREP_OPTIONS='--color=auto'
 
 # Keybindings and Aliases  {{{1
 
+# Use Vi mode
+bindkey -v
+
 # Make useful Emacs-mode bindings available in Vi mode
 bindkey "^a" beginning-of-line
 bindkey "^e" end-of-line
