@@ -2,6 +2,7 @@
     // General Settings
     "files.autoSave": "afterDelay",
 
+
     // Editor Appearance
     "editor.cursorBlinking": "solid",
     "editor.fontFamily": "IBM Plex Mono, JetBrains Mono, Menlo, Monaco, 'Courier New', monospace",
@@ -12,21 +13,28 @@
     "editor.lineNumbers": "relative",
     "editor.minimap.enabled": false,
     "editor.bracketPairColorization.enabled": false,
+
+    // Color schemes
+    "workbench.colorTheme": "Default Dark+",
     "everforest.italicKeywords": true,
-    "everforest.darkContrast": "hard",
+    "everforest.diagnosticTextBackgroundOpacity": "12.5%",
+    "everforest.darkWorkbench": "flat",
     "gruvboxMaterial.darkContrast": "soft",
+
     "workbench.colorCustomizations": {
-    "[Catppuccin Frappé]": {
-        // TODO: For Bracket Pair Colorization, use red only for unexpected (e.g., extra) brackets
-        "editorBracketHighlight.foreground1": "#3700ff",
-        "editorBracketHighlight.foreground2": "#66ff00",
-        "editorBracketHighlight.foreground3": "#66ff00",
-        "editorBracketHighlight.foreground4": "#66ff00",
-        "editorBracketHighlight.foreground5": "#66ff00",
-        "editorBracketHighlight.foreground6": "#66ff00",
-        "editorBracketHighlight.unexpectedBracket.foreground": "#ff0000",
-    }
+        "[Catppuccin Frappé]": {
+            // TODO: For Bracket Pair Colorization, use red only for unexpected (e.g., extra) brackets
+            "editorBracketHighlight.foreground1": "#3700ff",
+            "editorBracketHighlight.foreground2": "#66ff00",
+            "editorBracketHighlight.foreground3": "#66ff00",
+            "editorBracketHighlight.foreground4": "#66ff00",
+            "editorBracketHighlight.foreground5": "#66ff00",
+            "editorBracketHighlight.foreground6": "#66ff00",
+            "editorBracketHighlight.unexpectedBracket.foreground": "#ff0000",
+        }
     },
+
+
     // Formatting Defaults
     "editor.detectIndentation": false,
     "editor.insertSpaces": true,
@@ -34,6 +42,7 @@
 
     // Git and Diff
     "diffEditor.ignoreTrimWhitespace": false,
+
 
     // Filetype-Specific Settings
     "[css]": {
@@ -73,6 +82,7 @@
         "editor.tabSize": 4,
         "editor.rulers": [80]
     },
+    "python.analysis.typeCheckingMode": "basic",
 
 
     // VSCodeVim
@@ -98,6 +108,4 @@
             "after": ["o", "<Esc>", "k"]
         }
     ],
-    "workbench.colorTheme": "Catppuccin Frappé",
-    "python.analysis.typeCheckingMode": "basic",
 }
