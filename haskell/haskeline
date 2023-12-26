@@ -1,0 +1,16 @@
+editMode: Vi
+
+-- Make some useful Emacs bindings available
+-- (note that ctrl-u and ctrl-w already work)
+bind: ctrl-a escape I
+bind: ctrl-e escape A
+bind: ctrl-p up
+bind: ctrl-n down
+
+-- 'Auto-pair' functionality
+bind: { { } left
+bind: ( ( ) left
+bind: [ [ ] left
+bind: } right
+bind: ] right
+bind: ) right

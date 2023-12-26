@@ -19,6 +19,8 @@
     ~/.config/kitty: kitty
     ~/.config/nvim: neovim
     ~/.config/starship: starship
+    ~/.ghci: haskell/ghci
+    ~/.haskeline: haskell/haskeline
     ~/.vim/after: vim/after
     ~/.vim/spell: vim/spell
     ~/.vim/vimrc: vim/vimrc
