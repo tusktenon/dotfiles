@@ -22,11 +22,6 @@ local telescope_git_files_with_fallback = function()
 end
 
 
--- Use <Space> as <Leader> and <LocalLeader>
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
-
-
 -- General Mappings  {{{1
 
 -- Exit Insert mode with `jk`
@@ -116,7 +111,7 @@ keymap('n', '<leader>bp', ':bp<cr>', {desc = 'Previous buffer'})
 keymap('n', '<leader>fa', telescope_find_all, {desc = 'Find all files'})
 keymap('n', '<leader>fb', telescope.extensions.file_browser.file_browser, {desc = 'Browse files'})
 -- keymap('n', '<leader>fe', ':Lex 30<CR>', {desc = 'Toggle explorer'})
-keymap('n', '<leader>fe', ':NvimTreeToggle<cr>', {desc = 'Toggle explorer'})
+keymap('n', '<leader>fe', ':NvimTreeToggle<cr>', {silent = true, desc = 'Toggle explorer'})
 keymap('n', '<leader>ff', telescope_git_files_with_fallback, {desc = 'Find files'})
 keymap('n', '<leader>fp', telescope.extensions.projects.projects, {desc = 'Recent projects'})
 keymap('n', '<leader>fr', telescope_builtin.oldfiles, {desc = 'Recent files'})

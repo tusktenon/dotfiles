@@ -1,3 +1,8 @@
+-- Use <Space> as <Leader> and <LocalLeader>
+vim.g.mapleader = ' '       -- Must be set before loading Lazy
+vim.g.maplocalleader = ' '
+
+
 -- Bootstrap Lazy
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
