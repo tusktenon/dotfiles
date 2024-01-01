@@ -6,7 +6,8 @@ local augroup = vim.api.nvim_create_augroup
 -- [[ Appearance & Interface ]]
 
 opt.clipboard = 'unnamedplus'  -- Share the system clipboard
-opt.cmdheight = 0         -- Only show command line as needed
+-- opt.cmdheight = 0         -- Only show command line as needed
+-- opt.cmdheight = 2         -- Use two screen lines for the command line (helps avoid 'hit enter' prompts)
 opt.completeopt = {'longest', 'menuone', 'noselect', 'preview'}  -- For a better completion experience
 opt.confirm = true        -- Present a dialog instead of failing a command due to unsaved changes
 opt.fillchars:append "eob: "   -- Don't show `~` characters at end of buffer
@@ -22,7 +23,7 @@ opt.splitbelow = true     -- Open new windows below the current one
 opt.splitright = true     -- Open new windows to the right of the current one
 opt.termguicolors = true  -- 24-bit color support in the TUI
 opt.undofile = true       -- Enable persistent undo
-vim.wo.winbar = '%=%m %t'    -- Window bar settings
+opt.wildoptions =  "fuzzy,tagfile"  -- Display cmdline completions horizontally
 
 -- Line Wrapping
 --   These settings only affect how text is displayed; they do not change
