@@ -1,7 +1,7 @@
 -- Completion and Snippets
 return {
   'hrsh7th/nvim-cmp',            -- Completion engine
-  event = 'InsertEnter',
+  -- event = 'InsertEnter',
   dependencies = {
     'hrsh7th/cmp-buffer',        -- buffer completions
     'hrsh7th/cmp-cmdline',       -- cmdline completions
@@ -96,6 +96,29 @@ return {
         { name = "buffer" },
         { name = "path" },
       },
+    })
+
+    cmp.setup.cmdline({'/', '?'}, {
+      mapping = cmp.mapping.preset.cmdline(),
+      sources = {
+        { name = 'buffer' }
+      },
+      view = { entries = {name = 'wildmenu'} },
+    })
+
+    cmp.setup.cmdline(':', {
+      mapping = cmp.mapping.preset.cmdline(),
+      sources = cmp.config.sources({
+        { name = 'path' }
+      }, {
+        {
+          name = 'cmdline',
+          option = {
+            ignore_cmds = { 'Man', '!' }
+          }
+        }
+      }),
+      view = { entries = {name = 'wildmenu'} },
     })
   end
 }
