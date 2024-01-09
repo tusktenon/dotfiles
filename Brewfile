@@ -66,6 +66,7 @@ tap 'homebrew/cask-fonts'
   # brew 'font-meslo-lg-dz'  # dotted zero
   brew 'font-noto-sans-mono'
   # brew 'font-pt-mono'  # Included with macOS
+  brew 'font-recursive-code'
   brew 'font-roboto-mono'
   brew 'font-source-code-pro'
   brew 'font-victor-mono'
@@ -82,4 +83,5 @@ tap 'homebrew/cask-fonts'
 
   # Variable Fonts
   brew 'svn'  # Needed to install font-source-sans-pro
+  brew 'font-recursive'
   brew 'font-source-sans-pro'
