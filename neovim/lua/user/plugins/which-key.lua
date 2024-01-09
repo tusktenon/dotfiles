@@ -30,6 +30,7 @@ return {
         l = { name = '+Language' },
         lw = { name = '+Workspace' },
         s = { name = '+Search' },
+        t = { name = '+Toggle' },
         w = { name = '+Windows' },
       }
     }

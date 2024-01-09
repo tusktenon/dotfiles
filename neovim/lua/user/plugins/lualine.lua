@@ -10,6 +10,10 @@ return {
         globalstatus = true,
       },
       sections = {
+        lualine_c = {
+          'filename',
+          require('capslock').status_string
+        },
         lualine_x = {
           {
             lazy_status.updates,
