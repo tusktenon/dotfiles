@@ -2,6 +2,11 @@
 return {
   'lewis6991/gitsigns.nvim',
   opts = {
+    signs = {
+      delete = { text = '󰍵' },
+      changedelete = { text = '󰾟' },
+      untracked = { text = '│' },
+    },
     on_attach = function(bufnr)
       local gs = package.loaded.gitsigns
 
