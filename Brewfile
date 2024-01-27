@@ -72,7 +72,7 @@ tap 'homebrew/cask-fonts'
   brew 'font-victor-mono'
 
   # NERD Monospace Fonts
-  # brew 'font-blex-mono-nerd-font'
+  brew 'font-blex-mono-nerd-font'
   # brew 'font-fantasque-sans-mono-nerd-font'
   # brew 'font-fira-code-nerd-font'
   # brew 'font-hack-nerd-font'

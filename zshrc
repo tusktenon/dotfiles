@@ -165,7 +165,7 @@ alias dfsync="dotbot -d $dotfiles_dir -c $dotfiles_dir/install.conf.yaml"
 
 # Use Starship prompt
 eval "$(starship init zsh)"
-export STARSHIP_CONFIG=~/.config/starship/powerline.toml
+export STARSHIP_CONFIG=~/.config/starship/modern-alt.toml
 
 # Enable syntax highlighting (zsh-users/zsh-syntax-highlighting)
 if [ "$system_type" = "Darwin" ]; then

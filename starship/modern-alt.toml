@@ -1,0 +1,29 @@
+# ~/.config/starship.toml
+# Author: Dan Murphy
+
+format = """
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_status\
+$line_break\
+$jobs\
+$character"""
+
+[character]
+success_symbol = "[\\$](bold green)"
+error_symbol = "[\\$](bold red)"
+vicmd_symbol = "[\\$](bold blue)"
+
+[directory]
+style = "bold blue"
+
+[git_branch]
+# format = '[on ](dimmed)[$branch(:$remote_branch)]($style) '
+format = '[$symbol$branch(:$remote_branch)]($style) '
+# format = '[● ](dimmed)[$symbol$branch(:$remote_branch)]($style) '
+symbol = ' '
+
+[git_status]
+format = '([$all_status$ahead_behind]($style) )'
