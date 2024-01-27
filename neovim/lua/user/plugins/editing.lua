@@ -1,6 +1,50 @@
 -- Assorted plugins to enhance text editing
 
 return {
+  -- Autopairs
+  {
+    'windwp/nvim-autopairs',
+    opts = {
+      check_ts = true  -- Use Treesitter to check for a pair
+    },
+  },
+
+  -- Auto-save
+  -- (Best used with Vim option `undofile` for peristent undo)
+  {
+    'Pocco81/auto-save.nvim',
+    keys = {
+      { '<leader>ts', '<cmd>ASToggle<CR>', desc = 'Auto-save' },
+    },
+    lazy = false,
+    config = true,
+  },
+
+  -- Software capslock (c.f. tpope/vim-capslock)
+  {
+    'barklan/capslock.nvim',
+    event = { "BufRead", "BufWinEnter", "BufNewFile" },
+    config = function()
+      require("capslock").setup()
+      vim.keymap.set({ "i", "c", "n" }, "<C-g>c", "<Plug>CapsLockToggle", {desc = 'Toggle Capslock'})
+    end
+  },
+
+  -- Commenting (c.f. tpope/vim-commentary)
+  {
+    'numToStr/Comment.nvim',
+    event = { "BufRead", "BufWinEnter", "BufNewFile" },
+    opts = {}
+  },
+
+  -- Surround: add/change/delete delimiter pairs (c.f. tpope/vim-surround)
+  {
+    'kylechui/nvim-surround',
+    version = "*", -- Use for stability; omit to use `main` branch for the latest features
+    event = "VeryLazy",
+    config = true
+  },
+
   -- A text-exchange operator
   'tommcdo/vim-exchange',
 
@@ -10,13 +54,6 @@ return {
   -- Switch between single- and multi-line code forms
   'AndrewRadev/splitjoin.vim',
 
-  -- Surround: add/change/delete delimiter pairs (c.f. tpope/vim-surround)
-  {
-    'kylechui/nvim-surround',
-    version = "*", -- Use for stability; omit to use `main` branch for the latest features
-    event = "VeryLazy",
-    config = true
-  },
 
   -- Recognize CamelCase and snake_case words
   'chaoren/vim-wordmotion',
