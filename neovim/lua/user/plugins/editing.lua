@@ -13,10 +13,10 @@ return {
   -- (Best used with Vim option `undofile` for peristent undo)
   {
     'Pocco81/auto-save.nvim',
+    lazy = false,
     keys = {
       { '<leader>ts', '<cmd>ASToggle<CR>', desc = 'Auto-save' },
     },
-    lazy = false,
     config = true,
   },
 
@@ -43,6 +43,14 @@ return {
     version = "*", -- Use for stability; omit to use `main` branch for the latest features
     event = "VeryLazy",
     config = true
+  },
+
+  -- Leap: Powerful Sneak-like motions
+  {
+    'ggandor/leap.nvim',
+    config = function()
+      require('leap').add_default_mappings()
+    end
   },
 
   -- A text-exchange operator

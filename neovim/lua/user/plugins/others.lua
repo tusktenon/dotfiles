@@ -41,7 +41,7 @@ return {
     event = 'WinEnter',
     keys = {
       { '<leader>wm', '<cmd>MaximizerToggle<CR>', desc = 'Maximize (toggle)' },
-      { '<leader>xm', '<cmd>MaximizerToggle<CR>', desc = 'Maximize window' },
+      { '<leader>tm', '<cmd>MaximizerToggle<CR>', desc = 'Maximize window' },
     },
   },
 
