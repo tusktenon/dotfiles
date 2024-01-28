@@ -1,4 +1,4 @@
--- Assorted plugins to enhance text editing
+-- Plugins to enhance text editing
 
 return {
   -- Autopairs
@@ -60,21 +60,6 @@ return {
 
 
   -- Text Objects
-
-  -- Adds various text objects
-  -- Quite powerful, but in Neovim, it probably makes more sense to use a combination of
-  -- treesitter-textobjects, vim-textobj-anyblock and vim-textobj-quotes.
-  -- {
-  --   'wellle/targets.vim',
-  --   config = function()
-  --     -- Seek for next and last (previous) object with `n` and `p`
-  --     vim.g.targets_nl = {'n', 'p'}
-  --
-  --     -- Prefer multiline targets around cursor over distant targets within cursor line
-  --     -- (this is more consistent with default Vim behaviour)
-  --     vim.g.targets_seekRanges = 'cc cr cb cB lc ac Ac lr lb ar ab lB Ar aB Ab AB rr ll rb al rB Al bb aa bB Aa BB AA'
-  --   end
-  -- },
 
   {
     -- A plugin that lets you create your own text objects
