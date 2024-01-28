@@ -1,4 +1,4 @@
--- Status Line
+-- Lualine: customize the statusline, tabline and winbar
 return {
   'nvim-lualine/lualine.nvim',
   config = function()
