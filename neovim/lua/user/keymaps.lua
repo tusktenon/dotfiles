@@ -75,8 +75,8 @@ keymap('x', '<M-j>', ":move '>+1<CR>gv-gv", {silent = true})
 keymap('x', '<M-k>', ":move '<-2<CR>gv-gv", {silent = true})
 
 -- Fast cycling through buffers
-keymap('n', '<C-.>', ':bn<cr>', {desc = 'Next buffer'})
-keymap('n', '<C-,>', ':bp<cr>', {desc = 'Previous buffer'})
+keymap('n', '<Tab>', ':bn<cr>', {desc = 'Next buffer', silent = true})
+keymap('n', '<S-Tab>', ':bp<cr>', {desc = 'Previous buffer', silent = true})
 
 -- Navigate windows from any mode with ALT+{h,j,k,l}
 keymap({'i', 'n'}, '<A-h>', '<C-w>h')
