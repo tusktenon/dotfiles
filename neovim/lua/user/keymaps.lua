@@ -49,10 +49,13 @@ keymap('n', 'k', "v:count == 0 ? 'gk' : 'k'", {expr = true})
 -- keymap('c', '<C-j>', "pumvisible() ? '<C-n>' : '<C-j>'", {expr = true, silent = false})
 -- keymap('c', '<C-k>', "pumvisible() ? '<C-p>' : '<C-k>'", {expr = true, silent = false})
 
--- Borrowed from Tim Pope's Unimpaired plugin (tpope/vim-unimpaired):
--- Insert newline above/below current line with `[<Space>` and `[<Space>`
-keymap('n', '[<Space>', ":<C-u>put!=repeat([''],v:count)<Bar>']+1<CR>", {desc = 'Add newline above', silent = true})
-keymap('n', ']<Space>', ":<C-u>put =repeat([''],v:count)<Bar>'[-1<CR>", {desc = 'Add newline below', silent = true})
+-- Borrowed from/inspired by Tim Pope's Unimpaired plugin (tpope/vim-unimpaired):
+-- Insert a space before/after the cursor
+keymap('n', '[<Space>', "i<Space><Esc>l", {desc = 'Add space before cursor', silent = true})
+keymap('n', ']<Space>', "a<Space><Esc>h", {desc = 'Add space after cursor', silent = true})
+-- Insert newline above/below current line
+keymap('n', '[<CR>', ":<C-u>put!=repeat([''],v:count)<Bar>']+1<CR>", {desc = 'Add newline above', silent = true})
+keymap('n', ']<CR>', ":<C-u>put =repeat([''],v:count)<Bar>'[-1<CR>", {desc = 'Add newline below', silent = true})
 
 -- Allow gf to open non-existent files
 keymap('', 'gf', ':edit <cfile><CR>')
