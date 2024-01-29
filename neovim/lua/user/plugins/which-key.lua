@@ -12,6 +12,9 @@ return {
         ['<cr>'] = 'RET',
         ['<tab>'] = 'TAB',
       },
+      icons = {
+        separator = '→'
+      },
       window = {
         border = 'rounded'
       }
