@@ -42,7 +42,13 @@ return {
     'kylechui/nvim-surround',
     version = "*", -- Use for stability; omit to use `main` branch for the latest features
     event = "VeryLazy",
-    config = true
+    opts = {
+      keymaps = {
+        -- The default visual-mode prefix for Surround is `S`, which conflicts with Leap.
+        -- We'll change it to `gs`.
+        visual = 'gs',
+      }
+    }
   },
 
   -- Leap: Powerful Sneak-like motions
