@@ -2,6 +2,9 @@
 vim.g.mapleader = ' '       -- Must be set before loading Lazy
 vim.g.maplocalleader = ' '
 
+-- nvim-tree users are advised to disable netrw at the top of their init.lua
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 
 -- Bootstrap Lazy
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
