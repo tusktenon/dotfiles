@@ -61,4 +61,10 @@ return {
       }
     end
   },
+
+  -- Filetype icons for use by other plugins (lualine, nvim-tree)
+  {
+    'nvim-tree/nvim-web-devicons',
+    lazy = true
+  }
 }

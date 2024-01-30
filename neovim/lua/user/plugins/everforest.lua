@@ -62,6 +62,7 @@ return {
         hl.NvimTreeFolderName = { link = 'Blue' }
         hl.NvimTreeEmptyFolderName = { link = 'Blue' }
         hl.NvimTreeOpenedFolderName = { link = 'Blue' }
+        hl.NvimTreeFolderIcon = { link = 'Blue' }
         --  Unlike most color schemes, Everforest does nothing to highlight
         --  opened files. I like Catppuccin's use of bold green.
         hl.NvimTreeOpenedFile = { fg = palette.green, bg = palette.none, bold = true }
