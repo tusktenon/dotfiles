@@ -1,4 +1,16 @@
 -- Tree-style file explorer (netrw replacement)
+
+-- NOTE: Consider setting the highlight group NvimTreeSpecialFile.
+-- See *nvim-tree.renderer.special_files*
+
+-- NOTE: Consider setting the NvimTreeGit* highlight groups.
+
+-- TODO: Set the NvimTreeModifiedFile group
+-- TODO: Improve the appearance of folder arrows.
+-- * The highlight groups are NvimTreeFolderArrowClosed and NvimTreeFolderArrowOpen,
+--   both of which are linked to NvimTreeIndentMarker by default.
+-- * 
+
 return {
   'nvim-tree/nvim-tree.lua',
   version = '*',
@@ -39,10 +51,29 @@ return {
 
       renderer = {
         highlight_opened_files = 'all',
-        indent_markers = { enable = true },
+        highlight_modified = 'all',
+        indent_markers = {
+          enable = false,
+          inline_arrows = false
+        },
         icons = {
           git_placement = 'after',
-          show = { file = false, folder = false }
+          show = { file = false, folder = false },
+          glyphs = {
+            folder = {
+              arrow_closed = '',
+              arrow_open = '',
+            },
+            git = {
+              unstaged = "★",
+              staged = "",
+              unmerged = "",
+              renamed = "➜",
+              untracked = "",
+              deleted = "",
+              ignored = "",
+            }
+          }
         }
       },
 
