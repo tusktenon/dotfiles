@@ -51,6 +51,23 @@ return {
     }
   },
 
+  -- Cutlass: True delete operations (c.f. svermeulen/vim-cutlass)
+  {
+    'gbprod/cutlass.nvim',
+    event = { "BufRead", "BufWinEnter", "BufNewFile" },
+    config = function()
+      require('cutlass').setup {
+        cut_key = 'm',
+        registers = {
+          change = 'c',
+          delete = 'd'
+        }
+      }
+      -- Since we're using `m` as the cut key, we'll use `gm` to add a mark.
+      vim.keymap.set('n', 'gm', 'm')
+    end
+  },
+
   -- Leap: Powerful Sneak-like motions
   {
     'ggandor/leap.nvim',
