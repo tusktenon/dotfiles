@@ -7,6 +7,19 @@ local cwd = function()
   return path:sub(index + 1)
 end
 
+-- Use the Gitsigns plugin to get diff status
+-- (https://github.com/nvim-lualine/lualine.nvim/wiki/Component-snippets#using-external-source-for-diff)
+local gitsigns_diff = function()
+  local gitsigns = vim.b.gitsigns_status_dict
+  if gitsigns then
+    return {
+      added = gitsigns.added,
+      modified = gitsigns.changed,
+      removed = gitsigns.removed
+    }
+  end
+end
+
 return {
   'nvim-lualine/lualine.nvim',
   config = function()
@@ -16,10 +29,15 @@ return {
         theme = 'auto',
         globalstatus = true,
       },
+
       sections = {
         lualine_a = {'mode'},
         lualine_b = {'filename'},
-        lualine_c = {'branch', 'diff'},
+        lualine_c = {
+          -- Use the Gitsigns plugin for branch and diff status
+          { 'b:gitsigns_head', icon = '' },
+          { 'diff', source = gitsigns_diff },
+        },
         lualine_x = {'diagnostics'},
         lualine_y = {'filetype', cwd},
         lualine_z = {'location'}
