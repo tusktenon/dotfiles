@@ -23,9 +23,7 @@ vim.opt.rtp:prepend(lazypath)
 local opts = {
   diff = { cmd = 'diffview.nvim' },
   checker = {
-    -- Automatically check for plugin updates, but don't show notification when updates
-    -- are found (we'll display the number of updates in the statusline instead).
-    enabled = true,
+    enabled = false,
     notify = false,
   },
   change_detection = {

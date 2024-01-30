@@ -1,8 +1,15 @@
 -- Lualine: customize the statusline, tabline and winbar
+
+-- Get the current working directory
+local cwd = function()
+  local path = vim.fn.getcwd()
+  local index = path:match'^.*()/'
+  return path:sub(index + 1)
+end
+
 return {
   'nvim-lualine/lualine.nvim',
   config = function()
-    local lazy_status = require 'lazy.status'  -- To show Lazy pending updates count
     require('lualine').setup {
       options = {
         icons_enabled = true,
@@ -10,18 +17,12 @@ return {
         globalstatus = true,
       },
       sections = {
-        lualine_c = {
-          'filename',
-          require('capslock').status_string
-        },
-        lualine_x = {
-          {
-            lazy_status.updates,
-            cond = lazy_status.has_updates,
-            color = { fg = "#ff9e64" },
-          },
-          'encoding', 'fileformat', 'filetype'  -- Default components
-        },
+        lualine_a = {'mode'},
+        lualine_b = {'filename'},
+        lualine_c = {'branch', 'diff'},
+        lualine_x = {'diagnostics'},
+        lualine_y = {'filetype', cwd},
+        lualine_z = {'location'}
       },
       extensions = {'lazy', 'man', 'mason', 'nvim-tree', 'toggleterm'}
     }
