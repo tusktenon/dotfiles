@@ -1,11 +1,5 @@
 local M = {}
 
--- It seems that the easiest way to get Lualine to display a static string is to wrap it in a function
-M.spacer = function() return ' ' end
-M.mode_icon = function() return '' end
-M.folder_icon = function() return '' end
-M.position_icon = function() return '' end
-
 -- Get the current working directory
 M.cwd = function()
   local path = vim.fn.getcwd()
