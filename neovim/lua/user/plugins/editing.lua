@@ -1,5 +1,7 @@
 -- Plugins to enhance text editing
 
+local keymap = vim.keymap.set
+
 return {
   -- Autopairs
   {
@@ -42,37 +44,34 @@ return {
     'kylechui/nvim-surround',
     version = "*", -- Use for stability; omit to use `main` branch for the latest features
     event = "VeryLazy",
-    opts = {
-      keymaps = {
-        -- The default visual-mode prefix for Surround is `S`, which conflicts with Leap.
-        -- We'll change it to `gs`.
-        visual = 'gs',
-      }
-    }
+    opts = {}
   },
 
   -- Cutlass: True delete operations (c.f. svermeulen/vim-cutlass)
   {
     'gbprod/cutlass.nvim',
     event = { "BufRead", "BufWinEnter", "BufNewFile" },
-    config = function()
-      require('cutlass').setup {
-        cut_key = 'm',
-        registers = {
-          change = 'c',
-          delete = 'd'
-        }
+    opts = {
+      cut_key = 'x',
+      registers = {
+        change = 'c',
+        delete = 'd'
       }
-      -- Since we're using `m` as the cut key, we'll use `gm` to add a mark.
-      vim.keymap.set('n', 'gm', 'm')
-    end
+    }
   },
 
   -- Leap: Powerful Sneak-like motions
   {
     'ggandor/leap.nvim',
+    lazy = false,
     config = function()
-      require('leap').add_default_mappings()
+      -- The default mappings use s/S/gs ('s' for "sneak"), but these conflict
+      -- with the Surround plugin. We'll use m/M/gm ('m' for "move").
+      keymap({'n', 'x', 'o'}, 'm', '<Plug>(leap-forward)')
+      keymap({'n', 'x', 'o'}, 'M', '<Plug>(leap-backward)')
+      keymap({'n', 'x', 'o'}, 'gm', '<Plug>(leap-from-window)')
+      -- Since we're using `m` as the cut key, we'll use `<Leader>m` to add a mark.
+      keymap('n', '<leader>m', 'm', {desc = 'Set mark'})
     end
   },
 
