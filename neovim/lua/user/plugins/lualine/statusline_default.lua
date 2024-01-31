@@ -4,15 +4,12 @@ local utils = require 'user.plugins.lualine.utils'
 -- It seems that the easiest way to get Lualine to display a static string is to wrap it in a function
 local spacer = function() return ' ' end
 local left_half_circle = function() return '' end
-local lower_left_triangle = function() return '' end
 local lower_right_triangle = function() return '' end
 local upper_left_triangle = function() return '' end
-local upper_right_triangle = function() return '' end
 local folder_icon = function() return '' end
 local position_icon = function() return '' end
 
 local filetype_half_circle = function()
-  -- return vim.bo.filetype and '' or ''
   if vim.bo.filetype == '' then return '' else return '' end
 end
 

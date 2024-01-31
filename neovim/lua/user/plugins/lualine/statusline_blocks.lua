@@ -7,13 +7,17 @@ local mode_icon = function() return '' end
 local folder_icon = function() return '' end
 local position_icon = function() return '' end
 
+local filetype_spacer = function()
+  if vim.bo.filetype == '' then return '' else return ' ' end
+end
+
 local sections = {}
 
 sections.lualine_a = { mode_icon }
 sections.lualine_b = { 'mode' }
 
 sections.lualine_c = {
-  { spacer, padding = 0 },
+  { spacer, color = { bg = palette.bg0 }, padding = 0 },
   {
     'filetype',
     colored = false,
@@ -29,7 +33,7 @@ sections.lualine_c = {
     color = { bg = palette.bg2 },
   },
   -- Use the Gitsigns plugin for branch and diff status
-  { spacer, padding = 0 },
+  { spacer, color = { bg = palette.bg0 }, padding = 0 },
   {
     'b:gitsigns_head',
     icon = '',
@@ -50,7 +54,7 @@ sections.lualine_x = {
     'diagnostics',
     symbols = {error = ' ', warn = ' ', info = ' ', hint = '󰛩 '},
   },
-  { spacer, padding = 0 },
+  { filetype_spacer, color = { bg = palette.bg0 }, padding = 0 },
   {
     'filetype',
     colored = false,
@@ -63,10 +67,10 @@ sections.lualine_x = {
     -- icon = { '', color = { bg = palette.blue, fg = palette.bg0 } },
     color = { bg = palette.bg2, fg = palette.blue },
   },
-  { spacer, padding = 0 },
+  { spacer, color = { bg = palette.bg0 }, padding = 0 },
   { folder_icon, color = { bg = palette.red, fg = palette.bg0 } },
   { utils.cwd, color = { bg = palette.bg2 } },
-  { spacer, padding = 0 },
+  { spacer, color = { bg = palette.bg0 }, padding = 0 },
   { position_icon, color = { bg = palette.aqua, fg = palette.bg0 } },
   {
     'progress',
