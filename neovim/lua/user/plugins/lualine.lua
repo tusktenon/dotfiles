@@ -1,5 +1,7 @@
 -- Lualine: customize the statusline, tabline and winbar
 
+local custom_everforest = require 'user.plugins.lualine.everforest'
+
 -- Get the current working directory
 local cwd = function()
   local path = vim.fn.getcwd()
@@ -26,7 +28,7 @@ return {
     require('lualine').setup {
       options = {
         icons_enabled = true,
-        theme = 'auto',
+        theme = custom_everforest,
         globalstatus = true,
       },
 
