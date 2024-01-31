@@ -64,8 +64,7 @@ autocmd('WinLeave', {
     end
 })
 
--- In terminal buffers, don't display line numbers
--- and pause the Illuminate plugin
+-- In terminal buffers, don't display line numbers, and pause the Illuminate plugin
 autocmd('TermOpen', {
   pattern = '*',
   callback = function()
@@ -74,6 +73,14 @@ autocmd('TermOpen', {
     require('illuminate').pause_buf()
   end
 })
+
+-- The default characters used for window/split separators are the Light variants
+-- from the unicode Box Drawing block; I think the Heavy variants look a little nicer.
+--   * The first option below connects all intersecting lines;
+--   * The second option leaves a gap in the verticals, which actually looks fine,
+--     and prevents odd visual glitches when using an invisible separator with nvim-tree:
+opt.fillchars:append 'horiz:━,horizup:┻,horizdown:┳,vert:┃,vertleft:┫,vertright:┣,verthoriz:╋'
+-- opt.fillchars:append 'horiz:━,horizup:━,horizdown:━,vert:┃,vertleft:━,vertright:━,verthoriz:━'
 
 
 -- [[ Searching ]]

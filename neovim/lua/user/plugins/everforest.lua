@@ -22,6 +22,9 @@ return {
 
         -- UI elements  {{{2
 
+        -- Window/split separators
+        hl.VertSplit = { fg = palette.bg2, bg = palette.none }
+
         -- Floating windows
         hl.FloatBorder = { link = 'Grey' }
         hl.NormalFloat = { link = 'Normal' }
@@ -53,10 +56,19 @@ return {
         -- `MatchParen` (which is match-up's default behaviour).
 
         -- NvimTree  {{{3
-        -- Optional: "Transparent" background.
+
+        -- The default combination of a darker background and window/split lines
+        -- looks really ugly. There are two possible fixes.
+        -- Option 1: "Transparent" background.
         hl.NvimTreeNormal = { link = 'Fg' }
         hl.NvimTreeEndOfBuffer = { link = 'Fg' }
         hl.NvimTreeCursorLine = { fg = palette.none, bg = palette.bg1 }
+        -- Option 2: "Transparent" separator (see NvChad).
+        -- You'll also need to adjust your `fillchar` settings to avoid ugly glitches
+        -- when you open splits with nvim-tree open.
+        -- hl.NvimTreeWinSeparator = { fg = palette.bg0 }
+        -- hl.NvimTreeCursorLine = { bg = palette.bg1 }
+
         -- Everforest colours folders in green. This looks nice enough, but
         -- blue feels more traditional.
         hl.NvimTreeFolderName = { link = 'Blue' }

@@ -15,10 +15,10 @@ return {
   'nvim-tree/nvim-tree.lua',
   version = '*',
   config = function()
-    -- Hide the window-separator character.
+    -- Optional: Hide the window-separator character.
     -- This looks very nice (see NvChad), but you need to also need to adjust
-    -- the window-separator character (see fillchars) to avoid nasty-looking
-    -- glitches with split windows and toggleterm.
+    -- the window-separator character (see `h: fillchars`) to avoid ugly visual
+    -- glitches with split windows.
     -- vim.api.nvim_set_hl(0, 'NvimTreeWinSeparator', { fg = 'bg' })
 
     local function on_attach(bufnr)
@@ -58,6 +58,7 @@ return {
         },
         icons = {
           git_placement = 'after',
+          padding = '  ',
           show = { file = false, folder = false },
           glyphs = {
             folder = {
