@@ -23,11 +23,15 @@ return {
 
       tabline = {
         lualine_a = {},
-        lualine_b = { { 'buffers', symbols = { alternate_file = '# '}, }, },
+        lualine_b = {
+          { 'buffers', use_mode_colors = true, symbols = { alternate_file = '# '}, },
+        },
         lualine_c = {},
         lualine_x = {},
         lualine_y = {},
-        lualine_z = {'tabs'}
+        lualine_z = {
+          { 'tabs', use_mode_colors = true }
+        }
       },
 
       extensions = {'lazy', 'man', 'mason', 'nvim-tree', 'toggleterm'}
