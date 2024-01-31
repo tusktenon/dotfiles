@@ -50,6 +50,7 @@ return {
   -- Cutlass: True delete operations (c.f. svermeulen/vim-cutlass)
   {
     'gbprod/cutlass.nvim',
+    enabled = false,
     event = { "BufRead", "BufWinEnter", "BufNewFile" },
     opts = {
       cut_key = 'x',
