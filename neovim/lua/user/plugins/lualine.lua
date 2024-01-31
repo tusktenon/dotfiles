@@ -1,8 +1,11 @@
 -- Lualine: customize the statusline, tabline and winbar
 
 local color_theme = require 'user.plugins.lualine.everforest'
-local statusline_style = require 'user.plugins.lualine.statusline_blocks'
--- local statusline_style = require 'user.plugins.lualine.statusline_default'
+
+-- local statusline_style = require 'user.plugins.lualine.statusline_blocks'
+local statusline_style = require 'user.plugins.lualine.statusline_hybrid1'
+-- local statusline_style = require 'user.plugins.lualine.statusline_hybrid2'
+-- local statusline_style = require 'user.plugins.lualine.statusline_nvcd'
 
 return {
   'nvim-lualine/lualine.nvim',

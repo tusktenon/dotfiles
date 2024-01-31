@@ -1,11 +1,13 @@
--- Based on the NvChad "minimal" statusline theme
+-- The left side from my "nvcd" theme with the right side from my "blocks" theme;
+-- in other words, a blend of the NvChad "default" and "minimal" statusline themes.
 
 local palette = require 'user.plugins.lualine.everforest_colours'
 local utils = require 'user.plugins.lualine.utils'
 
 -- It seems that the easiest way to get Lualine to display a static string is to wrap it in a function
 local spacer = function() return ' ' end
-local mode_icon = function() return '' end
+local lower_right_triangle = function() return '' end
+local upper_left_triangle = function() return '' end
 local folder_icon = function() return '' end
 local position_icon = function() return '' end
 
@@ -15,16 +17,20 @@ end
 
 local sections = {}
 
-sections.lualine_a = { mode_icon }
-sections.lualine_b = { 'mode' }
+sections.lualine_a = {
+  'mode',
+  { lower_right_triangle, color = { fg = palette.bg3 }, padding = 0 }
+}
+
+sections.lualine_b = {}
 
 sections.lualine_c = {
-  { spacer, color = { bg = palette.bg0 }, padding = 0 },
+  { upper_left_triangle, color = { bg = palette.bg2, fg = palette.bg3 }, padding = 0 },
   {
     'filetype',
     colored = false,
     icon_only = true,
-    color = { bg = palette.fg, fg = palette.bg0 },
+    color = { bg = palette.bg2 },
   },
   {
     'filename',
