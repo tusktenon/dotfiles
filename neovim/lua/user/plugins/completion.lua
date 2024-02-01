@@ -46,11 +46,6 @@ return {
         end
       end,
 
-      experimental = {
-        ghost_text = true,
-        native_menu = false,
-      },
-
       mapping = {
         ["<Down>"] = cmp.mapping.select_next_item(),
         ["<Up>"] = cmp.mapping.select_prev_item(),
@@ -100,25 +95,17 @@ return {
 
     cmp.setup.cmdline({'/', '?'}, {
       mapping = cmp.mapping.preset.cmdline(),
-      sources = {
-        { name = 'buffer' }
-      },
-      view = { entries = {name = 'wildmenu'} },
+      sources = { { name = 'buffer' } },
+      view = { entries = 'wildmenu' },
     })
 
     cmp.setup.cmdline(':', {
       mapping = cmp.mapping.preset.cmdline(),
-      sources = cmp.config.sources({
-        { name = 'path' }
-      }, {
-        {
-          name = 'cmdline',
-          option = {
-            ignore_cmds = { 'Man', '!' }
-          }
-        }
-      }),
-      view = { entries = {name = 'wildmenu'} },
+      sources = cmp.config.sources(
+        { { name = 'path' } },
+        { { name = 'cmdline' } }
+      ),
+      view = { entries = 'wildmenu' },
     })
   end
 }
