@@ -182,5 +182,7 @@ ZSH_HIGHLIGHT_STYLES[path]='fg=cyan'
 # Source fzf settings
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+# Open new terminals in the Development folder
+cd ~/Development
 
 # vim: et sw=4 ts=4 sts=4 fdm=marker
