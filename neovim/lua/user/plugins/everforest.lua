@@ -47,15 +47,7 @@ return {
         hl.markdownUrl = { fg = palette.grey0, bg = palette.none }
 
 
-        -- Plugins  {{{2
-
-        -- Match-up  {{{3
-        -- Everforest highlights matching parentheses with a lighter background
-        -- and matching words with underlines. If you prefer a more consistent
-        -- look, you could link the `MatchWord` and `MatchWordCur` groups to
-        -- `MatchParen` (which is match-up's default behaviour).
-
-        -- NvimTree  {{{3
+        -- NvimTree  {{{2
 
         -- The default combination of a darker background and window/split lines
         -- looks really ugly. There are two possible fixes.
@@ -63,6 +55,7 @@ return {
         hl.NvimTreeNormal = { link = 'Fg' }
         hl.NvimTreeEndOfBuffer = { link = 'Fg' }
         hl.NvimTreeCursorLine = { fg = palette.none, bg = palette.bg1 }
+
         -- Option 2: "Transparent" separator (see NvChad).
         -- You'll also need to adjust your `fillchar` settings to avoid ugly glitches
         -- when you open splits with nvim-tree open.
@@ -75,6 +68,7 @@ return {
         hl.NvimTreeEmptyFolderName = { link = 'Blue' }
         hl.NvimTreeOpenedFolderName = { link = 'Blue' }
         hl.NvimTreeFolderIcon = { link = 'Blue' }
+
         --  Unlike most color schemes, Everforest does nothing to highlight
         --  opened files. I like Catppuccin's use of bold green.
         hl.NvimTreeOpenedFile = { fg = palette.green, bg = palette.none, bold = true }
@@ -82,6 +76,24 @@ return {
         -- NOTE: You might also want to look at NvimTreeFolderArrowClosed and
         -- NvimTreeFolderArrowOpen
         hl.NvimTreeIndentMarker = { fg = palette.bg5, bg = palette.none }
+
+
+        -- Other Plugins  {{{2
+
+        -- Match-up  {{{3
+        -- Everforest highlights matching parentheses with a lighter background
+        -- and matching words with underlines. If you prefer a more consistent
+        -- look, you could link the `MatchWord` and `MatchWordCur` groups to
+        -- `MatchParen` (which is match-up's default behaviour).
+
+        -- nvim-cmp  {{{3
+        -- Fix for wildmenu view.
+        -- For some reason, the `PmenuSel` highlight group does not update the foreground setting from 
+        -- the `CmpItemAbbrMatch` and `CmpItemAbbrMatchFuzzy` groups, resulting in invisible characters.
+        -- Note that this is only an issue for the `wildmenu` view; the default `custom` menu works fine.
+        hl.PmenuSel = { fg = palette.bg0, bg = palette.statusline1, bold = true }
+        hl.CmpItemAbbrMatch = { fg = palette.none, bg = palette.none, bold = true }
+        hl.CmpItemAbbrMatchFuzzy = { fg = palette.none, bg = palette.none, bold = true }
 
         -- Rainbow-delimiters  {{{3
         -- I prefer to avoid red brackets (which I associate with a mismatch error).
