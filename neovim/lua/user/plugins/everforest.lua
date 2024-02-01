@@ -91,6 +91,10 @@ return {
         -- For some reason, the `PmenuSel` highlight group does not update the foreground setting from 
         -- the `CmpItemAbbrMatch` and `CmpItemAbbrMatchFuzzy` groups, resulting in invisible characters.
         -- Note that this is only an issue for the `wildmenu` view; the default `custom` menu works fine.
+        -- hl.PmenuSel = { fg = palette.bg0, bg = palette.statusline1, bold = true }
+        -- Option 1:
+        -- hl.PmenuSel = { fg = palette.none, bg = palette.bg4, bold = true }
+        -- Option 2:
         hl.PmenuSel = { fg = palette.bg0, bg = palette.statusline1, bold = true }
         hl.CmpItemAbbrMatch = { fg = palette.none, bg = palette.none, bold = true }
         hl.CmpItemAbbrMatchFuzzy = { fg = palette.none, bg = palette.none, bold = true }
