@@ -24,7 +24,8 @@ if theme == 'dark' then
     palette.bg3 = '#475258'
     palette.bg4 = '#4f585e'
     palette.bg5 = '#56635f'
-    palette.bgs = '#313a3f'
+    -- palette.bgs = '#313a3f'
+    palette.bgs = '#343f44'
   end
 end
 

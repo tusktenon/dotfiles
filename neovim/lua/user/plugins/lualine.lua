@@ -3,9 +3,9 @@
 local color_theme = require 'user.plugins.lualine.everforest'
 
 -- local statusline_style = require 'user.plugins.lualine.statusline_blocks'
-local statusline_style = require 'user.plugins.lualine.statusline_hybrid1'
+-- local statusline_style = require 'user.plugins.lualine.statusline_hybrid1'
 -- local statusline_style = require 'user.plugins.lualine.statusline_hybrid2'
--- local statusline_style = require 'user.plugins.lualine.statusline_nvcd'
+local statusline_style = require 'user.plugins.lualine.statusline_nvcd'
 
 return {
   'nvim-lualine/lualine.nvim',
@@ -24,7 +24,17 @@ return {
       tabline = {
         lualine_a = {},
         lualine_b = {
-          { 'buffers', use_mode_colors = true, symbols = { alternate_file = '# '}, },
+          {
+            'buffers',
+            max_length = vim.o.columns - 4,
+            filetype_names = {
+              lazy = 'Lazy',
+              mason = 'Mason',
+              NvimTree = 'Files',
+            },
+            use_mode_colors = true,
+            symbols = { alternate_file = '# '},
+          },
         },
         lualine_c = {},
         lualine_x = {},

@@ -58,7 +58,6 @@ return {
         },
         icons = {
           git_placement = 'after',
-          padding = '  ',
           show = { file = false, folder = false },
           glyphs = {
             folder = {
@@ -66,11 +65,11 @@ return {
               arrow_open = '',
             },
             git = {
-              unstaged = "★",
+              unstaged = "⭑",
               staged = "",
               unmerged = "",
               renamed = "➜",
-              untracked = "",
+              untracked = "⭒",
               deleted = "",
               ignored = "",
             }

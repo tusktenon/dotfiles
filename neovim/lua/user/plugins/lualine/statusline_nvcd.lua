@@ -40,7 +40,7 @@ sections.lualine_c = {
     },
     color = { bg = palette.bg2 },
   },
-  { upper_left_triangle, color = { fg = palette.bg2 }, padding = { left = 0, right = 1 } },
+  { upper_left_triangle, color = { fg = palette.bg2 }, padding = 0 },
   -- Use the Gitsigns plugin for branch and diff status
   {
     'b:gitsigns_head',
