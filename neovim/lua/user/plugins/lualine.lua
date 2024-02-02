@@ -31,7 +31,7 @@ return {
             filetype_names = {
               lazy = 'Lazy',
               mason = 'Mason',
-              NvimTree = 'Files',
+              NvimTree = 'FileTree',
             },
             use_mode_colors = true,
             symbols = { alternate_file = '# '},

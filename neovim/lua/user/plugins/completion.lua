@@ -34,17 +34,10 @@ return {
         end,
       },
 
-      enabled = function()
-        -- Disable completion in comments,
-        -- but keep command-mode completion enabled when cursor is in a comment
-        local context = require 'cmp.config.context'
-        if vim.api.nvim_get_mode().mode == 'c' then
-          return true
-        else
-          return not context.in_treesitter_capture("comment")
-          and not context.in_syntax_group("Comment")
-        end
-      end,
+      window = {
+        completion = cmp.config.window.bordered(),
+        documentation = cmp.config.window.bordered(),
+      },
 
       mapping = {
         ["<Down>"] = cmp.mapping.select_next_item(),
@@ -91,6 +84,18 @@ return {
         { name = "buffer" },
         { name = "path" },
       },
+
+      enabled = function()
+        -- Disable completion in comments,
+        -- but keep command-mode completion enabled when cursor is in a comment
+        local context = require 'cmp.config.context'
+        if vim.api.nvim_get_mode().mode == 'c' then
+          return true
+        else
+          return not context.in_treesitter_capture("comment")
+          and not context.in_syntax_group("Comment")
+        end
+      end,
     })
 
     cmp.setup.cmdline({'/', '?'}, {
