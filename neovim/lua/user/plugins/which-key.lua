@@ -16,7 +16,7 @@ return {
         separator = '→'
       },
       window = {
-        border = 'rounded'
+        border = { '─', '─' ,'─', '', '', '', '', '' },  -- top only
       }
     }
 

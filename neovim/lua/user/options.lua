@@ -79,7 +79,7 @@ autocmd('TermOpen', {
 --   * The first option below connects all intersecting lines;
 --   * The second option leaves a gap in the verticals, which actually looks fine,
 --     and prevents odd visual glitches when using an invisible separator with nvim-tree:
-opt.fillchars:append 'horiz:━,horizup:┻,horizdown:┳,vert:┃,vertleft:┫,vertright:┣,verthoriz:╋'
+-- opt.fillchars:append 'horiz:━,horizup:┻,horizdown:┳,vert:┃,vertleft:┫,vertright:┣,verthoriz:╋'
 -- opt.fillchars:append 'horiz:━,horizup:━,horizdown:━,vert:┃,vertleft:━,vertright:━,verthoriz:━'
 
 

@@ -21,6 +21,10 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local opts = {
+  ui = {
+    border = 'single',
+    -- border = { '┏', '━' ,'┓', '┃', '┛', '━', '┗', '┃' },  -- heavy single
+  },
   diff = { cmd = 'diffview.nvim' },
   checker = {
     enabled = false,

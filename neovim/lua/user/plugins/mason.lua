@@ -6,7 +6,10 @@ return {
   },
   config = function()
     require('mason').setup {
-      ui = { border = 'rounded' }
+      ui = {
+        border = 'single',
+        -- border = { '┏', '━' ,'┓', '┃', '┛', '━', '┗', '┃' },  -- heavy single
+      }
     }
 
     require('mason-lspconfig').setup {

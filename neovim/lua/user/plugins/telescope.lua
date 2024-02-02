@@ -28,6 +28,9 @@ return {
           }
         },
         layout_strategy = 'flex',
+        prompt_prefix = '   ',
+        borderchars = { '─', '│' ,'─', '│', '┌', '┐', '┘', '└' },
+        -- borderchars = { '━', '┃' ,'━', '┃', '┏', '┓', '┛', '┗' },
         mappings = {
           i = {
             -- ['<esc>'] = actions.close,  -- <Esc> closes Telescope instead of entering normal mode

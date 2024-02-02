@@ -26,8 +26,9 @@ return {
         hl.VertSplit = { fg = palette.bg2, bg = palette.none }
 
         -- Floating windows
-        hl.FloatBorder = { link = 'Grey' }
         hl.NormalFloat = { link = 'Normal' }
+        hl.FloatBorder = { link = 'VertSplit' }
+        hl.FloatTitle = { fg = palette.bg0, bg = palette.blue, bold = true }
 
 
         -- Languages  {{{2
@@ -103,6 +104,15 @@ return {
         -- I prefer to avoid red brackets (which I associate with a mismatch error).
         hl.RainbowDelimiterRed = { link = 'Fg' }
 
+        -- Telescope  {{{3
+        hl.TelescopeBorder = { link = 'FloatBorder'}
+        hl.TelescopeTitle = { link = 'FloatTitle' }
+        hl.TelescopePromptTitle = { fg = palette.bg0, bg = palette.yellow, bold = true }
+        hl.TelescopePromptPrefix = { link = 'Yellow' }
+        hl.TelescopePromptCounter = { fg = palette.bg5, bg = palette.bg0 }
+        hl.TelescopePreviewTitle = { fg = palette.bg0, bg = palette.blue, bold = true }
+        hl.TelescopeResultsTitle = { fg = palette.bg0, bg = palette.purple, bold = true }
+
         -- ToggleTerm  {{{3
         hl.ToggleTerm1FloatBorder = { link = 'Grey' }
 
@@ -123,12 +133,12 @@ return {
         hl.TSDanger = { link = 'RedItalic' }
 
         -- WhichKey  {{{3
-        hl.WhichKey = { link = "Purple" }
-        hl.WhichKeyDesc = { link = "Green" }
         hl.WhichKeyFloat = { link = 'Normal' }
-        hl.WhichKeyGroup = { link = "Blue" }
+        hl.WhichKeyValue = { link = 'WhichKeyFloat' }
+        hl.WhichKey = { link = "Purple" }
         hl.WhichKeySeparator = { fg = palette.grey0, bg = palette.none }
-        hl.WhichKeyValue = { link = 'Normal' }
+        hl.WhichKeyDesc = { link = "Green" }
+        hl.WhichKeyGroup = { link = "Blue" }
       end
     }
     require('everforest').load()
