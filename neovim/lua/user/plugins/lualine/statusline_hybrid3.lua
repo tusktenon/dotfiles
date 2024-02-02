@@ -1,14 +1,12 @@
 -- A blend of the NvChad "default" and "minimal" statusline themes.
--- The left side from my "nvcd" theme and the right side from my "blocks" theme,
--- with a separated centre block.
+-- The section shapes from my "blocks" theme, with some colors (for mode and
+-- filename) from my "nvcd" theme.
 
 local palette = require 'user.plugins.lualine.everforest_colours'
 local utils = require 'user.plugins.lualine.utils'
 
 -- It seems that the easiest way to get Lualine to display a static string is to wrap it in a function
 local spacer = function() return ' ' end
-local lower_right_triangle = function() return '' end
-local upper_left_triangle = function() return '' end
 local folder_icon = function() return '' end
 local position_icon = function() return '' end
 
@@ -18,20 +16,17 @@ end
 
 local sections = {}
 
-sections.lualine_a = {
-  'mode',
-  { lower_right_triangle, color = { fg = palette.bg3 }, padding = 0 }
-}
+sections.lualine_a = { 'mode' }
 
 sections.lualine_b = {}
 
 sections.lualine_c = {
-  { upper_left_triangle, color = { bg = palette.bg2, fg = palette.bg3 }, padding = 0 },
+  { spacer, color = { bg = palette.bg0 }, padding = 0 },
   {
     'filetype',
     colored = false,
     icon_only = true,
-    color = { bg = palette.bg2 },
+    color = { bg = palette.bg3 },
   },
   {
     'filename',
@@ -39,7 +34,7 @@ sections.lualine_c = {
       modified = '●',      -- Text to show when the file is modified.
       readonly = '',      -- Text to show when the file is non-modifiable or readonly.
     },
-    color = { bg = palette.bg2 },
+    color = { bg = palette.bg3 },
   },
   { spacer, color = { bg = palette.bg0 }, padding = 0 },
   -- Use the Gitsigns plugin for branch and diff status

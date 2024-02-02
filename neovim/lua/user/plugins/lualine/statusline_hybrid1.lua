@@ -1,5 +1,5 @@
--- The left side from my "nvcd" theme with the right side from my "blocks" theme;
--- in other words, a blend of the NvChad "default" and "minimal" statusline themes.
+-- A blend of the NvChad "default" and "minimal" statusline themes.
+-- The left side from my "nvcd" theme and the right side from my "blocks" theme.
 
 local palette = require 'user.plugins.lualine.everforest_colours'
 local utils = require 'user.plugins.lualine.utils'
@@ -40,7 +40,7 @@ sections.lualine_c = {
     },
     color = { bg = palette.bg2 },
   },
-  { spacer, color = { bg = palette.bg0 }, padding = 0 },
+  { upper_left_triangle, color = { fg = palette.bg2 }, padding = 0 },
   -- Use the Gitsigns plugin for branch and diff status
   {
     'b:gitsigns_head',
