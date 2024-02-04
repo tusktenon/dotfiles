@@ -65,6 +65,14 @@ return {
   -- Filetype icons for use by other plugins (lualine, nvim-tree)
   {
     'nvim-tree/nvim-web-devicons',
-    lazy = true
+    lazy = true,
+    opts = {
+      override = {
+        rust = { icon = '' }  -- options:  󱘗 
+      },
+      override_by_extension = {
+        ["rs"] = { icon = '' }
+      }
+    }
   }
 }
