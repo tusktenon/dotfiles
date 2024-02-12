@@ -131,5 +131,10 @@ return {
     lspconfig.pyright.setup {
       capabilities = capabilities,
     }
+
+    -- Rust (rust-analyzer)
+    lspconfig.rust_analyzer.setup {
+      capabilities = capabilities,
+    }
   end
 }
