@@ -10,6 +10,8 @@ opt.clipboard = 'unnamedplus'  -- Share the system clipboard
 -- opt.cmdheight = 2         -- Use two screen lines for the command line (helps avoid 'hit enter' prompts)
 opt.completeopt = {'longest', 'menuone', 'noselect', 'preview'}  -- For a better completion experience
 opt.confirm = true        -- Present a dialog instead of failing a command due to unsaved changes
+opt.cursorline = true          -- Highlight the current line and/or line number
+opt.cursorlineopt = 'number'   -- Highlight only the cursor line number, not the line itself
 opt.fillchars:append "eob: "   -- Don't show `~` characters at end of buffer
 opt.fillchars:append "diff:╱"  -- Nicer deleted lines in diff-mode
 opt.foldenable = false    -- Open buffers unfolded
