@@ -27,7 +27,8 @@ return {
 
         -- Floating windows
         hl.NormalFloat = { link = 'Normal' }
-        hl.FloatBorder = { link = 'VertSplit' }
+        -- hl.FloatBorder = { link = 'VertSplit' }
+        hl.FloatBorder = { fg = palette.bg3, bg = palette.none }
         hl.FloatTitle = { fg = palette.bg0, bg = palette.blue, bold = true }
 
 

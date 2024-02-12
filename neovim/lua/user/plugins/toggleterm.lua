@@ -15,10 +15,9 @@ return {
         return math.max(40, vim.o.columns * 0.4)
       end
     end,
+    autochdir = true,
     highlights = {
-      FloatBorder = {
-        link = 'Grey'
-      }
+      FloatBorder = { link = 'Fg' }
     },
     shade_terminals = false,
     shading_factor = '-10',
