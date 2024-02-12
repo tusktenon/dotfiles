@@ -182,7 +182,9 @@ ZSH_HIGHLIGHT_STYLES[path]='fg=cyan'
 # Source fzf settings
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# Open new terminals in the Development folder
-cd ~/Development
+# Start in the Development folder (unless this is a Neovim terminal)
+if [ -z $VIMRUNTIME ]; then
+    cd ~/Development
+fi
 
 # vim: et sw=4 ts=4 sts=4 fdm=marker
