@@ -57,6 +57,18 @@ return {
       severity_sort = true,
     })
 
+    -- Show a border in floating windows
+    local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
+    function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
+      opts = opts or {}
+      opts.border = opts.border or 'rounded'
+      return orig_util_open_floating_preview(contents, syntax, opts, ...)
+    end
+
+    -- Also add a border to the floating window of`:LSPInfo`
+    require('lspconfig.ui.windows').default_options.border = 'rounded'
+
+
     -- Set up neodev BEFORE lspconfig
     require('neodev').setup { }
 

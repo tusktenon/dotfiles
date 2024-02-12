@@ -100,12 +100,16 @@ return {
         hl.CmpItemAbbrMatch = { fg = palette.none, bg = palette.none, bold = true }
         hl.CmpItemAbbrMatchFuzzy = { fg = palette.none, bg = palette.none, bold = true }
 
+        -- nvim-lspconfig  {{{3
+        -- This plugin defines highlight groups for the `:LSPInfo` floating window.
+        hl.LspInfoBorder = { link = 'FloatBorder' }
+
         -- Rainbow-delimiters  {{{3
         -- I prefer to avoid red brackets (which I associate with a mismatch error).
         hl.RainbowDelimiterRed = { link = 'Fg' }
 
         -- Telescope  {{{3
-        hl.TelescopeBorder = { link = 'FloatBorder'}
+        hl.TelescopeBorder = { link = 'FloatBorder' }
         hl.TelescopeTitle = { link = 'FloatTitle' }
         hl.TelescopePromptTitle = { fg = palette.bg0, bg = palette.yellow, bold = true }
         hl.TelescopePromptPrefix = { link = 'Yellow' }
