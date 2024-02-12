@@ -91,6 +91,9 @@ return {
         -- and matching words with underlines. If you prefer a more consistent
         -- look, you could link the `MatchWord` and `MatchWordCur` groups to
         -- `MatchParen` (which is match-up's default behaviour).
+        -- hl.MatchParenCur = { link = 'MatchParen' }
+        hl.MatchWord = { fg = palette.none, bg = palette.bg2, bold = true }
+        hl.MatchWordCur = { link = 'MatchWord' }
 
         -- nvim-cmp  {{{3
         -- Fix for wildmenu view.

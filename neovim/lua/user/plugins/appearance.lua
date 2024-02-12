@@ -25,6 +25,11 @@ return {
     main = 'ibl',
     opts = {
       indent = { char = '▏' },
+      scope = {
+        -- Don't underline the first and last lines of the current scope
+        show_start = false,
+        show_end = false,
+      },
     },
   },
 
