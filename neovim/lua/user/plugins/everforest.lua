@@ -137,6 +137,11 @@ return {
         hl.TSFuncBuiltin = { link = 'GreenItalic' }
         hl.TSKeyword = { link = 'Keyword' }
         hl.TSRepeat = { link = 'Repeat' }
+        -- TSParameter and TSVariable are both linked to 'Fg'. By using different
+        -- highlighting for paramenters, I believe we get most of the functionality
+        -- of the `m-demare/hlargs.nvim` plugin.
+        -- hl.TSParameter = { link = 'Aqua' }
+        hl.TSParameter = { fg = palette.fg, bg = palette.none, italic = true }
         -- The default coloring for TreeSitter Note, Warning and Danger elements
         -- uses bold black text against a colored background, which is very effective
         -- at getting your attention, but also quite ugly.
