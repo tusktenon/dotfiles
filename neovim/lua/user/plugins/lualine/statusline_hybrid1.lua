@@ -60,7 +60,8 @@ sections.lualine_c = {
 sections.lualine_x = {
   {
     'diagnostics',
-    symbols = {error = ' ', warn = ' ', info = ' ', hint = '󰛩 '},
+    -- symbols = { error = '󰯸 ', warn = '󰰮 ', info = '󰰄 ', hint = '󰰁 ' },
+    symbols = {error = ' ', warn = ' ', info = ' ', hint = ' '},
   },
   { filetype_spacer, color = { bg = palette.bg0 }, padding = 0 },
   {

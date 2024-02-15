@@ -50,19 +50,23 @@ return {
 
     -- UI Customization
     vim.diagnostic.config({
-      virtual_text = true,
+      virtual_text = false,
       signs = true,
-      underline = {severity = {min = vim.diagnostic.severity.ERROR}},
+      -- underline = { severity = { min = vim.diagnostic.severity.ERROR } },
+      underline = false,
       update_in_insert = false,
       severity_sort = true,
     })
 
     -- Customize the diagnostic symbols used in the sign column
+    -- local signs = { Error = '󰯸 ', Warn = '󰰮 ', Hint = '󰰁 ', Info = '󰰄 ' }
     -- local signs = { Error = '󰅚 ', Warn = '󰀪 ', Hint = '󰌶 ', Info = ' ' }
-    local signs = { Error = ' ', Warn = ' ', Hint = '󰌶 ', Info = ' ' }
+    local signs = { Error = ' ', Warn = ' ', Hint = ' ', Info = ' ' }
     for type, icon in pairs(signs) do
       local hl = "DiagnosticSign" .. type
-      vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+      vim.fn.sign_define(hl, { text = icon, texthl = hl })
+      -- Also highlight the line number using the diagnostic color:
+      -- vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
     end
 
     -- Show a border in floating windows
