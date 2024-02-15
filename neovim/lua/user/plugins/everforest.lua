@@ -22,10 +22,6 @@ return {
 
         -- UI elements  {{{2
 
-        -- The line number of the current line
-        -- (only applies if `vim.opt.cursorline` is set to `true`)
-        -- hl.CursorLineNr = { link = 'Blue' }
-
         -- Window/split separators
         hl.VertSplit = { fg = palette.bg2, bg = palette.none }
 

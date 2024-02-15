@@ -80,8 +80,20 @@ return {
         desc = 'Workspace diagnostics',
       },
     },
-    opts = {
-      use_diagnostic_signs = true  -- Use the signs defined in your LSP config
-    },
+    config = function()
+      require('trouble').setup {
+        use_diagnostic_signs = true  -- Use the signs defined in your LSP config
+      }
+
+      -- In file buffers, I prefer to highlight only the current line number
+      -- (that is, I've set `vim.opt.cursorlineopt = 'number'`). However, I do
+      -- want to highlight the current line in the Trouble window.
+      vim.api.nvim_create_autocmd('WinEnter', {
+        pattern = 'Trouble',
+        callback = function()
+          vim.opt.cursorlineopt = 'line'
+        end
+      })
+    end
   },
 }
