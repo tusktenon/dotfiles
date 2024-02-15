@@ -62,5 +62,26 @@ return {
         exclude_dirs = {'~/Development/dotfiles/neovim/.config/*'}
       }
     end
-  }
+  },
+
+  -- An improved list interface for diagnostics, reference, quickfix and loclist
+  {
+    "folke/trouble.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    keys = {
+      {
+        '<leader>ll',
+        function() require('trouble').toggle('document_diagnostics') end,
+        desc = 'Document diagnostics',
+      },
+      {
+        '<leader>lL',
+        function() require('trouble').toggle('document_diagnostics') end,
+        desc = 'Workspace diagnostics',
+      },
+    },
+    opts = {
+      use_diagnostic_signs = true  -- Use the signs defined in your LSP config
+    },
+  },
 }
