@@ -30,10 +30,16 @@ return {
   },
 
   -- Diff Visual selections
-  'AndrewRadev/linediff.vim',
+  {
+    'AndrewRadev/linediff.vim',
+    cmd = 'Linediff',
+  },
 
   -- Open Markdown files in Marked
-  'itspriddle/vim-marked',
+  {
+    'itspriddle/vim-marked',
+    ft = 'markdown',
+  },
 
   -- Maximimize and restore the current window
   {
