@@ -17,7 +17,7 @@ return {
     'Pocco81/auto-save.nvim',
     lazy = false,
     keys = {
-      { '<leader>ts', '<cmd>ASToggle<CR>', desc = 'Auto-save' },
+      { '<leader>ta', '<cmd>ASToggle<CR>', desc = 'Auto-save' },
     },
     config = true,
   },

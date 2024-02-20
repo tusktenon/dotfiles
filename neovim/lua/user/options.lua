@@ -34,7 +34,14 @@ opt.wrap = false           -- Wrap long lines
 opt.linebreak = true      -- Break lines only at the characters in `breakat`
 opt.breakindent = true    -- Maintain indentation of wrapped lines
 
--- Hightlight selection on yank
+-- Spell Checking
+-- opt.spelllang = 'en'      -- English spelling (all regions)
+opt.spelllang = 'en_ca'      -- Canadian English spelling
+-- opt.spelling = 'en_gb'    -- British spelling
+-- opt.spelllang = 'en_us'   -- U.S. spelling
+opt.spell = true             -- Enable spell checking
+
+-- Highlight selection on yank
 autocmd('TextYankPost', {
     pattern = '*',
     callback = function()
@@ -66,18 +73,20 @@ autocmd('WinLeave', {
     end
 })
 
--- In terminal buffers, don't display line numbers, and pause the Illuminate plugin
+-- In terminal buffers, don't display line numbers, turn off spell-checking,
+-- and pause the Illuminate plugin
 autocmd('TermOpen', {
   pattern = '*',
   callback = function()
     opt.number = false
     opt.relativenumber = false
+    opt.spell = false
     require('illuminate').pause_buf()
   end
 })
 
 -- The default characters used for window/split separators are the Light variants
--- from the unicode Box Drawing block; I think the Heavy variants look a little nicer.
+-- from the Unicode Box Drawing block; I think the Heavy variants look a little nicer.
 --   * The first option below connects all intersecting lines;
 --   * The second option leaves a gap in the verticals, which actually looks fine,
 --     and prevents odd visual glitches when using an invisible separator with nvim-tree:

@@ -128,6 +128,9 @@ keymap('n', '<leader>ss', telescope.extensions.live_grep_args.live_grep_args, {d
 keymap('n', '<leader>so', telescope.extensions.heading.heading, {desc = 'Outline'})
 keymap('n', '<leader>sw', telescope_builtin.grep_string, {desc = 'Search for string under cursor'})
 
+-- Toggle {{{2
+keymap('n', '<leader>ts', ':set spell!', {desc = 'Spell check'})
+
 -- Windows   {{{2
 keymap('n', '<leader>wb', '<C-w>b', {desc = 'Go to bottom-right'})
 keymap('n', '<leader>wc', '<C-w>c', {desc = 'Close window'})
