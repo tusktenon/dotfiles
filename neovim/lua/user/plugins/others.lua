@@ -51,6 +51,37 @@ return {
     },
   },
 
+  -- Formatter
+  {
+    'stevearc/conform.nvim',
+    event = { 'BufWritePre' },
+    cmd = { 'ConformInfo' },
+    keys = {
+      {
+        '<leader>F',
+        function()
+          require('conform').format({ async = true, lsp_fallback = true })
+        end,
+        desc = 'Format buffer',
+      },
+      {
+        '<C-f>',
+        function()
+          require('conform').format({ async = true, lsp_fallback = true })
+        end,
+        mode = 'v',
+        desc = 'Format buffer',
+      },
+    },
+    opts = {
+      -- Define your formatters
+      formatters_by_ft = {
+        rust = { 'rustfmt' },
+      },
+      -- format_on_save = { timeout_ms = 500, lsp_fallback = true },
+    },
+  },
+
   -- Project Management
   --  * Automatically `cd` to project directory
   --  * Access recent projects from Telescope
