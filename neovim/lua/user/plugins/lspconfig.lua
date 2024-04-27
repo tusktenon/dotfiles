@@ -53,7 +53,7 @@ return {
       virtual_text = false,
       signs = true,
       -- underline = { severity = { min = vim.diagnostic.severity.ERROR } },
-      underline = false,
+      underline = true,
       update_in_insert = false,
       severity_sort = true,
     })

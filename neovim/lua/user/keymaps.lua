@@ -42,8 +42,8 @@ keymap('i', '<C-e>', '<End>')
 keymap('t', 'jj', '<C-\\><C-n>')
 
 -- Move by screen lines, not file lines, unless a count is provided
-keymap('n', 'j', "v:count == 0 ? 'gj' : 'j'", {expr = true})
-keymap('n', 'k', "v:count == 0 ? 'gk' : 'k'", {expr = true})
+keymap('n', 'j', "v:count == 0 ? 'gj' : 'j'", {expr = true, silent = true})
+keymap('n', 'k', "v:count == 0 ? 'gk' : 'k'", {expr = true, silent = true})
 
 -- Navigate completion menus with <C-j> and <C-k>
 -- keymap('c', '<C-j>', "pumvisible() ? '<C-n>' : '<C-j>'", {expr = true, silent = false})
