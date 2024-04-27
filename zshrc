@@ -40,6 +40,8 @@ export CDPATH
 # Add `z` (https://github.com/rupa/z)
 . /opt/homebrew/etc/profile.d/z.sh
 
+# Avoid annoying correction suggestion when running `cargo test`
+alias cargo='nocorrect cargo'
 
 # Language Support  {{{1
 
