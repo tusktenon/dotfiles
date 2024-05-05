@@ -1,4 +1,11 @@
-array_width = 100
-single_line_if_else_max_width = 100
-single_line_let_else_max_width = 100
-struct_lit_width = 100
+# By default, and in keeping with the
+# [Style Guide](https://doc.rust-lang.org/beta/style-guide/expressions.html#single-line-if-else),
+# rustfmt does not allow standalone `if else` statements on a single line.
+# 
+# To override this behaviour, you must set `version = "Two"` in your `rustfmt.toml` file and run
+# rustfmt with the `+nightly` flag; see e.g.
+# [this issue](https://github.com/rust-lang/rustfmt/issues/4351#issuecomment-663782224)
+# for details.
+
+version = "Two"
+use_small_heuristics = "Max"
