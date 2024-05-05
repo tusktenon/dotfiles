@@ -20,11 +20,11 @@ return {
     },
     opts = {
       user_default_options = {
-        RGB = true,     -- #RGB hex codes
-        RRGGBB = true,  -- #RRGGBB hex codes
-        names = false,  -- Named colors
-        rgb_fn = true,  -- rgb() and rgba()
-        hsl_fn = true,  -- hsl() and hsla()
+        RGB = true,    -- #RGB hex codes
+        RRGGBB = true, -- #RRGGBB hex codes
+        names = false, -- Named colors
+        rgb_fn = true, -- rgb() and rgba()
+        hsl_fn = true, -- hsl() and hsla()
       }
     }
   },
@@ -74,6 +74,13 @@ return {
       },
     },
     opts = {
+      -- Customize formatters
+      formatters = {
+        rustfmt = {
+          -- `+nightly` allows single-line standalone if-else statements
+          args = { "+nightly" }
+        }
+      },
       -- Define your formatters
       formatters_by_ft = {
         rust = { 'rustfmt' },
@@ -90,7 +97,7 @@ return {
     config = function()
       require('project_nvim').setup {
         -- Don't calculate root for specific directories
-        exclude_dirs = {'~/Development/dotfiles/neovim/.config/*'}
+        exclude_dirs = { '~/Development/dotfiles/neovim/.config/*' }
       }
     end
   },
@@ -113,7 +120,7 @@ return {
     },
     config = function()
       require('trouble').setup {
-        use_diagnostic_signs = true  -- Use the signs defined in your LSP config
+        use_diagnostic_signs = true -- Use the signs defined in your LSP config
       }
 
       -- In file buffers, I prefer to highlight only the current line number

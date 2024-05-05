@@ -8,6 +8,7 @@ macOS
 Magit
 Neogit
 struct
+structs
 subdirectory
 subfolder
 sublist
@@ -23,3 +24,5 @@ bandsaw
 Roubo
 
 ## New (Unsorted)
+deduplication
+deduplicate
