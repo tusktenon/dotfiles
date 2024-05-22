@@ -32,13 +32,6 @@ return {
     end
   },
 
-  -- Commenting (c.f. tpope/vim-commentary)
-  {
-    'numToStr/Comment.nvim',
-    event = { "BufRead", "BufWinEnter", "BufNewFile" },
-    opts = {}
-  },
-
   -- Surround: add/change/delete delimiter pairs (c.f. tpope/vim-surround)
   {
     'kylechui/nvim-surround',

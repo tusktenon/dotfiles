@@ -11,8 +11,6 @@ return {
     -- Global Mappings
     -- See `:help vim.diagnostic.*` for documentation on any of the functions below
     keymap('n', 'gl', vim.diagnostic.open_float, {desc = 'Show diagnostics'})
-    keymap('n', ']d', vim.diagnostic.goto_next, {desc = 'Next diagnostic'})
-    keymap('n', '[d', vim.diagnostic.goto_prev, {desc = 'Previous diagnostic'})
     keymap('n', '<leader>lq', vim.diagnostic.setloclist, {desc = 'List diagnostics'})
 
     -- Buffer-Local Mappings

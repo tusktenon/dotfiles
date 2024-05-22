@@ -1,11 +1,14 @@
 ## Development
 applicative
+deduplicate
+deduplication
 enum
 enums
 functor
 Haskell
 macOS
 Magit
+memoized
 Neogit
 struct
 structs
@@ -24,5 +27,3 @@ bandsaw
 Roubo
 
 ## New (Unsorted)
-deduplication
-deduplicate
