@@ -7,7 +7,7 @@ return {
   {
     'windwp/nvim-autopairs',
     opts = {
-      check_ts = true  -- Use Treesitter to check for a pair
+      check_ts = true -- Use Treesitter to check for a pair
     },
   },
 
@@ -28,8 +28,18 @@ return {
     event = { "BufRead", "BufWinEnter", "BufNewFile" },
     config = function()
       require("capslock").setup()
-      vim.keymap.set({ "i", "c", "n" }, "<C-g>c", "<Plug>CapsLockToggle", {desc = 'Toggle Capslock'})
+      vim.keymap.set({ "i", "c", "n" }, "<C-g>c", "<Plug>CapsLockToggle", { desc = 'Toggle Capslock' })
     end
+  },
+
+  -- Commenting (c.f. tpope/vim-commentary and echasnovski/mini.comment)
+  -- Neovim 0.10 adds basic commenting functionality, but it lacks a padding option (add a single
+  -- space between the comment symbol and the content) and support for both line (`gc`) and block
+  -- (`gb`) comments.
+  {
+    'numToStr/Comment.nvim',
+    event = { "BufRead", "BufWinEnter", "BufNewFile" },
+    opts = {}
   },
 
   -- Surround: add/change/delete delimiter pairs (c.f. tpope/vim-surround)
@@ -61,11 +71,11 @@ return {
     config = function()
       -- The default mappings use s/S/gs ('s' for "sneak"), but these conflict
       -- with the Surround plugin. We'll use m/M/gm ('m' for "move").
-      keymap({'n', 'x', 'o'}, 'm', '<Plug>(leap-forward)')
-      keymap({'n', 'x', 'o'}, 'M', '<Plug>(leap-backward)')
-      keymap({'n', 'x', 'o'}, 'gm', '<Plug>(leap-from-window)')
+      keymap({ 'n', 'x', 'o' }, 'm', '<Plug>(leap-forward)')
+      keymap({ 'n', 'x', 'o' }, 'M', '<Plug>(leap-backward)')
+      keymap({ 'n', 'x', 'o' }, 'gm', '<Plug>(leap-from-window)')
       -- Since we're using `m` as the cut key, we'll use `<Leader>m` to add a mark.
-      keymap('n', '<leader>m', 'm', {desc = 'Set mark'})
+      keymap('n', '<leader>m', 'm', { desc = 'Set mark' })
     end
   },
 
