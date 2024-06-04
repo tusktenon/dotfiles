@@ -110,6 +110,21 @@ keymap('n', '<leader>bO', function() close_buffers.delete({type = 'other'}) end,
 keymap('n', '<leader>bn', ':bn<cr>', {desc = 'Next buffer'})
 keymap('n', '<leader>bp', ':bp<cr>', {desc = 'Previous buffer'})
 
+-- The following binding was added to cope with a short-lived bug in Neogit;
+-- feel free to remove it if you aren't using it.
+keymap('n', '<leader>be', function()
+    local buffers = vim.api.nvim_list_bufs()
+    for _, buf in ipairs(buffers) do
+        if vim.api.nvim_buf_is_valid(buf) then
+          local lines = vim.api.nvim_buf_get_lines(buf, 0, -1, false)
+          if #lines == 1 and #lines[1] == 0 then
+          -- Buffer is empty, delete it
+          vim.api.nvim_buf_delete(buf, { force = true })
+        end
+      end
+    end
+  end, { desc = "Delete all empty buffers", noremap = true, silent = true })
+
 -- Files/Find  {{{2
 keymap('n', '<leader>fa', telescope_find_all, {desc = 'Find all files'})
 keymap('n', '<leader>fb', telescope.extensions.file_browser.file_browser, {desc = 'Browse files'})
