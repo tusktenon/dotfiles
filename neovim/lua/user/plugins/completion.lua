@@ -77,6 +77,10 @@ return {
       },
 
       sources = {
+        {
+          name = "lazydev",
+          group_index = 0  -- set group_index to 0 to skip loading LuaLS completions
+        },
         { name = "nvim_lsp" },
         { name = 'nvim_lsp_signature_help' },
         { name = "nvim_lua" },

@@ -41,7 +41,7 @@ return {
     ft = 'markdown',
   },
 
-  -- Maximimize and restore the current window
+  -- Maximize and restore the current window
   {
     'szw/vim-maximizer',
     event = 'WinEnter',
@@ -49,6 +49,12 @@ return {
       { '<leader>wm', '<cmd>MaximizerToggle<CR>', desc = 'Maximize (toggle)' },
       { '<leader>tm', '<cmd>MaximizerToggle<CR>', desc = 'Maximize window' },
     },
+  },
+
+  -- Configure the Lua language server for editing your Neovim config
+  {
+    'folke/lazydev.nvim',
+    ft = 'lua',  -- only load on Lua files
   },
 
   -- Formatter
