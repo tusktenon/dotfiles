@@ -67,6 +67,12 @@ return {
     end
   },
 
+  -- Improve the default vim.ui interfaces (compare LSPSaga, Noice)
+  {
+    "stevearc/dressing.nvim",
+    event = "VeryLazy",
+  },
+
   -- Filetype icons for use by other plugins (lualine, nvim-tree, Trouble)
   {
     'nvim-tree/nvim-web-devicons',
