@@ -110,8 +110,9 @@ return {
 
   -- An improved list interface for diagnostics, reference, quickfix and loclist
   {
-    "folke/trouble.nvim",
+    'folke/trouble.nvim',
     dependencies = { "nvim-tree/nvim-web-devicons" },
+    cmd = 'Trouble',
     keys = {
       {
         '<leader>ll',

@@ -3,6 +3,7 @@ applicative
 config
 deduplicate
 deduplication
+deque
 enum
 enums
 functor
