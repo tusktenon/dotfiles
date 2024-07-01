@@ -1,17 +1,17 @@
 -- LSP client
 return {
   'neovim/nvim-lspconfig',
-  event = { "BufReadPre", "BufNewFile" },
+  event = { 'BufReadPre', 'BufNewFile' },
   dependencies = {
-    'hrsh7th/cmp-nvim-lsp'
+    'hrsh7th/cmp-nvim-lsp',
   },
   config = function()
-    local keymap = vim.keymap.set  -- Sets `noremap` by default
+    local keymap = vim.keymap.set -- Sets `noremap` by default
 
     -- Global Mappings
     -- See `:help vim.diagnostic.*` for documentation on any of the functions below
-    keymap('n', 'gl', vim.diagnostic.open_float, {desc = 'Show diagnostics'})
-    keymap('n', '<leader>lq', vim.diagnostic.setloclist, {desc = 'List diagnostics'})
+    keymap('n', 'gl', vim.diagnostic.open_float, { desc = 'Show diagnostics' })
+    keymap('n', '<leader>lq', vim.diagnostic.setloclist, { desc = 'List diagnostics' })
 
     -- Buffer-Local Mappings
     -- Use the LspAttach autocommand to only map the following keys
@@ -26,42 +26,55 @@ return {
         end
 
         -- See `:help vim.lsp.*` for documentation on any of the functions below
-        bufmap('n', 'gD', vim.lsp.buf.declaration, {desc = 'Go to declaration'})
-        bufmap('n', 'gd', vim.lsp.buf.definition, {desc = 'Go to definition'})
-        bufmap('n', 'K', vim.lsp.buf.hover, {desc = 'Hover documentation'})
-        bufmap('n', 'gi', vim.lsp.buf.implementation, {desc = 'Go to implementation'})
-        bufmap('n', 'gr', vim.lsp.buf.references, {desc = 'List references'})
+        bufmap('n', 'gD', vim.lsp.buf.declaration, { desc = 'Go to declaration' })
+        bufmap('n', 'gd', vim.lsp.buf.definition, { desc = 'Go to definition' })
+        bufmap('n', 'K', vim.lsp.buf.hover, { desc = 'Hover documentation' })
+        bufmap('n', 'gi', vim.lsp.buf.implementation, { desc = 'Go to implementation' })
+        bufmap('n', 'gr', vim.lsp.buf.references, { desc = 'List references' })
         -- bufmap('n', 'gr', require'telescope.builtin'.lsp_references, {desc = 'List references'})
-        bufmap('n', '<leader>fs', require('telescope.builtin').lsp_document_symbols, {desc = 'List document symbols'})
-        bufmap({'n', 'v'}, '<leader>la', vim.lsp.buf.code_action, {desc = 'Code action'})
-        bufmap('n', '<leader>lD', vim.lsp.buf.type_definition, {desc = 'Go to type definition'})
-        bufmap('n', '<leader>lf', function() vim.lsp.buf.format {async = true} end, {desc = 'Format buffer'})
-        bufmap('n', '<leader>lr', vim.lsp.buf.rename, {desc = 'Rename'})
-        bufmap('n', '<leader>ls', vim.lsp.buf.signature_help, {desc = 'Signature help'})
-        bufmap('n', '<leader>lwa', vim.lsp.buf.add_workspace_folder, {desc = 'Add folder'})
-        bufmap('n', '<leader>lwr', vim.lsp.buf.remove_workspace_folder, {desc = 'Remove folder'})
-        bufmap('n', '<leader>lwl', function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end,
-        {desc = 'List folders'})
-      end
+        bufmap(
+          'n',
+          '<leader>fs',
+          require('telescope.builtin').lsp_document_symbols,
+          { desc = 'List document symbols' }
+        )
+        bufmap({ 'n', 'v' }, '<leader>la', vim.lsp.buf.code_action, { desc = 'Code action' })
+        bufmap('n', '<leader>lD', vim.lsp.buf.type_definition, { desc = 'Go to type definition' })
+        bufmap(
+          'n',
+          '<leader>lf',
+          function() vim.lsp.buf.format { async = true } end,
+          { desc = 'Format buffer' }
+        )
+        bufmap('n', '<leader>lr', vim.lsp.buf.rename, { desc = 'Rename' })
+        bufmap('n', '<leader>ls', vim.lsp.buf.signature_help, { desc = 'Signature help' })
+        bufmap('n', '<leader>lwa', vim.lsp.buf.add_workspace_folder, { desc = 'Add folder' })
+        bufmap('n', '<leader>lwr', vim.lsp.buf.remove_workspace_folder, { desc = 'Remove folder' })
+        bufmap(
+          'n',
+          '<leader>lwl',
+          function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end,
+          { desc = 'List folders' }
+        )
+      end,
     })
 
-
     -- UI Customization
-    vim.diagnostic.config({
+    vim.diagnostic.config {
       virtual_text = false,
       signs = true,
       -- underline = { severity = { min = vim.diagnostic.severity.ERROR } },
       underline = true,
       update_in_insert = false,
       severity_sort = true,
-    })
+    }
 
     -- Customize the diagnostic symbols used in the sign column
     -- local signs = { Error = '󰯸 ', Warn = '󰰮 ', Hint = '󰰁 ', Info = '󰰄 ' }
     -- local signs = { Error = '󰅚 ', Warn = '󰀪 ', Hint = '󰌶 ', Info = ' ' }
     local signs = { Error = ' ', Warn = ' ', Hint = ' ', Info = ' ' }
     for type, icon in pairs(signs) do
-      local hl = "DiagnosticSign" .. type
+      local hl = 'DiagnosticSign' .. type
       vim.fn.sign_define(hl, { text = icon, texthl = hl })
       -- Also highlight the line number using the diagnostic color:
       -- vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
@@ -91,8 +104,16 @@ return {
       capabilities = capabilities,
     }
 
+    -- Haskell
+    -- use 'mrcjkb/haskell-tools.nvim'
+
     -- HTML
     lspconfig.html.setup {
+      capabilities = capabilities,
+    }
+
+    -- JavaScript/TypeScript
+    lspconfig.tsserver.setup {
       capabilities = capabilities,
     }
 
@@ -102,19 +123,19 @@ return {
       settings = {
         Lua = {
           completion = {
-            callSnippet = 'Replace'
+            callSnippet = 'Replace',
           },
           diagnostics = {
-            globals = {'vim'},  -- Recognize `vim` as a global variable
+            globals = { 'vim' }, -- Recognize `vim` as a global variable
           },
           runtime = {
-            version = 'LuaJIT',  -- Use 'LuaJIT' for Neovim
+            version = 'LuaJIT', -- Use 'LuaJIT' for Neovim
           },
           workspace = {
             -- See https://github.com/LunarVim/LunarVim/issues/4049:
             checkThirdParty = false,
             -- Get completion and context from the Neovim runtime files:
-            library = vim.api.nvim_get_runtime_file("", true),
+            library = vim.api.nvim_get_runtime_file('', true),
           },
           telemetry = {
             enable = true,
@@ -129,5 +150,8 @@ return {
     lspconfig.pyright.setup {
       capabilities = capabilities,
     }
-  end
+
+    -- Rust
+    -- use 'mrcjkb/rustaceanvim'
+  end,
 }

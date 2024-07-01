@@ -12,6 +12,7 @@ Lua
 macOS
 Magit
 memoized
+monad
 Neogit
 Neovim
 struct
@@ -19,7 +20,7 @@ structs
 subdirectory
 subfolder
 sublist
-monad
+TypeScript
 wildcard
 Xcode
 
