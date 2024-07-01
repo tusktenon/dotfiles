@@ -3,6 +3,7 @@ return {
   'williamboman/mason.nvim',
   dependencies = {
     'williamboman/mason-lspconfig.nvim',  -- Bridges mason and lspconfig
+    'WhoIsSethDaniel/mason-tool-installer.nvim',  -- Install/upgrade third-party tools
   },
   config = function()
     require('mason').setup {
@@ -17,9 +18,16 @@ return {
         -- clangd is provided by the Homebrew package `llvm`
         'html',
         'lua_ls',
-        'pyright'
+        'pyright',
+        'tsserver'
       },
       automatic_installation = true,
+    }
+    require('mason-tool-installer').setup {
+      ensure_installed = {
+        'prettier',
+        'stylua'
+      }
     }
   end
 }

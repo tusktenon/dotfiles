@@ -6,9 +6,9 @@ return {
     vim.g.haskell_tools = {
       tools = {
         repl = {
-          auto_focus = true
-        }
+          auto_focus = true,
+        },
       },
     }
-  end
+  end,
 }

@@ -44,7 +44,6 @@ return {
   -- Maximize and restore the current window
   {
     'szw/vim-maximizer',
-    event = 'WinEnter',
     keys = {
       { '<leader>wm', '<cmd>MaximizerToggle<CR>', desc = 'Maximize (toggle)' },
       { '<leader>tm', '<cmd>MaximizerToggle<CR>', desc = 'Maximize window' },
@@ -89,7 +88,15 @@ return {
       },
       -- Define your formatters
       formatters_by_ft = {
+        css = { "prettier" },
+        html = { "prettier" },
+        javascript = { "prettier" },
+        json = { "prettier" },
+        lua = { "stylua" },
+        -- python = { "isort", "black" },
         rust = { 'rustfmt' },
+        typescript = { "prettier" },
+        yaml = { "prettier" },
       },
       -- format_on_save = { timeout_ms = 500, lsp_fallback = true },
     },
