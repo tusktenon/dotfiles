@@ -181,8 +181,10 @@ ZSH_HIGHLIGHT_STYLES[builtin]='fg=green,bold'
 ZSH_HIGHLIGHT_STYLES[command]='fg=green,bold'
 ZSH_HIGHLIGHT_STYLES[path]='fg=cyan'
 
+# FZF
+# Setup shell integration
 # Source fzf settings
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source <(fzf --zsh)
 
 # Start in the Development folder (unless this is a Neovim terminal)
 if [ -z $VIMRUNTIME ]; then
