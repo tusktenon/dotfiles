@@ -35,6 +35,7 @@ return {
         s = { name = '+Search' },
         t = { name = '+Toggle' },
         w = { name = '+Windows' },
+        x = { name = '+Trouble/swap' },
       }
     }
   end

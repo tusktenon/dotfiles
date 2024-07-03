@@ -85,8 +85,8 @@ return {
         { name = 'nvim_lsp_signature_help' },
         { name = "nvim_lua" },
         { name = "luasnip" },
-        { name = "buffer" },
-        { name = "path" },
+        { name = "buffer" },  -- current buffer
+        { name = "path" },  --file-system path
       },
 
       enabled = function()

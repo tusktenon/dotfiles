@@ -7,9 +7,9 @@ return {
     config = function()
       require('close_buffers').setup {
         -- Types of deletion that should preserve window layout:
-        preserve_window_layout = { 'this', 'nameless' }
+        preserve_window_layout = { 'this', 'nameless' },
       }
-    end
+    end,
   },
 
   -- Color highlighting
@@ -20,13 +20,13 @@ return {
     },
     opts = {
       user_default_options = {
-        RGB = true,    -- #RGB hex codes
+        RGB = true, -- #RGB hex codes
         RRGGBB = true, -- #RRGGBB hex codes
         names = false, -- Named colors
         rgb_fn = true, -- rgb() and rgba()
         hsl_fn = true, -- hsl() and hsla()
-      }
-    }
+      },
+    },
   },
 
   -- Diff Visual selections
@@ -53,7 +53,7 @@ return {
   -- Configure the Lua language server for editing your Neovim config
   {
     'folke/lazydev.nvim',
-    ft = 'lua',  -- only load on Lua files
+    ft = 'lua', -- only load on Lua files
   },
 
   -- Formatter
@@ -64,16 +64,12 @@ return {
     keys = {
       {
         '<leader>F',
-        function()
-          require('conform').format({ async = true, lsp_fallback = true })
-        end,
+        function() require('conform').format { async = true, lsp_fallback = true } end,
         desc = 'Format buffer',
       },
       {
         '<C-f>',
-        function()
-          require('conform').format({ async = true, lsp_fallback = true })
-        end,
+        function() require('conform').format { async = true, lsp_fallback = true } end,
         mode = 'v',
         desc = 'Format buffer',
       },
@@ -83,20 +79,20 @@ return {
       formatters = {
         rustfmt = {
           -- `+nightly` allows single-line standalone if-else statements
-          args = { "+nightly" }
-        }
+          args = { '+nightly' },
+        },
       },
       -- Define your formatters
       formatters_by_ft = {
-        css = { "prettier" },
-        html = { "prettier" },
-        javascript = { "prettier" },
-        json = { "prettier" },
-        lua = { "stylua" },
+        css = { 'prettier' },
+        html = { 'prettier' },
+        javascript = { 'prettier' },
+        json = { 'prettier' },
+        lua = { 'stylua' },
         -- python = { "isort", "black" },
         rust = { 'rustfmt' },
-        typescript = { "prettier" },
-        yaml = { "prettier" },
+        typescript = { 'prettier' },
+        yaml = { 'prettier' },
       },
       -- format_on_save = { timeout_ms = 500, lsp_fallback = true },
     },
@@ -110,31 +106,51 @@ return {
     config = function()
       require('project_nvim').setup {
         -- Don't calculate root for specific directories
-        exclude_dirs = { '~/Development/dotfiles/neovim/.config/*' }
+        exclude_dirs = { '~/Development/dotfiles/neovim/.config/*' },
       }
-    end
+    end,
   },
 
   -- An improved list interface for diagnostics, reference, quickfix and loclist
   {
     'folke/trouble.nvim',
-    dependencies = { "nvim-tree/nvim-web-devicons" },
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
     cmd = 'Trouble',
     keys = {
       {
-        '<leader>ll',
-        function() require('trouble').toggle('document_diagnostics') end,
-        desc = 'Document diagnostics',
+        '<leader>xx',
+        '<cmd>Trouble diagnostics toggle<cr>',
+        desc = 'Diagnostics (Trouble)',
       },
       {
-        '<leader>lL',
-        function() require('trouble').toggle('document_diagnostics') end,
-        desc = 'Workspace diagnostics',
+        '<leader>xX',
+        '<cmd>Trouble diagnostics toggle filter.buf=0<cr>',
+        desc = 'Buffer Diagnostics (Trouble)',
+      },
+      {
+        '<leader>cs',
+        '<cmd>Trouble symbols toggle focus=false<cr>',
+        desc = 'Symbols (Trouble)',
+      },
+      {
+        '<leader>cl',
+        '<cmd>Trouble lsp toggle focus=false win.position=right<cr>',
+        desc = 'LSP Definitions / references / ... (Trouble)',
+      },
+      {
+        '<leader>xL',
+        '<cmd>Trouble loclist toggle<cr>',
+        desc = 'Location List (Trouble)',
+      },
+      {
+        '<leader>xQ',
+        '<cmd>Trouble qflist toggle<cr>',
+        desc = 'Quickfix List (Trouble)',
       },
     },
     config = function()
       require('trouble').setup {
-        use_diagnostic_signs = true -- Use the signs defined in your LSP config
+        use_diagnostic_signs = true, -- Use the signs defined in your LSP config
       }
 
       -- In file buffers, I prefer to highlight only the current line number
@@ -142,10 +158,8 @@ return {
       -- want to highlight the current line in the Trouble window.
       vim.api.nvim_create_autocmd('WinEnter', {
         pattern = 'Trouble',
-        callback = function()
-          vim.opt.cursorlineopt = 'line'
-        end
+        callback = function() vim.opt.cursorlineopt = 'line' end,
       })
-    end
+    end,
   },
 }

@@ -98,7 +98,7 @@ keymap('t', '<A-l>', '<C-\\><C-n><C-w>l')
 -- Leader-Prefixed Mappings  {{{1
 
 -- Top-Level  {{{2
-keymap('n', '<leader>x', ':!open %<CR><CR>', {desc = 'Open current file in default program'})
+-- keymap('n', '<leader>x', ':!open %<CR><CR>', {desc = 'Open current file in default program'})
        -- (use `xdg-open` on Linux and `open` on Mac)
 
 -- Buffers  {{{2
