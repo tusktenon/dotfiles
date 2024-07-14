@@ -1,3 +1,13 @@
+local opt = vim.opt
+
+opt.colorcolumn = '100'
+opt.textwidth = 100
+
+opt.expandtab = true
+opt.shiftwidth = 4
+opt.tabstop = 4
+opt.softtabstop = 4
+
 local bufnr = vim.api.nvim_get_current_buf()
 
 local bufmap = function(mode, lhs, rhs, opts)
