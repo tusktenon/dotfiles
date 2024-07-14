@@ -1,42 +1,32 @@
 return {
-  "folke/which-key.nvim",
-  event = "VeryLazy",
-  config = function()
-    local whichkey = require 'which-key'
-
-    whichkey.setup {
-      key_labels = {
-        -- Override the label used to display specific keys
-        ['<leader>'] = 'SPC',
-        ['<space>'] = 'SPC',
-        ['<cr>'] = 'RET',
-        ['<tab>'] = 'TAB',
-      },
-      icons = {
-        separator = '→'
-      },
-      window = {
-        border = { '─', '─' ,'─', '', '', '', '', '' },  -- top only
-      }
-    }
-
-    whichkey.register {
-      ['g'] = {
-        J = 'Join into single-line form',
-        S = 'Split into multi-line form'
-      },
-      ['<leader>'] = {
-        b = { name = '+Buffers' },
-        c = { name = '+Code' },
-        f = { name = '+Files/Find' },
-        g = { name = '+Git' },
-        l = { name = '+Language' },
-        lw = { name = '+Workspace' },
-        s = { name = '+Search' },
-        t = { name = '+Toggle' },
-        w = { name = '+Windows' },
-        x = { name = '+Trouble/swap' },
-      }
-    }
-  end
+  'folke/which-key.nvim',
+  event = 'VeryLazy',
+  opts = {
+    icons = {
+      separator = '→',
+      rules = false,
+    },
+    win = {
+      border = { '─', '─', '─', '', '', '', '', '' }, -- top only
+    },
+    replace = {
+      key = { { '<Space>', 'SPC' } },
+    },
+    spec = {
+      { '<leader>b', group = 'Buffers' },
+      { '<leader>c', group = 'Code' },
+      { '<leader>f', group = 'Files/Find' },
+      { '<leader>g', group = 'Git' },
+      { '<leader>l', group = 'Language' },
+      { '<leader>lw', group = 'Workspace' },
+      { '<leader>s', group = 'Search' },
+      { '<leader>t', group = 'Toggle' },
+      { '<leader>w', group = 'Windows' },
+      { '<leader>x', group = 'Trouble/swap' },
+      { 'gJ', desc = 'Join into single-line form' },
+      { 'gS', desc = 'Split into multi-line form' },
+      { 'ys', desc = 'Add surround pair' },
+      { 'yss', desc = 'Add surround pair around line' },
+    },
+  },
 }
