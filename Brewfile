@@ -23,9 +23,10 @@ brew 'zsh-syntax-highlighting'
 
 
 # Development: Languages
-brew llvm  # Provides clang compiler and clangd language server
-# brew 'node'
+brew 'llvm'  # Provides clang compiler and clangd language server
+brew 'node'
 # brew 'php'
+brew 'pnpm'
 brew 'python3'
 # cask smlnj
 
