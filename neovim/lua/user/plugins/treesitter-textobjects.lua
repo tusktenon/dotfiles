@@ -74,10 +74,10 @@ return {
     keymap({ 'n', 'x', 'o' }, ',', ts_repeat_move.repeat_last_move_opposite)
 
     -- Restore builtin behaviour of f, F, t, T
-    keymap({ 'n', 'x', 'o' }, 'f', ts_repeat_move.builtin_f)
-    keymap({ 'n', 'x', 'o' }, 'F', ts_repeat_move.builtin_F)
-    keymap({ 'n', 'x', 'o' }, 't', ts_repeat_move.builtin_t)
-    keymap({ 'n', 'x', 'o' }, 'T', ts_repeat_move.builtin_T)
+    keymap({ 'n', 'x', 'o' }, 'f', ts_repeat_move.builtin_f_expr, { expr = true })
+    keymap({ 'n', 'x', 'o' }, 'F', ts_repeat_move.builtin_F_expr, { expr = true })
+    keymap({ 'n', 'x', 'o' }, 't', ts_repeat_move.builtin_t_expr, { expr = true })
+    keymap({ 'n', 'x', 'o' }, 'T', ts_repeat_move.builtin_T_expr, { expr = true })
 
     -- Set up repeatable next/previous hunk movements from gitsigns.nvim
     local gs = require 'gitsigns'
