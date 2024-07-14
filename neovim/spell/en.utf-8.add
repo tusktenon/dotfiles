@@ -4,6 +4,7 @@ config
 deduplicate
 deduplication
 deque
+destructuring
 enum
 enums
 functor
