@@ -23,6 +23,7 @@ brew 'zsh-syntax-highlighting'
 
 
 # Development: Languages
+cask 'dotnet-sdk'
 brew 'llvm'  # Provides clang compiler and clangd language server
 brew 'node'
 # brew 'php'
