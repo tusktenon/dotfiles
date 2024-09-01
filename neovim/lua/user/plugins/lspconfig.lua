@@ -104,6 +104,17 @@ return {
       capabilities = capabilities,
     }
 
+    -- C#
+    -- Omnisharp is the de-facto C# language server, but I couldn't get it to work
+    -- lspconfig.omnisharp.setup {
+    --   capabilities = capabilities,
+    --   cmd = { 'dotnet', '/Users/dan/.local/share/nvim/mason/bin/omnisharp' },
+    -- }
+
+    lspconfig.csharp_ls.setup {
+      capabilities = capabilities,
+    }
+
     -- Haskell
     -- use 'mrcjkb/haskell-tools.nvim'
 
