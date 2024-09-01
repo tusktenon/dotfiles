@@ -88,6 +88,29 @@
     // VSCodeVim
     "vim.highlightedyank.enable": true,
     "vim.surround": true,
+    "vim.useCtrlKeys": true,
+    "vim.useSystemClipboard": true,
+    "vim.handleKeys": {
+        "<C-a>": true,
+        "<C-e>": true,
+        "<C-d>": true,
+        "<C-s>": false,
+        "<C-z>": false
+    },
+    "vim.insertModeKeyBindings": [
+        {
+            "before": ["<C-d>"],
+            "after": ["<Delete>"]
+        },
+        {
+            "before": ["<C-a>"],
+            "after": ["<Home>"]
+        },
+        {
+            "before": ["<C-e>"],
+            "after": ["<End>"]
+        }
+    ],
     "vim.normalModeKeyBindingsNonRecursive": [
         {
             "before": ["Y"],
@@ -95,11 +118,27 @@
         },
         {
             "before": ["[", "<Space>"],
-            "after": ["O", "<Esc>", "j"]
+            "after": ["i", "<Space>", "<Esc>", "l"]
         },
         {
             "before": ["]", "<Space>"],
+            "after": ["a", "<Space>", "<Esc>", "h"]
+        },
+        {
+            "before": ["[", "<CR>"],
+            "after": ["O", "<Esc>", "j"]
+        },
+        {
+            "before": ["]", "<CR>"],
             "after": ["o", "<Esc>", "k"]
+        },
+        {
+            "before": ["m"],
+            "commands": ["leap.findForward"]
+        },
+        {
+            "before": ["M"],
+            "commands": ["leap.findBackward"]
         }
     ],
 }
