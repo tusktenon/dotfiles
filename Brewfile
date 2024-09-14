@@ -82,6 +82,7 @@ tap 'homebrew/cask-fonts'
   # brew 'font-meslo-lg-nerd-font'
   # brew 'font-roboto-mono-nerd-font'
   # brew 'font-sauce-code-pro-nerd-font'
+  brew 'font-symbols-only-nerd-font'  #Stand-alone NERD Font symbols, for use with kitty
 
   # Variable Fonts
   brew 'svn'  # Needed to install font-source-sans-pro
