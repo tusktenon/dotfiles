@@ -6,6 +6,10 @@ return {
     'hrsh7th/cmp-nvim-lsp',
   },
   config = function()
+    -- Enable logging only when needed
+    -- Log file: ~/.local/state/nvim/lsp.log
+    vim.lsp.set_log_level("off")
+
     local keymap = vim.keymap.set -- Sets `noremap` by default
 
     -- Global Mappings
