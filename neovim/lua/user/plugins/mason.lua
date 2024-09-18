@@ -28,6 +28,7 @@ return {
     require('mason-tool-installer').setup {
       ensure_installed = {
         -- 'black',
+        'csharpier',
         -- 'isort',
         'eslint_d',
         'prettier',

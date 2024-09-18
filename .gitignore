@@ -1,3 +1,4 @@
+kitty/kitty.conf.bak
 neovim/.luarc.json
 neovim/lazy-lock.json
 neovim/spell/*.spl
