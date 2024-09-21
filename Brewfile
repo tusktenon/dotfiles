@@ -41,8 +41,6 @@ brew haskell-language-server
 
 # General Applications and Utilities
 brew calc 
-# brew 'ffmpeg'
-# brew 'youtube-dl'
 
 
 # Fonts (including NERD Fonts)
