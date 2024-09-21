@@ -26,9 +26,10 @@ brew 'zsh-syntax-highlighting'
 cask 'dotnet-sdk'
 brew 'llvm'  # Provides clang compiler and clangd language server
 brew 'node'
-# brew 'php'
 brew 'pnpm'
 brew 'python3'
+# brew 'jruby'
+# brew 'php'
 # cask smlnj
 
 # Haskell
@@ -52,39 +53,20 @@ brew calc
 
 
 # Fonts (including NERD Fonts)
-tap 'homebrew/cask-fonts'
 
   # Standard Monospace Fonts
-  # brew 'font-cascadia-code'
-  brew 'font-fantasque-sans-mono'
-  # brew 'font-fantasque-sans-mono-noloopk'  # lowercase k without loop
-  # brew 'font-fira-code'
-  # brew 'font-hack'
   brew 'font-ibm-plex-mono'
   brew 'font-iosevka'
   brew 'font-iosevka-slab'
   brew 'font-jetbrains-mono'
-  # brew 'font-meslo-lg'
-  # brew 'font-meslo-lg-dz'  # dotted zero
-  brew 'font-noto-sans-mono'
-  # brew 'font-pt-mono'  # Included with macOS
-  brew 'font-recursive-code'
-  brew 'font-roboto-mono'
   brew 'font-source-code-pro'
-  brew 'font-victor-mono'
 
   # NERD Monospace Fonts
   brew 'font-blex-mono-nerd-font'
-  # brew 'font-fantasque-sans-mono-nerd-font'
-  # brew 'font-fira-code-nerd-font'
-  # brew 'font-hack-nerd-font'
-  # brew 'font-iosevka-nerd-font'
-  # brew 'font-meslo-lg-nerd-font'
-  # brew 'font-roboto-mono-nerd-font'
-  # brew 'font-sauce-code-pro-nerd-font'
   brew 'font-symbols-only-nerd-font'  #Stand-alone NERD Font symbols, for use with kitty
 
   # Variable Fonts
   brew 'svn'  # Needed to install font-source-sans-pro
-  brew 'font-recursive'
+  brew 'font-lato'
+  brew 'font-open-sans'
   brew 'font-source-sans-pro'
