@@ -39,13 +39,6 @@ brew haskell-stack
 brew haskell-language-server
 
 
-# Emacs
-# Formula recommended by Doom
-# (https://github.com/hlissner/doom-emacs/blob/master/docs/getting_started.org#on-macos):
-# tap 'railwaycat/emacsmacport'
-# brew 'emacs-mac --with-modules'
-
-
 # General Applications and Utilities
 brew calc 
 # brew 'ffmpeg'
