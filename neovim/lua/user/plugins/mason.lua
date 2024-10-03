@@ -16,9 +16,9 @@ return {
     require('mason-lspconfig').setup {
       ensure_installed = {
         -- clangd is provided by the Homebrew package `llvm`
-        'csharp_ls',
         'html',
         'lua_ls',
+        'omnisharp',
         'pyright',
         'ts_ls',
       },
