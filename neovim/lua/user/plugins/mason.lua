@@ -17,6 +17,7 @@ return {
       ensure_installed = {
         -- clangd is provided by the Homebrew package `llvm`
         'html',
+        'lemminx',
         'lua_ls',
         'omnisharp',
         'pyright',

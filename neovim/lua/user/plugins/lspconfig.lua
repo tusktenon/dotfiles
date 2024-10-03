@@ -204,5 +204,10 @@ return {
 
     -- Rust
     -- use 'mrcjkb/rustaceanvim'
+
+    -- XML
+    lspconfig.lemminx.setup {
+      capabilities = capabilities,
+    }
   end,
 }
