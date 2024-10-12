@@ -69,6 +69,45 @@ return {
     end,
   },
 
+  -- Preview LSP goto definition/implementation/references in floating windows
+  {
+    'rmagatti/goto-preview',
+    event = 'BufEnter',
+    config = true,
+    keys = {
+      {
+        'gpD',
+        function() require('goto-preview').goto_preview_declaration() end,
+        { desc = 'Preview declaration', silent = true },
+      },
+      {
+        'gpd',
+        function() require('goto-preview').goto_preview_definition() end,
+        { desc = 'Preview definition', silent = true },
+      },
+      {
+        'gpt',
+        function() require('goto-preview').goto_preview_type_definition() end,
+        { desc = 'Preview type definition', silent = true },
+      },
+      {
+        'gpi',
+        function() require('goto-preview').goto_preview_implementation() end,
+        { desc = 'Preview implementation', silent = true },
+      },
+      {
+        'gpr',
+        function() require('goto-preview').goto_preview_references() end,
+        { desc = 'Preview references', silent = true },
+      },
+      {
+        'gpp',
+        function() require('goto-preview').close_all_win() end,
+        { desc = 'Close previews', silent = true },
+      },
+    },
+  },
+
   -- An improved list interface for diagnostics, reference, quickfix and loclist
   {
     'folke/trouble.nvim',
