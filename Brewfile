@@ -24,6 +24,7 @@ brew 'zsh-syntax-highlighting'
 
 # Development: Languages
 cask 'dotnet-sdk'
+brew 'go'
 brew 'llvm'  # Provides clang compiler and clangd language server
 brew 'node'
 brew 'pnpm'

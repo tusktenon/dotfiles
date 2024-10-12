@@ -155,6 +155,16 @@ return {
       },
     }
 
+    -- Go
+    lspconfig.gopls.setup {
+      capabilities = capabilities,
+      settings = {
+        gopls = {
+          gofumpt = true,
+        },
+      },
+    }
+
     -- Haskell
     -- use 'mrcjkb/haskell-tools.nvim'
 

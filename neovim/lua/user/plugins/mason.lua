@@ -16,6 +16,7 @@ return {
     require('mason-lspconfig').setup {
       ensure_installed = {
         -- clangd is provided by the Homebrew package `llvm`
+        'gopls',
         'html',
         'lemminx',
         'lua_ls',
@@ -30,8 +31,11 @@ return {
       ensure_installed = {
         -- 'black',
         'csharpier',
-        -- 'isort',
         'eslint_d',
+        'gofumpt', -- a stricter alternative to 'gofmt'
+        'goimports', -- updates Go imports
+        'golines', -- fixes long lines
+        -- 'isort',
         'prettier',
         'stylua',
       },

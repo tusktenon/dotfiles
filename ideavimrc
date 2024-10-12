@@ -7,6 +7,7 @@
 set ignorecase smartcase
 
 " Show search results as you type
+set hls
 set incsearch
 
 " Highlight search matches only while searching
@@ -42,8 +43,8 @@ inoremap jk <Esc>
 noremap Y y$
 
 " Mappings from Tim Pope's Unimpaired plugin <tpope/vim-unimpaired>
-nnoremap [<space> O<esc>j
-nnoremap ]<space> o<esc>k
+nnoremap [<CR> O<esc>j
+nnoremap ]<CR> o<esc>k
 
 
 " Emulated Vim Plugins
