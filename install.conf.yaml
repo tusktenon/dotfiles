@@ -24,9 +24,10 @@
     ~/.vim/after: vim/after
     ~/.vim/spell: vim/spell
     ~/.vim/vimrc: vim/vimrc
+    ~/.wezterm.lua: wezterm/wezterm.lua
+    ~/.zshrc: zshrc
     ~/Library/Application Support/rustfmt/rustfmt.toml: rust/rustfmt.toml
     ~/Library/Application Support/Code/User/settings.json: vscode/settings.json
-    ~/.zshrc: zshrc
 
 - create:
     - ~/.config/ideavim

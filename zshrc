@@ -19,7 +19,7 @@ export EDITOR="nvim"
 # see https://docs.brew.sh/Shell-Completion
 if [ "$system_type" = "Darwin" ]; then
     if type brew &>/dev/null; then
-      FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+      FPATH="$HOMEBREW_PREFIX/share/zsh/site-functions:${FPATH}"
     fi
 fi
 autoload -Uz compinit
@@ -38,7 +38,7 @@ CDPATH=.:~:~/Development:~/Documents
 export CDPATH
 
 # Add `z` (https://github.com/rupa/z)
-. /opt/homebrew/etc/profile.d/z.sh
+. $HOMEBREW_PREFIX/etc/profile.d/z.sh
 
 # Avoid annoying correction suggestion when running `cargo test`
 alias cargo='nocorrect cargo'
@@ -171,7 +171,7 @@ export STARSHIP_CONFIG=~/.config/starship/modern-alt.toml
 
 # Enable syntax highlighting (zsh-users/zsh-syntax-highlighting)
 if [ "$system_type" = "Darwin" ]; then
-    source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+    source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 else;
     source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi

@@ -16,6 +16,7 @@ brew 'ripgrep'
 brew 'sqlite'
 brew 'starship'
 brew 'tree'
+cask 'wezterm'
 brew 'wget'  # Mason.nvim dependency
 brew 'z'
 brew 'zsh'
