@@ -1,5 +1,6 @@
 return {
   'neanias/everforest-nvim',
+  -- 'tusktenon/everforest-nvim', -- my fork with corrections for Leap highlight groups
   lazy = false,
   priority = 1000,
   config = function()
@@ -16,10 +17,8 @@ return {
       diagnostic_line_highlight = true,
       float_style = 'bright',
 
-
       -- Highlight-group overrides  {{{1
       on_highlights = function(hl, palette)
-
         -- UI elements  {{{2
 
         -- Window/split separators
@@ -30,7 +29,6 @@ return {
         -- hl.FloatBorder = { link = 'VertSplit' }
         hl.FloatBorder = { fg = palette.bg3, bg = palette.none }
         hl.FloatTitle = { fg = palette.bg0, bg = palette.blue, bold = true }
-
 
         -- Languages  {{{2
 
@@ -47,7 +45,6 @@ return {
         hl.markdownOrderedListMarker = { link = 'Aqua' }
         hl.markdownLinkText = { link = 'Blue' }
         hl.markdownUrl = { fg = palette.grey0, bg = palette.none }
-
 
         -- NvimTree  {{{2
 
@@ -79,8 +76,14 @@ return {
         -- NvimTreeFolderArrowOpen
         hl.NvimTreeIndentMarker = { fg = palette.bg5, bg = palette.none }
 
-
         -- Other Plugins  {{{2
+
+        -- Leap {{{3
+        -- Leap used to define `LeapLabelPrimary` and
+        -- `LeapLabelSecondary` highlight groups, but this was
+        -- simplified to `LeapLabel`. The change has not yet been
+        -- reflected in Everforest.
+        hl.LeapLabel = { fg = palette.purple, bg = palette.none, bold = true }
 
         -- Match-up  {{{3
         -- Everforest highlights matching parentheses with a lighter background
@@ -93,7 +96,7 @@ return {
 
         -- nvim-cmp  {{{3
         -- Fix for wildmenu view.
-        -- For some reason, the `PmenuSel` highlight group does not update the foreground setting from 
+        -- For some reason, the `PmenuSel` highlight group does not update the foreground setting from
         -- the `CmpItemAbbrMatch` and `CmpItemAbbrMatchFuzzy` groups, resulting in invisible characters.
         -- Note that this is only an issue for the `wildmenu` view; the default `custom` menu works fine.
         -- hl.PmenuSel = { fg = palette.bg0, bg = palette.statusline1, bold = true }
@@ -148,14 +151,14 @@ return {
         -- WhichKey  {{{3
         hl.WhichKeyFloat = { link = 'Normal' }
         hl.WhichKeyValue = { link = 'WhichKeyFloat' }
-        hl.WhichKey = { link = "Purple" }
+        hl.WhichKey = { link = 'Purple' }
         hl.WhichKeySeparator = { fg = palette.grey0, bg = palette.none }
-        hl.WhichKeyDesc = { link = "Green" }
-        hl.WhichKeyGroup = { link = "Blue" }
-      end
+        hl.WhichKeyDesc = { link = 'Green' }
+        hl.WhichKeyGroup = { link = 'Blue' }
+      end,
     }
     require('everforest').load()
-  end
+  end,
 }
 
 -- vim: et sw=2 ts=2 sts=2 fdm=marker
