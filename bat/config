@@ -6,9 +6,8 @@
 
 # Highlighting theme
 # Run `bat --list-themes` for a list of all available themes
-# Try Nord, OneHalfDark or TwoDark
 # Try `ansi` or `base16` for a decent match to your current terminal theme
---theme="Nord"
+--theme="EverforestDarkMedium"
 
 # Use italic text
 # This is not supported by all terminal emulators
