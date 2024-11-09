@@ -6,14 +6,25 @@ name = Dan Murphy
 email = dan.murphy@alumni.utoronto.ca
 
 [core]
-editor = nvim
 autocrlf = input  # Convert CRLF line endings to LF on commit
+editor = nvim
+pager = delta
+
+[interactive]
+diffFilter = delta --color-only
+
+[delta]
+navigate = true  # use n and N to move between diff sections
+syntax-theme = EverforestDarkMedium
+# side-by-side = true
 
 [init]
 defaultBranch = main
 
 [diff]
+colorMoved = default  # detect moved blocks and style differently from removed/added lines
 tool = nvimdiff
 
 [merge]
+conflictstyle = zdiff3
 tool = nvimdiff
