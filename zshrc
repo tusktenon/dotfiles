@@ -186,4 +186,21 @@ ZSH_HIGHLIGHT_STYLES[path]='fg=cyan'
 # Source fzf settings
 source <(fzf --zsh)
 
+# Use fd instead of find
+export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND="fd --type d --hidden --strip-cwd-prefix --exclude .git"
+
+# Use fd for listing path candidates
+# - The first argument to the function ($1) is the base path to start traversal
+# - See the source code (completion.{bash,zsh}) for the details
+_fzf_compgen_path() {
+  fd --hidden --exclude .git . "$1"
+}
+
+# Use fd to generate the list for directory completion
+_fzf_compgen_dir() {
+  fd --type d --hidden --exclude .git . "$1"
+}
+
 # vim: et sw=4 ts=4 sts=4 fdm=marker
