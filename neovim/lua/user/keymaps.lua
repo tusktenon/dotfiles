@@ -24,9 +24,6 @@ end
 
 -- General Mappings  {{{1
 
--- Exit Insert mode with `jk`
--- keymap({'i', 't'}, 'jk', '<ESC>')
-
 -- Forward delete with CTRL-D in Insert mode
 -- Move existing CTRL-D mapping (delete indent) to CTRL-<
 -- For consistency, also remap CTRL-T (insert indent) to CTRL->
@@ -38,8 +35,8 @@ keymap('i', '<C-.>', '<C-t>')
 keymap('i', '<C-a>', '<Home>')
 keymap('i', '<C-e>', '<End>')
 
--- In Terminal buffers, exit to Normal mode with `jj`
-keymap('t', 'jj', '<C-\\><C-n>')
+-- Easier switch to Normal mode in Terminal buffers
+keymap('t', '<C-\\><C-\\>', '<C-\\><C-n>')
 
 -- Move by screen lines, not file lines, unless a count is provided
 keymap('n', 'j', "v:count == 0 ? 'gj' : 'j'", {expr = true, silent = true})
