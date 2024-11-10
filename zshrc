@@ -29,6 +29,10 @@ compinit
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' \
     'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
+# The Fuck (nvbn/thefuck)
+eval $(thefuck --alias)
+eval $(thefuck --alias fk)
+
 
 # Directory Navigation  {{{1
 
@@ -37,7 +41,7 @@ CDPATH=.:~:~/Development:~/Documents
 # CDPATH+=:~/Development/Courses/Introduction\ to\ Programming\ in\ C
 export CDPATH
 
-# Add `z` (https://github.com/rupa/z)
+# z (rupa/z)
 . $HOMEBREW_PREFIX/etc/profile.d/z.sh
 
 # Avoid annoying correction suggestion when running `cargo test`
