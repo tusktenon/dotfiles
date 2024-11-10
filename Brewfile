@@ -22,7 +22,6 @@ brew 'tlrc'
 brew 'tree'
 cask 'wezterm'
 brew 'wget'  # Mason.nvim dependency
-brew 'z'
 brew 'zsh'
 brew 'zsh-syntax-highlighting'
 

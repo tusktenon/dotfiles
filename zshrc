@@ -38,11 +38,7 @@ eval $(thefuck --alias fk)
 
 setopt autocd autopushd correct correctall
 CDPATH=.:~:~/Development:~/Documents
-# CDPATH+=:~/Development/Courses/Introduction\ to\ Programming\ in\ C
 export CDPATH
-
-# z (rupa/z)
-. $HOMEBREW_PREFIX/etc/profile.d/z.sh
 
 # Avoid annoying correction suggestion when running `cargo test`
 alias cargo='nocorrect cargo'
