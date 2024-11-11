@@ -1,7 +1,7 @@
 local wezterm = require 'wezterm'
 local config = wezterm.config_builder()
 
-config.font = wezterm.font 'IBM Plex Mono'
+config.font = wezterm.font 'Fira Code'
 config.font_size = 14
 config.cell_width = 0.9
 config.line_height = 1.1

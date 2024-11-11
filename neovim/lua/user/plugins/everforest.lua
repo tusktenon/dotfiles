@@ -1,6 +1,5 @@
 return {
   'neanias/everforest-nvim',
-  -- 'tusktenon/everforest-nvim', -- my fork with corrections for Leap highlight groups
   lazy = false,
   priority = 1000,
   config = function()
@@ -77,13 +76,6 @@ return {
         hl.NvimTreeIndentMarker = { fg = palette.bg5, bg = palette.none }
 
         -- Other Plugins  {{{2
-
-        -- Leap {{{3
-        -- Leap used to define `LeapLabelPrimary` and
-        -- `LeapLabelSecondary` highlight groups, but this was
-        -- simplified to `LeapLabel`. The change has not yet been
-        -- reflected in Everforest.
-        hl.LeapLabel = { fg = palette.purple, bg = palette.none, bold = true }
 
         -- Match-up  {{{3
         -- Everforest highlights matching parentheses with a lighter background

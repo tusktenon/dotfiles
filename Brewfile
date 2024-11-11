@@ -51,6 +51,7 @@ brew calc
 # Fonts (including NERD Fonts)
 
   # Standard Monospace Fonts
+  brew 'font-fira-code'
   brew 'font-ibm-plex-mono'
   brew 'font-iosevka'
   brew 'font-iosevka-slab'
