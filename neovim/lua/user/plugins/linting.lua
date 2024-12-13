@@ -5,6 +5,7 @@ return {
     local lint = require 'lint'
 
     lint.linters_by_ft = {
+      go = { 'staticcheck' },
       javascript = { 'eslint_d' },
       typescript = { 'eslint_d' },
       -- python = { 'pylint' },
@@ -17,11 +18,6 @@ return {
       callback = function() lint.try_lint() end,
     })
 
-    vim.keymap.set(
-      'n',
-      '<leader>L',
-      function() lint.try_lint() end,
-      { desc = 'Lint buffer' }
-    )
+    vim.keymap.set('n', '<leader>L', function() lint.try_lint() end, { desc = 'Lint buffer' })
   end,
 }

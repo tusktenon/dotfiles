@@ -35,8 +35,11 @@ return {
         'gofumpt', -- a stricter alternative to 'gofmt'
         'goimports', -- updates Go imports
         'golines', -- fixes long lines
+        -- 'golangci-lint', -- Go linters runner
         -- 'isort',
         'prettier',
+        'revive', -- drop-in replacement for `golint`
+        'staticcheck', -- advanced Go linter
         'stylua',
       },
     }
