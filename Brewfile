@@ -6,6 +6,7 @@ brew 'fd'
 brew 'fzf'
 brew 'gcc'
 brew 'gdb'
+brew 'gh'  # GitHub CLI
 brew 'git'
 brew 'git-delta'
 brew 'htop'
