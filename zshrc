@@ -161,6 +161,9 @@ alias tree='tree -I .git'
 dotfiles_dir="~/Development/dotfiles"
 alias dfsync="dotbot -d $dotfiles_dir -c $dotfiles_dir/install.conf.yaml"
 
+# Quick access to Lazygit
+alias lz='lazygit'
+
 
 # End-of-File Settings  {{{1
 # The following should be sourced at the end of the `.zshrc` file.
