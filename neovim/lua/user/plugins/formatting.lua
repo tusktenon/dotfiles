@@ -30,6 +30,7 @@ return {
       go = { 'goimports', 'gofumpt', 'golines' },
       html = { 'prettier' },
       javascript = { 'prettier' },
+      javascriptreact = { 'prettier' },
       json = { 'prettier' },
       lua = { 'stylua' },
       -- python = { "isort", "black" },
