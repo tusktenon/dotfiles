@@ -9,6 +9,8 @@ brew 'gdb'
 brew 'gh'  # GitHub CLI
 brew 'git'
 brew 'git-delta'
+brew 'httpie'
+brew 'httpyac'
 brew 'htop'
 brew 'kitty'
 brew 'jesseduffield/lazygit/lazygit'

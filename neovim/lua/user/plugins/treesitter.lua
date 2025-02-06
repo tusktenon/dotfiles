@@ -25,6 +25,7 @@ return {
           'gowork',
           'haskell',
           'html',
+          'http',
           'java',
           'javascript', -- and JSX
           'json',
