@@ -19,46 +19,58 @@ return {
 
     -- Buffer-Local Mappings
     -- Use the LspAttach autocommand to only map the following keys
-    -- after the language server attaches to the current buffer
+    -- after the language server attaches to the current buffer.
+    -- See `:help vim.lsp.*` for documentation on any of the functions below.
     vim.api.nvim_create_autocmd('LspAttach', {
       group = vim.api.nvim_create_augroup('UserLspConfig', {}),
       callback = function(ev)
-        local bufmap = function(mode, lhs, rhs, opts)
-          opts = opts or {}
-          opts.buffer = ev.buf
-          keymap(mode, lhs, rhs, opts)
-        end
+        local opts = { buffer = ev.buf, silent = true }
 
-        -- See `:help vim.lsp.*` for documentation on any of the functions below
-        bufmap('n', 'gD', vim.lsp.buf.declaration, { desc = 'Go to declaration' })
-        bufmap('n', 'gd', vim.lsp.buf.definition, { desc = 'Go to definition' })
-        bufmap('n', 'K', vim.lsp.buf.hover, { desc = 'Hover documentation' })
-        bufmap('n', 'gi', vim.lsp.buf.implementation, { desc = 'Go to implementation' })
-        bufmap('n', 'gr', vim.lsp.buf.references, { desc = 'List references' })
-        -- bufmap('n', 'gr', require'telescope.builtin'.lsp_references, {desc = 'List references'})
-        bufmap(
-          'n',
-          '<leader>fs',
-          require('telescope.builtin').lsp_document_symbols,
-          { desc = 'List document symbols' }
-        )
-        bufmap({ 'n', 'v' }, '<leader>la', vim.lsp.buf.code_action, { desc = 'Code action' })
-        bufmap('n', '<leader>lD', vim.lsp.buf.type_definition, { desc = 'Go to type definition' })
-        bufmap(
-          'n',
-          '<leader>lf',
-          function() vim.lsp.buf.format { async = true } end,
-          { desc = 'Format buffer' }
-        )
-        bufmap('n', '<leader>lr', vim.lsp.buf.rename, { desc = 'Rename' })
-        bufmap('n', '<leader>ls', vim.lsp.buf.signature_help, { desc = 'Signature help' })
-        bufmap('n', '<leader>lwa', vim.lsp.buf.add_workspace_folder, { desc = 'Add folder' })
-        bufmap('n', '<leader>lwr', vim.lsp.buf.remove_workspace_folder, { desc = 'Remove folder' })
-        bufmap(
+        opts.desc = 'Hover documentation'
+        keymap('n', 'K', vim.lsp.buf.hover, opts)
+
+        opts.desc = 'Go to declaration'
+        keymap('n', 'gD', vim.lsp.buf.declaration, opts)
+
+        opts.desc = 'Go to definition'
+        keymap('n', 'gd', vim.lsp.buf.definition, opts)
+
+        opts.desc = 'Go to type definition'
+        keymap('n', '<leader>lD', vim.lsp.buf.type_definition, opts)
+
+        opts.desc = 'Go to implementation'
+        keymap('n', 'gi', vim.lsp.buf.implementation, opts)
+
+        opts.desc = 'List references'
+        keymap('n', 'gr', vim.lsp.buf.references, opts)
+        -- keymap('n', 'gr', require'telescope.builtin'.lsp_references, opts)
+
+        opts.desc = 'List document symbols'
+        keymap('n', '<leader>fs', require('telescope.builtin').lsp_document_symbols)
+
+        opts.desc = 'Code action'
+        keymap({ 'n', 'v' }, '<leader>la', vim.lsp.buf.code_action, opts)
+
+        opts.desc = 'Format buffer'
+        keymap('n', '<leader>lf', function() vim.lsp.buf.format { async = true } end)
+
+        opts.desc = 'Rename'
+        keymap('n', '<leader>lr', vim.lsp.buf.rename, opts)
+
+        opts.desc = 'Signature help'
+        keymap('n', '<leader>ls', vim.lsp.buf.signature_help, opts)
+
+        opts.desc = 'Add folder'
+        keymap('n', '<leader>lwa', vim.lsp.buf.add_workspace_folder, opts)
+
+        opts.desc = 'Remove folder'
+        keymap('n', '<leader>lwr', vim.lsp.buf.remove_workspace_folder, opts)
+
+        opts.desc = 'List folders'
+        keymap(
           'n',
           '<leader>lwl',
-          function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end,
-          { desc = 'List folders' }
+          function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end
         )
       end,
     })
