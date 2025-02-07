@@ -29,6 +29,7 @@ return {
       css = { 'prettier' },
       go = { 'goimports', 'gofumpt', 'golines' },
       html = { 'prettier' },
+      java = { 'google-java-format' },
       javascript = { 'prettier' },
       javascriptreact = { 'prettier' },
       json = { 'prettier' },

@@ -18,6 +18,7 @@ return {
         -- clangd is provided by the Homebrew package `llvm`
         'gopls',
         'html',
+        'jdtls',
         'lemminx',
         'lua_ls',
         'omnisharp',
@@ -31,11 +32,13 @@ return {
       ensure_installed = {
         -- 'black',
         'csharpier',
+        'checkstyle', -- Java linter
         'eslint_d',
         'gofumpt', -- a stricter alternative to 'gofmt'
         'goimports', -- updates Go imports
         'golines', -- fixes long lines
         -- 'golangci-lint', -- Go linters runner
+        'google-java-format',
         -- 'isort',
         'prettier',
         'revive', -- drop-in replacement for `golint`

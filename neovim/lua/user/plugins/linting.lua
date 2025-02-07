@@ -6,6 +6,7 @@ return {
 
     lint.linters_by_ft = {
       go = { 'staticcheck' },
+      java = { 'checkstyle' },
       javascript = { 'eslint_d' },
       typescript = { 'eslint_d' },
       -- python = { 'pylint' },
