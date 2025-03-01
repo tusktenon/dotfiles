@@ -9,6 +9,7 @@ brew 'gdb'
 brew 'gh'  # GitHub CLI
 brew 'git'
 brew 'git-delta'
+brew 'gradle'
 brew 'httpie'
 brew 'httpyac'
 brew 'htop'
