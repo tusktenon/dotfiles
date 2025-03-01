@@ -1,34 +1,24 @@
-" Filepath: ~/.ideavimrc or ~/.config/ideavim/ideavimrc
-" Author: Dan Murphy
-
 " Basic Settings
 
-" Use case-insensitive search, except when using capital letters
+" Use system clipboard and IDE's paste implementation
+set clipboard+=unnamed,ideaput
+
+" Use case-insensitive search, except when search contains capital letters
 set ignorecase smartcase
 
 " Show search results as you type
-set hls
-set incsearch
-
-" Highlight search matches only while searching
-" (Doesn't currently work in IdeaVim)
-augroup vimrc-incsearch-highlight
-    autocmd!
-    autocmd CmdlineEnter /,\? :set hlsearch
-    autocmd CmdlineLeave /,\? :set nohlsearch
-augroup END
-
-" Map <C-L> (redraw screen) to also turn off search highlighting until the
-" next search
-nnoremap <C-L> :nohls<CR>
-
-" Preview the effects of substitution commands as you type
-" (Doesn't currently work in IdeaVim)
-set inccommand=nosplit
+set hls incsearch
 
 " Use (relative) line numbers
-"set number
 set number relativenumber
+
+" Keep some lines and columns visible around the cursor
+set scrolloff=4
+set sidescrolloff=5
+
+" Highlighted yank
+set highlightedyank
+let g:highlightedyank_highlight_duration = "800"
 
 " Join lines intelligently via IDE
 set ideajoin
@@ -36,51 +26,71 @@ set ideajoin
 
 " Mappings
 
-" Exit Insert mode by pressing 'jk'
-inoremap jk <Esc>
+" Forward delete with CTRL-D in Insert mode
+" Move existing CTRL-D mapping (delete indent) to CTRL-<
+" For consistency, also remap CTRL-T (insert indent) to CTRL->
+inoremap <C-d> <Delete>
+inoremap <C-,> <C-d>
+inoremap <C-.> <C-t>'
 
-" Map Y to act like D and C, i.e. 'y$' rather than the default 'yy' 
+" Make some useful Emacs bindings available in Insert mode
+inoremap <C-a> <Home>
+inoremap <C-e> <End>
+
+" Use spacebar as leader key
+" let mapleader = " "
+
+" Map Y to act like D and C; i.e., 'y$' rather than the default 'yy'
 noremap Y y$
 
-" Mappings from Tim Pope's Unimpaired plugin <tpope/vim-unimpaired>
-nnoremap [<CR> O<esc>j
-nnoremap ]<CR> o<esc>k
+" Map CTRL-L (redraw screen) to also turn off search highlighting until next search
+nnoremap <C-L> :nohls<CR>
+
+" Borrowed from/inspired by Tim Pope's Unimpaired plugin (tpope/vim-unimpaired):
+" Insert a space before/after the cursor
+nnoremap [<Space> i<Space><Esc>l
+nnoremap ]<Space> a<Space><Esc>h
+" Insert newline above/below current line
+nnoremap [<CR> mzO<esc>`z
+nnoremap ]<CR> mzo<esc>`z
 
 
-" Emulated Vim Plugins
+" IdeaVim Plugins
 
 set argtextobj
 set commentary
-"set easymotion
+set easymotion
 set exchange
-set highlightedyank
-"set sneak
+set mini-ai
+set NERDTree
 set surround
+set textobj-entire
 set textobj-indent
+" set peekaboo
+" set ReplaceWithRegister
 
-"nmap gs <Plug>(easymotion-prefix)
-let g:highlightedyank_highlight_duration = "800"
+" Extend the functionality of argtextobj to other pairs
+let g:argtextobj_pairs="(:),{:},<:>"
+
+" Use EasyMotion to approximate Leap (ggandor/leap.nvim)
+let g:EasyMotion_do_mapping = 0  " Disable default mappings
+map m <Plug>(easymotion-f2)
+map M <Plug>(easymotion-F2)
 
 
-" Which-Key Settings
+" Which-Key
 
-" Enable extension
 set which-key
 
 " Disable timeout to show Which-Key popup until you press a key
 set notimeout
 
-" Show the menu also for default Vim actions like `gg` or `zz`
+" Also display default Vim actions
 let g:WhichKey_ShowVimActions = "true"
-
-" Appearance
-let g:WhichKey_FontFamily = "Iosevka"
-let g:WhichKey_FontSize = 16
 
 
 " Intellimacs Settings
 
-" Enable primary module
 source ~/.intellimacs/spacemacs.vim
 
 " Enable optional modules
@@ -88,5 +98,5 @@ source ~/.intellimacs/extra.vim
 source ~/.intellimacs/major.vim
 source ~/.intellimacs/hybrid.vim
 
-" Enable which-key plugin
+" Enable Which-Key plugin
 source ~/.intellimacs/which-key.vim
