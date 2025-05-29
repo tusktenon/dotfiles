@@ -77,10 +77,10 @@ return {
 
     -- UI Customization
     vim.diagnostic.config {
+      virtual_lines = { current_line = true },
       virtual_text = false,
       signs = true,
-      -- underline = { severity = { min = vim.diagnostic.severity.ERROR } },
-      underline = true,
+      underline = false,
       update_in_insert = false,
       severity_sort = true,
     }

@@ -5,7 +5,6 @@ return {
     build = function() require('nvim-treesitter.install').update { with_sync = true } end,
     dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects', -- Syntax-aware text objects with select/move/swap/peek support
-      -- 'p00f/nvim-ts-rainbow', -- Rainbow brackets
     },
     config = function()
       require('nvim-treesitter.configs').setup {
