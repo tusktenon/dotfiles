@@ -177,9 +177,6 @@ return {
       },
     }
 
-    -- Haskell
-    -- use 'mrcjkb/haskell-tools.nvim'
-
     -- HTML
     lspconfig.html.setup {
       capabilities = capabilities,

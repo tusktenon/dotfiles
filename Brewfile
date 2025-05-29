@@ -41,12 +41,6 @@ cask 'temurin@21'  # Java: Eclipse Temurin OpenJDK by Adoptium
 # brew 'php'
 # cask smlnj
 
-# Haskell
-brew ghc@9.6  # GHC 9.6.3 is the latest supported by HLS
-brew cabal-install
-brew haskell-stack
-brew haskell-language-server
-
 
 # General Applications and Utilities
 brew calc 

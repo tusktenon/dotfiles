@@ -22,7 +22,6 @@ return {
           'gomod',
           'gosum',
           'gowork',
-          'haskell',
           'html',
           'http',
           'java',
