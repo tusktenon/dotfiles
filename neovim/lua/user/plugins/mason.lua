@@ -21,7 +21,6 @@ return {
         'jdtls',
         'lemminx',
         'lua_ls',
-        'omnisharp',
         'pyright',
         'ts_ls',
       },
@@ -31,7 +30,6 @@ return {
     require('mason-tool-installer').setup {
       ensure_installed = {
         -- 'black',
-        'csharpier',
         'checkstyle', -- Java linter
         'eslint_d',
         'gofumpt', -- a stricter alternative to 'gofmt'
