@@ -3,7 +3,7 @@
 
 [user]
 name = Dan Murphy
-email = dan.murphy@alumni.utoronto.ca
+email = 70486892+tusktenon@users.noreply.github.com
 
 [core]
 autocrlf = input  # Convert CRLF line endings to LF on commit
@@ -28,3 +28,9 @@ tool = nvimdiff
 [merge]
 conflictstyle = zdiff3
 tool = nvimdiff
+
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
