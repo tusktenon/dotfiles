@@ -9,8 +9,6 @@
       force: true
     ~/.config:
       recursive: true
-    ~/.vim:
-      recursive: true
 
 - link:
     ~/.config/bat: bat
@@ -19,12 +17,6 @@
     ~/.config/kitty: kitty
     ~/.config/nvim: neovim
     ~/.config/starship: starship
-    ~/.ghci: haskell/ghci
-    ~/.haskeline: haskell/haskeline
-    ~/.vim/after: vim/after
-    ~/.vim/spell: vim/spell
-    ~/.vim/vimrc: vim/vimrc
-    ~/.wezterm.lua: wezterm/wezterm.lua
     ~/.zshrc: zshrc
     ~/Library/Application Support/Code/User/settings.json: vscode/settings.json
     ~/Library/Application Support/lazygit/config.yml: lazygit.yml
