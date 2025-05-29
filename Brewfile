@@ -36,9 +36,6 @@ brew 'pnpm'
 brew 'python3'
 cask 'temurin@17'  # Java: Eclipse Temurin OpenJDK by Adoptium
 cask 'temurin@21'  # Java: Eclipse Temurin OpenJDK by Adoptium
-# brew 'jruby'
-# brew 'php'
-# cask smlnj
 
 
 # General Applications and Utilities
