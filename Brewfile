@@ -18,7 +18,6 @@ brew 'jesseduffield/lazygit/lazygit'
 brew 'neovim'
 brew 'renameutils'
 brew 'ripgrep'
-brew 'sqlite'
 brew 'starship'
 brew 'thefuck'
 brew 'tlrc'
@@ -34,8 +33,15 @@ brew 'llvm'  # Provides clang compiler and clangd language server
 brew 'node'
 brew 'pnpm'
 brew 'python3'
-cask 'temurin@17'  # Java: Eclipse Temurin OpenJDK by Adoptium
-cask 'temurin@21'  # Java: Eclipse Temurin OpenJDK by Adoptium
+cask 'temurin'     # Java: Eclipse Temurin OpenJDK by Adoptium (currently JDK 24)
+cask 'temurin@17'  # JDK 17 - LTS
+cask 'temurin@21'  # JDK 21 - LTS
+
+
+## Development: Databases
+brew 'mongosh'
+brew 'postgresql'
+brew 'sqlite'
 
 
 # General Applications and Utilities
