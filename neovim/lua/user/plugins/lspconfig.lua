@@ -108,41 +108,38 @@ return {
     require('lspconfig.ui.windows').default_options.border = 'rounded'
 
     local capabilities = vim.lsp.protocol.make_client_capabilities()
-    -- --Enable (broadcasting) snippet capability for completion:
+    --Enable (broadcasting) snippet capability for completion:
     capabilities.textDocument.completion.completionItem.snippetSupport = true
     -- Add additional capabilities supported by nvim-cmp:
     capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
     local lspconfig = require 'lspconfig'
 
-    -- C/C++
-    lspconfig.clangd.setup {
+    vim.lsp.config('*', {
       capabilities = capabilities,
-    }
+    })
+
+    -- C/C++
+    vim.lsp.enable 'clangd'
 
     -- Go
-    lspconfig.gopls.setup {
-      capabilities = capabilities,
+    vim.lsp.config('gopls', {
       settings = {
         gopls = {
           gofumpt = true,
         },
       },
-    }
+    })
+    vim.lsp.enable 'gopls'
 
     -- HTML
-    lspconfig.html.setup {
-      capabilities = capabilities,
-    }
+    vim.lsp.enable 'html'
 
     -- JavaScript/TypeScript
-    lspconfig.ts_ls.setup {
-      capabilities = capabilities,
-    }
+    vim.lsp.enable 'ts_ls'
 
     -- Lua
-    lspconfig.lua_ls.setup {
-      capabilities = capabilities,
+    vim.lsp.config('lua_ls', {
       settings = {
         Lua = {
           completion = {
@@ -165,18 +162,15 @@ return {
           },
         },
       },
-    }
+    })
+    vim.lsp.enable 'lua_ls'
 
     -- Python
     -- There are several python language servers;
     -- Pyright provides the `PyrightOrganizeImports` command
-    lspconfig.pyright.setup {
-      capabilities = capabilities,
-    }
+    vim.lsp.enable 'pyright'
 
     -- XML
-    lspconfig.lemminx.setup {
-      capabilities = capabilities,
-    }
+    vim.lsp.enable 'lemminx'
   end,
 }
