@@ -18,7 +18,7 @@ return {
         -- clangd is provided by the Homebrew package `llvm`
         'gopls',
         'html',
-        'jdtls',
+        -- 'jdtls',
         'lemminx',
         'lua_ls',
         'pyright',
@@ -30,13 +30,13 @@ return {
     require('mason-tool-installer').setup {
       ensure_installed = {
         -- 'black',
-        'checkstyle', -- Java linter
+        -- 'checkstyle', -- Java linter
         'eslint_d',
         'gofumpt', -- a stricter alternative to 'gofmt'
         'goimports', -- updates Go imports
         'golines', -- fixes long lines
         -- 'golangci-lint', -- Go linters runner
-        'google-java-format',
+        -- 'google-java-format',
         -- 'isort',
         'prettier',
         'revive', -- drop-in replacement for `golint`
