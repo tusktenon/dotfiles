@@ -43,6 +43,9 @@ inoremap <C-e> <End>
 " Map Y to act like D and C; i.e., 'y$' rather than the default 'yy'
 noremap Y y$
 
+" Better Visual-mode paste: replace visual selection without copying it
+vnoremap p "_dP
+
 " Map CTRL-L (redraw screen) to also turn off search highlighting until next search
 nnoremap <C-L> :nohls<CR>
 
