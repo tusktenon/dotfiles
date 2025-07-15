@@ -60,18 +60,6 @@ return {
           },
         },
         indent = { enable = true },
-
-        -- Extra Modules
-        matchup = {
-          enable = true,
-          include_match_words = true,
-        },
-        -- rainbow = {
-        --   enable = true,
-        --   disable = {'html'},
-        --   extended_mode = false,
-        --   -- colors = {},
-        -- },
       }
     end,
   },

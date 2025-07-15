@@ -7,7 +7,7 @@ return {
   {
     'windwp/nvim-autopairs',
     opts = {
-      check_ts = true -- Use Treesitter to check for a pair
+      check_ts = true, -- Use Treesitter to check for a pair
     },
   },
 
@@ -25,11 +25,16 @@ return {
   -- Software capslock (c.f. tpope/vim-capslock)
   {
     'barklan/capslock.nvim',
-    event = { "BufRead", "BufWinEnter", "BufNewFile" },
+    event = { 'BufRead', 'BufWinEnter', 'BufNewFile' },
     config = function()
-      require("capslock").setup()
-      vim.keymap.set({ "i", "c", "n" }, "<C-g>c", "<Plug>CapsLockToggle", { desc = 'Toggle Capslock' })
-    end
+      require('capslock').setup()
+      vim.keymap.set(
+        { 'i', 'c', 'n' },
+        '<C-g>c',
+        '<Plug>CapsLockToggle',
+        { desc = 'Toggle Capslock' }
+      )
+    end,
   },
 
   -- Commenting (c.f. tpope/vim-commentary and echasnovski/mini.comment)
@@ -38,30 +43,30 @@ return {
   -- (`gb`) comments.
   {
     'numToStr/Comment.nvim',
-    event = { "BufRead", "BufWinEnter", "BufNewFile" },
-    opts = {}
+    event = { 'BufRead', 'BufWinEnter', 'BufNewFile' },
+    opts = {},
   },
 
   -- Surround: add/change/delete delimiter pairs (c.f. tpope/vim-surround)
   {
     'kylechui/nvim-surround',
-    version = "^3.0.0", -- Use for stability; omit to use `main` branch for the latest features
-    event = "VeryLazy",
-    opts = {}
+    version = '^3.0.0', -- Use for stability; omit to use `main` branch for the latest features
+    event = 'VeryLazy',
+    opts = {},
   },
 
   -- Cutlass: True delete operations (c.f. svermeulen/vim-cutlass)
   {
     'gbprod/cutlass.nvim',
     enabled = false,
-    event = { "BufRead", "BufWinEnter", "BufNewFile" },
+    event = { 'BufRead', 'BufWinEnter', 'BufNewFile' },
     opts = {
       cut_key = 'x',
       registers = {
         change = 'c',
-        delete = 'd'
-      }
-    }
+        delete = 'd',
+      },
+    },
   },
 
   -- Leap: Powerful Sneak-like motions
@@ -76,22 +81,27 @@ return {
       keymap({ 'n', 'x', 'o' }, 'gm', '<Plug>(leap-from-window)')
       -- Since we're using `m` as the cut key, we'll use `<Leader>m` to add a mark.
       keymap('n', '<leader>m', 'm', { desc = 'Set mark' })
-    end
+    end,
   },
 
   -- A text-exchange operator
   'tommcdo/vim-exchange',
 
   -- Enhanced `matchit` and `matchparen`
-  'andymass/vim-matchup',
+  {
+    'andymass/vim-matchup',
+    opts = {
+      treesitter = {
+        include_match_words = true,
+      },
+    },
+  },
 
   -- Switch between single- and multi-line code forms
   'AndrewRadev/splitjoin.vim',
 
-
   -- Recognize CamelCase and snake_case words
   'chaoren/vim-wordmotion',
-
 
   -- Text Objects
 
@@ -103,9 +113,7 @@ return {
         -- Redefines 'ab' and 'ib' for any type of brace: (, [, {, <
         -- NOTE: targets.vim also provides this funcitonality
         'rhysd/vim-textobj-anyblock',
-        config = function()
-          vim.g['textobj#anyblock#blocks'] = { '(', '[', '{', '<' }
-        end
+        config = function() vim.g['textobj#anyblock#blocks'] = { '(', '[', '{', '<' } end,
       },
       -- Adds 'ae' and 'ie' for the entire buffer
       'kana/vim-textobj-entire',
@@ -116,9 +124,9 @@ return {
 
       -- Adds 'ax' and 'ix' for HTML/XML attribute
       'whatyouhide/vim-textobj-xmlattr',
-    }
+    },
   },
 
   -- Adds 'aI', 'ai' and 'ii' for indentation level
-  'michaeljsmith/vim-indent-object'
+  'michaeljsmith/vim-indent-object',
 }
