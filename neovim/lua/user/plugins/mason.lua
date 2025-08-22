@@ -1,19 +1,19 @@
 -- Package manager for LSP servers, DAP servers, linters and formatters
 return {
-  'williamboman/mason.nvim',
-  dependencies = {
-    'williamboman/mason-lspconfig.nvim', -- Bridges mason and lspconfig
-    'WhoIsSethDaniel/mason-tool-installer.nvim', -- Install/upgrade third-party tools
-  },
-  config = function()
-    require('mason').setup {
+  {
+    'mason-org/mason.nvim',
+    opts = {
       ui = {
         border = 'single',
         -- border = { '┏', '━' ,'┓', '┃', '┛', '━', '┗', '┃' },  -- heavy single
       },
-    }
-
-    require('mason-lspconfig').setup {
+    },
+  },
+  {
+    -- Bridges mason and lspconfig
+    'mason-org/mason-lspconfig.nvim',
+    dependencies = { 'mason-org/mason.nvim', 'neovim/nvim-lspconfig' },
+    opts = {
       ensure_installed = {
         -- clangd is provided by the Homebrew package `llvm`
         'gopls',
@@ -25,9 +25,12 @@ return {
         'ts_ls',
       },
       automatic_installation = true,
-    }
-
-    require('mason-tool-installer').setup {
+    },
+  },
+  {
+    -- Install/upgrade third-party tools
+    'WhoIsSethDaniel/mason-tool-installer.nvim',
+    opts = {
       ensure_installed = {
         -- 'black',
         -- 'checkstyle', -- Java linter
@@ -43,6 +46,6 @@ return {
         'staticcheck', -- advanced Go linter
         'stylua',
       },
-    }
-  end,
+    },
+  },
 }

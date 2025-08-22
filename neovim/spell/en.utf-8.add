@@ -13,6 +13,8 @@ goroutine
 goroutines
 Haskell
 Homebrew
+JDBC
+JPA
 JSON
 linter
 linters
@@ -22,8 +24,12 @@ Magit
 memoization
 memoized
 monad
+MongoDB
+MVC
 Neogit
 Neovim
+PostgreSQL
+SQLite
 struct
 structs
 subdirectory
