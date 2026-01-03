@@ -77,8 +77,8 @@ return {
 
     -- UI Customization
     vim.diagnostic.config {
-      virtual_lines = { current_line = true },
-      virtual_text = false,
+      -- virtual_lines = { current_line = true },
+      virtual_text = true,
       signs = true,
       underline = false,
       update_in_insert = false,
@@ -167,9 +167,16 @@ return {
     vim.lsp.enable 'lua_ls'
 
     -- Python
-    -- There are several python language servers;
-    -- Pyright provides the `PyrightOrganizeImports` command
     vim.lsp.enable 'pyright'
+
+    vim.lsp.config('ruff', {
+      init_options = {
+        settings = {
+          lineLength = 100,
+        },
+      },
+    })
+    vim.lsp.enable 'ruff'
 
     -- XML
     vim.lsp.enable 'lemminx'

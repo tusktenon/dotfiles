@@ -22,6 +22,7 @@ return {
         'lemminx',
         'lua_ls',
         'pyright',
+        'ruff',
         'ts_ls',
       },
       automatic_installation = true,
@@ -43,6 +44,7 @@ return {
         -- 'isort',
         'prettier',
         'revive', -- drop-in replacement for `golint`
+        'ruff', -- Python linter and formatter
         'staticcheck', -- advanced Go linter
         'stylua',
       },
