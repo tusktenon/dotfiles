@@ -17,7 +17,7 @@ return {
       desc = 'ToggleTerm floating',
     },
     {
-      '<leader>gl',
+      '<leader>gg',
       '<cmd>lua _LazygitToggle()<CR>',
       mode = 'n',
       silent = true,

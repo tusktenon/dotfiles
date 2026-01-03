@@ -132,7 +132,8 @@ keymap('n', '<leader>fp', telescope.extensions.projects.projects, {desc = 'Recen
 keymap('n', '<leader>fr', telescope_builtin.oldfiles, {desc = 'Recent files'})
 
 -- Git {{{2
-keymap('n', '<leader>gg', require('neogit').open, {desc = 'Git status'})
+-- Currently using Lazygit instead of Neogit:
+-- keymap('n', '<leader>gg', require('neogit').open, {desc = 'Git status'})
 
 -- Search  {{{2
 -- keymap('n', '<leader>ss', telescope_builtin.live_grep, {desc = 'Search for string'})
